@@ -1,0 +1,110 @@
+/*
+ * |-----------------------------------------------------------|
+ * | Copyright (c) 1990 MIPS Computer Systems, Inc.            |
+ * | All Rights Reserved                                       |
+ * |-----------------------------------------------------------|
+ * |          Restricted Rights Legend                         |
+ * | Use, duplication, or disclosure by the Government is      |
+ * | subject to restrictions as set forth in                   |
+ * | subparagraph (c)(1)(ii) of the Rights in Technical        |
+ * | Data and Computer Software Clause of DFARS 52.227-7013.   |
+ * |         MIPS Computer Systems, Inc.                       |
+ * |         928 Arques Avenue                                 |
+ * |         Sunnyvale, CA 94086                               |
+ * |-----------------------------------------------------------|
+ */
+#ident	"$Header: auth_none.c,v 1.2.1.2 90/05/07 20:56:01 wje Exp $"
+/*
+ * @(#)auth_none.c 1.1 86/09/24 SMI
+ *
+ * auth_none.c
+ * Creates a client authentication handle for passing "null" 
+ * credentials and verifiers to remote systems. 
+ */
+
+#ifdef KERNEL
+#include "../rpc/types.h"
+#include "../rpc/xdr.h"
+#include "../rpc/auth.h"
+#else
+#include <rpc/types.h>
+#include <rpc/xdr.h>
+#include <rpc/auth.h>
+#endif
+
+#define MAX_MARSHEL_SIZE 20
+
+/*
+ * Authenticator operations routines
+ */
+static void	authnone_verf();
+static void	authnone_destroy();
+static bool_t	authnone_marshal();
+static bool_t	authnone_validate();
+static bool_t	authnone_refresh();
+
+static struct auth_ops ops = {
+	authnone_verf,
+	authnone_marshal,
+	authnone_validate,
+	authnone_refresh,
+	authnone_destroy
+};
+
+static AUTH	no_client;
+static char	marshalled_client[MAX_MARSHEL_SIZE];
+static u_int	mcnt;
+
+AUTH *
+authnone_create()
+{
+	XDR xdr_stream;
+	register XDR *xdrs;
+
+	if (! mcnt) {
+		no_client.ah_cred = no_client.ah_verf = _null_auth;
+		no_client.ah_ops = &ops;
+		xdrs = &xdr_stream;
+		xdrmem_create(xdrs, marshalled_client, (u_int)MAX_MARSHEL_SIZE,
+		    XDR_ENCODE);
+		(void)xdr_opaque_auth(xdrs, &no_client.ah_cred);
+		(void)xdr_opaque_auth(xdrs, &no_client.ah_verf);
+		mcnt = XDR_GETPOS(xdrs);
+		XDR_DESTROY(xdrs);
+	}
+	return (&no_client);
+}
+
+/*ARGSUSED*/
+static bool_t
+authnone_marshal(client, xdrs)
+	AUTH *client;
+	XDR *xdrs;
+{
+
+	return ((*xdrs->x_ops->x_putbytes)(xdrs, marshalled_client, mcnt));
+}
+
+static void 
+authnone_verf()
+{
+}
+
+static bool_t
+authnone_validate()
+{
+
+	return (TRUE);
+}
+
+static bool_t
+authnone_refresh()
+{
+
+	return (FALSE);
+}
+
+static void
+authnone_destroy()
+{
+}

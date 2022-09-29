@@ -1,0 +1,117 @@
+#
+# Common Definitions
+#ident "$Header: commondefs,v 1.20.3.1 89/11/27 09:51:42 wje Exp $"
+#
+
+#
+# Fundamental constants of the build tree (distinct from source tree).
+#
+SYSTEM	= SVR3
+GRAPHICS= GL5
+CPUBOARD= R2300
+RELEASE	= GL5-W5.0
+
+#
+# Make tools, i.e. programs which must exist on both native and cross
+# development systems to build the software.
+#
+AR	= ar
+AS	= as
+CC	= cc
+#
+# Cross and native usage of $(ECHO) is identical in makefiles.
+#
+ECHO	= echo
+F77	= f77
+GET	= get
+LD	= ld
+LEX	= lex
+PC	= pc
+YACC	= yacc
+NM	= nm
+SIZE	= size
+STRIP	= strip
+LORDER	= lorder
+M4	= m4
+#SHELL	= sh
+LINT	= lint
+
+#
+# Cc flags, composed of predefined (global), variable, and local parts
+#
+ASFLAGS = $(CFLAGS)
+CFLAGS	= $(VCFLAGS) $(LCFLAGS) $(GCFLAGS)
+
+VCFLAGS	= $(VCDEFS) $(VCINCS) $(VCOPTS)
+LCFLAGS	= $(LCDEFS) $(LCINCS) $(LCOPTS)
+GCFLAGS	= $(GCDEFS) $(GCINCS) $(GCOPTS)
+
+#
+# XXX The -Dident=undef is temporary until compilers understand #ident.
+#
+GCDEFS	= -Dsgi -Dident=undef -D$(SYSTEM) -D$(CPUBOARD)
+GCINCS	= -I -I$(INCLDIR)
+GCOPTS	=
+
+CDEFS	= $(VCDEFS) $(LCDEFS) $(GCDEFS)
+CINCS	= $(VCINCS) $(LCINCS) $(GCINCS)
+COPTS	= $(VCOPTS) $(LCOPTS) $(GCOPTS)
+
+# Loader flags, composed of predefined, variable, and local parts
+GLDOPTS	= -L -L$(ROOT)/usr/lib
+LDOPTS	= $(VLDOPTS) $(LLDOPTS) $(GLDOPTS)
+LDLIBS	= $(VLDLIBS) $(LLDLIBS) $(GLDLIBS)
+LDFLAGS	= $(LDOPTS) $(LDLIBS)
+
+GF77FLAGS= -O $(GCDEFS)
+F77FLAGS= $(VF77FLAGS) $(LF77FLAGS) $(GF77FLAGS)
+
+GPCFLAGS= -O $(GCDEFS)
+PCFLAGS= $(VPCFLAGS) $(LPCFLAGS) $(GPCFLAGS)
+
+#
+# Other tool flags.
+#
+MAKEFLAGS= -b
+
+#
+# Convenient command macros that include the flags macros
+#
+MAKEF	= $(MAKE) $(MAKEFLAGS)
+ASF	= $(AS) $(ASFLAGS)
+CCF	= $(CC) $(CFLAGS)
+F77F	= $(F77) $(F77FLAGS)
+GETF	= $(GET) $(GFLAGS)
+LDF	= $(LD) $(LDFLAGS)
+LEXF	= $(LEX) $(LFLAGS)
+PCF	= $(PC) $(PCFLAGS)
+YACCF	= $(YACC) $(YFLAGS)
+
+#
+# Various directory shorthands defined, mainly for make depend.
+#
+INCLDIR	= $(ROOT)/usr/include
+
+#
+# The install command to use.
+#
+INSTALL	= $(TOOLROOT)/etc/install
+
+#
+# Awk and shell scripts for generating make dependencies.
+# XXX these should be reconciled ultimately
+#
+AWKDEPEND= $(ROOT)/usr/include/make/c-depend.awk
+
+MKDEPEND= $(TOOLROOT)/usr/bin/mkdepend -c "$(CCF)" \
+	-e 's:$(INCLDIR)/:$$(INCLDIR)/:' \
+	-e 's:$(ROOT)/:$$(ROOT)/:'
+
+# make depend for single-source commands
+MKDEPONE= $(MKDEPEND) -e 's/^\([^\. 	]*\)\.o/\1/'
+
+# make depend for members of archive $(LIB)
+MKDEPLIB= $(MKDEPEND) -e 's/^[^\. 	]*\.o/$$(LIB)(&)/'
+
+.c:
+	$(CCF) $(LDOPTS) -o $@ $@.c $(LDLIBS)

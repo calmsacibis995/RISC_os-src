@@ -1,0 +1,46 @@
+/*
+ * |-----------------------------------------------------------|
+ * | Copyright (c) 1990 MIPS Computer Systems, Inc.            |
+ * | All Rights Reserved                                       |
+ * |-----------------------------------------------------------|
+ * |          Restricted Rights Legend                         |
+ * | Use, duplication, or disclosure by the Government is      |
+ * | subject to restrictions as set forth in                   |
+ * | subparagraph (c)(1)(ii) of the Rights in Technical        |
+ * | Data and Computer Software Clause of DFARS 52.227-7013.   |
+ * |         MIPS Computer Systems, Inc.                       |
+ * |         928 Arques Avenue                                 |
+ * |         Sunnyvale, CA 94086                               |
+ * |-----------------------------------------------------------|
+ */
+#ident	"$Header: pmap_prot.c,v 1.2.1.2 90/05/07 20:59:31 wje Exp $"
+/*
+ * @(#)pmap_prot.c 1.1 86/09/24 Copyr 1984 Sun Micro
+ *
+ * pmap_prot.c
+ * Protocol for the local binder service, or pmap.
+ */
+
+#ifdef KERNEL
+#include "../rpc/types.h"
+#include "../rpc/xdr.h"
+#include "../rpc/pmap_prot.h"
+#else
+#include <rpc/types.h>
+#include <rpc/xdr.h>
+#include <rpc/pmap_prot.h>
+#endif KERNEL
+
+
+bool_t
+xdr_pmap(xdrs, regs)
+	XDR *xdrs;
+	struct pmap *regs;
+{
+
+	if (xdr_u_long(xdrs, &regs->pm_prog) && 
+		xdr_u_long(xdrs, &regs->pm_vers) && 
+		xdr_u_long(xdrs, &regs->pm_prot))
+		return (xdr_u_long(xdrs, &regs->pm_port));
+	return (FALSE);
+}

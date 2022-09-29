@@ -1,0 +1,107 @@
+#! /bin/sh
+
+# $Header: mountall,v 1.14.2.4 90/04/05 22:48:59 wje Exp $
+#
+#	Mount file systems according to file system table /etc/fstab.
+
+#	NFS fstab format
+#
+#	Field	Meaning
+#	-----	-------
+#	1	Block special file name of file system
+#	2	Mount-point directory
+#	3	File system type (ffs, ufs, 4.3, local or nfs)
+#	4	Mount options (ro, rw, suid ...) 
+#	5	Dump frequency
+#	6	Fsck pass number
+#
+# NOTE: The options passed to the fsck script may or may not be implemented
+#	by the binary programs; however, they should be mapped into
+#	appropriate file system specific options.  fsck options:
+#		a: fsck all non-root file systems as fast as possible
+#		d: print debug info
+#		C: fsck	only dirty file systems.
+
+error=0
+
+main() {
+	case $# in
+	0 )	;;
+	*)	echo "usage: mountall"
+	esac
+
+	#
+	# Let user skip fsck of clean file systems if (s)he wants.
+	# On truly diskless don't ask silly questions!
+	#
+	numffs=`grep ffs /etc/fstab | wc -l`
+	if [ $numffs -gt 0 ]
+	then
+		echo ""
+		echo "***** Normally all file systems are fscked."
+		echo "***** To fsck only dirty ones, type 'yes' within 5 seconds: \c"
+	
+		if	expr _"`timed_read 8" : _"y.*" > /dev/null 2>&1
+		then
+			echo "***** Only dirty file systems will be fscked."
+			fsck -a -d -C
+		else
+			echo "\n***** All file systems will be fscked."
+			fsck -a -d
+		fi
+	
+		case $? in
+		0)	;;
+		2)	error=1
+			;;
+		8)	echo "Reboot fsck failed... help!"
+			error=1
+			;;
+		12)	echo "Reboot fsck interrupted"
+			error=1
+			;;
+		*)	echo "Unknown error in reboot fsck"
+			error=1
+			;;
+		esac
+	fi
+	
+	# If a fsck error has occurred while booting, shutdown to single-
+	# user.  The sysadmin should then deal with the situation before
+	# going multi-user.  When this script is executed from /etc/init,
+	# `who am i` will return null.  If run from a user shell, 'root'
+	# will be returned.
+	if [ $error -eq 1 ]; then
+		set _foo `who am i` _bar
+		if [ "_$2" != "__bar" ]; then
+			echo "\nRemaining in current state\n"
+		else
+			set `who -r`
+			if [ -x /etc/bad_boot.conf ] &&
+			   ([ "_$9" = "_S" ] || [ "_$9" = "_1" ]); then
+				/etc/bad_boot.conf
+				_exit=$?
+				if [ $_exit -ne 0 ]; then
+					exit $_exit
+				fi
+			else
+				echo "\nWARNING: Shutting down to single user"
+				init 1
+				exit 2
+			fi
+		fi
+	fi
+
+	# mount all "local" filesystems except root.  Be verbose about
+	#  the output and fsck all filesystems which aren't clean.
+	mount -a -c -v -t local
+}
+
+timed_read() {
+	TTY=`tty`
+	(read i; echo $i; ) < $TTY &
+	sleep $1
+	kill -9 $! > /dev/null 2>&1 &
+}
+
+main ${1+"$@"}

@@ -1,0 +1,357 @@
+#
+#	@(#)make.script	1.1 88/03/07 4.0NFSSRC SMI
+#
+SHELL=/bin/sh
+DIR=/etc
+
+# change 'domainname' to your domainname
+# For example:  DOM=mips.com
+
+DOM=`domainname`
+NOPUSH=""
+ALIASES=/usr/lib/aliases
+YPDIR=/usr/etc/yp
+YPDBDIR=/etc/yp
+YPPUSH=$(YPDIR)/yppush
+MAKEDBM=$(YPDIR)/makedbm
+REVNETGROUP=$(YPDIR)/revnetgroup
+STDETHERS=$(YPDIR)/stdethers
+STDHOSTS=$(YPDIR)/stdhosts
+MKNETID=$(YPDIR)/mknetid
+MKALIAS=$(YPDIR)/mkalias
+
+all: passwd group hosts ethers networks rpc services protocols \
+	netgroup bootparams aliases publickey netid c2secure netmasks
+
+passwd.time: $(DIR)/passwd
+	-@if [ -f $(DIR)/passwd ]; then \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; /^[a-zA-Z0-9_]/ { print $$1, $$0 }' \
+		  $(DIR)/passwd  | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/passwd.byname; \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; /^[a-zA-Z0-9_]/ { print $$3, $$0 }' \
+		  $(DIR)/passwd | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/passwd.byuid; \
+		touch passwd.time; \
+		echo "updated passwd"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) passwd.byname; \
+			$(YPPUSH) passwd.byuid; \
+			echo "pushed passwd"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/passwd"; \
+	fi
+
+group.time: $(DIR)/group
+	-@if [ -f $(DIR)/group ]; then \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; { print $$1, $$0 }' \
+		    $(DIR)/group | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/group.byname; \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; { print $$3, $$0 }' \
+		    $(DIR)/group | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/group.bygid; \
+		touch group.time; \
+		echo "updated group"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) group.byname; \
+			$(YPPUSH) group.bygid; \
+			echo "pushed group"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/group"; \
+	fi
+
+hosts.time: $(DIR)/hosts
+	-@if [ -f $(DIR)/hosts ]; then \
+		sed -e "/^#/d" -e s/#.*$$// $(DIR)/hosts | $(STDHOSTS) \
+		    | awk '{for (i = 2; i <= NF; i++) print $$i, $$0}' \
+		    | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/hosts.byname; \
+		$(STDHOSTS) $(DIR)/hosts | \
+		    awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$1, $$0 }' \
+		    | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/hosts.byaddr; \
+		touch hosts.time; \
+		echo "updated hosts"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) hosts.byname; \
+			$(YPPUSH) hosts.byaddr; \
+			echo "pushed hosts"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/hosts"; \
+	fi
+
+ethers.time: $(DIR)/ethers
+	-@if [ -f $(DIR)/ethers ]; then \
+		$(STDETHERS) $(DIR)/ethers \
+		|awk '{print $$1, $$0; for (i = 3;i <= NF;i++) print $$i,$$0}' \
+		| $(MAKEDBM) - $(YPDBDIR)/$(DOM)/ethers.byaddr; \
+		awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$2, $$0 }' \
+		   $(DIR)/ethers | \
+		$(MAKEDBM) - $(YPDBDIR)/$(DOM)/ethers.byname;\
+		touch ethers.time; \
+		echo "updated ethers"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) ethers.byname; \
+			$(YPPUSH) ethers.byaddr; \
+			echo "pushed ethers"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/ethers"; \
+	fi
+
+networks.time: $(DIR)/networks
+	-@if [ -f $(DIR)/networks ]; then \
+		sed -e "/^#/d" -e s/#.*$$// $(DIR)/networks | awk \
+		    '{print $$1, $$0; for (i = 3;i <= NF;i++) print $$i,$$0}' \
+		    | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/networks.byname; \
+		awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$2, $$0 }' \
+		   $(DIR)/networks | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/networks.byaddr;\
+		touch networks.time; \
+		echo "updated networks"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) networks.byname; \
+			$(YPPUSH) networks.byaddr; \
+			echo "pushed networks"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/networks"; \
+	fi
+
+services.time: $(DIR)/services
+	-@if [ -f $(DIR)/services ]; then \
+		awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$1, $$0 }' \
+		    $(DIR)/services| $(MAKEDBM) - $(YPDBDIR)/$(DOM)/services.byname;\
+		touch services.time; \
+		echo "updated services"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) services.byname; \
+			echo "pushed services"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/services"; \
+	fi
+
+rpc.time: $(DIR)/rpc
+	-@if [ -f $(DIR)/rpc ]; then \
+		awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$2, $$0 }' \
+		    $(DIR)/rpc| $(MAKEDBM) - $(YPDBDIR)/$(DOM)/rpc.bynumber;\
+		touch rpc.time; \
+		echo "updated rpc"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) rpc.bynumber; \
+			echo "pushed rpc"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/rpc"; \
+	fi
+
+protocols.time: $(DIR)/protocols
+	-@if [ -f $(DIR)/protocols ]; then \
+		awk 'BEGIN { OFS="\t"; }; $$1 !~ /^#/ { print $$2, $$0 }' \
+		    $(DIR)/protocols | $(MAKEDBM) - \
+		    $(YPDBDIR)/$(DOM)/protocols.bynumber; \
+		sed -e "/^#/d" -e s/#.*$$// $(DIR)/protocols | awk \
+		    '{print $$1,$$0; for (i = 3;i <= NF;i++) print $$i, $$0}' \
+		    | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/protocols.byname; \
+		touch protocols.time; \
+		echo "updated protocols"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) protocols.byname; \
+			$(YPPUSH) protocols.bynumber; \
+			echo "pushed protocols"; \
+			else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/protocols"; \
+	fi
+
+netgroup.time: $(DIR)/netgroup
+	-@if [ -f $(DIR)/netgroup ]; then \
+		$(MAKEDBM) $(DIR)/netgroup $(YPDBDIR)/$(DOM)/netgroup; \
+		$(REVNETGROUP) -u | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/netgroup.byuser; \
+		$(REVNETGROUP) -h | $(MAKEDBM) - $(YPDBDIR)/$(DOM)/netgroup.byhost; \
+		touch netgroup.time; \
+		echo "updated netgroup"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) netgroup; \
+			$(YPPUSH) netgroup.byuser; \
+			$(YPPUSH) netgroup.byhost; \
+			echo "pushed netgroup"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/netgroup"; \
+	fi
+
+bootparams.time: $(DIR)/bootparams
+	-@if [ -f $(DIR)/bootparams ]; then \
+		sed -e '/^#/d' -e s/#.*$$// -e 's/[	 ][	 ]*$$//' \
+		    -e '/\\$$/s/\\$$/ /' $(DIR)/bootparams \
+		| awk '/ $$/ {printf "%s", $$0}; !/ $$/ {print}' \
+		| sed -e 's/[	 ][	 ]*/ /g' \
+		| $(MAKEDBM) - $(YPDBDIR)/$(DOM)/bootparams; \
+		touch bootparams.time; \
+		echo "updated bootparams"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) bootparams; \
+			echo "pushed bootparams"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/bootparams"; \
+	fi
+
+aliases.time: $(ALIASES)
+	-@if [ -f $(ALIASES) ]; then \
+		cp $(ALIASES) $(YPDBDIR)/$(DOM)/mail.aliases; \
+		/usr/lib/sendmail -bi -oA$(YPDBDIR)/$(DOM)/mail.aliases; \
+		$(MKALIAS) $(YPDBDIR)/$(DOM)/mail.aliases $(YPDBDIR)/$(DOM)/mail.byaddr; \
+		rm $(YPDBDIR)/$(DOM)/mail.aliases; \
+		touch aliases.time; \
+		echo "updated aliases"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) mail.aliases; \
+			$(YPPUSH) mail.byaddr; \
+			echo "pushed aliases"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(ALIASES)"; \
+	fi
+
+publickey.time: $(DIR)/publickey
+	-@if [ -f $(DIR)/publickey ]; then \
+		sed "/^#/d" < $(DIR)/publickey | \
+		$(MAKEDBM) - $(YPDBDIR)/$(DOM)/publickey.byname; \
+		touch publickey.time; \
+		echo "updated publickey"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) publickey.byname; \
+			echo "pushed publickey"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/publickey"; \
+	fi
+
+netid.time: $(DIR)/passwd $(DIR)/group $(DIR)/hosts $(DIR)/netid
+	@$(MKNETID) -q -p $(DIR)/passwd -g $(DIR)/group -h $(DIR)/hosts \
+		-m $(DIR)/netid > .ypjunk; \
+	$(MAKEDBM) .ypjunk $(YPDBDIR)/$(DOM)/netid.byname; \
+	rm -f .ypjunk; \
+	touch netid.time; \
+	echo "updated netid"; \
+	if [ ! $(NOPUSH) ]; then \
+		$(YPPUSH) netid.byname; \
+		echo "pushed netid"; \
+	else \
+		: ; \
+	fi
+
+c2secure:
+	-@if [ -f $(DIR)/security/passwd.adjunct ]; then \
+		make NOPUSH=$(NOPUSH) passwd.adjunct.time group.adjunct.time; \
+	fi
+
+passwd.adjunct.time: $(DIR)/security/passwd.adjunct
+	-@if [ -f $(DIR)/security/passwd.adjunct ]; then \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; /^[a-zA-Z0-9_]/ { print $$1, $$0 }' \
+		  $(DIR)/security/passwd.adjunct  | \
+		$(MAKEDBM) -s - $(YPDBDIR)/$(DOM)/passwd.adjunct.byname; \
+		chmod 600 $(YPDBDIR)/$(DOM)/passwd.adjunct.byname.dir; \
+		chmod 600 $(YPDBDIR)/$(DOM)/passwd.adjunct.byname.pag; \
+		touch passwd.adjunct.time; \
+		echo "updated passwd.adjunct"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) passwd.adjunct.byname; \
+			echo "pushed passwd.adjunct"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/security/passwd.adjunct"; \
+	fi
+
+group.adjunct.time: $(DIR)/security/group.adjunct
+	-@if [ -f $(DIR)/security/group.adjunct ]; then \
+		awk 'BEGIN { FS=":"; OFS="\t"; }; /^[a-zA-Z0-9_]/ { print $$1, $$0 }' \
+		  $(DIR)/security/group.adjunct  | \
+		$(MAKEDBM) -s - $(YPDBDIR)/$(DOM)/group.adjunct.byname; \
+		chmod 600 $(YPDBDIR)/$(DOM)/group.adjunct.byname.dir; \
+		chmod 600 $(YPDBDIR)/$(DOM)/group.adjunct.byname.pag; \
+		touch group.adjunct.time; \
+		echo "updated group.adjunct"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) group.adjunct.byname; \
+			echo "pushed group.adjunct"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/security/group.adjunct"; \
+	fi
+
+netmasks.time: $(DIR)/netmasks
+	-@if [ -f $(DIR)/netmasks ]; then \
+		$(MAKEDBM) $(DIR)/netmasks $(YPDBDIR)/$(DOM)/netmasks.byaddr; \
+		chmod 600 $(YPDBDIR)/$(DOM)/netmasks.byaddr.dir; \
+		chmod 600 $(YPDBDIR)/$(DOM)/netmasks.byaddr.pag; \
+		touch netmasks.time; \
+		echo "updated netmasks"; \
+		if [ ! $(NOPUSH) ]; then \
+			$(YPPUSH) netmasks.byaddr; \
+			echo "pushed netmasks"; \
+		else \
+			: ; \
+		fi \
+	else \
+		echo "couldn't find $(DIR)/netmasks"; \
+	fi
+
+passwd: passwd.time
+group: group.time
+hosts: hosts.time
+ethers: ethers.time
+networks: networks.time
+rpc: rpc.time
+services: services.time
+protocols: protocols.time
+netgroup: netgroup.time
+bootparams: bootparams.time
+aliases: aliases.time
+publickey: publickey.time
+netid: netid.time
+passwd.adjunct: passwd.adjunct.time
+group.adjunct: group.adjunct.time
+netmasks: netmasks.time
+$(DIR)/passwd:
+$(DIR)/group:
+$(DIR)/hosts:
+$(DIR)/ethers:
+$(DIR)/networks:
+$(DIR)/rpc:
+$(DIR)/services:
+$(DIR)/protocols:
+$(DIR)/netgroup:
+$(DIR)/bootparams:
+$(DIR)/publickey:
+$(DIR)/netid:
+$(DIR)/security/passwd.adjunct:
+$(DIR)/security/group.adjunct:
+$(ALIASES):
+$(DIR)/netmasks:

@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Roll over the cron log file.
+#
+# Note: This doesn't create a new log, since cron creates it when it needs
+#       to.  In the rare case that cron is logging a message at the time
+#	we are rolling the file over, this will prevent us from losing any
+#	messages.
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRotating cron log:"
+
+	cd /usr/lib/cron
+
+	roll log.3 log.4
+	roll log.2 log.3
+	roll log.1 log.2
+	roll log   log.1
+}
+
+roll()
+{
+	if [ -f "$1" ]
+	then
+		mv "$1" "$2"
+	fi
+}
+
+main ${1+"$@"}
+exit 0

@@ -1,0 +1,48 @@
+usr/pkg/lib/umips4.10/boms/bsd43 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/bsd43_root_cmd -r--r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/bsd43_root_dirs -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/bsd43_usr_include -rw-r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/bsd43_usr_lib -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/cc.bin l--------- bin bin 1 ../../cmplrs2.0/boms/cc.bin
+usr/pkg/lib/umips4.10/boms/cc.bsd l--------- bin bin 1 ../../cmplrs2.0/boms/cc.bsd
+usr/pkg/lib/umips4.10/boms/cc.dir l--------- bin bin 1 ../../cmplrs2.0/boms/cc.dir
+usr/pkg/lib/umips4.10/boms/cc.hdr l--------- bin bin 1 ../../cmplrs2.0/boms/cc.hdr
+usr/pkg/lib/umips4.10/boms/cc.lib l--------- bin bin 1 ../../cmplrs2.0/boms/cc.lib
+usr/pkg/lib/umips4.10/boms/cc.libG0 l--------- bin bin 1 ../../cmplrs2.0/boms/cc.libG0
+usr/pkg/lib/umips4.10/boms/cc.man l--------- bin bin 1 ../../cmplrs2.0/boms/cc.man
+usr/pkg/lib/umips4.10/boms/cmplrs -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/m1000_dev -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/m120_dev -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/m2000_dev -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man_dirs -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man_files -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man_files_bsd -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man_links -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/man_links_bsd -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/pkgtools.bin -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/r2300 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/r2400 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/r3200 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root.r2300 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root.r2400 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root.r3200 -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root_cmd -r--r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root_dirs -r--r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root_files -r--r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/root_uts -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/sppbin -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/sppbin.bin l--------- bin bin 1 ../../spp4.10/boms/sppbin.bin
+usr/pkg/lib/umips4.10/boms/usr -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_cmd -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_dirs -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_include -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_include_uts -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_lib -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_src_uts -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/boms/usr_term -rw-rw-r-- bin bin 1 
+usr/pkg/lib/umips4.10/conv/m120.ctape -rwxr-xr-x bin bin 1 
+usr/pkg/lib/umips4.10/conv/root.fstab -rwxr-xr-x bin bin 1 
+usr/pkg/lib/umips4.10/lib/root.preserves -rw-r--r-- bin bin 1 
+usr/pkg/lib/umips4.10/lib/usr.preserves -rw-r--r-- bin bin 1 

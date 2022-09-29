@@ -1,0 +1,109 @@
+#menu# restore files from "backup" tape to disk
+#help# 
+#help#	Restore copies files from tapes made by "backup"
+#help#	back onto the file systems.  You can restore individual files or
+#help#	directories of files with this procedure.  
+#help#	To restore a complete tape, you should
+#help#	follow the directions in the System Administrator's Reference
+#help#	Manual and use restore.ffs directly.  
+#help#	You can restore from both "incremental" and "complete" tapes.
+#help#	You can also list the names of files stored on the tape.
+#help#	This script uses restore.ffs.  Please refer to the System
+#help#	Administrator Reference Manual for more information.
+
+flags="-qq -k$$"
+trap 'exit 0' 1 2 15
+
+clist=`/etc/mount  |\
+   awk 'BEGIN {
+		count = 1;
+	}
+	{
+		if ($1 ~ /^[^:]*$/ && $2 == "on") {
+			printf "%d %s %s\n", count, $1, $3;
+			count++;
+		}
+	}'`
+
+while :
+do
+	choice=`checklist ${flags} -fe -l ' ' -H '
+	You may choose just one file system by number or either name.' \
+	"
+Available file systems:
+${clist}
+Enter the file system on which you want to restore [?, q]:" ${clist}`
+
+	fs=""
+	for i in ${choice}
+	{
+		entry=`echo "${clist}" | awk '
+		BEGIN {
+			Lookfor = "'"$i"'";
+			State = 0;
+		}
+		{
+			if (State == 1) {
+				next; # eat input from pipe
+			}
+			if ($1 == Lookfor || $2 == Lookfor || $3 == Lookfor) {
+				print $3;
+				State = 1;
+			}
+		}'`
+		case "${entry}" in
+			"")
+				echo >&2 '\tNo corresponding filesystem for $i'
+				fs=""
+				break
+				;;
+		esac
+		fs=${entry}
+	}
+	case "${fs}" in
+		"")
+			;;
+		*)
+			break
+			;;
+	esac
+done
+dir=${0}.d
+if [ -d ${dir} ]
+then
+	patterns=`ls ${dir} 2>/dev/null`
+else
+	patterns=
+fi
+
+ddrive=`selectdevice -c $$ /dev/rmt ${patterns}`
+rndrive=`basename ${ddrive}`
+case "${rndrive}" in
+Q* | ctape* | m* ) ndrive="Cartridge Tape"
+	;;
+h0* | h4* ) ndrive="Half inch Tape"
+	;;
+hc* ) ndrive="High Capacity Tape"
+	;;
+esac
+
+echo Place the first tape of the most recent backup in the ${ndrive} drive.
+echo Type RETURN when you are ready.
+read xx
+echo Invoking restore.ffs -i $ddrive
+echo You may use the ls and cd commands in restore.ffs to see if the files
+echo you need are on this tape.  If not, exit this menu and re-invoke restore
+echo with the next oldest incremental tape, working backwards in time 
+echo up to the most recent full backup.
+echo
+echo If the files or directories are on this tape use the add command
+echo to add them to a list of files to be extracted.  Repeat the use of
+echo add command until you have selected all the files you wish to restore,
+echo then issue the extract command to actually restore them from tape.
+echo
+echo Type ? for help or refer to restore.ffs in the System Administrators
+echo Reference Manual.
+echo Type q to quit.
+
+cd $fs
+/etc/restore.ffs -i $ddrive

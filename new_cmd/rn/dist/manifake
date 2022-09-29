@@ -1,0 +1,24 @@
+#!/bin/sh
+# $Header: manifake,v 1.1.1.1 89/11/28 01:04:21 wje Exp $
+#
+# $Log:	manifake,v $
+# Revision 1.1.1.1  89/11/28  01:04:21  wje
+# Branch RISCOS_4_50_FIXES off of trunk.
+# 
+# Revision 1.1  89/05/26  20:55:53  kris
+# Initial revision
+# 
+# Revision 4.3  85/05/01  11:42:41  lwall
+# Baseline for release with 4.3bsd.
+# 
+
+: make MANIFEST and MANIFEST.new say the same thing
+if test ! -f MANIFEST.new; then
+    if test -f MANIFEST; then
+	sed <MANIFEST >MANIFEST.new \
+	    -e '1,/---/d' \
+	    -e 's/\([ 	][ 	]*\)[0-9]*  */\1/'
+    else
+	echo "Make a MANIFEST.new file, with names and descriptions."
+    fi
+fi

@@ -1,0 +1,23 @@
+#menu# display how much of the built-in disks are being used
+
+#help# 
+#help#	Diskuse lets you know what percentage of the built-in disks are
+#help#	currently occupied by files.
+#help#
+#help#	The fields are as follows:
+#help#
+#help#	Filesystem: The name of the disk device used for the filesystem.
+#help#	Type      : The type of filesystem (ffs=Fast FileSystem,
+#help#					    S51K=System V 1K).
+#help#	kbytes    : The number of kbytes available on the device.
+#help#	use       : The number of kbytes in use.
+#help#	avail     : The number of kbytes available to users.
+#help#	%use      : The number of kbytes used as a percentage of available
+#help#		    space.
+#help#	Mounted on: The root directory of the filesystem.
+#help#
+
+echo "
+FILE SYSTEM USAGE AS OF" `date '+%m/%d/%y %T'`
+
+df -t local

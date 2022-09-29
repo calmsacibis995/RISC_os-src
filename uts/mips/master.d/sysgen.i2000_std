@@ -1,0 +1,161 @@
+* $Header: sysgen.i2000_std,v 1.14.1.7 90/06/05 16:40:37 wje Exp $
+*****************************************************************************
+* vector information		MUST BE FIRST!
+*
+* VECTOR: module [intr] [vector ipl unit] base [probe [probe_size]]
+*	
+*	module: boot module
+*	intr:	interrupt function (default: module_prefix|"intr")
+*	vector: vme interrupt vector
+*	ipl:	(vme IRQx) interrupt priority level
+*	base:	base address of card
+*	probe:	address read to determine existence of card
+*		(no probe address implies existence)
+*	probe_size: size of probe (default 4 bytes)
+*
+
+VECTOR: module=if_la vector=0x11 ipl=1 unit=0 base=0x3
+
+VECTOR: module=lp vector=0x12 ipl=0 unit=0 base=0x0
+
+VECTOR: module=fl vector=0xF ipl=2 unit=8 base=0100
+VECTOR: module=sd vector=0xD ipl=2 unit=6 base=6
+VECTOR: module=sd vector=0xC ipl=2 unit=5 base=5
+VECTOR: module=sd vector=0xB ipl=2 unit=4 base=4
+VECTOR: module=sd vector=0xA ipl=2 unit=3 base=3
+VECTOR: module=sd vector=0x9 ipl=2 unit=2 base=2
+VECTOR: module=sd vector=0x8 ipl=2 unit=1 base=1
+VECTOR: module=sd vector=0x7 ipl=2 unit=0 base=0
+
+VECTOR: module=uart vector=0x1 ipl=1 unit=0 base=0x1
+VECTOR: module=uart vector=0x2 ipl=1 unit=1 base=0x2
+VECTOR: module=mouse vector=0x14 ipl=1 unit=0 base=0x0
+
+VECTOR: module=kbd vector=0x13 ipl=1 unit=0 base=0
+VECTOR: module=iop_clock vector=0x5 ipl=4 unit=0 base=0x5
+
+* kernel
+*
+KERNEL: kernel
+
+* device specifications
+*
+ROOTDEV: DEV(33,0)
+PIPEDEV: DEV(33,0)
+SWAPDEV: DEV(33,1) 0 0
+DUMPDEV: DEV(33,1)
+
+* compilation flags
+*
+CCOPTS: -Dident=undef -DINKERNEL -DKERNEL -DSOFTFP -DDEBUG -EB -g -DJUPITER_WORKSTATION
+LDOPTS: -N -T 80040000 -e start -o unix
+
+* general I/O utilities
+*
+INCLUDE: klog
+INCLUDE: iop
+INCLUDE: io
+INCLUDE: sd
+INCLUDE: fl
+INCLUDE: nvram
+INCLUDE: wbflush_r2000
+INCLUDE: spl_i2000
+INCLUDE: i2000_console
+INCLUDE: i2000_mem
+INCLUDE: prom_entries_i2000
+INCLUDE: ggetchar
+INCLUDE: keymap_i2000
+INCLUDE: cache_std
+INCLUDE: tlb_std
+*INCLUDE: kbd
+EXCLUDE: c8
+
+* drivers to be included even though they may not appear to be equipped
+*
+* INCLUDE: rd
+INCLUDE: graf
+
+* drivers to be excluded even though they may
+* appear to be equipped
+*
+
+* Virtual Disk Driver
+*
+* To configure in vdisk comment out the "EXCLUDE vdisk" line and
+* uncomment the "INCLUDE vdisk" lines, to include stripping and mirror
+* uncomment the "INCLUDE stripe" and "INCLUDE mirror" lines.
+*
+EXCLUDE: vdisk
+#INCLUDE: vdisk
+#INCLUDE: stripe
+#INCLUDE: mirror
+
+* file systems
+*
+* Note that nfs, ufs and specfs implement file systems, but are NOT considered
+* filesystems by mboot, since they do not generate fstypsw entries.
+*
+INCLUDE: socket
+INCLUDE: proc
+INCLUDE: ufs
+INCLUDE: specfs
+INCLUDE: nfs
+
+* required kernel modules
+INCLUDE: disp
+INCLUDE: mem
+
+* ttys and friends
+INCLUDE: clone
+INCLUDE: pts(2)
+INCLUDE: ptc(2)
+INCLUDE: gentty
+
+* SV InterProcess Communication
+INCLUDE: ipc
+INCLUDE: msg
+INCLUDE: sem
+
+* shared memory
+INCLUDE: shm
+
+* kernel debugging tools
+#kdebug#INCLUDE: monitor
+
+INCLUDE: prf
+
+* SLIP module
+INCLUDE: slip
+
+* CommUnity DECnet
+*
+* To configure in DECnet comment out the "EXCLUDE decnet" line and
+* uncomment the "INCLUDE ll" and "INCLUDE nm" lines.
+* To configure out DECnet comment out the "INCLUDE ll" and "INCLUDE nm"
+* lines and uncomment the "EXCLUDE decnet" line.
+
+#INCLUDE: ll
+#INCLUDE: nm
+EXCLUDE: decnet
+
+* Dummy stubs (These should come out sometime)
+*
+EXCLUDE: stubs
+
+* Modules which haven't been done yet
+*
+EXCLUDE: du
+
+*
+* For boot device parsing to work, one must explicitly exclude devices
+* that aren't there
+*
+EXCLUDE: rd
+EXCLUDE: dkip
+EXCLUDE: dkvj
+EXCLUDE: scsi
+EXCLUDE: xyl712
+
+* if there is no mono screen attached
+*
+EXCLUDE: mono

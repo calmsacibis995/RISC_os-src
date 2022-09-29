@@ -1,0 +1,18 @@
+etc/comply l--------- bin bin 1 ../usr/pkg/bin/comply
+usr/pkg/bin drwxr-xr-x bin bin 2
+usr/pkg/bin/bom_to_tar -rwxr-xr-x bin bin 1
+usr/pkg/bin/cleannew -rwxr-xr-x bin bin 1
+usr/pkg/bin/comply -rwxr-xr-x bin bin 1
+usr/pkg/bin/convttys -rwxr-xr-x bin bin 1
+usr/pkg/bin/dates -rwxr-xr-x bin bin 1
+usr/pkg/bin/devstat -rwxr-xr-x bin bin 1
+usr/pkg/bin/diskmap -rwxr-xr-x bin bin 1
+usr/pkg/bin/extra -rwxr-xr-x bin bin 1
+usr/pkg/bin/filtfstab -rwxr-xr-x bin bin 1
+usr/pkg/bin/findmods -rwxr-xr-x bin bin 1
+usr/pkg/bin/getmem -rwxr-xr-x bin bin 1
+usr/pkg/bin/inst -rwxr-xr-x bin bin 1
+usr/pkg/rn drwxr-xr-x bin bin 2
+usr/pkg/rn/RISCos -rw-r--r-- bin bin 1
+usr/pkg/rn/RISCos-4.52 -rw-r--r-- bin bin 1
+usr/pkg/rn/bug.form -rw-r--r-- bin bin 1

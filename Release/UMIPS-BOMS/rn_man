@@ -1,0 +1,10 @@
+usr/man drwxr-xr-x bin bin 2
+usr/man/catman drwxr-xr-x bin bin 2
+usr/man/catman/u_man drwxr-xr-x bin bin 2
+usr/man/catman/u_man/man1 drwxr-xr-x bin bin 2
+usr/man/catman/u_man/man1/Pnews.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/Rnmail.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/newsetup.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/newsgroups.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/rn.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/vn.1 -r--r--r-- bin bin 1

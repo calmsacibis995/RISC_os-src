@@ -1,0 +1,60 @@
+# # --------------------------------
+#
+# sgi: SILICON GRAPHICS
+#
+# Manufacturer:	SILICON GRAPHICS
+# Class:	I
+# 
+# Info:
+#	IRIS color monitor terminal ports
+#
+#
+# Silicon Graphics iris
+# HS is half-intensity start
+# HE is half-intensity end
+# CT is color terminal type (for Curses & rogue)
+# CP is color change escape sequence
+# CZ are color names (for Curses & rogue)
+# Silicon Graphics Iris Terminal (24 lines)
+iris|Silicon Graphics Iris Terminal (24 lines),
+	cub1=^H, ed=\EJ, el=\EK, cup=\EY%p1%' '%+%c%p2%' '%+%c, 
+	cols#80, lines#24, ht=^I, ri=\EI, ind=\n, cuu1=\EA, cud1=\EB, 
+	cuf1=\EC, kcuu1=\EA, kcud1=\EB, kcuf1=\EC, kcub1=\ED,
+	am, il1=\EL, clear=\Ev, home=\EH, dl1=\EM, bel=^G,
+
+smiris, 
+	lines#6, use=iris, 
+
+wsiris|iris40|iris emulating a 40 line visual 50 (approximately),
+	am, il1=\EL, is2=\E7B0\E7F7\E7C2\E7R3,
+	cub1=^H, ed=\EJ, el=\EK, clear=\EH\EJ, home=\EH, 
+	cup=\EY%p1%' '%+%c%p2%' '%+%c, cols#80, lines#40, cuf1=\EC,
+	ht=^I, ri=\EI, ind=\n, cuu1=\EA, cud1=\EB, kcuu1=\EA, kcud1=\EB, 
+	kcuf1=\EC, kcub1=\ED, cvvis=\E;, cnorm=\E>, clear=\Ev, 
+	home=\EH, dl1=\EM, smso=\E9P, rmso=\E0@, 
+	smul=\E9P, rmul=\E0@, bel=^G,
+#	HS=\E7F2, HE=\E7F7, CT#2, 
+#	CZ=*Bblack\054red\054green\054yellow\054blue\054magenta\054cyan\054*Fwhite, 
+
+# Silicon Graphics Iris Workstation (40 lines) (remote)
+rwsiris,
+	use=wsiris, is2@, 
+#	CT#3, CP=\E0@\E7R%p1%d\E9P,
+
+# 	:CZ=*-Bblack,red,green,yellow,blue,magenta,cyan,*-Fwhite:use=wsiris
+# Silicon Graphics Iris Workstation (visual bells) Must do "stty vt1" first.
+# wsirisvb,
+#	vb=\E7F4\E7B1^K\E7F7\E7B0,use=wsiris
+# rwsirisvb,
+#	vb=\E7F4\E7B1^K\E7F7\E7B0,use=rwsiris
+# Silicon Graphics Iris Workstation (24 lines)
+# wsiris24,
+#	lines#24,use=rwsiris:
+# Silicon Graphics Iris Workstation (24 lines) (remote)
+rwsiris24, 
+	lines#24, use=rwsiris, 
+
+#
+# deroff "de-nroff a formatted file with ul - Bob Toxen @ Silicon Graphics"
+de|deroff|de-nroff,
+	cols#80, am, smso=\\f3, rmso=\\f1, smul=\\f2, rmul=\\f1, 

@@ -1,0 +1,10 @@
+* $Header
+*
+* keyboard
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	kbd	37	1	stty_ld, iop
+						
+
+$$$
+

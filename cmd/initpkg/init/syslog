@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# $Header: syslog,v 1.1.2.3 90/01/25 14:38:13 wje Exp $
+#  Start the syslog-daemon
+
+if [ -x /usr/etc/syslogd ]
+then
+	date '+/etc/rc starting syslogd at %D, %T' >> /usr/adm/SYSLOG
+#make sure the log files exist
+	logfiles=`sed -n '
+	   /^#/d
+	   /^$/d
+	   /\?\/dev/d
+	  s/[^ 	]*[ 	]*\(\/.*\)/\1/p' < /etc/syslog.conf`
+	
+	for file in ${logfiles}
+	{
+	    if [ -f $file ]
+	    then
+		true
+	    else
+		cp /dev/null $file
+		chmod 644 $file
+	    fi
+	}
+	/usr/etc/syslogd
+else
+	rm -f /dev/log
+	rm -f /dev/syslog
+fi
+exit 0

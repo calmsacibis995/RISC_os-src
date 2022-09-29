@@ -1,0 +1,352 @@
+/* $Header: llib-lsun,v 1.2.1.1 90/01/09 22:23:45 wje Exp $*/
+/*	@(#)llib-lc	1.44 (Berkeley) 10/22/87	*/
+
+/* LINTLIBRARY */
+
+#include <sys/types.h>
+#include <bsd/sys/time.h>
+
+#include <bsd/sys/resource.h>
+#include <bsd/sys/socket.h>
+
+#include <bsd/netinet/in.h>
+
+#include <bsd/netns/ns.h>
+
+#include <bsd/arpa/inet.h>
+#include <bsd/arpa/nameser.h>
+
+#include <stdio.h>
+#include <sun/mntent.h>
+#include <bsd/resolv.h>
+#include <rpc/rpc.h>
+#include <rpc/auth_des.h>
+#include <bsd/netinet/if_ether.h>
+
+	addmntent( f, m) FILE *f; struct mntent *mnt; { return 0;}
+	dn_comp(e,c,l,d,n) char *e,c;int l; char **d,**n;{ return 0;}
+	dn_expand(m,e,c,x,l)char *m,*e,*c,*e; int l; { return 0;}
+int	endfsent() { return 0; }
+int	endmntent(m) FILE *m; { return 0;}
+	endnetent() { ; }
+	endnetgrent() { ; }
+	endprotoent() { ; }
+	endrpcent() { ; }
+	endservent() { ; }
+struct ether_addr * ether_aton(s) char *s; { return (struct ether_addr *)0;}
+	ether_hostton(h, e) char *h; struct ether_addr *e; { return 0;}
+	ether_line(s, e, h) char *s; struct ether_addr *e; char *h; { return 0;}
+char *	ether_ntoa(e) struct ether_addr *e; { return (" "); }
+	ether_ntohost(h,e) char * host; struct ether_addr *e; { return 0; }
+	get_my_address(addr) struct sockaddr_in *addr; { return 0;}
+struct fstab *	getfsent() { return (struct fstab *)NULL; }
+struct fstab *	getfsspec( n ) char *n; { return (struct fstab *)NULL; }
+struct fstab *	getfsfile( n ) char *n; { return (struct fstab *)NULL; }
+struct fstab *	getfstype( t ) char *t; { return (struct fstab *)NULL; }
+struct hostent *	gethostbyaddr(addr, len, type) char *addr; { return (struct hostent *) 0; }
+struct hostent *	gethostbyname(name) char *name; { return (struct hostent *) 0; }
+struct hostent *	gethostent() { return (struct hostent *) 0; }
+struct mntent * getmntent(m) FILE *m; { return (struct mntent *)0; }
+struct netent *	getnetbyaddr(net, type) { return (struct netent *) 0; }
+struct netent *	getnetbyname(name) char *name; { return (struct netent *) 0; }
+struct netent *	getnetent() { return (struct netent *) 0; }
+	getnetgrent(m,n,d) char **m,**n,**d; { return 0; }
+struct protoent *	getprotobyname(name) char *name; { return (struct protoent *) 0; }
+struct protoent *	getprotobynumber(proto) { return (struct protoent *) 0; }
+struct protoent *	getprotoent() { return (struct protoent *) 0; }
+struct rpcent * getrpcbyname(n) char *n; { return (struct rpcent *)0; }
+struct rpcent * getrpcbynumber(n) int n; { return (struct rpcent *)0; }
+struct rpcent * getrpcent() { return (struct rpcent *)0; }
+struct servent *	getservbyname(name, proto) char *name, *proto; { return (struct servent *) 0; }
+struct servent *	getservbyport(port, proto) char *proto; { return (struct servent *) 0; }
+struct servent *	getservent() { return (struct servent *) 0; }
+char *	hostalias(s) char *s; { return s; }
+	innetgr(g,m,n,d) char *g,*m,*n,*d; { return 0; }
+	res_init() { return 0; }
+	res_mkquery(o,d,c,t,a,l,n,b,m) int o; char *d; int c,t; char *a;int l; struct rrec *n; char *b;int m; { return 1;}
+	res_query(n,c,t,a,l) char *n;u_char *a; int c,t,l; {return 0;}
+	res_querydomain(n,d,c,t,a,l) char *n,*d;u_char *a; int c,t,l; {return 0;}
+	res_search(n,c,t,a,l) char *n;u_char *a; int c,t,l; {return 0;}
+	res_send(m,l,a,n) char *m, *a; int l,n; {return 0;}
+int	rresvport(p) int *p; { return 0; }
+int	ruserok(rh, su, ru, lu) char *rh, *ru, *lu; { return 0; }
+int	setfsent() { return 0; }
+	sethostent(stayopen) { ; }
+	sethostfile(name) char *name; { ; }
+FILE *	setmntent(n,f)char *n,*f; { return (FILE *)0; }
+	setnetent(stayopen) { ; }
+	setnetgrent(g) char *g; { ; }
+	setprotoent(stayopen) { ; }
+	setpwfile(file) char *file; {}
+	setrpcent(f) int f; { ; }
+	setservent(stayopen) { ; }
+
+	/* YELLOW PAGES */
+#include <rpcsvc/ypclnt.h>
+int	yp_all(domain,map,callback) char *domain;char *map;struct ypall_callback *callback; { return 0; }
+int	yp_bind(i) char *i; { return (0); }
+int	yp_first(id, im, ok, okl, ov, ovl) char *id, *im; char **ok, **ov; int *okl, *ovl; { return (0); }
+int	yp_get_default_domain(o) char **o; { return (0); }
+int	yp_master(domain,map,master) char *domain,*map;char **master;{return 0;}
+int	yp_match(id, im, ik, ikl, ov, ovl) char *id, *im, *ik; char **ov; int *ovl; { return (0); }
+int	yp_next(id, im, ik, ikl, ok, okl, ov, ovl) char *id, *im, *ik; char **ok, **ov; int *okl, *ovl; { return (0); }
+int	yp_order(domain,map,order) char *domain,*map;unsigned long *order;{return 0;}
+char *	yp_service(request,arg)unsigned int request;char *arg;{return (char *)0;}
+void	yp_unbind(i) char *i; {}
+char *	yperr_string(c) { return (""); }
+int	ypprot_err(y)int y;{return 0;}
+
+/* RPC Support */
+
+AUTH * authdes_create(servername, window, syncaddr, ckey)
+	char *servername;		/* network name of server */
+	u_int window;			/* time to live */
+	struct sockaddr *syncaddr;	/* optional addr of host to sync with */
+	des_block *ckey;		/* optional conversation key to use*/
+{ return (AUTH *)0; }
+authdes_getucred(adc, uid, gid, grouplen, groups)
+	struct authdes_cred *adc;
+	short *uid;
+	short *gid;
+	short *grouplen;
+	int *groups;
+{ return 0;}
+AUTH * authnone_create() { return (AUTH *)0; }
+AUTH * authunix_create(machname, uid, gid, len, aup_gids)
+	char *machname;
+	int uid;
+	int gid;
+	int len;
+	int *aup_gids;
+{ return (AUTH *)0;}
+AUTH * authunix_create_default() {return (AUTH *)0;}
+callrpc(host, prognum, versnum, procnum, inproc, in, outproc, out)
+	char *host;
+	xdrproc_t inproc, outproc;
+	char *in, *out;
+{ return 0; }
+typedef bool_t (*resultproc_t)();
+enum clnt_stat clnt_broadcast(prog, vers, proc, xargs, argsp, xresults, resultsp, eachresult)
+	u_long		prog;
+	u_long		vers;
+	u_long		proc;
+	xdrproc_t	xargs;
+	caddr_t		argsp;
+	xdrproc_t	xresults;
+	caddr_t		resultsp;
+	resultproc_t	eachresult;
+{ return (enum clnt_stat)0;}
+CLIENT * clnt_create(hostname, prog, vers, proto)
+	char *hostname;
+	unsigned prog;
+	unsigned vers;
+	char *proto;
+{ return (CLIENT *)0; }
+char * clnt_sperror(rpch, s) CLIENT *rpch; char *s; {return " ";}
+void clnt_perror(rpch, s) CLIENT *rpch; char *s; { ; }
+char * clnt_sperrno(stat) enum clnt_stat stat; { return " "; }
+void clnt_perrno(num) enum clnt_stat num; { ; }
+char * clnt_spcreateerror(s) char *s; { return " "; }
+void clnt_pcreateerror(s) char *s;{ ; }
+CLIENT * clntraw_create(prog, vers) u_long prog; u_long vers; { return (CLIENT *)0;}
+CLIENT * clnttcp_create(raddr, prog, vers, sockp, sendsz, recvsz)
+	struct sockaddr_in *raddr;
+	u_long prog;
+	u_long vers;
+	int *sockp;
+	u_int sendsz;
+	u_int recvsz;
+{ return (CLIENT *)0; }
+CLIENT * clntudp_bufcreate(raddr, program, version, wait, sockp, sendsz, recvsz)
+	struct sockaddr_in *raddr;
+	u_long program;
+	u_long version;
+	struct timeval wait;
+	int *sockp;
+	u_int sendsz;
+	u_int recvsz;
+{ return (CLIENT *)0; }
+CLIENT * clntudp_create(raddr, program, version, wait, sockp)
+	struct sockaddr_in *raddr;
+	u_long program;
+	u_long version;
+	struct timeval wait;
+	int *sockp;
+{ return (CLIENT *)0; }
+void clntudp_destroy(cl) CLIENT *cl; { ; }
+get_my_address(addr) struct sockaddr_in *addr; { return 0;}
+getnetname(name) char name[1];{return 0;}
+host2netname(netname, host, domain)
+	char netname[1];
+	char *host;
+	char *domain;
+{ return 0; }
+key_decryptsession(remotename, deskey)
+	char *remotename;
+	des_block *deskey;
+{ return 0; }
+key_encryptsession(remotename, deskey)
+	char *remotename;
+	des_block *deskey;
+{ return 0; }
+key_gendes(key)
+	des_block *key;
+{ return 0; }
+key_setsecret(secretkey) char * secretkey; { return 0; }
+netname2host(netname, hostname, hostlen)
+	char netname[1];
+	char *hostname;
+	int hostlen;
+{ return 0; }
+netname2host(netname, hostname, hostlen)
+	char netname[1];
+	char *hostname;
+	int hostlen;
+{ return 0; }
+netname2user(netname, uidp, gidp, gidlenp, gidlist)
+	char netname[1];
+	int *uidp;
+	int *gidp;
+	int *gidlenp;
+	int *gidlist;
+{ return 0; }
+struct pmaplist * pmap_getmaps(address) struct sockaddr_in *address; {return (struct pmaplist *)0;}
+u_short pmap_getport(address, program, version, protocol)
+	struct sockaddr_in *address;
+	u_long program;
+	u_long version;
+	u_long protocol;
+{ return (u_short) 0; }
+enum clnt_stat pmap_rmtcall(addr, prog, vers, proc, xdrargs, argsp, xdrres, resp, tout, port_ptr)
+	struct sockaddr_in *addr;
+	u_long prog, vers, proc;
+	xdrproc_t xdrargs, xdrres;
+	caddr_t argsp, resp;
+	struct timeval tout;
+	u_long *port_ptr;
+{ return (enum clnt_stat)0; }
+bool_t pmap_set(program, version, protocol, port)
+	u_long program;
+	u_long version;
+	u_long protocol;
+	u_short port;
+{ return (bool_t)0; }
+bool_t pmap_unset(program, version)
+	u_long program;
+	u_long version;
+{ return (bool_t)0; }
+registerrpc(prognum, versnum, procnum, progname, inproc, outproc)
+	char *(*progname)();
+	xdrproc_t inproc, outproc;
+{ return 0; }
+void rpc_perror(s) char *s; {;}
+rtime(addrp, timep, timeout)
+	struct sockaddr_in *addrp;
+	struct timeval *timep;
+	struct timeval *timeout;
+{ return 0;}
+void svc_getreq(rdfds) int rdfds; { ; }
+void svc_getreqset(readfds) fd_set readfds; { ; }
+bool_t svc_register(xprt, prog, vers, dispatch, protocol)
+	SVCXPRT *xprt;
+	u_long prog;
+	u_long vers;
+	void (*dispatch)();
+	int protocol;
+{ return (bool_t)0;}
+void svc_run() { ; }
+bool_t svc_sendreply(xprt, xdr_results, xdr_location)
+	SVCXPRT *xprt;
+	xdrproc_t xdr_results;
+	caddr_t xdr_location;
+{ return (bool_t) 0; }
+void svc_unregister(prog, vers) u_long prog; u_long vers;{ ; }
+void svcerr_auth(xprt, why) SVCXPRT *xprt; enum auth_stat why; { ; }
+void svcerr_decode(xprt) SVCXPRT *xprt; { ; }
+void svcerr_noproc(xprt) SVCXPRT *xprt; { ; }
+void svcerr_noprog(xprt) SVCXPRT *xprt; { ; }
+void  svcerr_progvers(xprt, low_vers, high_vers) SVCXPRT *xprt; u_long low_vers; u_long high_vers; { ; }
+void svcerr_systemerr(xprt) SVCXPRT *xprt; { ; }
+void svcerr_weakauth(xprt) SVCXPRT *xprt; { ; }
+SVCXPRT * svcfd_create(fd, sendsize, recvsize) int fd; u_int sendsize; u_int recvsize; { return (SVCXPRT *)0; }
+SVCXPRT * svcraw_create() { return (SVCXPRT *)0; }
+SVCXPRT * svctcp_create(sock, sendsize, recvsize)
+	int sock;
+	u_int sendsize;
+	u_int recvsize;
+{ return (SVCXPRT *)0; }
+SVCXPRT * svcudp_bufcreate(sock, sendsz, recvsz)
+	int sock;
+	u_int sendsz, recvsz;
+{ return (SVCXPRT *)0; }
+SVCXPRT * svcudp_create(sock)
+	int sock;
+{ return (SVCXPRT *)0; }
+user2netname(netname, uid, domain)
+	char netname[1];
+	int uid;
+	char *domain;
+{ return 0; }
+void xprt_register(xprt) SVCXPRT *xprt; { ; }
+void xprt_unregister(xprt) SVCXPRT *xprt; { ; }
+
+/* XDR Routines */
+bool_t
+xdr_array(xdrs, addrp, sizep, maxsize, elsize, elproc)
+	XDR *xdrs;
+	caddr_t *addrp;		/* array pointer */
+	u_int *sizep;		/* number of elements */
+	u_int maxsize;		/* max numberof elements */
+	u_int elsize;		/* size in bytes of each element */
+	xdrproc_t elproc;	/* xdr routine to handle each element */
+{return (bool_t)0; }
+bool_t xdr_bool(xdrs, bp)XDR *xdrs; bool_t *bp; {return (bool_t)0; }
+bool_t xdr_bytes(xdrs, cpp, sizep, maxsize) XDR *xdrs; char **cpp; register u_int *sizep; u_int maxsize; {return (bool_t)0; }
+bool_t xdr_char(xdrs, cp) XDR *xdrs; char *cp; {return (bool_t)0; }
+bool_t xdr_double(xdrs, dp) XDR *xdrs; double *dp; {return (bool_t)0; }
+bool_t xdr_enum(xdrs, ep) XDR *xdrs; enum_t *ep;{return (bool_t)0; }
+bool_t xdr_float(xdrs, fp) XDR *xdrs; float *fp; {return (bool_t)0; }
+void xdr_free(proc, objp) xdrproc_t proc; char *objp; {return (bool_t)0; }
+bool_t xdr_int(xdrs, ip) XDR *xdrs; int *ip; {return (bool_t)0; }
+bool_t xdr_long(xdrs, lp) XDR *xdrs; long *lp; {return (bool_t)0; }
+bool_t xdr_netobj(xdrs, np) XDR *xdrs; struct netobj *np; {return (bool_t)0; }
+bool_t xdr_opaque(xdrs, cp, cnt) XDR *xdrs; caddr_t cp; u_int cnt; {return (bool_t)0; }
+bool_t xdr_pointer(xdrs,objpp,obj_size,xdr_obj) XDR *xdrs; char **objpp; u_int obj_size; xdrproc_t xdr_obj; {return (bool_t)0; }
+bool_t xdr_reference(xdrs, pp, size, proc) XDR *xdrs; caddr_t *pp; u_int size; xdrproc_t proc; {return (bool_t)0; }
+bool_t xdr_short(xdrs, sp) XDR *xdrs; short *sp; {return (bool_t)0; }
+bool_t xdr_string(xdrs, cpp, maxsize) XDR *xdrs; char **cpp; u_int maxsize; {return (bool_t)0; }
+bool_t xdr_u_char(xdrs, cp) XDR *xdrs; char *cp; {return (bool_t)0; }
+bool_t xdr_u_int(xdrs, up) XDR *xdrs; u_int *up; {return (bool_t)0; }
+bool_t xdr_u_long(xdrs, lp) XDR *xdrs; u_long *lp; {return (bool_t)0; }
+bool_t xdr_u_short(xdrs, usp) XDR *xdrs; u_short *usp; {return (bool_t)0; }
+bool_t xdr_union(xdrs, dscmp, unp, choices, dfault)
+	XDR *xdrs;
+	enum_t *dscmp;
+	char *unp;
+	struct xdr_discrim *choices;
+	xdrproc_t dfault;
+{return (bool_t)0; }
+bool_t xdr_vector(xdrs, basep, nelem, elemsize, xdr_elem)
+	XDR *xdrs;
+	char *basep;
+	u_int nelem;
+	u_int elemsize;
+	xdrproc_t xdr_elem;	
+{return (bool_t)0; }
+/* VARARGS */
+bool_t xdr_void() {return (bool_t)0; }
+bool_t xdr_wrapstring(xdrs, cpp) XDR *xdrs; char **cpp; {return (bool_t)0; }
+void xdrmem_create(xdrs, addr, size, op) XDR *xdrs; caddr_t addr; u_int size; enum xdr_op op; {return (bool_t)0; }
+void xdrrec_create(xdrs, sendsize, recvsize, tcp_handle, readit, writeit)
+	XDR *xdrs;
+	u_int sendsize;
+	u_int recvsize;
+	caddr_t tcp_handle;
+	int (*readit)();
+	int (*writeit)();
+{return (bool_t)0; }
+bool_t xdrrec_endofrecord(xdrs, sendnow) XDR *xdrs; bool_t sendnow; {return (bool_t)0; }
+bool_t xdrrec_eof(xdrs) XDR *xdrs; {return (bool_t)0; }
+bool_t xdrrec_skiprecord(xdrs) XDR *xdrs; {return (bool_t)0; }
+void xdrstdio_create(xdrs, file, op) XDR *xdrs; FILE *file; enum xdr_op op; {return (bool_t)0; }
+

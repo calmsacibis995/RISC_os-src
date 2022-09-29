@@ -1,0 +1,15 @@
+/* $Header: llib-lcrypt,v 1.1.1.1 90/01/09 22:24:26 wje Exp $ */
+#include <stdio.h>
+/* LINTLIBRARY */
+void setkey (key) char *key; { }
+void encrypt(block, edflag) char *block; int edflag; {}
+char *crypt(pw, salt) char *pw; char *salt; { return (char *)0;}
+int run_setkey(p, keyparam) int   p[2]; char *keyparam;{ return 0;}
+int run_crypt(o,b,c,p) long o; char *b; unsigned int c; int p[2]; { return 0; }
+	makekey(b) int b[2]; { ; }
+	crypt_close(p) int p[2]; { ; }
+void des_setkey(key) char *key; { ; }
+void des_encrypt(block, edflag) char *block; int edflag; { ; }
+char *des_crypt(pw, salt) char *pw, *salt; { return (char *)0; }
+int p2close( fp1, fp2 ) FILE *fp1; FILE *fp2; { return 0; }
+p2open(cmd, fpin, fpout) char *cmd; FILE **fpin; FILE **fpout; { return 0; }

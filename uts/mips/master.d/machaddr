@@ -1,0 +1,304 @@
+/*
+ * $Header: machaddr,v 1.9.1.2.1.2 90/07/11 18:36:56 hawkes Exp $
+ *
+ * This file is used to specify all the machine dependent addresses
+ * used in the standalone (and probably the kernel).  Any module
+ * that needs these address will 'extern' it and cast it to what
+ * it needs.
+ *
+ * By definition all addresses will be expressed as K1.  All #defines
+ * are the REAL addresses.
+ *
+ * NOTE: This file should be the same file as the kernel
+ *	master.d/machaddr, which should be included by all
+ *
+ */
+
+#ifdef STANDALONE
+#include "mips/cpu.h"
+#include "mips/cpu_board.h"
+#endif
+
+#ifdef KERNEL
+#include "sys/sbd.h"
+#include "sys/cpu_board.h"
+#include "sys/utsname.h"
+#endif
+
+/* IDPROM -- same 'part' on all machines so far -- saio/saio.c */
+
+int IDPROM_ADDR[] = {
+    PHYS_TO_K1(IDPROM_R2300),		/* M500 */
+    PHYS_TO_K1(IDPROM_R2300),		/* M800 */
+    PHYS_TO_K1(IDPROM_R2300),		/* M1000 */
+    PHYS_TO_K1(IDPROM_R2400),		/* Intrepid */
+    PHYS_TO_K1(IDPROM_R3200),		/* M2000 */
+    PHYS_TO_K1(IDPROM_R6300),		/* RC62x0 */
+    0,					/* Rx2030 */
+    0,					/* Rx2030 */
+    PHYS_TO_K1(IDPROM_R2400),		/* M180 */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R3030),	/* Rx3230 */
+    PHYS_TO_K1(IDPROM_R3200),		/* RB3125 */
+    0,					/* Reserved */
+  };
+
+/* ETHERNET PROM */
+
+int ENETPROM_ADDR[] = {
+    0,                                  /* M500 */
+    0,                                  /* M800 */
+    0,                                  /* M1000 */
+    PHYS_TO_K1(ENETPROM_BASE),          /* M120 */
+    0,                                  /* M2000 */
+    0,                                  /* M6000 */
+    0,                                  /* M12 */
+    0,                                  /* M12 Sable */
+    PHYS_TO_K1(ENETPROM_BASE),          /* M180 */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R3030),	/* M20 */
+    PHYS_TO_K1(ENETPROM_RB3125),	/* RB3125 */
+    0,					/* Reserved */
+};
+
+/* MACHINE_NAME -- string of machine names to be used by various routines */
+
+char *MACHINE_NAME[] = {
+	MT_M500,			/* M500 */
+	MT_M800,			/* M800 */
+	MT_M1000,			/* M1000 */
+	MT_DT1200_5,			/* M120 */
+	MT_M2000_8,			/* M2000 */
+	MT_M6000,			/* RC62x0 */
+	MT_I2000,			/* Rx2030 */
+	MT_I2000,			/* Rx2030 */
+	MT_M180,			/* M180 */
+	MT_R3030,			/* Rx3030 */
+	MT_RB3125,			/* RB3125 */
+	0,				/* Reserved */
+};
+
+/* LED register -- Intrepid has 2 more LED bits -- saio/saio.c */
+
+int LED_REG[] = {
+    PHYS_TO_K1(LED_REG_R2300),
+    PHYS_TO_K1(LED_REG_R2300),
+    PHYS_TO_K1(LED_REG_R2300),
+    PHYS_TO_K1(LED_REG_R2400),
+    PHYS_TO_K1(LED_REG_R3200),
+    PHYS_TO_K1(LED_REG_R6300),
+    0,
+    0,
+    PHYS_TO_K1(LED_REG_R2400),
+    0,
+    PHYS_TO_K1(LED_REG_R3200),
+    0,					/* Reserved */
+  };
+
+#ifdef STANDALONE
+
+/* Duart0 information -- saio/s2681cons.c */
+
+int CN_REG_BASE[] = {
+    PHYS_TO_K1(DUART0_STR_R2300),
+    PHYS_TO_K1(DUART0_STR_R2300),
+    PHYS_TO_K1(DUART0_STR_R2300),
+    PHYS_TO_K1(DUART0_STR_R2400),
+    PHYS_TO_K1(DUART0_STR_R3200),
+    PHYS_TO_K1(DUART0_STR_R6300),
+    0,
+    0,
+    PHYS_TO_K1(DUART0_STR_R2400),
+    0,
+    0,
+    0,					/* Reserved */
+  };
+
+#endif
+
+/* LANCE information -- Currently Intrepid, later M2000 -- saio/if_lance.c */
+
+int LANCE_ADDR[] = {
+    0,						/* M500 - No Lance */
+    0,						/* M800 - No Lance */
+    0,						/* M1000 - No Lance */
+    PHYS_TO_K1(LANCE_BASE_R2400),		/* Intrepid */
+    0,						/* M2000 */
+    0,						/* RC62x0 */
+    0,						/* Rx2030 */
+    0,						/* Rx2030 */
+    PHYS_TO_K1(LANCE_BASE_R2400),		/* M180 */
+    PHYS_TO_K1(LANCE_BASE_R3030),		/* Rx3030 */
+    PHYS_TO_K1(LANCE_BASE_RB3125),		/* RB3125 */
+    0,						/* Reserved */
+  };
+
+/* Real time clock -- used on M-series only -- saio/timer.c */
+
+int RT_CLOCK_ADDR[] = {
+    PHYS_TO_K1(RT_CLOCK_ADDR_R2300),	/* M500 */
+    PHYS_TO_K1(RT_CLOCK_ADDR_R2300),	/* M800 */
+    PHYS_TO_K1(RT_CLOCK_ADDR_R2300),	/* M1000 */
+    0,					/* Intrepid - uses TODC */
+    0,					/* M2000 - uses TODC */
+    0,					/* RC62x0 */
+    0,					/* Rx2030 */
+    0,					/* Rx2030 */
+    0,					/* M180 */
+    0,					/* Rx3030 */
+    0,					/* RB3125 */
+    0,					/* Reserved */
+  };
+
+/* Time-of-day clock -- used on Intrepid and M2000 -- saio/timer.c */
+
+int TODC_CLOCK_ADDR[] = {
+    0,						/* M-series uses RT */
+    0,
+    0,
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R2400),	/* Intrepid */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R3200),	/* M2000 */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R6300),	/* RC62x0 */
+    0,
+    0,
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R2400),	/* M180 */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R3030),	/* Rx3030 */
+    PHYS_TO_K1(TODC_CLOCK_ADDR_R3200),	/* RB3125 */
+    0,					/* Reserved */
+  };
+
+/* I8254 clock */
+
+int PT_CLOCK_ADDR[] = {
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2300),
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2300),
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2300),
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2400),
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2300),
+	0,
+	0,
+	0,
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2400),
+	0,
+	PHYS_TO_K1(PT_CLOCK_ADDR_R2300),
+	0,				/* Reserved */
+};
+
+/* Timer 0 acknowledge */
+
+int TIM0_ACK_ADDR[] = {
+	PHYS_TO_K1(TIM0_ACK_ADDR_R2300),	/* M500 */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R2300),	/* M800 */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R2300),	/* M1000 */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R2400),	/* Intrepid */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R3200),	/* M2000 */
+	0,					/* RC62x0 */
+	0,					/* Rx2030 */
+	0,					/* Rx2030 */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R2400),	/* M180 */
+	0,					/* Rx3030 */
+	PHYS_TO_K1(TIM0_ACK_ADDR_R3200),	/* RB3125 */
+	0,					/* Reserved */
+};
+		
+#ifdef KERNEL
+/* Timer 1 acknowledge */
+
+int TIM1_ACK_ADDR[] = {
+	PHYS_TO_K1(TIM1_ACK_ADDR_R2300),	/* M500 */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R2300),	/* M800 */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R2300),	/* M1000 */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R2400),	/* Intrepid */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R3200),	/* M2000 */
+	0,					/* RC62x0 */
+	0,					/* Rx2030 */
+	0,					/* Rx2030 */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R2400),	/* M180 */
+	0,					/* Rx3030 */
+	PHYS_TO_K1(TIM1_ACK_ADDR_R3200),	/* RB3125 */
+	0,					/* Reserved */
+};
+
+/*
+ * Duart defines mostly for io/sduart.c in kernel
+ */
+
+int DUART0[] = {
+	PHYS_TO_K1(DUART0_BASE_R2300),
+	PHYS_TO_K1(DUART0_BASE_R2300),
+	PHYS_TO_K1(DUART0_BASE_R2300),
+	PHYS_TO_K1(DUART0_BASE_R2400),
+	PHYS_TO_K1(DUART0_BASE_R3200),
+	PHYS_TO_K1(DUART0_BASE_R6300),
+	0,
+	0,
+	PHYS_TO_K1(DUART0_BASE_R2400),
+	0,					/* Rx3030 */
+	0,					/* RB3125 */
+	0,					/* Reserved */
+};
+
+int DUART1[] = {
+	PHYS_TO_K1(DUART1_BASE_R2300),
+	PHYS_TO_K1(DUART1_BASE_R2300),
+	PHYS_TO_K1(DUART1_BASE_R2300),
+	PHYS_TO_K1(DUART1_BASE_R2400),
+	0x0,					/* No second duart on M2000 */
+	0x0,					/* No second duart */
+	0x0,					/* No second duart */
+	0x0,					/* No second duart */
+	PHYS_TO_K1(DUART1_BASE_R2400),
+	0,					/* Rx3030 */
+	0,					/* RB3125 */
+	0,					/* Reserved */
+};
+/* SCC information -- saio/scc_cons.c */
+
+int SCC_REG_BASE[] = {
+    0,                                          /* M500 */
+    0,                                          /* M800 */
+    0,                                          /* M1000 */
+    0,                                          /* M120 */
+    0,                                          /* M2000 */
+    0,                                          /* M6000 */
+    0,                                          /* M12 */
+    0,                                          /* M12 Sable */
+    0,                                          /* M180 */
+    PHYS_TO_K1(SCC_BASE_R3030),			/* M20 */
+    PHYS_TO_K1(SCC_BASE_RB3125),		/* RB3125 */
+    0,						/* Reserved */
+};
+
+/* NCR scsi information */
+
+int SCSI_REG_BASE[] = {
+    0,                                          /* M500 */
+    0,                                          /* M800 */
+    0,                                          /* M1000 */
+    0,                                          /* M120 */
+    0,                                          /* M2000 */
+    0,                                          /* M6000 */
+    0,                                          /* M12 */
+    0,                                          /* M12 Sable */
+    0,                                          /* M180 */
+    PHYS_TO_K1(SCSI_BASE_R3030),		/* M20 */
+    PHYS_TO_K1(SCSI_BASE_RB3125),		/* RB3125 */
+    0,						/* Reserved */
+};
+
+/* RAMBO dma information */
+
+int RAMBO_REG_BASE[] = {
+    0,                                          /* M500 */
+    0,                                          /* M800 */
+    0,                                          /* M1000 */
+    0,                                          /* M120 */
+    0,                                          /* M2000 */
+    0,                                          /* M6000 */
+    0,                                          /* M12 */
+    0,                                          /* M12 Sable */
+    0,                                          /* M180 */
+    PHYS_TO_K1(RAMBO_BASE),			/* M20 */
+    0,						/* RB3125 */
+    0,						/* Reserved */
+};
+
+#endif

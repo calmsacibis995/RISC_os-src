@@ -1,0 +1,6 @@
+#! /bin/sh
+#	Derive a device name from its path name.
+
+#!	chmod +x ${file}
+
+echo `basename ${1:?}` drive

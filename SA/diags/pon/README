@@ -1,0 +1,353 @@
+#ident "$Header: README,v 1.1.11.1 90/07/18 14:28:35 huang Exp $"
+
+	A Description of MIPS Power-On Diagnostic (PON) Functionality
+
+	The purpose of Pon testing is to provide the M/500 user or MIPS
+board customer with a reasonable level of confidence that the MIPS
+manufactured boards (CPU, MEMORY, and FPU) and chips (CPU, FPU, and Write
+Buffers) in his system function correctly.
+Non-Mips memory arrays are also tested, for example if a customer buys
+only Mips cpu boards and uses a standard VME memory board it will be 
+tested.
+	On a reset, either power-on or "warm" start, the cpu will vector
+to the start of prom at location bfc00000. The status and cause registers
+are first initialized, then the memory configuration routine (OS group
+routine) lmem_config() is called. The "Boot Exception Vectors" bit in the 
+status register is set to allow prom based exception handlers to be used
+at this point. The lmem_config() routine sets the exception handlers to
+write the LMEM_FAULT_PATTERN to the LEDS and then loop forever. Obviously,
+exceptions are NOT ever expected at this point.
+	 The lmem_config() routine provides for the "soft"
+configuration of Mips memory boards. Various LED patterns are written
+based on progress through the routines used. These are given below.
+	The successful completion of this routine indicates that the CPU
+can execute instructions, that the write buffers are functional (ALL writes
+are through them), some CPU I/O decode logic is functional and that we can
+talk over the VME bus. The memory configuration mechanism is interrupt level 3
+driven (polled) and as such shows this path (including the CPU IMR register)
+to be basically functional.
+	The LED patterns used by this routine and later in the startup process
+are as follows.  All values use at least two LED bits so that they can be
+differentiated from the default single bit LED walking bit pattern used upon
+successful entry to the OS prom command entry mode.
+
+MEMCFG_PATTERN		0x21	/* memory configured */
+WARMST_PATTERN		0x22	/* warm start attempted */
+ZEROBSS_PATTERN		0x23	/* prom bss zero'ed */
+CACHE_PATTERN		0x24	/* cache initialized */
+SAIO_PATTERN		0x25	/* saio initialized */
+CACHE2_PATTERN		0x26	/* cache initialized */
+ENV_PATTERN		0x27	/* environment initialized */
+SAIO2_PATTERN		0x28	/* saio initialized */
+ZEROMEM_PATTERN		0x29	/* memory cleared */
+LMEM_PATTERN		0x2a	/* in local memory config */
+LMEM_WAIT_PATTERN	0x2b	/* lmem waiting for exception */
+LMEM_ACK_PATTERN	0x2c	/* lmem acking vme interrupt */
+LMEM_NOMEM_PATTERN	0x2d	/* no local memory found */
+LMEM_ERROR_PATTERN	0x2e	/* error in config code */
+LMEM_FAULT_PATTERN	0x31	/* unexpected exception in lmem */
+LMEM_RESET_PATTERN	0x32	/* resetting local memory */
+LMEM_RSTDONE_PATTERN	0x33	/* local memory reset complete */
+LMEM_CLRVME_PATTERN	0x34	/* clearing pending vme intrs */
+BEV_UTLBMISS_PATTERN	0x35	/* unexpected bev utlbmiss */
+BEV_GENERAL_PATTERN	0x36	/* unexpected bev exception */
+
+	Most of these values simply indicate progress through the routines.
+If no memory is found the LMEM_NOMEM_PATTERN is displayed and the CPU just
+loops. If some memory is found the MEMCFG_PATTERN is displayed.		
+	After successful memory board configuration the CPU configuration
+register is read to determine whether this is a warm or cold start,
+a warm start being via a reset from the front
+panel switch of the M/500 cabinet and a cold start being from either a
+system power-up or from a cpu board reset (the on board reset switch
+forces a cold start). The startup routine is is different for each.
+The OS routine __lmem_reset is called to allow for ram precharge then
+the 'bootmode' field of the nvram is checked for a 'd' character which
+implies diagnostic mode. This
+mode indicates that the user does NOT want pon diagnostics run.
+Memory will be initialized if this is a cold start since we assume ECC
+memory is used and as such MUST be initialized. If this is a warm start
+and the bootmode is set to 'd' pon diagnostics will not be run and memory
+will NOT be cleared.
+This mode on a warm start is generally used when UNIX post-mortem core
+analysis is desired.
+If the bootmode is NOT set to 'd' the PON tests are called in succession.
+	These routines are called in the following order:
+
+	Pon_Duart  - duart 1, channel A (default console) is tested
+	Pon_Banner - write the 'Running power-on tests...' message to console
+	Pon_Nvram  - TOD clock user accessible ram locations (50 bytes)
+		     and nvram battery backup (data retention) test.
+	Pon_Cache1 - Basic cache functionality
+	Pon_Cache2 - Basic cache functionality
+	Pon_Cache3 - Data cache array integrity using MATS+ algorithm
+	Pon_Cache4 - Instruction cache array integrity using MATS+ algorithm
+	Pon_Memory - Memory array is sized then tested using Knaizuk-Hartman
+		     algorithm with cached instruction fetchs and
+		     ECC inhibited so that single-bit errors are UNmasked.
+	Pon_8254   - Counter/Timer channels are tested, TOD clock also
+	Pon_Duarts - duart 1, ch B; duart 2, ch A and B are tested
+	Pon_VM     - Cpu coprocessor 0 (TLB) functionality
+	Pon_FP     - Cpu coprocessor 1 (floating point board or chip)
+		     functionality (if present).
+	
+	The prom based exception handlers (status register BEV bit set)
+are set to write the exception pc, cause register value, and status register
+value to the default console and then loop forever if an exception occurs.
+The system is deemed unusable if an exception occurs at this low level.
+The LED value at this point will indicate which test was being run at
+the time of the failure (via its start code).
+Once a stack is established after the memory test completes
+the standard monitor prom handlers are installed for use by the remaining tests.
+	The PON routines are described in detail below. The Write Buffers are
+not explicitly tested since their functionality is implicit in every PON test
+and successful memory configuration by lmem_config().
+	Each PON test writes a specific LED pattern when the test is entered.
+If an error occurs a specific LED failing pattern is flashed for about 6
+seconds and a failing message is written to the default console
+(duart 1, channel A).
+The failing code is also written to the DIAG byte location in the TOD nvram
+(the last of 50 available bytes, location 0xbe0100ff). The tests will
+proceed regardless of a failure (except an early exception).
+If another error occurs the LEDS will flash but
+the nvram DIAG location will only be written over if the new error is of a
+higher priority than the previous error, ie any cache error will overwrite
+a nvram error. Non high priority failures, such as duart 2 failures will not
+overwrite a previous failure.
+
+NOTE: An 'e' (error) is written to the NVADDR_BOOTMODE location in the nvram
+to disallow 'auto' booting and thereby force the user to see the failure
+message(s) and thereby informing the user that PON error(s) occurred.
+
+	The following LED codes are used by the PON tests:
+
+PON_DUART1A_START	0x3  /* begin duart 0 channel A internal loopback test*/
+DUART1A_FAIL		0x5  /* failure detected */
+PON_NVRAM_START		0x6  /* begin test of TOD clock non-volatile ram */
+NVRAM_FAIL		0x7  /* failure detected */
+TOD_POWER_FAIL		0x9  /* failure detected */
+PON_CACHE1_START	0xa  /* begin cache functionality test #1 */
+CACHE1_FAIL		0xb  /* failure detected */
+PON_CACHE2_START	0xc  /* begin cache functionality test #2 */
+CACHE2_FAIL		0xd  /* failure detected */
+PON_CACHE3_START	0xe  /* begin data cache array MATS+ test */
+CACHE3_FAIL		0xf  /* failure detected */
+PON_CACHE4_START	0x10 /* begin instruction cache array MATS+ test */
+CACHE4_FAIL		0x11 /* failure detected */
+PON_MEMTEST_START	0x12 /* begin Knaizuk-Hartmann test on memory array */
+MEMTEST_FAIL		0x13 /* failure detected */
+PON_TIMER_START		0x14 /* begin 8254 timer channel tests and TOD clock */
+TIMER_FAIL		0x15 /* failure detected */
+TOD_FAIL		0x16 /* failure detected */
+PON_DUARTS_START	0x17 /* begin duart 1 ch A, duart 2 ch A & B tests */
+DUART1B_FAIL		0x18 /* failure detected */
+DUART2A_FAIL		0x19 /* failure detected */
+DUART2B_FAIL		0x1a /* failure detected */
+TLB_START		0x1b /* begin CPU coprocessor 0 (TLB) tests */
+TLB_FAIL		0x1c /* failure detected */
+PON_FP_START		0x1d /* begin CPU coprocessor 1 (FPU) tests */
+FP_FAIL			0x1e /* failure detected */
+
+Note that the same failure code written to the LEDS is also written to the
+Nvram 'diagnostic' byte location.
+		
+	Duart 1 channel A internal loopback test:
+
+	The Signetics SCN2681 duarts, of which the CPU board incorporates two,
+have two channels each and have the capability of being programmed into 
+internal loopback mode. This mode is used to test the basic functionality of
+the parts along with the interface logic to the CPU chip.
+	Various data is written and then checked on each character read using
+a 9600 baud rate.
+	Upon success the duart is reinitialized for normal operation at
+the nvram 'lbaud' rate baud and the pon_banner routine is called
+to print the 'Diagnostics running...' string to the console.
+Note that all strings printed by the power-on tests
+(all error strings except the banner) use the register based routine
+pon_putc to write a single character to the duart in a polled manner
+(for Transmit ready). A time-out feature is incorporated so that a 'hang'
+condition can't occur. If the 'console' environment variable in the nvram
+is set to 'r' (remote) the PON banner and error messages are written to
+both ports, at baud rates 'lbaud' and 'rbaud' set in the nvram.
+	Also, the value '0' is written to the diagnostic byte location
+if a console duart error wasn't incurred. This will allow
+a previous error value to be reset, ie for the case that a TOD battery is
+replaced.
+
+	Time-of-Day clock Non-volatile ram test:
+	
+	The organization of the TOD clock ram allows for general use of 50
+of the 64 bytes of nvram. I test the 50 bytes locations by saving the original
+values then test each location with fives's then the inverse, a's. The
+original values are then rewritten. If an error occurs the original value is
+attempted to be rewritten. Actual TOD clock funtionality is tested in the
+8254 counter/timer test described below.
+	The battery back-up capability is also tested two ways. The 'console'
+byte location is read and checked to see if it is a 'l' or 'r' as it should
+be. Also the diagnostic byte location is read and compared with the range of
+valid error information codes.
+
+	Basic cache functionality test 1:
+
+ 	Verifies that KSEG0 is cached, KSEG1 is uncached, caches misses
+read memory and drop a new entry in the cache, cache hits do not read memory
+and retain the entry in the cache, writes write-through to memory, and finally,
+that the valid bit logic is basically correct.
+
+	Basic cache functionality test 2:
+
+ 	Verifies that the I cache gets loaded on instruction fetches, that
+the I-cache is utilized when valid, and that instructions can execute at the
+rate of 1 instruction per clock when the I-cache is valid.
+
+	Data cache array test:
+
+	Tests the data cache array for addressing and stuck-at faults using
+the MATS+ algorithm (Modified Algorithmic Test Sequence Memory Test Plus).
+This alogrithm is the most complete of the stuck at tests.  It tests
+for all stuck at faults no matter what the memory array organization
+or the decoder design.  It takes 5n-2 memory operations, making it
+the slowest of the struck at tests.  Hence it is not the best choice
+for large memory arrays but is fine for small cache arrays.
+The algorithm has 4 phases; in the first phase all locations execept the
+first are set to zeroes.  Then the first location is set to ones.  In the
+next phase each location except the first is checked for zeroes then set
+to ones.  In the third phase each location is checked for ones then set to
+zeros. The final phase consists of checking only the first location for zeroes.
+The proof that this algorithm detects all stuck at faults for arbitrary 
+memory array and decoder design can be found in "Comments on an optimal 
+algorithm for testing struck-at faults in random access memories." 
+Nair, R., IEEE Transactions on Computers C-28 3(Mar) 1979.
+
+	Instruction cache array test:
+
+	Tests the Instruction cache array for addressing and stuck-at faults
+using the MATS+ algorithm described above.
+
+	MIPS Memory array test:
+
+	After sizing memory (using writes at page intervals then polling for
+a bus error), the array is tested for addressing and stuck-at faults
+using the Knaizuk Hartmann algorithm. This algorithm is used to perform a fast
+but non-ehaustive memory test. It will test a memory subsystem for stuck-at
+faults in both the address lines as well as the data locations.  Wired-or
+memory array behavior and non-creative decoder design are assummed.  It
+makes only 4n memory accesses where n is the number of locations to be tested.
+This alogorithm trades completeness for speed hence this algorithm is not
+able to isolate pattern sensitivity or intermittent errors.
+	The algorithm breaks up the memory to be tested into 3 partitions.
+Partion 0 consists of memory locations 0, 3, 6, ... partition 1 consists of
+memory locations 1,4,7,...  partition 2 consists of locations 2,5,8... The
+partitions are filled with either an all ones pattern or an all zeroes pattern.
+By varying the order in which the partitions are filled and then checked, this
+algorithm manages to check all combinations of possible stuck at faults. If
+you don't believe me, you can find a rigorous mathematical proof (set notation
+and every thing) in a correspondence called "An Optimal Algorithm for Testing
+Stuck-at Faults in Random Access Memories" in the November 1977 issue of IEEE
+Transactions on Computing, volume C-26 #11 page 1141.
+	If MIPS memory boards are used (VME memory boards can also be used) the
+Inhibit ECC diagnostic feature is used on all Mips boards tested in order to
+not allow single-bit errors to be corrected (masked from the user). The
+feature is turned off upon completion of the test, either successfully or
+for an error. Upon completion (success or failure) the clear_memory()
+routine is called since every memory location has erroneous ECC data.
+	If an error occurs information is printed to the console indicating
+address, expected and actual data, and an x-or of the expected and actual data.
+The LEDS are flashed for about 6 seconds with the memory error LED pattern
+and this pattern is also written to the 'diagnostic byte' in the nvram.
+
+	8254 Counter/Timer chip test:
+
+	The stack pointer is established just before this test so that
+'c' code can now be used starting with this test. Also the standard
+OS monitor exception handlers are installed at this point so that an
+exception will not hang the system (even though an exception at this point
+is just as serious, ie the entire system can not be trusted).
+	The test begins by writing a starting LED value and then reads the
+nvram time-of-day (TOD) 'seconds' location to save the current seconds value
+upon starting the test (for use after the 8254 tests complete). This method
+is used to test the TOD clock since I know how many seconds the 8254 tests
+will take and at the end of testing I can read the TOD seconds value again
+and compare it will the expected value.
+	The 8254 chip counter 0 output is used as the master counter,
+counter 1 is the scheduling counter and counter 2 is the profiling counter.
+The counter 1 output is tied to cpu interrupt level 2 and counter 2 is tied
+to cpu interrupt level 4. The chip is initialized such that 60 counter 1
+interrupts take about 1 second and 100 counter 2 interrupts take about 1
+second. The test runs in a polled manner checking the cause register for
+the proper interrupt for each test, 3 seconds total for each interrupt.
+A means to timeout on no interrupt is incorporated so that hanging will not
+occur.
+	Upon success the TOD clock seconds value is again read and the 
+difference between the beginning and ending values is compared against
+the expected difference of 6 seconds. A variance of +\- 1 second is allowed.
+
+	Duart 1, channel B and Duart 2, channel A and B testing:
+
+	Internal loopback mode is used to transmit and receive various data
+at baud rates 300, 600, 1200, 2400, 4800, 7200, 9600, and 19200.
+
+	CPU Coprocessor 0 (TLB) testing:
+
+	TLB functionality is tested in eight separate sections: ram, probe,
+translate, valid, mod, pid, g, and n.
+	The "ram" test treats the tlb as a small memory array. The routine
+tests that all read/write bits can be toggled and that all undefined bits
+read back as zero.
+	The "probe" test determines that all tlb entries respond to probes
+with an address match.
+	The "translate" test tests for correct virtual to physical translation
+via a mapped tlb entry. Each tlb entry (64 for the R2000) is mapped for 16
+distinct virtual address' up to 0x80000000(non-mapped address). The physical
+address mapped is distinct for each tlb entry. The test fails if any exception
+occurs. Valid bit logic functionality is implied since each mapped tlb entry
+has the valid vit set.
+	The "valid" test maps each tlb entry as invalid which should cause an
+exception when an access is attemped. The setjmp/longjmp mechanism in the prom
+code is used for this. The bad virtual address (coprocessor 0 register value)
+is saved during exception handling and later checked for equality with the
+actual address mapped. One address is mapped and accessed for each tlb
+entry. A read access exception not occurring indicates an error.
+	The "mod" test has two parts. The first, for each tlb entry, maps
+the page "non-writable" and then does a write access to a mapped address.
+An exception should occur and the bad virtual address is checked. The second
+part does the same but sets the page "writable" (setting the Dirty bit). No
+exception should occur.
+	The "pid" test implements both positive and negative testing with
+regard to matching and non-matching pid fields in mapped tlb entries. The
+current PID value is held constant while the tlb entry under test is mapped
+with matching and non-matching pid values. An access is made each time and
+expected and unexpected tlb misses monitored. If a miss is expected the bad
+virtual address register is also compared with the access address for the
+expected equality. The fact that the "global" is not set in this test implies
+that testing in the non-set state is incurred.
+	The "g" test implements positive or set bit testing for the global
+bit of the mapped tlb entry under test. With the global bit set various pid
+values are mapped with a constant current pid value. The test insures that no
+tlb misses are incurred.
+	The "n" test implements both positive and negative testing with
+regard to marking mapped pages either cacheable or non-cacheable via use of
+the 'n' or non-cachable bit. A cachable data address is written with unique
+data as is the main memory location behind the cache address. Each tlb entry
+in succession is first mapped as cacheable and a virtual read access made to
+the previously written cached location. The data is then compared with the
+cached data pattern written. The second part of the test is identical except
+that each tlb entry is marked as non-cachable. A virtual read access is again
+made to the address previously written with the unique main memory pattern.
+The value read is then compared with that value.
+ 
+	CPU Coprocessor 1 (floating point board or chip) testing:
+
+	The CPU configuration register is first read and tested to see
+that an fpu board or chip is installed. If a board or chip is detected
+the revision register is read to determine whether a board or chip is to
+be tested since separate routines are used for each. If a board or chip
+is not detected the test simply returns with NO error indicated.
+The board test uses all floating point op codes 
+with substantial self-checking of expected register values and calculation
+results. 43 separate test cases are used so that all floating point op
+codes are exercised.
+The chip test was generated using specialized random test generation
+software. 500 random floating point operations using random data are
+used including controlled exception handling routines for self checking
+of all operations.

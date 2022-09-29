@@ -1,0 +1,6 @@
+usr/posix/usr/lib/cmplrs l--------- bin bin 1 ../../sysv/usr/lib/cmplrs
+usr/posix/usr/lib/libc.a -r--r--r-- bin bin 1 
+usr/posix/usr/lib/libc_G0.a -r--r--r-- bin bin 1 
+usr/posix/usr/lib/locale/C/LC_CTYPE -r--r--r-- bin bin 1 
+usr/posix/usr/lib/locale/C/LC_NUMERIC -r--r--r-- bin bin 1 
+usr/posix/usr/lib/locale/C/LC_TIME -r--r--r-- bin bin 1 

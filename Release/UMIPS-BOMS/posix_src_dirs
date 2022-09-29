@@ -1,0 +1,17 @@
+posix_cmd drwxrwxr-x bin bin 4
+posix_cmd/cc drwxrwxr-x bin bin 2
+posix_cmd/chrtbl drwxrwxr-x bin bin 2
+posix_head drwxrwxr-x bin bin 2
+posix_lib drwxrwxr-x bin bin 4
+posix_lib/libc drwxrwxr-x bin bin 11
+posix_lib/libc/gen drwxrwxr-x bin bin 2
+posix_lib/libc/sys drwxrwxr-x bin bin 2
+posix_lib/libc/gen.mips drwxrwxr-x bin bin 2
+posix_lib/libc/include drwxrwxr-x bin bin 2
+posix_lib/libc/sys.mips drwxrwxr-x bin bin 2
+posix_lib/libc/stdio drwxrwxr-x bin bin 2
+posix_lib/libc/print drwxrwxr-x bin bin 2
+posix_lib/libc/libc drwxrwxr-x bin bin 2
+posix_lib/libc/crt.mips drwxrwxr-x bin bin 2
+posix_lib/locale drwxrwxr-x bin bin 3
+posix_lib/locale/C drwxrwxr-x bin bin 2

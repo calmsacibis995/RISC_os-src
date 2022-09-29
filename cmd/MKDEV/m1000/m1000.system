@@ -1,0 +1,190 @@
+#
+#  $Header: m1000.system,v 1.10.1.1 89/11/26 21:50:34 wje Exp $
+#
+#  m1000.system: MKDEV database entries common to all m500/m800/m1000 systems.
+#
+#  Local changes should be made by adding local files, not by changing
+#  this one.  See MKDEV(1M) and DEV_DB(4) for more information.
+#
+
+class(default,all) {
+	com.default
+	tty
+	disks
+	htape
+	qic-tape
+	sa
+	lp
+}
+
+#
+# tty
+#
+# The "ttym" devices are entries to the device driver which support modem
+# control.
+# 
+
+class(tty,terminals) {
+	idevice(2, tty, 2, c, 0, 2, 622, root, bin)
+	idevice(2, ttym, 2, c, 0, 130, 622, root, bin)
+	idevice(16, ttyh, 0, c, 16, 0, 622, root, bin)
+	idevice(16, ttyi, 0, c, 16, 16, 622, root, bin)
+}
+
+#
+# Disks
+#
+
+class(disks) {
+	ipc0d0; ipc0d1; ipc1d0; ipc1d1
+}
+
+#
+# Interphase controller 0, disk 0
+#
+
+class(ipc0d0) {
+	b_ipc0d0; c_ipc0d0
+}
+
+class(b_ipc0d0) {
+	idevice(16, dsk/ipc0d0s, 0, b, 4, 0, 640, root, sys)
+	link(dsk/ipc0d0s8, dsk/ipc0d0vh)
+	link(dsk/ipc0d0s0, root)
+	link(dsk/ipc0d0s1, swap)
+	link(dsk/ipc0d0s6, usr)
+	link(dsk/ipc0d0vh, vh)
+}
+
+class(c_ipc0d0) {
+	idevice(16, rdsk/ipc0d0s, 0, c, 4, 0, 640, root, sys)
+	link(rdsk/ipc0d0s8, rdsk/ipc0d0vh)
+	link(rdsk/ipc0d0s0, rroot)
+	link(rdsk/ipc0d0s6, rusr)
+	link(rdsk/ipc0d0vh, rvh)
+}
+
+#
+# Interphase controller 0, disk 1
+#
+
+class(ipc0d1) {
+	b_ipc0d1; c_ipc0d1
+}
+
+class(b_ipc0d1) {
+	idevice(16, dsk/ipc0d1s, 0, b, 4, 16, 640, root, sys)
+	link(dsk/ipc0d1s8, dsk/ipc0d1vh)
+}
+
+class(c_ipc0d1) {
+	idevice(16, rdsk/ipc0d1s, 0, c, 4, 16, 640, root, sys)
+	link(rdsk/ipc0d1s8, rdsk/ipc0d1vh)
+}
+
+#
+# Interphase controller 1, disk 0
+#
+
+class(ipc1d0) {
+	b_ipc1d0; c_ipc1d0
+}
+
+class(b_ipc1d0) {
+	idevice(16, dsk/ipc1d0s, 0, b, 4, 64, 640, root, sys)
+	link(dsk/ipc1d0s8, dsk/ipc1d0vh)
+}
+
+class(c_ipc1d0) {
+	idevice(16, rdsk/ipc1d0s, 0, c, 4, 64, 640, root, sys)
+	link(rdsk/ipc1d0s8, rdsk/ipc1d0vh)
+}
+
+#
+# Interphase controller 1, disk 1
+#
+
+class(ipc1d1) {
+	b_ipc1d1; c_ipc1d1
+}
+
+class(b_ipc1d1) {
+	idevice(16, dsk/ipc1d1s, 0, b, 4, 80, 640, root, sys)
+	link(dsk/ipc1d1s8, dsk/ipc1d1vh)
+}
+
+class(c_ipc1d1) {
+	idevice(16, rdsk/ipc1d1s, 0, c, 4, 80, 640, root, sys)
+	link(rdsk/ipc1d1s8, rdsk/ipc1d1vh)
+}
+
+
+#
+# Half-inch tape
+#
+
+class(htape,half-inch) {
+	device(mt/h0, c, 17, 0, 666, root, sys)
+	device(mt/h4, c, 17, 4, 666, root, sys)
+	link(mt/h0, rmt/h0)
+	link(mt/h4, rmt/h4)
+}
+
+#
+# QIC tape
+#
+
+class(qic-tape,cartridge) {
+	device(mt/Q11-0, c, 5, 80, 666, root, sys)
+	device(mt/Q11n-0, c, 5, 84, 666, root, sys)
+	device(mt/Q11h-0, c, 5, 16, 666, root, sys)
+	device(mt/Q11hn-0, c, 5, 20, 666, root, sys)
+
+	device(mt/Q24-0, c, 5, 72, 666, root, sys)
+	device(mt/Q24n-0, c, 5, 76, 666, root, sys)
+
+	link(mt/Q24-0, mt/ctape0)
+	link(mt/Q24n-0, mt/ctape4)
+	link(mt/Q24-0, mt/m0)
+	link(mt/Q24n-0, mt/m4)
+
+	link(mt/Q11-0, rmt/Q11-0)
+	link(mt/Q11n-0, rmt/Q11n-0)
+	link(mt/Q11h-0, rmt/Q11h-0)
+	link(mt/Q11hn-0, rmt/Q11hn-0)
+	link(mt/Q24-0, rmt/Q24-0)
+	link(mt/Q24n-0, rmt/Q24n-0)
+	link(mt/ctape0, rmt/ctape0)
+	link(mt/ctape4, rmt/ctape4)
+	link(mt/m0, rmt/m0)
+	link(mt/m4, rmt/m4)
+}
+
+#
+# SA
+#
+
+class(sa) {
+	link(mt/ctape0, SA/ctape0)
+	link(mt/ctape0, rSA/ctape0)
+}
+
+#
+# lp
+#
+
+class(lp) {
+	device(lp0, c, 16, 64, 666, root, sys)
+	device(lp0c, c, 16, 65, 666, root, sys)
+	device(rlp0, c, 16, 66, 666, root, sys)
+	device(lp1, c, 16, 80, 666, root, sys)
+	device(lp1c, c, 16, 81, 666, root, sys)
+	device(rlp1, c, 16, 82, 666, root, sys)
+	device(lp2, c, 16, 96, 666, root, sys)
+	device(lp2c, c, 16, 97, 666, root, sys)
+	device(rlp2, c, 16, 98, 666, root, sys)
+	device(lp3, c, 16, 112, 666, root, sys)
+	device(lp3c, c, 16, 113, 666, root, sys)
+	device(rlp3, c, 16, 114, 666, root, sys)
+}
+

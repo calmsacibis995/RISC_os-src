@@ -1,0 +1,91 @@
+#menu# Set up your machine to behave more like a BSD 4.3 system.
+#help#     This script sets up several optional features which make
+#help#     the behavior more like a BSD 4.3 system.  The following will change:
+#help#      *login will issue an initgroups() call which puts the user in
+#help#           all of the groups to which he/she belongs
+#help#      *login will allow you to login with no home directory, using
+#help#           the root (/) as your home
+#help#      *login will warn the user if he/she is over the disk quota
+#help#      *chown allows only the root to change the file owner
+#help#      *chgrp allows only the root to change a file to a group of which the
+#help#           user is not a member
+#help#      *newly created files will inherit the group of the directory in
+#help#           which they are created
+#help#      *child processes of a traced process which exits will receive
+#help#           a SIGKILL
+#help#      *only the owner or the root may set the file access times via utime
+#help#     See the manual pages for login and kopt for more information.
+#help#     You will be asked about using sendmail for mail transmission.
+#help#     See System Administrator's Guide for more information on sendmail.
+#help#     You will be asked about restricting access to ttys like BSD 4.3 does.
+#help#     This may require adding the group tty, and may cause other programs
+#help#     than those in RISC/os which access the terminal to fail.
+flags="-qq -k$$"	# flags for checkyn to implement [q] (quit)
+
+trap 'exit 0' 1 2 15
+
+echo "In addition to the things set up by this script, you may want to"
+echo "set other things up to be more BSD 4.3 like.  These include:"
+echo "	*setting up the BSD 4.3 line printer system"
+echo "	*setting up the quota system"
+echo "	*changing /etc/profile and /etc/cshrc to include /bsd43/bin in the path"
+echo "	 used for searching for executables"
+echo "	*changing the shell used by the root (from the default sh to csh)"
+echo "	*using the BSD 4.3 accounting system"
+
+checkyn ${flags} -f  -H "This will change the behavior of the system to be more like a BSD 4.3 System.  " \
+  -f "Change to BSD 4.3 behavior?" ||  exit 0
+
+# OK, go for it
+touch /etc/login.initgroups.ok
+touch /etc/login.nohome.ok
+touch /etc/login.quotawarn.ok
+
+# turn on the kopts in /etc/init.d/set_kopts
+if ( grep -s "^#BSD43" /etc/init.d/set_kopts > /dev/null )
+then
+	cp /etc/init.d/set_kopts /etc/init.d/set_kopts.save$$
+	echo Updating /etc/init.d/set_kopts 
+	echo If anything goes wrong, a saved copy is in /etc/init.d/set_kopts.save$$
+ed /etc/init.d/set_kopts << ENDSCRIPT
+H
+1,\$s/^#BSD43//
+w
+q
+ENDSCRIPT
+else
+	echo The file /etc/init.d/set_kopts is not in the expected form
+	echo for automatic updating.  
+	echo Please edit it to include setting the following options:
+	echo	/etc/kopt set _posix_chown_restricted 0
+	echo	/etc/kopt set _riscos_group_parent 0
+	echo	/etc/kopt set _riscos_kill_stopped_orphans 0
+	echo	/etc/kopt set _riscos_utime_owner 0
+fi
+
+if checkyn ${flags} -f  -H "This will cause the mail system to use the sendmail program." \
+  -f "Use sendmail for mail transmission?" 
+then
+	touch /usr/lib/sendmail.ok
+fi
+
+checkyn ${flags} -f  -H "This will restrict access to active ttys to programs
+with setgid tty." \
+  -f "Restrict tty access like BSD 4.3?" ||  exit 0
+
+if ( grep -s "^tty:" /etc/group > /dev/null )
+then
+    touch /etc/getty.ttygroup.ok	# tell getty to do this
+    touch /etc/login.ttygroup.ok	# tell login to do this too
+    for i in /bin/write /bsd43/bin/talk /etc/dump /etc/rdump /etc/wall /bsd43/bin/wall /bsd43/bin/write /etc/dump.ffs /etc/rdump.ffs
+    {
+	chgrp tty $i
+	chmod g+s $i
+    }
+else
+    echo "The group tty is not in /etc/group"
+    echo "Please add this group if you wish to have BSD 4.3 tty restrictions."
+    echo "This can be done in the addgroup submenu of the usermgmt menu."
+    echo "After adding the tty group, return to this script and you can"
+    echo "try again to place BSD 4.3 tty access restrictions."
+fi

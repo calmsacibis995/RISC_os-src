@@ -1,0 +1,26 @@
+usr drwxrwxr-x bin bin 9
+usr/RISCwindows3.21/include/X11/Xlib.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/X.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/X10.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/Xutil.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/Xatom.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/keysym.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/keysymdef.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/include/X11/cursorfont.h -r--r--r-- bin bin 1
+usr/RISCwindows3.21/lib/libX11.a -r--r--r-- bin bin 1
+usr/RISCwindows3.21/lib/libbsdX11.a -r--r--r-- bin bin 1
+usr/X11 drwxrwxr-x bin bin 9 
+usr/X11/include l--------- bin bin 1 ../RISCwindows3.21/include
+usr/X11/lib l--------- bin bin 1 ../RISCwindows3.21/lib
+usr/bsd43 drwxrwxr-x bin bin 3
+usr/bsd43/usr drwxrwxr-x bin bin 3
+usr/bsd43/usr/lib drwxrwxr-x bin bin 2
+usr/bsd43/usr/lib/X11 l--------- bin bin 1 ../../../X11/lib/X11
+usr/bsd43/usr/lib/libX11.a l--------- bin bin 1 ../../../X11/lib/libbsdX11.a
+usr/include drwxrwxr-x bin bin 3
+usr/include/X11 l--------- bin bin 1 ../X11/include/X11
+usr/include/bsd43 drwxrwxr-x bin bin 2
+usr/include/bsd43/X11 l--------- bin bin 1 ../../X11/include/X11
+usr/lib drwxrwxr-x bin bin 2
+usr/lib/X11 l--------- bin bin 1 ../X11/lib/X11
+usr/lib/libX11.a l--------- bin bin 1 ../X11/lib/libX11.a

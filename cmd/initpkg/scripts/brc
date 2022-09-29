@@ -1,0 +1,9 @@
+#! /bin/sh
+
+#
+# This script runs at boot time, so nothing is mounted except "/".
+# Save old mtab in case someone wants to check the state at a crash.
+#
+[ -f /etc/mtab ] && { mv /etc/mtab /etc/mtab.old; }
+touch /etc/mtab
+mount -f /

@@ -1,0 +1,11 @@
+*
+* PTS:	streams drivers for pseudo terminal slave
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+fs	pts	15,46,47,48	4,1	ptc,clone
+						
+
+$$$
+
+int pts_nummajor = ##N;	/* number of major numbers */
+int pts_majors[##N] = ##X; /* array of external numbers */

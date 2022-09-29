@@ -1,0 +1,146 @@
+*#ident	"$Header: kernel.r3030_std,v 1.1.1.7 90/05/09 15:04:47 wje Exp $"
+*
+* KERNEL
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+k	-	 -	  -
+	
+$$$
+
+#include "values.h"
+#include "sys/param.h"
+
+#define UTSNAME_MACHINE_TYPE MT_R3030
+
+/*
+ * on prom exit we do not want to call the prom 'init'
+ * entry point, but rather have a smooth interface.
+ */
+
+#define RISCOS_USE_PROM_EXIT 1
+
+/*
+ * machine_type is a global that is used to index into machine dependent
+ *	arrays.  omachine_type will be used to sanity check the value
+ *	passed in from the prom.
+ */
+
+#define RISCOS_MACHINE_TYPE BRDTYPE_R3030
+
+/*
+ * Setup c0 vector table here instead of startup.c for new machines.
+ * This seems the cleanest way to specify new level 0 interrupt routine
+ * which is also lboot'able.
+ *
+ * DO NOT MESS WITH THIS: unless you really know what you are doing!
+ *
+ */
+
+extern timein(), netintr(), r3030_intr(), r3030_intr1(); clock();
+extern r3030_stray();
+extern buserror_intr(), fp_intr(), handle_clock_intr();
+extern iil6(), laintr(), flintr();
+
+#ifdef KGCLOCK
+extern prof_intr();
+#endif
+
+int  (*c0vec_tbl[8])() = {
+	/* softint 0 (0) */	timein,
+	/* softint 1 (1) */	netintr,
+	/* hardint 0 (2) */	r3030_intr,	/* Handle all Level 0 ints */
+	/* hardint 1 (3) */	r3030_intr1,		/* scsi interrupt */	
+	/* hardint 2 (4) */	handle_clock_intr, /* rambo timer interrupt */
+	/* hardint 3 (5) */	fp_intr,		/* FPU interrupt */
+#ifdef KGCLOCK
+	/* hardint 4 (6) */	prof_intr,
+#else
+	/* hardint 4 (6) */	flintr,
+#endif
+	/* hardint 5 (7) */	buserror_intr
+};
+
+/*
+ * The level 0 generic init routine.  This call is done in os/startup.c
+ */
+
+extern r3030_init(), r3030_add_onboard();
+int (*level0_init)() = r3030_init;
+int (*interrupt_init)() = r3030_add_onboard;
+
+static int level0_sable_init()
+{     /* nop */
+}
+/*
+int (*level0_init)() = level0_sable_init;
+int (*interrupt_init)() = level0_sable_init;
+*/
+
+/*
+ * Buffer cache parameters.
+ *
+ *	    bio_pageshi	- Max number of pages allowed in the cache.
+ *	    bio_pageslo	- Min number pruned to during page stealing.
+ *
+ * The kernel executes the functions
+ * bio_pageshi_init() and bio_pageslo_init() at boot time to determine
+ * the values for bio_pageshi and bio_pageslo.
+ *
+ * The kernel executes bio_nbuf_init() at boot time to determine the number
+ * of buffer headers to be used.
+ */
+
+extern int physmem;
+
+bio_pageslo_init()	{ return max(physmem/10, 256*1024/NBPC); }
+bio_pageshi_init()	{ return physmem/2; }
+bio_nbuf_init()		{ return max(bio_pageshi_init()*NBPC/(8*1024), 64); }
+
+/*
+ * Memory allocation parameters
+ */
+#define MALLOC_LIMIT (4096 * 1024)
+
+/*
+ * MAXUMEM needs to allow the mapping of the 32 meg color frame buffer
+ */
+#define	MAXUMEM		16384
+
+/*
+ * Add definitions here for modified kernel mode parameters
+ * (see kernel_common for common defaults)
+ */
+
+#define NBLK2048 16
+#define NBLK1024 512
+#define NBLK512  512
+#define NBLK256  512
+
+#include "kernel_common"
+#include "sys/reg.h"
+
+r3030_stray(ep)
+int *ep;
+{
+	int addr = ep[EF_EPC];
+	cmn_err(CE_NOTE,"stray interrupt at %x\n", addr);
+	cmn_err(CE_CONT,"Cause: 0x%x\n", ep[EF_CAUSE]);
+	{
+		int	i;
+		int	cause = ep[EF_CAUSE];
+		static char *lev[] = {
+			"", /* 0 */
+			"", /* 1 */
+			"", /* 2 */
+			"SCSI", /* 3 */
+			"", /* 4 */
+			"FPU", /* 5 */
+			"FLOPPY/KGCLOCK", /* 6 */
+			"" /* 7 */
+		};
+		for (i = 0; i < 8; i++)
+			if (cause & (1 << (i + 8)))
+				cmn_err(CE_CONT, "\t%s\n", lev[i]);
+	}
+	iil7();
+}

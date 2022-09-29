@@ -1,0 +1,115 @@
+#! /bin/sh
+#
+# Initialize the nfs software.
+#
+
+USAGE="usage: /etc/init.d/nfs {start|stop}" ;
+
+not() {
+	eval ${1+"$@"} && return 1 || return 0
+}
+
+main() {
+	case $1 in
+	start)	nfs_start ${1+"$@"} ;;
+	stop)	nfs_stop ${1+"$@"} ;;
+	*)	echo "$USAGE"; exit 1 ;;
+	esac
+}
+
+nfs_start() {
+	PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:/usr/etc/yp
+	nfs=/etc
+	
+	#
+	# Have they set the hostname yet.  If not, don't start the network.
+	#
+	if [ "`hostname`" = "no_hostname_set" ] ; then
+		exit 0
+	fi
+	#
+	#   Check for existance of tcp first.
+	#
+    	if [ ! -x /etc/havetcp ] || not /etc/havetcp
+	then
+		exit 0
+	fi
+	#
+	# Fire up NFS daemons if they are present and executable.
+	# The portmapper is the sine qua non, since RPC doesn't work without
+	# him.  Now that inetd supports RPC, init.d/tcp must start portmap.
+	# Therefore init.d/tcp must be invoked before this script.
+	#
+	if [ -x /etc/havenfs ] && /etc/havenfs
+	then
+		# Truncate /etc/xtab & run exportfs
+		if [ -x $nfs/exportfs ]; then
+			> /etc/xtab
+			if $nfs/exportfs -a; then
+				echo "Export file systems"
+			else
+				echo "\nWARNING: /etc/exportfs failed \c"
+				echo "(Can't mount to this system)\n"
+			fi
+		else
+			echo "\n\nWARNING: unexecutable file: /etc/exportfs \c"
+			echo "(Can't mount to this system)\n"
+		fi
+
+		echo "NFS daemons:\c"
+	
+		# NFS server daemons
+		if [ -x $nfs/nfsd ]; then
+			$nfs/nfsd 4;			echo " nfsd\c"
+		fi
+	
+		# NFS client bio daemons
+		if [ -x $nfs/biod ]; then
+			$nfs/biod 4;			echo " biod\c"
+		fi
+	
+		# NFS Lock manager daemon
+		if [ -r /etc/lockd.conf ]; then
+			$nfs/rpc.lockd `sed -n 1p /etc/lockd.conf`
+		else
+			$nfs/rpc.lockd
+		fi
+		echo " lockd\c"
+
+		# NFS status monitoring daemon
+		$nfs/rpc.statd;			echo " statd\c"
+
+		echo "."
+
+		if [ -r /etc/automount.conf ]; then
+		        $nfs/automount `sed -n 1p /etc/automount.conf`
+			echo "Starting automounter."
+		fi
+
+		# Workaround to kick rpc.mountd
+		if [ -x $nfs/rpcinfo ]; then
+			$nfs/rpcinfo -u `hostname` mountd > /dev/null;
+		fi
+
+		mount -a -v -t nfs
+	fi
+}
+
+
+nfs_stop() {
+	umount -v -k -t nfs
+	pidlist=""
+	for proc in nfsd biod
+	do
+		pidlist="$pidlist `ps -e | grep ' '$proc'$' |
+		    sed -e 's/^  *//' -e 's/ .*//'`"
+	done
+	if test "$pidlist" != "  "
+	then
+		kill $pidlist
+	fi
+
+}
+
+main ${1+"$@"}
+exit 0

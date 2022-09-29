@@ -1,0 +1,171 @@
+*#ident	"$Header: kernel.r6000_sable,v 1.12.1.3 90/04/13 15:30:26 wje Exp $"
+*
+* KERNEL
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+k	-	 -	  -
+	
+$$$
+
+#include "values.h"
+#include "sys/param.h"
+
+#define UTSNAME_MACHINE_TYPE MT_M6000
+
+/*
+ * machine_type is a global that is used to index into machine dependent
+ *	arrays.
+ */
+
+#define RISCOS_MACHINE_TYPE BRDTYPE_R6300
+
+/*
+ * Setup c0 vector table here instead of startup.c for new machines.
+ * This seems the cleanest way to specify new level 0 interrupt routine
+ * which is also lboot'able.
+ *
+ * DO NOT MESS WITH THIS: unless you really know what you are doing!
+ *
+ */
+
+extern timein(), netintr(), r6000_intr(), fp_intr(), stray();
+
+#ifdef KGCLOCK
+extern prof_intr();
+#endif
+
+int  (*c0vec_tbl[8])() = {
+	/* softint 1 */		timein,
+	/* softint 2 */		netintr,
+	/* hardint 3 */		r6000_intr,
+	/* hardint 4 */		fp_intr,
+	/* hardint 5 */		stray,
+	/* hardint 6 */		stray,
+	/* hardint 7 */		stray,
+	/* hardint 8 */		stray
+};
+
+/*
+ *  Setup Bus Chip interrupt vector table
+ */
+
+extern null_intr();
+extern vme_intr_ioa1_gba0(), vme_intr_ioa1_gba1(),
+       vme_intr_ioa2_gba0(), vme_intr_ioa2_gba1(),
+       vme_intr_ioa3_gba0(), vme_intr_ioa3_gba1();
+
+int  (*ctl_vec_tbl[32])() = {
+	/*  0 */		null_intr,	/* CPU clock -- clock() */
+	/*  1 */		null_intr,	/* mem_error_intr() */
+	/*  2 */		null_intr,	/* ioa_error_intr() */
+	/*  3 */		null_intr,	/* IOA1 Duart -- du_poll() */
+	/*  4 */		vme_intr_ioa1_gba1,
+	/*  5 */		vme_intr_ioa1_gba0,
+	/*  6 */		stray,		/* IOA1 GBA1 LOP */
+	/*  7 */		stray,		/* IOA1 GBA0 LOP */
+	/*  8 */		vme_intr_ioa2_gba1,
+	/*  9 */		vme_intr_ioa2_gba0,
+	/* 10 */		stray,		/* IOA2 GBA1 LOP */
+	/* 11 */		stray,		/* IOA2 GBA0 LOP */
+	/* 12 */		vme_intr_ioa3_gba1,
+	/* 13 */		vme_intr_ioa3_gba0,
+	/* 14 */		stray,		/* IOA3 GBA1 LOP */
+	/* 15 */		stray,		/* IOA3 GBA0 LOP */
+	/* 16 */		stray,
+	/* 17 */		stray,
+	/* 18 */		stray,
+	/* 19 */		stray,
+	/* 20 */		stray,
+	/* 21 */		stray,
+	/* 22 */		stray,
+	/* 23 */		stray,
+	/* 24 */		stray,
+	/* 25 */		stray,
+	/* 26 */		stray,
+	/* 27 */		stray,
+	/* 28 */		stray,
+	/* 29 */		stray,
+	/* 30 */		timein,		/* SW1 */
+	/* 31 */		netintr		/* SW2 */
+};
+
+/*
+ * The level 0 generic init routine.  This call is done in os/startup.c
+ */
+
+extern vme_init();
+int (*level0_init)() = vme_init;
+int (*interrupt_init)() = 0;		/* No additional interrupts needed */
+
+/*
+ * The following entries form the tunable parameter table.
+ */
+
+#define NPROC 500
+
+/*
+ *The following stuff is for streams.
+ */
+#define NBLK16 1024
+#define NBLK4 512
+
+/*
+ * added for paging
+ */
+
+#define MAXUMEM 24576			/* pages == 384MB */
+#define MINARMEM 6			/* pages */
+#define MINASMEM 6			/* pages */
+
+/*
+ * Buffer cache parameters.
+ *
+ *	    bio_pageshi	- Max number of pages allowed in the cache.
+ *	    bio_pageslo	- Min number pruned to during page stealing.
+ *
+ * The kernel executes the functions
+ * bio_pageshi_init() and bio_pageslo_init() at boot time to determine
+ * the values for bio_pageshi and bio_pageslo.
+ *
+ * The kernel executes bio_nbuf_init() at boot time to determine the number
+ * of buffer headers to be used.
+ */
+
+extern int physmem;
+
+bio_pageslo_init()	{ return max(physmem/16, 256*1024/NBPC); }
+bio_pageshi_init()	{ return physmem/2; }
+bio_nbuf_init()		{ return (bio_pageshi_init()); }
+
+#define BIO_PAGE_SHIFT	1
+/*
+ * Memory allocation parameters
+ */
+#define MALLOC_LIMIT (4096 * 1024 * 4)
+
+
+/*
+ * Disk quota cache limit.  The following parameter sets the maximum
+ * number of structures which will be cached by the kernel.  One structure
+ * is needed by each user per file system which is locally mounted and
+ * has quota usage enabled.
+ */
+#define RISCOS_MAX_DQUOT_CACHE (16 * 8)
+
+/*
+ * To take advantage of larger memory size, more network buffering will
+ * be allocated on this machine.  (see kernel common)
+ */
+
+#define	MBUF_LIMIT (4096 * 1024)
+#define MBUF_SMALL_LIMIT (512 * 1024)
+#define MBUF_SMALL_PREALLOC ((256*1024)/CLBYTES)
+#define MBUF_CLUSTER_PREALLOC ((640*1024)/CLBYTES)
+
+/*
+ * Add definitions here for modified kernel mode parameters
+ * (see kernel_common for common defaults)
+ */
+
+#include "kernel_common"
+

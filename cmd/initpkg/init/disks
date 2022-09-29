@@ -1,0 +1,15 @@
+#! /bin/sh
+
+#
+# Create "/dev" entries for new disk(s).
+#
+
+set `who -r`
+if [ $9 = "S" ]
+then
+	if [ -x /etc/disks ]
+	then
+		exec /etc/disks
+	fi
+fi
+exit 0

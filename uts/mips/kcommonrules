@@ -1,0 +1,68 @@
+# 
+# |-----------------------------------------------------------|
+# | Copyright (c) 1989       MIPS Computer Systems, Inc.      |
+# | All Rights Reserved                                       |
+# |-----------------------------------------------------------|
+# | Use, duplication, or disclosure by the Government is      |
+# | subject to restrictions as set forth in                   |
+# | subparagraph (c)(1)(ii) of the Rights in Technical        |
+# | Data and Computer Software Clause of DFARS 52.227-7013.   |
+# |         MIPS Computer Systems, Inc.                       |
+# |         928 Arques Avenue                                 |
+# |         Sunnyvale, CA 94086                               |
+# |-----------------------------------------------------------|
+# 
+# $Header: kcommonrules,v 1.3.1.2.1.1.1.2 90/10/16 10:15:07 beacker Exp $
+
+
+$(LIBMARK):$(LIBOBJS) Makefile
+	@if test -f $(LIBNAME) ;			\
+	then					\
+		ARLIST=`echo " $? " | sed -e 's/ Makefile / /'` ; \
+		ARCMD="$(AR) rls $(LIBNAME) $${ARLIST}" ;	\
+	else					\
+		ARCMD="$(AR) qlsc $(LIBNAME) $(LIBOBJS)";	\
+	fi ;					\
+	echo $$ARCMD; eval $$ARCMD
+	touch $(LIBMARK)
+
+$(DRVMARK):$(DRVOBJS) Makefile
+	touch $(DRVMARK)
+
+$(MODULE):$(OBJS) Makefile
+	$(LDF) -r -o $(MODULE) $(OBJS)
+
+depend: $(MAKEDEPEND)
+
+$(MAKEDEPEND): $(MAKEDEPENDMARK)
+
+$(MAKEDEPENDMARK):	$(DRVSRCS) $(SRCS) Makefile
+	INCL_TMP=`echo "$(DESTROOT)/usr/include" | sed 's,//*,/,g'`; \
+	cp /dev/null $(MDEPENDTMP) ; \
+	if [ "$(SRCS) " != " " ] ; \
+	then \
+		$(CC) -M $(CFLAGS) $(SRCS) | \
+		sed 's,//*,/,g' | \
+		awk -f $(AWKDEPEND) FRC="$$(FRC)" \
+		    INC="$$INCL_TMP" INCDIR='$$(DESTROOT)/usr/include' \
+	    - | sed -e 's"^[^	]"$(BOOTAREA)/$(LABEL)/&"' > $(MDEPENDTMP) ;\
+	fi ; \
+	if [ "$(DRVSRCS) " != " " ] ; \
+	then \
+		$(CC) -M $(CFLAGS) $(DRVSRCS) |\
+		sed 's,//*,/,g' | \
+		awk -f $(AWKDEPEND) FRC="$$(FRC)" \
+		    INC="$$INCL_TMP" INCDIR='$$(DESTROOT)/usr/include' \
+	    - | sed -e 's"^[a-zA-Z0-9]"$(BOOTAREA)/&"' >> $(MDEPENDTMP) ;\
+	fi ; \
+	touch $(MAKEDEPENDMARK) ; \
+	mv -f $(MDEPENDTMP) $(MAKEDEPEND)
+
+FRC:
+
+.s.o:
+	$(CCF) $< -c
+
+
+
+

@@ -1,0 +1,328 @@
+bin/acctcom l--------- bin bin 1 ../usr/bin/acctcom
+bin/awk -r-xr-xr-x bin bin 1
+bin/basename -r-xr-xr-x bin bin 1
+bin/cat -r-xr-xr-x bin bin 1
+bin/chgrp -r-xr-xr-x bin bin 1
+bin/chmod -r-xr-xr-x bin bin 1
+bin/chown -r-xr-xr-x bin bin 1
+bin/chrtbl -r-xr-xr-x bin bin 1
+bin/cmp -r-xr-xr-x bin bin 1
+bin/cp -r-xr-xr-x bin bin 3 bin/mv
+bin/cpio -r-xr-xr-x bin bin 1
+bin/csh -r-xr-xr-t bin bin 1
+bin/date -r-xr-xr-x bin bin 1
+bin/dd -r-xr-xr-x bin bin 1
+bin/df -r-sr-xr-x root bin 2
+bin/diff -r-xr-xr-x bin bin 1
+bin/dirname -r-xr-xr-x bin bin 1
+bin/du -r-xr-xr-x bin bin 1
+bin/echo -r-xr-xr-x bin bin 1
+bin/ed -r-xr-xr-x bin bin 2
+bin/env -r-xr-xr-x bin bin 1
+bin/expr -r-xr-xr-x bin bin 1
+bin/false -r-xr-xr-x bin bin 7
+bin/file -r-xr-xr-x bin bin 1
+bin/find -r-xr-xr-x bin bin 1
+bin/grep -r-xr-xr-x bin bin 1
+bin/ipcrm -r-xr-xr-x bin bin 1
+bin/ipcs l--------- bin sys 1 ../usr/bin/ipcs
+bin/jsh -r-xr-xr-t bin bin 3 bin/sh
+bin/kill -r-xr-xr-x bin bin 1
+bin/line -r-xr-xr-x bin bin 1
+bin/ln -r-xr-xr-x bin bin 3 bin/mv
+bin/login -r-sr-xr-x root bin 1
+bin/ls -r-xr-xr-x bin bin 1
+bin/m68000 -r-xr-xr-x bin bin 7 bin/false
+bin/mail -r-sr-sr-x root mail 2
+bin/make -r-xr-xr-x bin bin 2
+bin/makerules -r-xr-xr-x bin bin 2 bin/make
+bin/mesg -r-xr-xr-x bin bin 1
+bin/mips -r-xr-xr-x bin bin 2 bin/true
+bin/mkdir -r-xr-xr-x bin bin 1
+bin/more -r-xr-xr-x bin bin 2
+bin/mt -r-xr-xr-x bin bin 1
+bin/mv -r-xr-xr-x bin bin 3
+bin/newgrp -r-sr-xr-x root bin 1
+bin/nice -r-xr-xr-x bin bin 1
+bin/nohup -r-xr-xr-x bin bin 1
+bin/od -r-xr-xr-x bin bin 1
+bin/page -r-xr-xr-x bin bin 2 bin/more
+bin/passwd -r-sr-sr-x root sys 1
+bin/pdp11 -r-xr-xr-x bin bin 7 bin/false
+bin/pr -r-xr-xr-x bin bin 1
+bin/ps -r-sr-sr-x root sys 1
+bin/pwd -r-xr-xr-x bin bin 1
+bin/red -r-xr-xr-x bin bin 2 bin/ed
+bin/rm -r-xr-xr-x bin bin 1
+bin/rmail -r-sr-sr-x root mail 2 bin/mail
+bin/rmdir -r-xr-xr-x bin bin 1
+bin/rsh -r-xr-xr-t bin bin 3 bin/sh
+bin/sed -r-xr-xr-x bin bin 1
+bin/sh -r-xr-xr-t bin bin 3
+bin/sleep -r-xr-xr-x bin bin 1
+bin/sort -r-xr-xr-x bin bin 1
+bin/ssu -r-sr-xr-x root bin 2 bin/su
+bin/stty -r-xr-xr-x bin bin 1
+bin/su -r-sr-xr-x root bin 2
+bin/sum -r-xr-xr-x bin bin 1
+bin/sync -r-xr-xr-x bin bin 1
+bin/tail -r-xr-xr-x bin bin 1
+bin/tar -r-xr-xr-x bin bin 1
+bin/tee -r-xr-xr-x bin bin 1
+bin/test -r-xr-xr-x bin bin 1
+bin/time -r-xr-xr-x bin bin 1
+bin/tplot -r-xr-xr-x bin bin 1
+bin/touch -r-xr-xr-x bin bin 1
+bin/true -r-xr-xr-x bin bin 2
+bin/tty -r-xr-xr-x bin bin 1
+bin/u3b -r-xr-xr-x bin bin 7 bin/false
+bin/u3b2 -r-xr-xr-x bin bin 7 bin/false
+bin/u3b5 -r-xr-xr-x bin bin 7 bin/false
+bin/uname -r-xr-xr-x bin bin 1
+bin/vax -r-xr-xr-x bin bin 7 bin/false
+bin/wc -r-xr-xr-x bin bin 1
+bin/who -r-xr-xr-x bin bin 1
+bin/write -r-xr-xr-x bin bin 1
+dev/DEV_DB/README -r--r--r-- bin bin 1
+dev/DEV_DB/common.system -r--r--r-- bin bin 1
+dev/DEV_DB/m1000.system -r--r--r-- bin bin 1
+dev/DEV_DB/RC3240.system l--------- bin bin 1 m120.system
+dev/DEV_DB/m120-3.system l--------- bin bin 1 m120.system
+dev/DEV_DB/m120-5.system l--------- bin bin 1 m120.system
+dev/DEV_DB/m120.system -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-6.system l--------- bin bin 1 m2000.system
+dev/DEV_DB/m2000-8.system l--------- bin bin 1 m2000.system
+dev/DEV_DB/m2000.system -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-6.ipc l--------- bin bin 1 m2000.ipc
+dev/DEV_DB/m2000-8.ipc l--------- bin bin 1 m2000.ipc
+dev/DEV_DB/m2000.ipc -r--r--r-- bin bin 1
+dev/DEV_DB/m2000.ijc -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-6.ijc l--------- bin bin 1 m2000.ijc
+dev/DEV_DB/m2000-8.ijc l--------- bin bin 1 m2000.ijc
+dev/DEV_DB/m2000-25.system -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-25.ipc -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-25.ijc -r--r--r-- bin bin 1
+dev/DEV_DB/m2000-25.sdc -r--r--r-- bin bin 1
+dev/DEV_DB/RC6280.system -r--r--r-- bin bin 1
+dev/DEV_DB/RC6280.ijc -r--r--r-- bin bin 1 
+dev/DEV_DB/RC6280.ipc -r--r--r-- bin bin 1 
+dev/DEV_DB/RC6260.system l--------- bin bin 1 RC6280.system
+dev/DEV_DB/RC6260.ijc l--------- bin bin 1 RC6280.ijc
+dev/DEV_DB/RC6260.ipc l--------- bin bin 1 RC6280.ipc
+dev/DEV_DB/m500.system l--------- bin bin 1 m1000.system
+dev/DEV_DB/m800.system l--------- bin bin 1 m1000.system
+dev/DEV_DB/rc2030.system -r--r--r-- bin bin 1
+dev/DEV_DB/RC3230.system -r--r--r-- bin bin 1
+dev/DEV_DB/RC3330.system l--------- bin bin 1 RC3230.system
+dev/DEV_DB/RS3230.system l--------- bin bin 1 RC3230.system
+dev/DEV_DB/RS3330.system l--------- bin bin 1 RC3230.system
+dev/MKDEV -r-xr-xr-- bin bin 1
+etc/arp l--------- bin bin 1 ../usr/etc/arp
+etc/automount l--------- bin bin 1 ../usr/etc/automount
+etc/badspots -r-xr-xr-x bin bin 1
+etc/bcheckrc -r-xr--r-- root bin 1
+etc/biod l--------- bin bin 1 ../usr/etc/biod
+etc/brc -r-xr--r-- root bin 1
+etc/chroot -r-xr-xr-x bin bin 1
+etc/ckbupscd -r-xr-xr-x bin bin 1
+etc/clri -r-xr-xr-x bin bin 1
+etc/clri.ffs -r-xr-xr-x bin bin 1
+etc/crash l--------- bin bin 1 ../usr/etc/crash
+etc/cron -r-x------ root bin 1
+etc/devnm -r-sr-xr-x root bin 2 bin/df
+etc/devstr -r-xr-xr-x bin bin 1
+etc/domainname l--------- bin bin 1 ../usr/bin/domainname
+etc/dump -r-xr-xr-x bin bin 1
+etc/dump.ffs -r-xr-xr-x bin bin 1
+etc/dumpfs.ffs -r-xr-xr-x bin bin 1
+etc/dvhtool -r-xr-xr-x bin bin 1
+etc/edquota l--------- bin bin 1 ../usr/etc/edquota
+etc/exportfs l--------- bin bin 1 ../usr/etc/exportfs
+etc/ff -r-xr-xr-x bin bin 1
+etc/finc -r-xr-xr-x bin bin 1
+etc/fingerd l--------- bin bin 1 ../usr/etc/fingerd
+etc/flfo -r-xr-xr-x bin bin 1
+etc/format -r-xr-xr-x bin bin 1
+etc/frec -r-xr-xr-x bin bin 1
+etc/fsck -r-xr-xr-x bin bin 1
+etc/fsck.ffs -r-xr-xr-x bin bin 1
+etc/fsdb -r-xr-xr-x bin bin 1
+etc/fsirand.ffs -r-xr-xr-x bin bin 1
+etc/fsstat -r-xr-xr-x bin bin 1
+etc/fsstat.ffs -r-xr-xr-x bin bin 1
+etc/fstyp -r-xr-xr-x bin bin 1
+etc/fstyp.d/10_fstyp.ffs -r-xr-xr-x bin bin 1
+etc/ftpd l--------- bin bin 1 ../usr/etc/ftpd
+etc/fuser -r-xr-sr-x bin bin 1
+etc/gated l--------- bin bin 1 ../usr/etc/gated
+etc/gettable l--------x bin bin 1 ../usr/etc/gettable
+etc/getty -r-xr-xr-x bin bin 1
+etc/grpck l--------- bin bin 1 ../usr/etc/grpck
+etc/havenfs -r-xr-xr-x bin bin 1
+etc/havetcp l--------- bin bin 1 ../usr/etc/havetcp
+etc/helpadm -r-xr-x--- bin bin 1
+etc/hwconf -r-xr-xr-x bin bin 1
+etc/ifconfig l--------- bin bin 1 ../usr/etc/ifconfig
+etc/inetd l--------- bin bin 1 ../usr/etc/inetd
+etc/init -r-xr-xr-x bin bin 2
+etc/init.d/ANNOUNCE -r-xr--r-- root bin 1
+etc/init.d/MOUNTFSYS -r-xr--r-- root bin 1
+etc/init.d/README -r-xr--r-- root bin 1
+etc/init.d/RMTMPFILES -r-xr--r-- root bin 1
+etc/init.d/acct -r-xr--r-- root bin 1
+etc/init.d/addswap -r-xr--r-- root bin 1
+etc/init.d/autoconfig -r-xr--r-- root bin 1
+etc/init.d/bsd43_accton -r-xr--r-- root bin 1
+etc/init.d/bsd43_lpd -r-xr--r-- root bin 1
+etc/init.d/cron -r-xr--r-- root bin 1
+etc/init.d/disks -r-xr--r-- root bin 1
+etc/init.d/firstcheck -r-xr--r-- root bin 1
+etc/init.d/lockfix -r-xr--r-- root bin 1
+etc/init.d/lpsched -r-xr--r-- root bin 1
+etc/init.d/netdaemons -r-xr--r-- root bin 1
+etc/init.d/nfs -r-xr--r-- root bin 1
+etc/init.d/noacct -r-xr--r-- root bin 1
+etc/init.d/perf -r-xr--r-- root bin 1
+etc/init.d/savecore -r-xr--r-- root bin 1
+etc/init.d/set_kopts -r-xr--r-- root bin 1
+etc/init.d/smtp -r-xr--r-- root bin 1
+etc/init.d/sysetup -r-xr--r-- root bin 1
+etc/init.d/syslog -r-xr--r-- root bin 1
+etc/init.d/tcp -r-xr--r-- root bin 1
+etc/init.d/tzsetup -r-xr--r-- root bin 1
+etc/install -r-xr-xr-x bin bin 1
+etc/killall -r-xr-x--- bin bin 1
+etc/kopt -r-xr-xr-x bin bin 1
+etc/labelit -r-xr-xr-x bin bin 1
+etc/lboot l--------- bin bin 1 ../usr/etc/lboot
+etc/link -r-xr-x--- bin bin 1
+etc/mboot l--------- bin bin 1 ../usr/etc/mboot
+etc/mipsinstall -r-xr-xr-x bin bin 1
+etc/mkboot l--------- bin bin 1 ../usr/etc/mkboot
+etc/mkboottape l--------- bin bin 1 ../usr/etc/mkboottape
+etc/mkfile l--------- bin bin 1 ../usr/etc/mkfile
+etc/mkfs -r-xr-xr-x bin bin 1
+etc/mkfs.ffs -r-xr-xr-x bin bin 1
+etc/mknod -r-xr-xr-x bin bin 1
+etc/mkpdata.ffs -r-xr-xr-x bin bin 1
+etc/mkproto.ffs -r-xr-xr-x bin bin 1
+etc/mount -r-xr-xr-x bin bin 1
+etc/mountall -r-xr--r-- root bin 1
+etc/mvdir -r-xr-xr-x bin bin 1
+etc/named l--------- bin bin 1 ../usr/etc/named
+etc/named.d/named.boot -r--r--r-- bin bin 1
+etc/named.d/named.boot.master -r--r--r-- bin bin 1
+etc/named.d/named.hosts -r--r--r-- bin bin 1
+etc/named.d/named.local -r--r--r-- bin bin 1
+etc/named.d/named.rev -r--r--r-- bin bin 1
+etc/named.d/root.cache -r--r--r-- bin bin 1
+etc/ncheck -r-xr-xr-x bin bin 1
+etc/ncheck.ffs -r-xr-xr-x bin bin 1
+etc/netstat l--------- bin bin 1 ../usr/etc/netstat
+etc/newfs.ffs -r-xr-xr-x bin bin 1
+etc/nfsd l--------- bin bin 1 ../usr/etc/nfsd
+etc/nfsstat l--------- bin bin 1 ../usr/etc/nfsstat
+etc/pcnfsd l--------- root sys 1 ../usr/etc/pcnfsd
+etc/ping l--------- bin bin 1 ../usr/etc/ping
+etc/portmap l--------- bin bin 1 ../usr/etc/portmap
+etc/prfdc -r-xr-xr-x bin bin 1
+etc/prfld -r-xr-xr-x bin bin 1
+etc/prfpr -r-xr-xr-x bin bin 1
+etc/prfsnap -r-xr-xr-x bin bin 1
+etc/prfstat -r-xr-xr-x bin bin 1
+etc/prtvtoc -r-xr-xr-x bin bin 1
+etc/pwck -r-xr-xr-x bin bin 1
+etc/quot l--------- bin bin 1 ../usr/etc/quot
+etc/quotacheck l--------- bin bin 1 ../usr/etc/quotacheck
+etc/quotaoff l--------- bin bin 1 ../usr/etc/quotaoff
+etc/quotaon l--------- bin bin 1 ../usr/etc/quotaon
+etc/rc0 -r-xr--r-- root bin 1
+etc/rc0.d/K00ANNOUNCE -r-xr--r-- root bin 1
+etc/rc0.d/K20printer -r-xr--r-- root bin 1
+etc/rc0.d/K21account -r-xr--r-- root bin 1
+etc/rc0.d/K60nfs -r-xr--r-- root bin 1
+etc/rc0.d/K70tcp -r-xr--r-- root bin 1
+etc/rc2 -r-xr--r-- root bin 1
+etc/rc2.d/K60nfs -r-xr--r-- root bin 1
+etc/rc2.d/K70tcp -r-xr--r-- root bin 1
+etc/rc2.d/S01MOUNTFSYS -r-xr--r-- root bin 1
+etc/rc2.d/S15autoconfig -r-xr--r-- root bin 1
+etc/rc2.d/S16addswap -r-xr--r-- root bin 1
+etc/rc2.d/S16lockfix -r-xr--r-- root bin 1
+etc/rc2.d/S17tzsetup -r-xr--r-- root bin 1
+etc/rc2.d/S17set_kopts -r-xr--r-- root bin 1
+etc/rc2.d/S20sysetup -r-xr--r-- root bin 1
+etc/rc2.d/S21perf -r-xr--r-- root bin 1
+etc/rc2.d/S22account -r-xr--r-- root bin 1
+etc/rc2.d/S30tcp -r-xr--r-- root bin 1
+etc/rc2.d/S35syslog -r-xr--r-- root bin 1
+etc/rc2.d/S36savecore -r-xr--r-- root bin 1
+etc/rc2.d/S37netdaemons -r-xr--r-- root bin 1
+etc/rc2.d/S40nfs -r-xr--r-- root bin 1
+etc/rc2.d/S72smtp -r-xr--r-- root bin 1
+etc/rc2.d/S73RMTMPFILES -r-xr--r-- root bin 1
+etc/rc2.d/S75cron -r-xr--r-- root bin 1
+etc/rc2.d/S76printer -r-xr--r-- root bin 1
+etc/rc3 -r-xr--r-- root bin 1
+etc/rdump -r-xr-xr-x bin bin 1
+etc/rdump.ffs -r-xr-xr-x bin bin 1
+etc/renice l--------- bin bin 1 ../usr/etc/renice
+etc/repquota l--------- bin bin 1 ../usr/etc/repquota
+etc/restore -r-xr-xr-x bin bin 1
+etc/restore.ffs -r-xr-xr-x bin bin 1
+etc/rexecd l--------- bin bin 1 ../usr/etc/rexecd
+etc/rlogind l--------- bin bin 1 ../usr/etc/rlogind
+etc/rmt -r-xr-xr-x bin bin 1
+etc/route l--------- bin bin 1 ../usr/etc/route
+etc/routed l--------- bin bin 1 ../usr/etc/routed
+etc/rpc.bootparamd l--------- bin bin 1 ../usr/etc/rpc.bootparamd
+etc/rpc.lockd l--------- bin bin 1 ../usr/etc/rpc.lockd
+etc/rpc.mountd l--------- bin bin 1 ../usr/etc/rpc.mountd
+etc/rpc.passwd l--------- bin bin 1 ../usr/etc/rpc.passwd
+etc/rpc.passwd l--------- bin bin 1 ../usr/etc/rpc.passwd
+etc/rpc.rexd l--------- bin bin 1 ../usr/etc/rpc.rexd
+etc/rpc.rquotad l--------- bin bin 1 ../usr/etc/rpc.rquotad
+etc/rpc.ruserd l--------- bin bin 1 ../usr/etc/rpc.ruserd
+etc/rpc.rwalld l--------- bin bin 1 ../usr/etc/rpc.rwalld
+etc/rpc.sprayd l--------- bin bin 1 ../usr/etc/rpc.sprayd
+etc/rpc.statd l--------- bin bin 1 ../usr/etc/rpc.statd
+etc/rpc.yppasswdd l--------- bin bin 1 ../usr/etc/rpc.yppasswdd
+etc/rpc.ypupdated l--------- bin bin 1 ../usr/etc/rpc.ypupdated
+etc/rpcinfo l--------- bin bin 1 ../usr/etc/rpcinfo
+etc/rrestore -r-xr-xr-x bin bin 1
+etc/rrestore.ffs -r-xr-xr-x bin bin 1
+etc/rshd l--------- bin bin 1 ../usr/etc/rshd
+etc/rwall l--------- bin bin 1 ../usr/etc/rwall
+etc/rwhod l--------- bin bin 1 ../usr/etc/rwhod
+etc/savecore l--------- bin sys 1 ../usr/etc/savecore
+etc/showmount l--------- bin bin 1 ../usr/etc/showmount
+etc/shutdown -r-xr--r-- root bin 1
+etc/slattach l--------- bin bin 1 ../usr/etc/slattach
+etc/slconfig l--------- bin bin 1 ../usr/etc/slconfig
+etc/snmpd l--------- bin bin 1 ../usr/etc/snmpd
+etc/snmptrapd l--------- bin bin 1 ../usr/etc/snmptrapd
+etc/spray l--------- bin bin 1 ../usr/etc/spray
+etc/stamp_links -r-xr-xr-x bin bin 1
+etc/swap -r-xr-sr-x bin sys 1
+etc/sysconinit -r-xr-xr-x bin bin 1
+etc/syslogd l--------- root sys 1 ../usr/etc/syslogd
+etc/talkd l--------- root sys 1 ../usr/etc/talkd
+etc/telinit -r-xr-xr-x bin bin 2 etc/init
+etc/telnetd l--------- bin bin 1 ../usr/etc/telnetd
+etc/tftpd l--------- bin bin 1 ../usr/etc/tftpd
+etc/timed l--------- bin bin 1 ../usr/etc/timed
+etc/timedc l--------- bin bin 1 ../usr/etc/timedc
+etc/trpt l--------- bin bin 1 ../usr/etc/trpt
+etc/tunefs.ffs -r-xr-xr-x bin bin 1
+etc/uadmin -r-xr-xr-x bin bin 1
+etc/umount -r-xr-xr-x bin bin 1
+etc/umountall -r-xr--r-- root bin 1
+etc/unlink -r-xr-x--- bin bin 1
+etc/wall -r-xr-xr-x bin bin 1
+etc/whodo l--------- bin sys 1 ../usr/etc/whodo
+etc/yp/Makefile -r-xr-x--- bin bin 1
+etc/yp/updaters -r-xr-x--- bin bin 1
+etc/ypbind -r-xr-xr-x bin bin 1
+etc/zdump -r-xr-xr-x bin bin 1
+etc/zic -r-xr-xr-x bin bin 1
+lib/libc.a l--------- bin bin 1 ../usr/lib/libc.a

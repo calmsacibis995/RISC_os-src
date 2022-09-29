@@ -1,0 +1,6 @@
+*
+*
+* SCSI peripherals controller (ncr53c94) polling routines
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	

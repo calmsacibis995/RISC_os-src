@@ -1,0 +1,34 @@
+MARKCOPTS= -DR6000 -mips2 \
+	-DR6000_FAST_BCOPY -DR6000_FAST_BZERO \
+	-DR6000_BUG_FLUSH -DR6000_BUG_FLUSH_FLAGS -DR6000_BUG_PID \
+	-DR6000_BUG_IDPROM -DR6000_BUG_FPINTR -DR6000_BUG_LWC1_NONCACHED \
+	-DR6000_BUG_FLUSH_PAUSE -DR6000_BUG_SBC_TIMER -DFRAG_PTS
+
+# R6000_BUG_FLUSH
+#	CPU pre-3.0 wants no S-cache-miss between a FLUSH and a subsequent
+#	SCACHE.  The SCACHE resets some bogus state in the cache engine.
+# R6000_BUG_FLUSH_PAUSE
+#	Rapid back-to-back S-cache writebacks (via FLUSH) can keep Memory
+#	sufficiently busy to lock out an IOC.  Pause slightly between FLUSHes.
+# R6000_BUG_FLUSH_FLAGS
+#	FLUSH instruction clears line-dirty flag, but not per-word-dirty
+#	flags.  Safe workaround is to completely invalidate line.
+# R6000_BUG_PID
+#	CPU wants  mtc0 Rx,C0_PID  to not live at the end of an S-cache line.
+# R6000_BUG_IDPROM
+#	Correctly reading the CPU board's IdProm values requires uplevel CPU
+#	and SBC silicon, and uplevel CPU board.
+# R6000_BUG_FPINTR
+#	CPU pre-3.0 doesn't ignore FPC interrupts when SR_CU1 is off.
+# R6000_BUG_LWC1_NONCACHED
+#	CPU pre-3.0 has problems executing cached LWC1 and fetching noncached
+#	data.
+# R6000_BUG_SBC_TIMER
+#	SBC pre-2.2 (?) occasionally incorrectly turns off Clock bit in
+#	InterruptVector when software turns off some other bit.
+# R6000_FAST_BCOPY
+# R6000_FAST_BZERO
+#	Use Cp1 LDC1 and SDC1 instructions to speed up bcopy() and bzero().
+#	Requires -mips2.
+# FRAG_PTS
+#	Use fragments of physical pages for page tables

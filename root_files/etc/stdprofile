@@ -1,0 +1,17 @@
+#ident	"@(#)sadmin:etc/stdprofile	1.2"
+#ident	"$Header: stdprofile,v 1.3.2.1 89/11/28 09:37:47 wje Exp $"
+#	This is the default standard profile provided to a user.
+#	They are expected to edit it to meet their own needs.
+
+umask 022
+
+/bin/stty line 2 erase '^H' kill '^U' intr '^C' echoe ctlecho
+eval `tset -S -Q`
+
+# list directories in columns
+ls()	{ /bin/ls -C $*; }
+
+# disable timeout feature of BRL shell - if timeout is desired, set timeout
+# value to number of minutes before timeout
+
+TIMEOUT=0

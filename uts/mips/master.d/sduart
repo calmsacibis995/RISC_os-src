@@ -1,0 +1,9 @@
+*
+* SDUART:	streams drivers for duart
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	du	0	-	stty_ld
+						
+
+$$$
+

@@ -1,0 +1,9 @@
+-t 15 -g 45
+# This sample file contains an example of how parameters are passed to the
+# lock daemon when it gets started at boot time.  The numbers used represent
+# the current default.  See lockd (1M).
+/* --------------------------------------------------- */
+/* | Copyright (c) 1990 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+#ident	"$Header: lockd.conf.sample,v 1.1.1.1 90/04/13 15:13:48 wje Exp $"

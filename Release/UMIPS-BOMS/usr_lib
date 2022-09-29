@@ -1,0 +1,43 @@
+usr/lib/copyright -r--r--r-- bin bin 1
+usr/lib/libPW.a -r--r--r-- bin bin 1
+usr/lib/libbsd.a -r--r--r-- bin bin 1
+usr/lib/libbsd_G0.a -r--r--r-- bin bin 1
+usr/lib/libc.a -r--r--r-- bin bin 1
+usr/lib/libc_mips2.a l--------- bin bin 1 libc.a
+usr/lib/libc_G0.a -r--r--r-- bin bin 1
+usr/lib/libcurses.a -r--r--r-- bin bin 1
+usr/lib/libdbm.a -r--r--r-- bin bin 1
+usr/lib/libgen.a -r--r--r-- bin bin 1
+usr/lib/libl.a -r--r--r-- bin bin 1
+usr/lib/libmalloc.a -r--r--r-- bin bin 1
+usr/lib/libmalloccheck.a -r--r--r-- bin bin 1
+usr/lib/libnsl.a -r--r--r-- bin bin 1
+usr/lib/librpcsvc.a -r--r--r-- bin bin 1
+usr/lib/libsec.a -r--r--r-- bin bin 1
+usr/lib/libsun.a -r--r--r-- bin bin 1
+usr/lib/libtermcap.a l--------- bin bin 1 libcurses.a
+usr/lib/libtermlib.a l--------- bin bin 1 libcurses.a
+usr/lib/liby.a -r--r--r-- bin bin 1
+usr/lib/lint dr-xr-xr-x bin bin 1
+usr/lib/lint/llib-lbsd -r--r--r-- bin bin 1
+usr/lib/lint/llib-lbsd.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-lc -r--r--r-- bin bin 1
+usr/lib/lint/llib-lc.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-lcrypt -r--r--r-- bin bin 1
+usr/lib/lint/llib-lcrypt.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-lcurses -r--r--r-- bin bin 1
+usr/lib/lint/llib-lcurses.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-ll -r--r--r-- bin bin 1
+usr/lib/lint/llib-ll.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-lmalloc -r--r--r-- bin bin 1
+usr/lib/lint/llib-lmalloc.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-lsun -r--r--r-- bin bin 1
+usr/lib/lint/llib-lsun.ln -r--r--r-- bin bin 1
+usr/lib/lint/llib-port -r--r--r-- bin bin 1
+usr/lib/lint/llib-port.ln -r--r--r-- bin bin 1
+usr/lib/tabset/3101 -r--r--r-- bin bin 1
+usr/lib/tabset/beehive -r--r--r-- bin bin 1
+usr/lib/tabset/std -r--r--r-- bin bin 1
+usr/lib/tabset/teleray -r--r--r-- bin bin 1
+usr/lib/tabset/vt100 -r--r--r-- bin bin 1
+usr/lib/tabset/xerox1720 -r--r--r-- bin bin 1

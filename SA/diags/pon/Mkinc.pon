@@ -1,0 +1,174 @@
+#ident "$Header: Mkinc.pon,v 1.16.1.1 90/07/18 14:28:08 huang Exp $"
+
+#
+# Copyright 1988 by MIPS Computer Systems, Inc.
+#
+# makefile for libpon diagnostic library
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+include	../../../Mkinc.common_defines
+include	../../../Mkinc.release
+
+INCDIRS=	-I../../../include -I../../../include/prom
+DEFINES= 	-D$(VERSION) -DSTANDALONE -Wo,-rege,8
+PROMOPTS=	-DPROM -G 0
+
+ASFLAGS=	$(INCDIRS) -G 0 $(DEFINES) $(ASOPTS) $(ENDIAN) $(CASOPTS) -DLOCORE
+CFLAGS=		$(INCDIRS) -G 0 $(DEFINES) $(CCOPTS) $(ENDIAN) $(CCCOPTS) -DLANGUAGE_C
+
+SHELL=		/bin/sh
+
+VPATH=		..
+DPATH=		..
+
+LIB=		libpon.a
+
+SUFILES=
+
+SFILES=		$(SFILES_MACHDEP) \
+		../pon_allexc.s \
+		../pon_banner.s \
+		../pon_dblk_refill.s \
+		../pon_duart.s \
+		../pon_enetprom.s \
+		../pon_fp1.s \
+		../pon_fp2.s \
+		../pon_iblk_refill.s \
+		../pon_idprom.s \
+		../pon_leds.s \
+		../pon_mem.s \
+		../pon_lomem.s \
+		../pon_sequence.s \
+		../pon_subr.s \
+		../pon_scc.s
+
+CFILES=		$(CFILES_MACHDEP) \
+		../pon_atreg.c \
+		../pon_chain1.c \
+		../pon_chain2.c \
+		../pon_duarts.c \
+		../pon_imr.c \
+		../pon_nvram.c
+
+LIBOBJS=	$(LIBOBJS_MACHDEP) \
+		pon_allexc.o \
+		pon_atreg.o \
+		pon_banner.o \
+		pon_chain1.o \
+		pon_chain2.o \
+		pon_dblk_refill.o \
+		pon_duart.o \
+		pon_duarts.o \
+		pon_enetprom.o \
+		pon_fp1.o \
+		pon_fp2.o \
+		pon_iblk_refill.o \
+		pon_idprom.o \
+		pon_imr.o \
+		pon_leds.o \
+		pon_mem.o \
+		pon_lomem.o \
+		pon_nvram.o \
+		pon_sequence.o \
+		pon_subr.o \
+		pon_scc.o
+
+LIB1OBJS=	$(LIB1OBJS_MACHDEP) \
+		pon_allexc.o \
+		pon_atreg.o \
+		pon_banner.o \
+		pon_chain1.o \
+		pon_chain2.o \
+		pon_duart.o \
+		pon_duarts.o \
+		pon_enetprom.o \
+		pon_fp1.o \
+		pon_fp2.o \
+		pon_idprom.o \
+		pon_imr.o \
+		pon_leds.o \
+		pon_mem.o \
+		pon_lomem.o \
+		pon_nvram.o \
+		pon_sequence.o \
+		pon_subr.o \
+		pon_scc.o
+
+all:		$(LIB)
+
+$(LIB):		pon_vers.o $(LIBOBJS)
+		-rm -f $(LIB)
+		$(AR) cr $(LIB) pon_vers.o $(LIBOBJS)
+		ranlib $(LIB)
+
+proms:		all
+
+libpon1.a:	pon_vers.o $(LIB1OBJS)
+		-rm -f libpon1.a
+		$(AR) cr libpon1.a pon_vers.o $(LIB1OBJS)
+		ranlib libpon1.a
+
+remake:		clobber depend
+		$(MAKE) all
+
+clobber:	clean
+		-rm -f $(LIB)
+
+clean:
+		-rm -f *.o pon_vers.c makefile.bak
+
+pon_vers.c:	$(LIBOBJS) 
+		-rm -f pon_vers.c
+		echo "/* Configuration Control File */" > pon_vers.c;
+		$(IF_SYSV) \
+			echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+			    >> pon_vers.c; \
+			echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		$(IF_BSD) \
+			echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+			    >> pon_vers.c; \
+			echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		echo "\";" >> pon_vers.c
+		$(IF_SYSV) \
+		echo "char *pon_version=\"\c" >> pon_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>pon_vers.c; \
+		$(ENDIF)
+		$(IF_BSD) \
+			echo -n "char *pon_version=\"" >> pon_vers.c; \
+			echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		echo "\";" >> pon_vers.c
+
+pon_vers.o:	pon_vers.c
+		-rm -f pon_vers.o
+		$(CC) $(CFLAGS) -c pon_vers.c
+
+depend:
+		-rm -f eddep makedep
+		$(CC) -M $(CFLAGS) $(SFILES) $(CFILES) | \
+		awk -f $(AWKDEPEND) - > makedep
+		echo '/^# DO NOT DELETE THIS LINE/+1,$$d' >eddep
+		echo '$$r makedep' >>eddep
+		echo 'w Makefile' >>eddep
+		-rm -f Makefile.bak
+		cp Makefile Makefile.bak
+		rm -f Makefile
+		ed - Makefile.bak < eddep
+		rm eddep makedep
+		-rm -f eddep makedep
+
+.c.o:
+		-rm -f $@
+		$(CC) $(CFLAGS) -c $<
+
+.s.o:
+		-rm -f $@
+		$(AS) $(ASFLAGS) -o $@ $<

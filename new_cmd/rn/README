@@ -1,0 +1,36 @@
+The directory 'dist' contains the files to rn, as gotten from the net.
+The directory 'mips' contains modifications to the files in dist,  plus
+the configuration files necessary to build the binary.
+
+Files modified by mips:
+
+Configure 	- changed to accept 1 argument (bsd43 or sysv) to specify
+		  which flavor of rn to configure.
+Makefile.SH 	- cleaned up some; change way in which man pages are installed
+
+Configuration files necessary to create and install rn binaries and associated
+files:
+
+Pnews.header 	config.h 	makedir 	ng.help 
+Rnmail 		filexp 		newsetup 	pager.help 
+Pnews 		art.help 	makedepend 	newsnews 	subs.help 
+Makefile 	config.sh 	mbox.saver 	norm.saver 
+
+These files contain bogus information regarding hostname, organization, etc.
+You will definitely want to run the Configure program to tailor rn for 
+your system.  To run configure, do the following:
+
+	touch mips/config.sh 
+	make configure
+	make 
+	make install
+
+This will make a BSD 4.3 flavor rn program.  If you wish to compile rn
+as a System V program, do the following:
+
+	cd mips
+	./Configure sysv
+	cd ..
+	make
+	make install
+

@@ -1,0 +1,15 @@
+usr/src/man/manpages/admin_ref/man1/uucheck.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uucico.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uucleanup.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uucpd.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uupoll.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uusched.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/admin_ref/man1/uuxqt.1m -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/bsd_man1/tip.1c -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/uucp.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/uuencode.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/uustat.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/uuto.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/uux.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/user_ref/man1/cu.1 -r--r--r-- bin bin 1
+usr/src/man/manpages/prog_ref/man4/uuencode.4 -r--r--r-- bin bin 1

@@ -1,0 +1,6 @@
+#ident "$Header: Permissions,v 1.4.2.1 89/11/28 09:45:47 wje Exp $"
+# This entry for public login.
+# It provides the default permissions.
+# See the Basic Networking Utilities Guide for more information.
+
+LOGNAME=nuucp

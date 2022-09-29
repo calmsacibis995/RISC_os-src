@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# $Header: 10.clean.system,v 1.2.2.1 89/11/27 02:46:28 wje Exp $
+#
+# Weekly cleanup -- remove old files in /tmp and /usr/tmp
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRemoving old temp files:"
+
+	cd /tmp
+	find . -type f -mtime +5 -exec rm -f '{}' \;
+	cd /usr/tmp
+	find . -type f -mtime +5 -exec rm -f '{}' \;
+
+}
+
+main ${1+"$@"}
+exit 0

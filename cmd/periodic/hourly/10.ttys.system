@@ -1,0 +1,122 @@
+#!/bin/sh
+#
+# Build a fake copy of /etc/ttys out of /etc/inittab and /etc/ttytype.
+#
+
+PATH=/bin:/usr/bin
+
+TTYS=/etc/ttys
+INITTAB=/etc/inittab
+TTYTYPES=/etc/ttytype
+
+main()
+{
+
+	if [ -f /etc/ttys ]
+	then
+		new=`find $INITTAB  $TTYTYPES -newer $TTYS -print`
+		new2=`find $TTYTYPES  $INITTAB -newer $TTYS -print`
+		case "$new$new2" in
+			"")
+				exit 0
+				;;
+		esac
+	fi
+	echo "\nBuilding new /etc/ttys:"
+
+	warning > "$TTYS"
+	get_ttys >> "$TTYS"
+	put_ptys >> "$TTYS"
+	warning >> "$TTYS"
+}
+
+#
+# Print a warning message so people won't think this is a useable file.
+#
+
+warning()
+{
+	echo "################# W A R N I N G ###################"
+	echo "#This is a faked-up version of /etc/ttys, built from"
+	echo "#/etc/inittab and /etc/ttytype.  Do not modify this"
+	echo "#data or expect it to be completely correct."
+	echo "################# W A R N I N G ###################"
+	echo ""
+}
+
+#
+# Read the input files, build an array of tty types, and process
+# each of the /etc/getty and /etc/uugetty entries in /etc/inittab,
+# generating /etc/ttys entries.
+#
+
+get_ttys()
+{
+	echo "# Ttys"
+	get_data | awk -F: '
+	BEGIN {
+		State = 1;
+		Types[""] = "none";
+	}
+	(State == 1) {
+		if ($1 == "#EnDoFdAtA") {
+			State = 2;
+			next;
+		}
+		Types[$1] = $2;
+		next;
+	}
+	(State == 2) {
+		if ($4 ~ /\/etc\/u*getty/) {
+			n = split($4, cmd, " ");
+			if ($3 == "respawn") {
+				tty = "on secure";
+			} else {
+				tty = "off";
+			}
+			type = Types[cmd[2]];
+			if (type == "") {
+				type = "none";
+			}
+			printf "%s\t\"%s\"\t%s\t%s\n", cmd[2], $4, type, tty;
+		}
+	}'
+	echo ""
+}
+
+#
+# Generate input for get_ttys.  First comes /etc/ttytypes with the
+# fields in the form "tty:type" and with the optional leading ? stripped.
+# Next comes the data separator.  Last comes the contents of /etc/inittab
+# with comments removed.
+#
+
+get_data()
+{
+	re='s/^?*\([^ 	]*\)[ 	]*\([^ 	]*\)[ 	]*.*$/\2:\1/'
+	if [ -r "$TTYTYPES" ]
+	then
+		sed "$re" "$TTYTYPES"
+	fi
+	echo "#EnDoFdAtA"
+	sed 's/#.*$//
+	     s/	/ /g' "$INITTAB"
+}
+
+#
+# Generate a fake entry for all standard ptys.
+#
+
+put_ptys()
+{
+	echo "# Ptys\n"
+	for file in /dev/ttyq*
+	{
+		name=`basename $file`
+		echo "$name\tnone\tnetwork secure"
+	}
+	echo ""
+}
+
+main ${1+"$@"}
+exit 0

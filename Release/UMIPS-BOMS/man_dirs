@@ -1,0 +1,15 @@
+usr/man drwxr-xr-x bin bin 2
+usr/man/a_man l--------- bin bin 1 catman/a_man
+usr/man/catman drwxr-xr-x bin bin 2
+usr/man/catman/a_man drwxr-xr-x bin bin 2
+usr/man/catman/a_man/man1 drwxr-xr-x bin bin 2
+usr/man/catman/a_man/man7 drwxr-xr-x bin bin 2
+usr/man/catman/p_man drwxr-xr-x bin bin 2
+usr/man/catman/p_man/man2 drwxr-xr-x bin bin 2
+usr/man/catman/p_man/man3 drwxr-xr-x bin bin 2
+usr/man/catman/p_man/man4 drwxr-xr-x bin bin 2
+usr/man/catman/p_man/man5 drwxr-xr-x bin bin 2
+usr/man/catman/u_man drwxr-xr-x bin bin 2
+usr/man/catman/u_man/man1 drwxr-xr-x bin bin 2
+usr/man/p_man l--------- bin bin 1 catman/p_man
+usr/man/u_man l--------- bin bin 1 catman/u_man

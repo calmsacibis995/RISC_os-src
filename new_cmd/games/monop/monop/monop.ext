@@ -1,0 +1,31 @@
+/* ------------------------------------------------------------------ */
+/* | Copyright Unpublished, MIPS Computer Systems, Inc.  All Rights | */
+/* | Reserved.  This software contains proprietary and confidential | */
+/* | information of MIPS and its suppliers.  Use, disclosure or     | */
+/* | reproduction is prohibited without the prior express written   | */
+/* | consent of MIPS.                                               | */
+/* ------------------------------------------------------------------ */
+/* $Header: monop.ext,v 1.1.2.1 89/11/28 04:24:08 wje Exp $ */
+
+# include	"monop.h"
+# include	"deck.h"
+
+extern bool	trading, spec, fixing, told_em;
+
+extern char	*yn[], *comlist[], *name_list[], *lucky_mes[];
+
+extern int	num_play, player, num_doub, num_luck, (*func[])();
+
+extern DECK	deck[2];
+
+extern MON	mon[];
+
+extern PLAY	*play, *cur_p;
+
+extern PROP	prop[];
+
+extern RR_S	rr[];
+
+extern SQUARE	board[];
+
+extern UTIL_S	util[];

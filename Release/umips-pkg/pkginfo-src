@@ -1,0 +1,93 @@
+#
+# RISC/os 4.52 Source Release
+#
+package=umips-src
+	id="RISC/os operating system source"
+	version=4.52B5R2 timestamp=660505977
+
+media=Q120
+
+subpackage=kernel-src
+	id="RISC/os UNIX Kernel Source"
+	optional
+	splitboms="src_uts"
+        bom=kernel-src
+
+subpackage=usr-src
+	id="RISC/os System V Commands and Libraries Source"
+	optional
+	splitboms="src_dirs src_files"
+	bom=usr-src
+
+subpackage=bsd43-src
+	id="RISC/os 4.3 BSD Commands and Libraries Source"
+	optional
+	splitboms="bsd43_src_dirs bsd43_src_files"
+	bom=bsd43-src
+
+subpackage=posix-src
+	id="RISC/os POSIX 1003.1 Libraries and Include File Source"
+	optional
+	splitboms="posix_src_dirs posix_src_files"
+	bom=posix-src
+
+# man pages are subject to contract restrictions on distribution
+#subpackage=man_src
+#	id="RISC/os On-Line Manual Pages Source"
+#	optional
+#	splitboms="mansrc_dirs mansrc_files mansrc_bsd"
+#	bom=man_src
+#
+subpackage=sppe
+        id="MIPS Systems Programmer's Package RISC/os Source"
+        version=5.00
+        splitboms="spp.base spp.bfsd spp.dbgmon spp.diags spp.diags-r3030 spp.diags-r3125 spp.diags-r6000 spp.include spp.proms spp.proms-r3030 spp.proms-r3125 spp.proms-r6000 spp.saio-lib spp.saio-lib-r3030 spp.saio-lib-r3125 spp.saio-lib-r6000 spp.scripts spp.stand spp.tools spp.unix"
+        bom=sppe
+
+subpackage=pkgtools
+	id="RISC/os Software Packaging/Installation Tools Source"
+	optional
+	splitboms="bom-src crossenv pkgtools.src pkgtools.pkg umips-pkg-src"
+	bom=pkgtools
+
+subpackage=compat
+        id="RISC/os 4.00 Compatibility Libraries"
+        optional
+        splitboms="4.0compat-sysv 4.0compat-bsd43"
+        bom=compat
+
+subpackage=bsd_games
+	id="RISC/os 4.3 BSD Games Source"
+ 	optional
+ 	splitboms="games_src"
+ 	bom=bsd_games
+
+subpackage=uucp
+        id="UUCP"
+        optional
+        splitboms="uucp_src_files"
+        bom=uucp
+
+subpackage=sccs
+        id="SCCS"
+        optional
+        splitboms="sccs_src_files sccs_src_dirs"
+        bom=sccs
+
+subpackage=emacs
+	id="emacs"
+	optional
+	splitboms="emacs_X11 emacs_src_dirs emacs_src_files"
+	bom=emacs
+
+subpackage=mh
+	id="mh"
+	optional
+	splitboms="mh_src_dirs mh_src_files"
+	bom=mh
+
+subpackage=news_readers
+	id="News Readers"
+	optional
+	splitboms="rn_src_dirs rn_src_files"
+	bom=news_readers

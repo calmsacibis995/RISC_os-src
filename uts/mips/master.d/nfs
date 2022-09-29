@@ -1,0 +1,29 @@
+*#ident "$Header: nfs,v 1.6.1.3 90/04/26 13:35:58 wje Exp $"
+*
+* nfs - Network File System, vnode based derived from NFS4.0 distribution tape
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	nfs_	-	-	ufs, specfs
+
+$$$
+
+#include "sys/types.h"
+#include "sys/param.h"
+
+
+/*
+ *   Tuneable parameters
+ */
+
+#define	NFS_MAXMAJORS	16		/* max major device numbers for NFS */
+					/* Each device number will allow 256
+					 * mounts points.
+					 */
+/*  
+ *   End of tuneable parameters 
+ */
+
+int	nfs_maxmajors = NFS_MAXMAJORS;
+short	nfs_majors[NFS_MAXMAJORS];
+char	nfs_minmap[NFS_MAXMAJORS*256/NBBY];
+

@@ -1,0 +1,12 @@
+root::0:root
+other::1:root
+bin::2:root,bin,daemon
+sys::3:root,bin,sys,adm
+adm::4:root,adm,daemon
+uucp::5:root,adm,bin,uucp
+mail::6:root
+rje::8:rje
+nuucp::10:root,nuucp,uucp
+daemon::12:root,daemon
+nobody::14:root,nobody
+xrje::18:rje

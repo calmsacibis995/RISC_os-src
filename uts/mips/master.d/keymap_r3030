@@ -1,0 +1,10 @@
+* $Header
+*
+* Keyboard mappings for RS3230
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ors	keymap_r3030
+						
+
+$$$
+

@@ -1,0 +1,23 @@
+#!/bin/sh
+# 
+# $Header: S22account,v 1.1.1.1 90/02/15 14:39:17 wje Exp $
+# This script executes a corresponding script in /etc/init.d.
+# If you want to make a special local version of this
+# operation, copy the /etc/init.d file on top of this file and
+# make your modifications.  Do not change the file in
+# /etc/init.d.
+#
+
+REALFILE="/etc/init.d/account"
+
+if [ -f "$REALFILE" ]
+then
+	exec "$REALFILE" ${1+"$@"}
+else
+	echo "No process accounting startup file."
+	echo "Link one of:"
+	echo "init.d/bsd43_accton init.d/acct or init.d/noacct"
+	echo "to init.d/account"
+	echo "(See the Release Notes for details)"
+	exit 0
+fi

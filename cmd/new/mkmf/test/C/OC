@@ -1,0 +1,62 @@
+mkmf: creating Makefile from template /usr/new/lib/p.Makefile
+DEST	      = .
+
+EXTHDRS	      = ../h/cons.h \
+		../proc/globs.h
+
+HDRS	      = error.h \
+		globs.h \
+		tab.h
+
+LDFLAGS	      =
+
+LIBS	      =
+
+LINKER	      = cc
+
+MAKEFILE      = Makefile
+
+OBJS	      = convert.o \
+		parser.o \
+		prog.o
+
+PRINT	      = pr
+
+PROGRAM	      = a.out
+
+SRCS	      = convert.l \
+		parser.y \
+		prog.c \
+		scanner.l
+
+all:		$(PROGRAM)
+
+$(PROGRAM):     $(OBJS) $(LIBS)
+		@echo -n "Loading $(PROGRAM) ... "
+		@$(LINKER) $(LDFLAGS) $(OBJS) $(LIBS) -o $(PROGRAM)
+		@echo "done"
+
+clean:;		@rm -f $(OBJS)
+
+depend:;	@mkmf -f $(MAKEFILE) PROGRAM=$(PROGRAM) DEST=$(DEST)
+
+index:;		@ctags -wx $(HDRS) $(SRCS)
+
+install:	$(PROGRAM)
+		@echo Installing $(PROGRAM) in $(DEST)
+		@install -s $(PROGRAM) $(DEST)
+
+print:;		@$(PRINT) $(HDRS) $(SRCS)
+
+program:        $(PROGRAM)
+
+tags:           $(HDRS) $(SRCS); @ctags $(HDRS) $(SRCS)
+
+update:		$(DEST)/$(PROGRAM)
+
+$(DEST)/$(PROGRAM): $(SRCS) $(LIBS) $(HDRS) $(EXTHDRS)
+		@make -f $(MAKEFILE) DEST=$(DEST) install
+###
+convert.o: ../h/cons.h ../proc/globs.h
+parser.o: scanner.c ../h/cons.h ../proc/globs.h error.h tab.h
+prog.o: error.h

@@ -1,0 +1,14 @@
+#! /bin/csh
+#	Set timezone environment to default for the machine
+#	This is executed from /etc/profile when going to single
+#	user mode.  Must be done this way because login is not run
+#	to go to this mode; and TZ must be set to get the correct
+#	functionality from date(1-SysV).  /bin/csh has its own version.
+#
+#	Now login initializes the TZ the following way: (multi-user)
+#		from the environment if it exists (i.e. from login), OR
+#		from the file /etc/TZ if that exists, OR
+#		from a default built into login.
+set ___fubar___=(`cat /etc/TZ`)
+setenv TZ $___fubar___[1]
+unset ___fubar___

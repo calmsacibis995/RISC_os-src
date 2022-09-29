@@ -1,0 +1,4 @@
+39,9 * * * * /usr/lib/uucp/uudemon.hour
+10 * * * * /usr/lib/uucp/uudemon.poll
+45 23 * * * /usr/lib/uucp/uudemon.clnu
+48 10,14 * * 1-5 /usr/lib/uucp/uudemon.adm

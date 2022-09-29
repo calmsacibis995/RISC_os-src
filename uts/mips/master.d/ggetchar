@@ -1,0 +1,10 @@
+* $Header
+*
+* graphics get character
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ors	ggetchar
+						
+
+$$$
+

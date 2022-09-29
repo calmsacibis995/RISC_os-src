@@ -1,0 +1,9 @@
+bsd43 drwxr-xr-x bin bin 2
+bsd43/bin l--------- bin bin 2 ../usr/bsd43/bin
+bsd43/usr drwxr-xr-x bin bin 2
+bsd43/usr/include l--------- bin bin 2 ../../usr/include/bsd43
+bsd43/usr/lib l--------- bin bin 2 ../../usr/bsd43/usr/lib
+usr/spool/at drwxr-xr-x daemon daemon 2
+usr/spool/at/past drwxr-xr-x daemon daemon 2
+usr/spool/mail l--------- bin bin 1 ../mail
+usr/spool/secretmail drwxrwxrwx bin bin 2

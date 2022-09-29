@@ -1,0 +1,133 @@
+#ident "$Header: Mkinc.prom,v 1.29 90/10/12 11:47:02 lian Exp $"
+#	%Q%	%I%	%M%
+#
+# Copyright 1985 by MIPS Computer Systems, Inc.
+#
+# Generic Makefile for prom monitor
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+include	../../../../Mkinc.common_defines
+include	../../../../Mkinc.release
+
+LIBPSA=../../../../saio/$(MACHINE)/$(VERSION)/PSAIO_$(BINTYPE)/libpsa.a
+LIBPON=../../../../diags/pon/$(MACHINE)/$(VERSION)/PON_$(BINTYPE)/libpon.a
+
+DEFINES= -DPROM -D$(MACHINE) -D$(VERSION) -Wo,-rege,8
+
+HARDWARE_BUGS_6000= -DR6000_BUG_FLUSH -DR6000_BUG_IDPROM
+
+TMPOPTS= $(HARDWARE_BUGS_6000)
+
+ASFLAGS= $(INCDIRS_SPLIT) $(PROMOPTS) -DLOCORE $(DEFINES) $(ASOPTS) \
+	 $(ENDIAN) $(CASOPTS) $(TMPOPTS)
+CFLAGS=	$(INCDIRS_SPLIT) $(PROMOPTS) $(DEFINES) $(CCOPTS) \
+	$(ENDIAN) $(CCCOPTS) $(TMPOPTS)
+LDFLAGS= -m -N $(LDPROMOPTS) -T bfc00000 -B a0000500 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+LLDFLAGS= -m -N $(LDPROMOPTS) -T a0200000 -B a0000500 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+
+SHELL=	/bin/sh
+
+VPATH=../../..:../../../../saio
+DPATH=../../..:../../../../saio:../../../../saio/device
+
+SFILES=\
+	$(D3_PATH)/csu.mips.s		$(D3_PATH)/clientasm.s \
+	$(D3_PATH)/lmem_config.s	$(D3_PATH)/swapiso.s
+
+CFILES=\
+	$(D3_PATH)/commands.c \
+	$(D3_PATH)/machdep.c		$(D3_PATH)/main.c \
+	$(D3_PATH)/promio.c
+OBJS=\
+	clientasm.o commands.o lmem_config.o machdep.o main.o \
+	promio.o swapiso.o
+
+DIAGMONITOR=\
+	$(DEPTH)/diags/promdiag/$(MACHINE)/$(VERSION)_PROMDIAG/promdiag_$(MACHINE).$(DIAGMON_START)
+
+
+all:		prom
+
+prom:		csu.mips.o sccs_vers.o $(OBJS) $(LIBPSA) $(LIBPON)
+		-rm -f prom prom.map prom_$(MACHINE).nm prom.step$(RELEASE)
+		-rm -f prom_$(MACHINE).horz.[01].srec$(RELEASE) \
+		prom_$(MACHINE).$(RELEASE)
+		-rm -f prom_$(MACHINE).srec$(RELEASE)
+		$(LD) $(LDFLAGS) -o prom csu.mips.o sccs_vers.o \
+		      $(OBJS) $(LIBPSA) $(LIBPON) > prom.map
+		$(SIZE) -x prom
+		$(NM) -nx prom > prom_$(MACHINE).nm
+		$(CONVERT) $(CONVFLAGS) -f srec -c131072 prom > \
+		prom_$(MACHINE).horz.0.srec$(RELEASE)
+		$(CONVERT) $(CONVFLAGS) -f srec -s131072 prom > \
+		prom_$(MACHINE).horz.1.srec$(RELEASE)
+		cp prom prom_$(MACHINE).$(RELEASE)
+		@if [ -d `$(DIRNAME) $(DIAGMONITOR)` ]; \
+		then \
+			rm -f prom_$(MACHINE).horz.0.srec$(RELEASE); \
+			rm -f prom_$(MACHINE).horz.1.srec$(RELEASE); \
+			if [ -f $(DIAGMONITOR) ]; \
+			then \
+				$(CONVERT) -f srec prom $(DIAGMONITOR) > \
+					prom_$(MACHINE).srec$(RELEASE); \
+				echo " "; \
+				echo "Use prom_$(MACHINE).srec$(RELEASE) to program $(MACHINE) proms."; \
+			else \
+				echo "Warning: $(DIAGMONITOR) not found."; \
+				echo "Can't build the $(MACHINE) prom s-record file with the diagnostics monitor."; \
+			fi; \
+		fi
+
+
+remake:		clean depend
+		$(MAKE) all
+
+clobber:	clean
+		-rm -f errs prom**
+
+clean:
+		-rm -f prom prom_$(MACHINE).nm prom.map
+		-rm -f *.o *.dis strings xs.c x.c sccs_vers.c Makefile.bak
+
+sccs_vers.c:	csu.mips.o $(OBJS) $(LIBPSA)
+	-rm -f sccs_vers.c
+	echo "/* Configuration Control File */" > sccs_vers.c;
+	$(IF_SYSV) \
+		echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+		    >> sccs_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `$(WHOAMI)`"\c" \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+		    >> sccs_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+	$(IF_SYSV) \
+		echo "char sccs_version[]=\"\c" >> sccs_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `$(WHOAMI)`"\c" \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char sccs_version[]=\"" >> sccs_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+	$(IF_SYSV) \
+		echo "char version[]=\"$(RELEASE)\c" >> sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char version[]=\"$(RELEASE)" >> sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+
+
+depend:
+	$(CC) -M $(CFLAGS) $(SFILES) $(CFILES) | \
+	awk -f $(AWKDEPEND) | egrep -v 'saio_bsd|saio_sysv' > Mdepend.tmp$$$$ ;\
+        mv -f Mdepend.tmp$$$$ Makedepend

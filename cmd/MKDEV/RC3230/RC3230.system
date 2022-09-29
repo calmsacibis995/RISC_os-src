@@ -1,0 +1,303 @@
+#
+#  $Header: RC3230.system,v 1.1.1.1 90/04/26 13:28:08 wje Exp $
+#
+#  rc2030.system: MKDEV database entries common to all 2030 systems.
+#
+#  Local changes should be made by adding local files, not by changing
+#  this one.  See MKDEV(1M) and DEV_DB(4) for more information.
+#
+
+class(default,all) {
+	com.default
+	scsi
+	disks
+	qic-tape
+	mouse
+	floppy
+	keybd
+	tty
+	lp
+}
+
+class(mouse) {
+	link(tty0, mouse);
+}
+
+class(keybd) {
+	device(keybd, c, 37, 0, 666, root, bin)
+	device(ttykeybd, c, 37, 1, 666, root, bin)
+}
+
+class(lp) {
+	device(lp, c, 38, 0, 666, root, bin)
+}
+
+class(floppy) {
+	device(fd/fd0t00a, b, 35, 0, 644, root, bin)
+	device(fd/fd0t00c, b, 35, 2, 644, root, bin)
+	device(fd/fd0t01a, b, 35, 16, 644, root, bin)
+	device(fd/fd0t01c, b, 35, 18, 644, root, bin)
+	device(rfd/fd0t00a, c, 35, 0, 644, root, bin)
+	device(rfd/fd0t00c, c, 35, 2, 644, root, bin)
+	device(rfd/fd0t00vol, c, 35, 10, 644, root, bin)
+	device(rfd/fd0t01a, c, 35, 16, 644, root, bin)
+	device(rfd/fd0t01c, c, 35, 18, 644, root, bin)
+	device(rfd/fd0t01vol, c, 35, 26, 644, root, bin)
+}
+
+
+#
+# tty
+#
+# The "ttym" devices are entries to the device driver which support modem
+# control.
+# 
+
+class(tty,terminals) {
+	idevice(16, ttyd, 0, c, 32, 0, 622, root, bin)
+}
+
+#
+# scsi
+#
+# The /dev/scsi and /dev/rscsi directories contain device entries in the form
+# sdc#d##s##. The "sdc" stands for "integral scsi"; the first number is the
+# scsi host adapter number; the second number is the device number; the
+# third number has meaning specific to the given device, such as section
+# number (for disks) or device driver option flags (for tape drives).
+# The device files are to be considered the "master" files; other scsi
+# device files should be created as links to these.
+#
+
+class(scsi) {
+	b_scsi
+	c_scsi
+}
+
+class(b_scsi) {
+	idevice(16, scsi/sdc0d0s, 0, b, 33, 0, 640, root, sys)
+	idevice(16, scsi/sdc0d1s, 0, b, 33, 16, 640, root, sys)
+	idevice(16, scsi/sdc0d2s, 0, b, 33, 32, 640, root, sys)
+	idevice(16, scsi/sdc0d3s, 0, b, 33, 48, 640, root, sys)
+	idevice(16, scsi/sdc0d4s, 0, b, 33, 64, 640, root, sys)
+	idevice(16, scsi/sdc0d5s, 0, b, 33, 80, 640, root, sys)
+	idevice(16, scsi/sdc0d6s, 0, b, 33, 96, 640, root, sys)
+}
+
+class(c_scsi) {
+	idevice(16, rscsi/sdc0d0s, 0, c, 33, 0, 640, root, sys)
+	idevice(16, rscsi/sdc0d1s, 0, c, 33, 16, 640, root, sys)
+	idevice(16, rscsi/sdc0d2s, 0, c, 33, 32, 640, root, sys)
+	idevice(16, rscsi/sdc0d3s, 0, c, 33, 48, 640, root, sys)
+	idevice(16, rscsi/sdc0d4s, 0, c, 33, 64, 640, root, sys)
+	idevice(16, rscsi/sdc0d5s, 0, c, 33, 80, 640, root, sys)
+#
+# sdc0d6s* are mode 666 because these are cartridge tape devices
+# in default systems.
+#
+	idevice(16, rscsi/sdc0d6s, 0, c, 33, 96, 666, root, sys)
+}
+
+#
+# Disks
+#
+
+class(disks) {
+	sdc0d0; sdc0d1; sdc0d2; sdc0d3; sdc0d4 ; sdc0d5
+}
+
+#
+# Integral scsi disk 0
+#
+
+class(sdc0d0) {
+	b_sdc0d0; c_sdc0d0
+}
+
+class(b_sdc0d0) {
+	ilink(16, scsi/sdc0d0s, 0, dsk/sdc0d0s, 0)
+	link(dsk/sdc0d0s8, dsk/sdc0d0vh)
+	link(dsk/sdc0d0s0, root)
+	link(dsk/sdc0d0s1, swap)
+	link(dsk/sdc0d0s6, usr)
+	link(dsk/sdc0d0vh, vh)
+}
+
+class(c_sdc0d0) {
+	ilink(16, rscsi/sdc0d0s, 0, rdsk/sdc0d0s, 0)
+	link(rdsk/sdc0d0s8, rdsk/sdc0d0vh)
+	link(rdsk/sdc0d0s0, rroot)
+	link(rdsk/sdc0d0s6, rusr)
+	link(rdsk/sdc0d0vh, rvh)
+}
+
+#
+# Integral scsi disk 1
+#
+
+class(sdc0d1) {
+	b_sdc0d1; c_sdc0d1
+}
+
+class(b_sdc0d1) {
+	ilink(16, scsi/sdc0d1s, 0, dsk/sdc0d1s, 0)
+	link(dsk/sdc0d1s8, dsk/sdc0d1vh)
+}
+
+class(c_sdc0d1) {
+	ilink(16, rscsi/sdc0d1s, 0, rdsk/sdc0d1s, 0)
+	link(rdsk/sdc0d1s8, rdsk/sdc0d1vh)
+}
+
+#
+# Integral scsi disk 2
+#
+
+class(sdc0d2) {
+	b_sdc0d2; c_sdc0d2
+}
+
+class(b_sdc0d2) {
+	ilink(16, scsi/sdc0d2s, 0, dsk/sdc0d2s, 0)
+	link(dsk/sdc0d2s8, dsk/sdc0d2vh)
+}
+
+class(c_sdc0d2) {
+	ilink(16, rscsi/sdc0d2s, 0, rdsk/sdc0d2s, 0)
+	link(rdsk/sdc0d2s8, rdsk/sdc0d2vh)
+}
+#
+# Integral scsi disk 3
+#
+
+class(sdc0d3) {
+	b_sdc0d3; c_sdc0d3
+}
+
+class(b_sdc0d3) {
+	ilink(16, scsi/sdc0d3s, 0, dsk/sdc0d3s, 0)
+	link(dsk/sdc0d3s8, dsk/sdc0d3vh)
+}
+
+class(c_sdc0d3) {
+	ilink(16, rscsi/sdc0d3s, 0, rdsk/sdc0d3s, 0)
+	link(rdsk/sdc0d3s8, rdsk/sdc0d3vh)
+}
+
+#
+# Integral scsi disk 4
+#
+
+class(sdc0d4) {
+	b_sdc0d4; c_sdc0d4
+}
+
+class(b_sdc0d4) {
+	ilink(16, scsi/sdc0d4s, 0, dsk/sdc0d4s, 0)
+	link(dsk/sdc0d4s8, dsk/sdc0d4vh)
+}
+
+class(c_sdc0d4) {
+	ilink(16, rscsi/sdc0d4s, 0, rdsk/sdc0d4s, 0)
+	link(rdsk/sdc0d4s8, rdsk/sdc0d4vh)
+}
+
+#
+# Integral scsi disk 5
+#
+
+class(sdc0d5) {
+	b_sdc0d5; c_sdc0d5
+}
+
+class(b_sdc0d5) {
+	ilink(16, scsi/sdc0d5s, 0, dsk/sdc0d5s, 0)
+	link(dsk/sdc0d5s8, dsk/sdc0d5vh)
+}
+
+class(c_sdc0d5) {
+	ilink(16, rscsi/sdc0d5s, 0, rdsk/sdc0d5s, 0)
+	link(rdsk/sdc0d5s8, rdsk/sdc0d5vh)
+}
+
+#
+# QIC tape
+#
+# Note- Since either a QIC-120 or QIC-24 drive might be installed, the
+# default action for class "qic-tape" is to make read/write Q24 device
+# entries linked to the /dev/scsi entries, and no Q120 entries.  The
+# installation procedure for UMIPS 3.0 will determine whether a QIC-120
+# drive is present; if so, the class q120 will be built, which will
+# created seperate (not linked into /dev/scsi) read-only Q24 entries and
+# create a read/write Q120 entry linked to the /dev/scsi entries. The m0
+# and ctape names will always be links to the read/write /dev/scsi entries;
+# The SA names will always be links to the Q24 names.
+#
+
+class(qic-tape,cartridge) {
+	q120
+	qstd
+	qsa
+	qh
+	qhc
+}	
+
+class(qhc) {
+	device(mt/hc0, c, 33, 64, 666, root, sys)
+	device(rmt/hc0, c, 33, 64, 666, root, sys)
+	device(mt/hc4, c, 33, 65, 666, root, sys)
+	device(rmt/hc4, c, 33, 65, 666, root, sys)
+	link(mt/hc0, mt/HC-0)
+	link(rmt/hc0, rmt/HC-0)
+	link(mt/hc4, mt/HCn-0)
+	link(rmt/hc4, rmt/HCn-0)
+}
+
+class(qh) {
+	device(mt/h0, c, 33, 80, 666, root, sys)
+	device(rmt/h0, c, 33, 80, 666, root, sys)
+	device(mt/h4, c, 33, 81, 666, root, sys)
+	device(rmt/h4, c, 33, 81, 666, root, sys)
+}
+
+class(q24) {
+	link(rscsi/sdc0d6s0, mt/Q24-0)
+	link(rscsi/sdc0d6s0, rmt/Q24-0)
+	link(rscsi/sdc0d6s1, mt/Q24n-0)
+	link(rscsi/sdc0d6s1, rmt/Q24n-0)
+}
+
+class(q120) {
+	link(rscsi/sdc0d6s0, mt/Q120-0)
+	link(rscsi/sdc0d6s0, rmt/Q120-0)
+	link(rscsi/sdc0d6s1, mt/Q120n-0)
+	link(rscsi/sdc0d6s1, rmt/Q120n-0)
+	device(mt/Q24-0, c, 33, 96, 444, root, sys)
+	device(rmt/Q24-0, c, 33, 96, 444, root, sys)
+	device(mt/Q24n-0, c, 33, 97, 444, root, sys)
+	device(rmt/Q24n-0, c, 33, 97, 444, root, sys)
+}
+
+class(qstd) {
+	link(rscsi/sdc0d6s0, mt/ctape0)
+	link(rscsi/sdc0d6s0, mt/m0)
+	link(rscsi/sdc0d6s1, mt/ctape4)
+	link(rscsi/sdc0d6s1, mt/m4)
+	link(rscsi/sdc0d6s0, rmt/ctape0)
+	link(rscsi/sdc0d6s0, rmt/m0)
+	link(rscsi/sdc0d6s1, rmt/ctape4)
+	link(rscsi/sdc0d6s1, rmt/m4)
+}
+
+#
+# SA
+#
+# Since, I gather, this was meant for stuff like loading install tapes,
+# the links will be created to the QIC-24 devices.
+#
+
+class(qsa) {
+	link(mt/Q24-0, SA/ctape0)
+	link(rmt/Q24-0, rSA/ctape0)
+}
+

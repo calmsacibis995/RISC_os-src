@@ -1,0 +1,46 @@
+*#ident	"@(#)kern-port:master.d/sem	10.2"
+*#ident	"$Header: sem,v 1.4.4.2.1.2.1.2 90/11/06 12:38:49 beacker Exp $"
+*
+* SEM
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	sem	-	-	ipc
+				semsys(){nosys}
+				semexit(){}
+
+$$$
+
+#define SEMMAP 10
+#define SEMMNI 30
+#define SEMMNS 125
+#define SEMMNU 30
+#define SEMMSL 125
+#define SEMOPM 10
+#define SEMUME 10
+#define SEMVMX 32767
+#define SEMAEM 16384
+
+struct semid_ds	sema[SEMMNI];
+struct sem	sem[SEMMNS];
+struct map	semmap[SEMMAP];
+struct sem_undo	*sem_undo[NPROC];
+struct sem_undo	semu[((16+8*SEMUME)*SEMMNU+NBPW-1)/NBPW];
+
+union {
+	ushort semvals[1];	/* set semaphore values	*/
+	struct semid_ds ds;	/* set permission values */
+	struct sembuf semops[1];/* operation holding area */
+} semtmp[(8*SEMOPM+NBPW-1)/NBPW];
+
+struct seminfo seminfo = {
+	SEMMAP,
+	SEMMNI,
+	SEMMNS,
+	SEMMNU,
+	SEMMSL,
+	SEMOPM,
+	SEMUME,
+	16+8*SEMUME,
+	SEMVMX,
+	SEMAEM,
+};

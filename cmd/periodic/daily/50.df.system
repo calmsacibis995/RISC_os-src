@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# print a df listing for local filesystems
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nDisk usage statistics:"
+
+	df -t local -i
+
+}
+
+main ${1+"$@"}
+exit 0

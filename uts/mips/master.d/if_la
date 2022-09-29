@@ -1,0 +1,7 @@
+* $Header
+* if_la - lance interface driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+-	if_la	-	-	bsd, if_lacomm, iop
+
+$$$

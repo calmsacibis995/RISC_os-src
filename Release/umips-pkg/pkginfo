@@ -1,0 +1,193 @@
+#
+# RISC/os 4.52 Packaging Information File - Domestic version
+#
+package=umips
+	id="RISC/os Operating System"
+	version=4.52B4R4 timestamp=659192940
+        os
+
+media=Q120
+
+subpackage=root
+	id="RISC/os Standard Root Filesystem"
+	minirootonly
+	splitboms="root_cmd root_dirs root_files root_dom bsd43_root_dom"
+        bom=root
+
+subpackage=m1000
+subpackage=m800
+subpackage=m500
+	id="RISC/os m/500, m/800, m/1000 Kernel and Devices"
+	splitboms="root.r2300 m1000_dev sppbin_std"
+	bom=r2300
+
+subpackage=m2000
+subpackage=m2000-6
+subpackage=m2000-8
+	id="RISC/os m/2000 Kernel and Devices"
+	splitboms="root.r3200 m2000_dev_common m2000_dev sppbin_std"
+	bom=r3200
+
+subpackage=rc3260
+subpackage=RC3260
+	id="RISC/os RC3260 Kernel and Devices"
+	splitboms="root.r3200_ijc m2000_dev_common m2000_dev_ijc sppbin_std"
+	bom=r3260
+
+subpackage=m120
+subpackage=m120-3
+subpackage=m120-5
+subpackage=RC3240
+subpackage=rc3240
+	id="RISC/os m/120, RC3240 Kernel and Devices"
+	splitboms="root.r2400 m120_dev sppbin_std"
+	bom=r2400
+
+subpackage=rc2030
+subpackage=RC2030
+subpackage=rs2030
+subpackage=RS2030
+        id="RISC/os RC2030/RS2030 Kernel and Devices"
+        splitboms="root.i2000 rc2030_dev sppbin_2030"
+        bom=r2030
+
+subpackage=RC6280
+subpackage=RC6260
+        id="RISC/os RC6280 Kernel and stand files"
+        splitboms="root.r6000 sppbin_std"
+        bom=r6000
+
+subpackage=RC6280_dev
+        id="RISC/os RC6280 Devices"
+        splitboms="RC6280_dev RC6280_dev_common"
+        bom=r6280
+
+subpackage=RC6260_dev
+        id="RISC/os RC6260 Devices"
+        splitboms="RC6280_dev_common RC6280_dev_ijc"
+        bom=r6260
+
+subpackage=rc3230
+subpackage=RC3230
+subpackage=rs3230
+subpackage=RS3230
+subpackage=rc3330
+subpackage=RC3330
+subpackage=rs3330
+subpackage=RS3330
+        id="RISC/os RS3230/RS3330 RC3230/RC3330 Kernel and Devices"
+        splitboms="root.r3030 RC3230_dev sppbin_std"
+        bom=r3030
+
+subpackage=m2000-25ipc
+subpackage=m2000-25ijc
+subpackage=m2000-25sdc
+subpackage=m2000-33ipc
+subpackage=m2000-33ijc
+subpackage=m2000-33sdc
+        id="RISC/os m2000-25/33 Kernel and stand files"
+        splitboms="root.rb3125 sppbin_std"
+        bom=rb3125
+
+subpackage=m2000-25ipc_dev
+subpackage=m2000-33ipc_dev
+        id="RISC/os m2000-25/33 Devices - root on ipc"
+        splitboms="m2000-25_dev_ipc m2000-25_dev_common"
+        bom=rb3125ipc
+
+subpackage=m2000-25ijc_dev
+subpackage=m2000-33ijc_dev
+        id="RISC/os m2000-25/33 Devices - root on ijc"
+        splitboms="m2000-25_dev_ijc m2000-25_dev_common"
+        bom=rb3125ijc
+
+subpackage=m2000-25sdc_dev
+subpackage=m2000-33sdc_dev
+        id="RISC/os m2000-25/33 Devices - root on sdc"
+        splitboms="m2000-25_dev_sdc m2000-25_dev_common"
+        bom=rb3125sdc
+
+subpackage=usr
+	id="RISC/os Standard /usr Filesystem"
+	splitboms="usr_cmd usr_cmplr_aux usr_dirs usr_include usr_lib usr_term pkgtools.bin usr_include_uts usr_dom"
+	bom=usr
+
+media=Q120
+
+subpackage=cmplrs
+	id="MIPS-C Compiler"
+	optional
+	splitboms="cc.bin cc.dir cc.hdr cc.bsdhdr cc.lib cc.pkg usr_cmplr_aux"
+        bom=cmplrs
+
+subpackage=cmplrs-bsd43
+	id="MIPS-C 4.3 BSD Include Files and Libraries"
+	optional
+	splitboms="cc.bsddir cc.bsdlib"
+        bom=cmplrs-bsd43
+
+subpackage=man
+	id="RISC/os Manual Pages"
+	optional
+	splitboms="man_dirs man_files man_files_bsd man_links man_links_bsd sppbin.man cc.man cc.mandir emacs_man man_files_posix man_links_posix mh_man uucp_man rn_man sccs_man"
+	bom=man
+
+subpackage=compat
+	id="RISC/os 4.00 Compatibility Libraries"
+	optional
+	splitboms="4.0compat-sysv 4.0compat-bsd43"
+	bom=compat
+
+subpackage=bsd43
+	id="RISC/os 4.3 BSD Utilities, Include Files and Libraries"
+	optional
+	splitboms="bsd43_root_dirs bsd43_root_cmd bsd43_usr_include bsd43_usr_lib bsd43_usr_dom"
+	bom=bsd43
+
+subpackage=reconfig
+	id="Kernel Binary Reconfiguration Components"
+	optional
+	splitboms="usr_src_uts"
+	bom=reconfig
+
+subpackage=emacs
+	id="emacs"
+	optional
+	splitboms="emacs_cmd"
+	bom=emacs
+
+subpackage=posix
+	id="RISC/os POSIX P1003.1 Include Files, Commands and Libraries"
+	optional
+	splitboms="posix_root_cmd posix_root_dirs posix_usr_include posix_usr_lib"
+	bom=posix
+
+subpackage=uucp
+        id="UUCP"
+        optional
+        splitboms="uucp_bin_dirs uucp_files" 
+        bom=uucp
+
+subpackage=sccs
+        id="SCCS"
+        optional
+        splitboms="sccs_files"
+        bom=sccs
+
+subpackage=news_readers
+	id="News Readers"
+	optional
+	splitboms="news_rn"
+	bom=news_readers
+
+subpackage=games
+	id="Games"
+	optional
+	splitboms="games_usr"
+	bom=games
+
+subpackage=mh
+	id="mh"
+	optional
+	splitboms="mh_cmd"
+	bom=mh

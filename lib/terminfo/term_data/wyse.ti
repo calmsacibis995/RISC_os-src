@@ -1,0 +1,200 @@
+# "$Header: wyse.ti,v 1.4.2.2 90/02/15 14:51:07 wje Exp $"
+#
+# Termcap descriptions for wyse terminals.
+#
+wyse75|wyse_75|wyse 75,
+	mir, msgr, xon,
+	cols#80, lines#24,
+	bel=^G, blink=\E[5m, bold=\E[1m, cbt=\E[Z,
+	clear=\E[H\E[2J$<50>, cr=\r, csr=\E[%i%p1%d;%p2%dr,
+	cub=\E[%p1%dD, cub1=\b, cud=\E[%p1%dB, cud1=\n,
+	cuf=\E[%p1%dC, cuf1=\E[C, cup=\E[%i%p1%d;%p2%dH,
+	cuu=\E[%p1%dA, cuu1=\EM, dch1=\E[P$<1>,
+	dl=\E[%p1%dM$<1*>, dl1=\E[M$<1>,
+	ed=\E[J$<1*>, el=\E[K$<5>,
+	flash=\E[>+/^N^OP\sB\sE\sE\sE\sE\sE\sE\sE\sE\sE\sP\s!\s!\s!\s!\s!\s/\E[>+//,
+	home=\E[H, hpa=\E[%i%p1%dG, ht=\t, hts=\EH,
+	il=\E[%p1%dL$<1*>, il1=\E[L$<1>, ind=\ED$<1>,
+	ip=$<1*>,
+	is2=\E[13l\E!p\E[20l\E[12;?2;7h\E(B\E)0\E>\E[m\E[p,
+	kbs=\b, kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C,
+	kcuu1=\E[A, kf0=\E[?5i, kf1=\E[?3i, kf2=\E[2i,
+	kf3=\E[@, kf4=\E[M, kf5=\E[17~, kf6=\E[18~,
+	kf7=\E[19~, kf8=\E[20~, kf9=\E[21~, khome=\E[H,
+	lf0=F1, lf1=F2, lf2=F3, lf3=F4, lf5=F6, lf6=F7,
+	lf7=F8, lf8=F9, lf9=F10, rc=\E8, rev=\E[7m,
+	ri=\EM$<1>, rmacs=\E(B, rmir=\E[4l, rmkx=\E>,
+	rmso=\E[m, rmul=\E[m,
+	rs2=\Ec\E[20l\E[12;?2;7h\E(B\E)0, sc=\E7, sgr0=\E[m,
+	smacs=\E(0, smir=\E[4h, smkx=\E[?1l\E=, smso=\E[8m,
+	smul=\E[8m, tbc=\E[3g,
+
+wyse75-s|wyse_75-s|wyse75 with bottom sysline,
+	hs, is3=\E[>-//, tsl=\E[>\,\202, fsl=\202, dsl=\E[>\,//,
+	wsl#79,
+	use=wyse75,
+
+wyse75-st|wyse_75-st|wyse75 with top sysline bottom vb,
+	hs, tsl=\E[>+\202, fsl=\202, dsl=\E[>+//,
+	wsl#39,
+	flash=\E[>\,/^N^OP\sB\sE\sE\sE\sE\sE\sE\sE\sE\sE\sP\s!\s!\s!\s!\s!\s/\E[>\,//,
+	use=wyse75,
+
+wyse75-80|wy75-80|wyse 75 with 80-column initialization,
+	is3=\E[?3l,
+	use=wyse75,
+
+wyse75-132|wy75-132|wyse 75 with 132-column initialization,
+	is3=\E[?3h, cols#132,
+	use=wyse75,
+
+w60|wyse60|wyse60-24|w60-st|wyse60-st|wyse60-24-st,
+	am, da, db, hs, msgr, xon,
+	cols#80, lines#24, lm#0, wsl#48,
+	bel=^G, blink=\EG2, cbt=\EI, clear=\E{\E+, cr=\r,
+	cub1=\b, cud1=\n, cuf1=\f,
+	cup=\E=%p1%'\s'%+%c%p2%'\s'%+%c, cuu1=\Ej, dch1=\EW,
+	dim=\EGp, dl1=\ER, dsl=\EF\r, ed=\EY, el=\ET,
+	flash=\EA04$<20>\EA00,
+	fsl=\r, home=\E{, hts=\E1, il1=\EE$<20>, ind=\n,
+	invis=\EG1, is2=\E~4\EcD\EeF\Ee(\E`:\EA00, rev=\EG4,
+	rmacs=\EH^C, rmir=\Er, rmso=\EG0, rmul=\EG0,
+	rs2=\E~4\EcD\EeG\E'\Er\Ee"\EH^C, sgr0=\EG0,
+	smacs=\EH^B, smir=\Eq, smso=\EG4, smul=\EG8, tbc=\E0,
+	tsl=\EA28\EA38\EF,
+
+w60-k|wyse60-k|wyse60-24-k|w60-st-k|wyse60-st-k|wyse60-24-st-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60, 
+
+# wyse60 plus status line at bottom
+w60-s|wyse60-s|wyse60-24-s,
+	 hs, tsl=\EA14\Ez(, fsl=\r, dsl=\Ez(\r, wsl#80,
+	 use=wyse60, 
+
+# wyse60 plus status line at bottom and cursor key definitions
+w60-s-k|wyse60-s-k|wyse60-24-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-s, 
+
+# wyse60 in 25-line mode and top status line (no need to distinguish, since
+# can't have bottom status line)
+w60-25|w60-25-st|w60-25-s|wyse60-25|wyse60-25-st|wyse60-25-s,
+	 is2=\E~4\EcD\Ee)\EeG\E', lines#25,
+	 use=wyse60, 
+
+# wyse60-25 with cursor keys
+w60-25-k|w60-25-st-k|w60-25-s-k|wyse60-25-k|wyse60-25-st-k|wyse60-25-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-25, 
+
+# wyse60 in 42-line mode
+w60-42|wyse60-42|w60-42-st|wyse60-42-st,
+	 is2=\E~4\EcD\Ee*\EeG\E', lines#42,
+	 da@, db@,
+	 use=wyse60, 
+
+# wyse60-42 plus cursor key definitions like wyse75
+w60-42-k|wyse60-42-k|wyse60-42-st-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-42, 
+
+# wyse60-42 plus status line at bottom
+w60-42-s|wyse60-42-s,
+	 hs, tsl=\EA14\Ez(, fsl=\r, dsl=\Ez(\r, wsl#80,
+	 use=wyse60-42, 
+
+# wyse60-42 plus status line at bottom and cursor key definitions
+w60-42-s-k|wyse60-42-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-42-s, 
+
+# wyse60 in 43-line mode and top status line (no need to distinguish, since
+# can't have bottom status line)
+w60-43|w60-43-st|w60-43-s|wyse60-43|wyse60-43-st|wyse60-43-s,
+	 is2=\E~4\EcD\Ee+\EeG\E', lines#43,
+	 da@, db@,
+	 use=wyse60, 
+
+# wyse60-43 with cursor keys
+w60-43-k|w60-43-st-k|w60-43-s-k|wyse60-43-k|wyse60-43-st-k|wyse60-43-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-43, 
+
+#
+# These are the same as the standard Wyse60 entries, but for 132 width
+#
+
+w60-w|wyse60-w|wyse60-24-w|w60-w-st|wyse60-w-st|wyse60-24-w-st,
+	am, da, db, hs, msgr, xon,
+	cols#132, lines#24, lm#0, wsl#100,
+	bel=^G, blink=\EG2, cbt=\EI, clear=\E{\E+, cr=\r,
+	cub1=\b, cud1=\n, cuf1=\f,
+	cup=%?%p2%{80}%<%t\E=%p1%'\s'%+%c%p2%'\s'%+%c%e\Ea%p1%{1}%+%3.3dR%p2%{1}%+%3.3dC%;,
+	cuu1=\Ej, dch1=\EW,
+	dim=\EGp, dl1=\ER, dsl=\EF\r, ed=\EY, el=\ET,
+	flash=\EA04$<20>\EA00,
+	fsl=\r, home=\E{, hts=\E1, il1=\EE$<20>, ind=\n,
+	invis=\EG1, is2=\E~4\EcD\EeF\Ee(\E`;\E'\EA00, rev=\EG4,
+	rmacs=\EH^C, rmir=\Er, rmso=\EG0, rmul=\EG0,
+	rs2=\E~4\EcD\EeG\E`;\E'\Er\Ee"\EH^C, sgr0=\EG0,
+	smacs=\EH^B, smir=\Eq, smso=\EG4, smul=\EG8, tbc=\E0,
+	tsl=\EA28\EA38\EF,
+
+w60-w-k|wyse60-w-k|wyse60-24-w-k|w60-w-st-k|wyse60-w-st-k|wyse60-24-w-st-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-w, 
+
+w60-w-s|wyse60-w-s|wyse60-w-24-s,
+	 hs, tsl=\EA14\Ez(, fsl=\r, dsl=\Ez(\r, wsl#132,
+	 use=wyse60-w, 
+
+w60-w-s-k|wyse60-w-s-k|wyse60-24-w-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-w-s, 
+
+w60-25-w|w60-25-w-st|w60-25-w-s|wyse60-25-w|wyse60-25-w-st|wyse60-25-w-s,
+	 is2=\E~4\EcD\Ee)\EeF\E`;\E', lines#25,
+	 use=wyse60-w, 
+
+w60-25-w-k|w60-25-w-st-k|w60-25-w-s-k|wyse60-25-w-k|wyse60-25-w-st-k|wyse60-25-w-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-25-w, 
+
+w60-42-w|wyse60-42-w|w60-42-w-st,
+	 is2=\E~4\EcD\Ee*\EeF\E`;\E', lines#42,
+	 da@, db@,
+	 use=wyse60-w, 
+
+w60-42-w-k|wyse60-42-w-k|w60-42-w-st-k|wyse60-42-w-st-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-42-w, 
+
+w60-42-w-s|wyse60-42-w-s,
+	 hs, tsl=\EA14\Ez(, fsl=\r, dsl=\Ez(\r, wsl#132,
+	 use=wyse60-42-w, 
+
+w60-42-w-s-k|wyse60-42-w-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-42-w-s, 
+
+w60-43-w|w60-43-w-st|w60-43-w-s|wyse60-43-w|wyse60-43-w-st|wyse60-43-w-s,
+	 is2=\E~4\EcD\Ee+\EeF\E`;\E', lines#43,
+	 da@, db@,
+	 use=wyse60-w, 
+
+w60-43-w-k|w60-43-w-st-k|w60-43-w-s-k|wyse60-43-w-k|wyse60-43-w-st-k|wyse60-43-w-s-k,
+	 smkx=\EZ1+\EOA\177\EZ1\,\EOB\177\EZ1.\EOC\177\EZ1-\EOD\177,
+	 kcuu1=\EOA, kcud1=\EOB, kcuf1=\EOC, kcub1=\EOD,
+	 use=wyse60-43-w, 

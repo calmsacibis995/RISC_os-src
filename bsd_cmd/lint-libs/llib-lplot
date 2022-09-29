@@ -1,0 +1,22 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1989 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: llib-lplot,v 1.2.1.1 90/01/09 22:22:41 wje Exp $ */
+
+/*	@(#)llib-lplot	1.1 (Berkeley) 3/13/86 */
+
+/* LINTLIBRARY */
+
+	openpl() { ; }
+	erase() { ; }
+	label(s) char s[]; { ; }
+	line(x1, y1, x2, y2) { ; }
+	circle(x, y, r) { ; }
+	arc(x, y, x0, y0, x1, y1) { ; }
+	move(x, y) { ; }
+	cont(x, y) { ; }
+	point(x, y) { ; }
+	linemod(s) char s[]; { ; }
+	space(x0, y0, x1, y1) { ; }
+	closepl() { ; }

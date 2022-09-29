@@ -1,0 +1,2 @@
+/dev/root	/		ffs rw 0 1
+/dev/usr	/usr		ffs rw 0 2

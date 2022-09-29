@@ -1,0 +1,33 @@
+# default settings for all users
+
+# "$Header: cshrc,v 1.1.2.3 90/01/31 00:25:45 wje Exp $"
+
+
+umask 022
+set path = (~/bin /usr/net /bin /usr/bin /usr/ucb .)
+
+# set TZ if in single user mode
+set ___fubar___=(`who -r`)
+if ($___fubar___[3] == "S") then
+	source /etc/TIMEZONE.csh
+endif
+unset ___fubar___
+
+if ( -e ~/.hushlogin ) then
+	:
+else
+	cat -s /etc/motd
+	if ($?LOGNAME == 0) then
+		echo "/etc/cshrc: LOGNAME: parameter not set"
+		exit 1
+	else
+		set mail=/usr/mail/$LOGNAME
+	endif
+
+	if ( { /bin/mail -e } ) then
+		echo 'You have mail.'
+	endif
+	if ( $LOGNAME != root ) then
+		news -n
+	endif
+endif

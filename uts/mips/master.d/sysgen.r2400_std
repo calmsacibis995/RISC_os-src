@@ -1,0 +1,152 @@
+* $Header: sysgen.r2400_std,v 1.16.1.5 90/06/05 16:41:12 wje Exp $
+*****************************************************************************
+* ATBUS information		MUST BE FIRST!
+*
+* ATBUS: module [intr] irq [unit base]
+*	
+*	module: boot module
+*	intr:	interrupt function (default: module_prefix|"intr")
+*	irq:	ATBUS Interrupt request level.
+*	unit:	unit number of this device (maybe used for multiple devices)
+*	base:	base address of card (offset into ATBUS i/o space)
+*
+*ATBUS: module=phred irq=0x7 base=0x320
+ATBUS: module=c8 irq=0x7 base=0x140
+ATBUS: module=c8 irq=0x9 base=0x240
+
+*
+* kernel
+*
+KERNEL: kernel
+
+*
+* Devices that ALWAYS exist on R2400
+*
+VECTOR: module=scsi
+VECTOR: module=if_lance
+*INCLUDE: dma				/* On Board DMA chip */
+
+* device specifications
+*
+ROOTDEV: DEV(16,0)
+PIPEDEV: DEV(16,0)
+SWAPDEV: DEV(16,1) 0 0
+DUMPDEV: DEV(16,1)
+
+
+* compilation flags
+*
+CCOPTS: -Dident=undef -DR2300 -DINKERNEL -DKERNEL -Dsgi -DSOFTFP -DDEBUG -EB -g
+LDOPTS: -N -T 80021000 -e start -o unix
+
+* general I/O utilities
+*
+INCLUDE: io
+INCLUDE: r2400_ints
+INCLUDE: r2400_mem
+INCLUDE: wbflush_r2400
+INCLUDE: graf_dummy
+INCLUDE: console
+INCLUDE: spl_std
+INCLUDE: cache_std
+INCLUDE: tlb_std
+INCLUDE: prom_entries_std
+EXCLUDE: vme
+INCLUDE: todc
+INCLUDE: leds
+EXCLUDE: nvram
+
+*
+* Time-of-day chip routines
+*
+INCLUDE: mk48t02
+
+* drivers to be included even though they may not appear to be equipped
+*
+INCLUDE: rd
+INCLUDE: sduart
+
+* drivers to be excluded even though they may
+* appear to be equipped
+*
+
+* Virtual Disk Driver
+*
+* To configure in vdisk comment out the "EXCLUDE vdisk" line and
+* uncomment the "INCLUDE vdisk" lines, to include stripping and mirror
+* uncomment the "INCLUDE stripe" and "INCLUDE mirror" lines.
+*
+EXCLUDE: vdisk
+#INCLUDE: vdisk
+#INCLUDE: stripe
+#INCLUDE: mirror
+
+* file systems
+*
+* Note that nfs, ufs and specfs implement file systems, but are NOT considered
+* filesystems by mboot, since they do not generate fstypsw entries.
+*
+INCLUDE: socket
+INCLUDE: proc
+INCLUDE: ufs
+INCLUDE: specfs
+INCLUDE: nfs
+
+* required kernel modules
+INCLUDE: disp
+INCLUDE: mem
+INCLUDE: klog
+
+* ttys and friends
+INCLUDE: clone
+INCLUDE: pts(4)
+INCLUDE: ptc(4)
+INCLUDE: gentty
+
+* SV InterProcess Communication
+INCLUDE: ipc
+INCLUDE: msg
+INCLUDE: sem
+
+* shared memory
+INCLUDE: shm
+
+* kernel debugging tools
+#kdebug#INCLUDE: monitor
+
+INCLUDE: prf
+
+* SLIP module
+INCLUDE: slip
+
+* CommUnity DECnet
+*
+* To configure in DECnet comment out the "EXCLUDE decnet" line and
+* uncomment the "INCLUDE ll" and "INCLUDE nm" lines.
+* To configure out DECnet comment out the "INCLUDE ll" and "INCLUDE nm"
+* lines and uncomment the "EXCLUDE decnet" line.
+
+#INCLUDE: ll
+#INCLUDE: nm
+EXCLUDE: decnet
+
+* Dummy stubs (These should come out sometime)
+*
+EXCLUDE: stubs
+
+* Modules which haven't been done yet
+*
+EXCLUDE: du
+
+*
+* This must be specifically excluded so that the functions in the
+* master files will be defined
+*
+EXCLUDE: dkip
+EXCLUDE: dkvj
+EXCLUDE: sd
+EXCLUDE: xyl712
+
+* if there is no mono screen attached
+*
+EXCLUDE: mono

@@ -1,0 +1,164 @@
+# 
+# |-----------------------------------------------------------|
+# | Copyright (c) 1989       MIPS Computer Systems, Inc.      |
+# | All Rights Reserved                                       |
+# |-----------------------------------------------------------|
+# | Use, duplication, or disclosure by the Government is      |
+# | subject to restrictions as set forth in                   |
+# | subparagraph (c)(1)(ii) of the Rights in Technical        |
+# | Data and Computer Software Clause of DFARS 52.227-7013.   |
+# |         MIPS Computer Systems, Inc.                       |
+# |         928 Arques Avenue                                 |
+# |         Sunnyvale, CA 94086                               |
+# |-----------------------------------------------------------|
+# 
+# $Header: kcommondefs,v 1.37.1.3.1.2.1.2 90/10/16 12:16:28 beacker Exp $
+#
+# kcommondefs - contains basic common flags/locations for kernel builds
+# ALL makefiles should include this - so that builds may be done in any
+# directory
+#
+# DEPTH - should be set in the top of each Makefile - it points to # levels
+# up to top level directory
+
+SHELL=/bin/sh
+ETCDIR=/etc
+DESTROOT=
+OSRELEASE=4.51
+MARK=i
+
+include $(DEPTH)/kcommondefs_$(MARK)
+
+#
+# Special defines.  CPUBOARD should come out if it can, because this same
+# define is used for all MIPS cpu's.  Silly.
+#
+SYSTEM	= SVR3
+CPUBOARD= R2300
+
+MAKEF	= $(MAKE) $(MAKEFLAGS)
+ASF	= $(AS) $(ASFLAGS)
+CCF	= $(CC) $(CFLAGS)
+LDF	= $(LD) $(LDFLAGS)
+
+#
+# The install command to use.
+#
+INSTALL	=$(ETCDIR)/mipsinstall
+MODE	=444
+OWNER	=bin
+GROUP	=bin
+ICOPY	=-c
+INSTOPTS=$(ICOPY) -m $(MODE) -o $(OWNER) -g $(GROUP)
+
+#
+# Awk and shell scripts for generating make dependencies.
+# XXX these should be reconciled ultimately
+#
+AWKDEPEND= $(DEPTH)/mkdepend.awk
+
+MKDEPEND= $(TOOLROOT)/usr/bin/mkdepend -c "$(CCF)" \
+	-e 's:$(INCLDIR)/:$$(INCLDIR)/:' \
+	-e 's:$(ROOT)/:$$(ROOT)/:'
+
+# make depend for members of archive $(LIB)
+MKDEPLIB= $(MKDEPEND) -e 's/^[^\. 	]*\.o/$$(LIB)(&)/'
+
+#
+# Compile Time Options
+#
+# OVERLAPPING_BCOPY -
+#	Implies that bcopy() correctly handles overlapped copies.
+#	-- this symbol should always be defined
+#
+# MIPS_LOCAL -
+#	Defined only for in-house builds.
+#
+# NO_PCLEAR -
+#	Turn off experimental page-clearing-in-idle-loop code.
+#
+# LC_EXTRA -
+#	Set this in your environment with any extra flags you want defined.
+#
+# KGCLOCK -
+#	Defining this enables the kernel profiling clock which interrupts
+#	different intervals than the scheduling clock to allow more
+#	accurate kernel profiling.
+#
+# RISCOS -
+#	This symbol marks code which is specific to the MIPS operating system,
+#	but is not dependent on MIPS' chip hardware (for the latter, use
+#	ifdef mips).
+#	-- this symbol should always be defined
+#
+# FAST_KTLBMISS_HANDLER -
+#	This symbol enables the assembly-language handler for K2SEG TLB
+#	misses
+#
+
+DEFS= -Dsgi -Dident=undef -D$(SYSTEM) -D$(CPUBOARD) \
+    -DINKERNEL -DKERNEL -DDEBUG -DSOFTFP -DKOPT_NOGL \
+    -DOVERLAPPING_BCOPY -DNO_PCLEAR -DNUMIPS -DRISCOS \
+    -DUFS -DVFSSTATS -DQUOTA -DDMP \
+    -DNFS -DNFSCLIENT -DNFSSERVER \
+    -DFAST_KTLBMISS_HANDLER $(MARKCOPTS) $(MAXOPT) $(LC_EXTRA)
+
+OPTOPTS= -O2 -g3 -Olimit 800 -Wf,-XNd5000 -Wf,-XNp5000
+OPTS= ${OPTOPTS} -I${DEPTH}
+
+#
+# Compiler flags.
+#
+ASFLAGS= ${OPTS} ${DEFS} ${EASFLAGS}
+CFLAGS= ${BSD_FLAGS} ${OPTS} ${DEFS} ${ECFLAGS}
+LDFLAGS	= ${ELDFLAGS}
+
+#
+# For the BSD sections of the kernel, BSD_FLAGS can be defined
+# to whatever special options are required.
+#
+BSD_FLAGS=
+
+#
+# Options to mboot.
+#
+CONFIG	=-noprobe $(CONFIGOPTS)
+
+#
+# Global defines.
+#
+BOOTAREA=$(DEPTH)/bootarea_$(MARK)
+
+MAKEDEPEND= $(BOOTAREA)/$(LABEL)_Makedepend
+
+MAKEDEPENDMARK= $(MAKEDEPEND)-mark
+
+MDEPENDTMP= $(BOOTAREA)/Mdepend.tmp$$$$
+
+DEPENDINCLUDE=include $(MAKEDEPEND)
+
+LIBMARK= $(BOOTAREA)/$(LABEL)_lib-mark
+
+DRVMARK= $(BOOTAREA)/$(LABEL)_drv-mark
+
+LINKMARK= $(BOOTAREA)/$(LABEL)_link-mark
+
+KCOMMONRULES= $(DEPTH)/kcommonrules
+
+MKRULESTMP= $(BOOTAREA)/$(LABEL)_Mkrulestmp$$$$
+
+MAKERULES= $(BOOTAREA)/$(LABEL)_Makerules
+
+MAKERULESMARK= $(MAKERULES)-mark
+
+MAKERULESINCLUDE=include $(MAKERULES)
+
+MKRULESCSH=$(DEPTH)/mkrules.csh
+
+MKRULES=$(MKRULESCSH) '$(LABEL)'
+
+MKRULESDRV=$(MKRULESCSH) '.'
+
+MODULE=$(BOOTAREA)/dummy.o
+
+#

@@ -1,0 +1,8 @@
+# prototype of System V Accounting crontab entries.
+# installed in /usr/spool/cron/crontabs/adm
+# run ckpacct hourly, 10 after the hour.  It checks for space and rolls pacct
+10	*	*	*	*	/usr/lib/acct/ckpacct
+# runacct does nightly data reduction and report generation
+0	4	*	*	*	/usr/lib/acct/runacct
+# monacct does monthly reports.  Run at 0500 on the first of the month
+0	5	1	*	*	/usr/lib/acct/monacct

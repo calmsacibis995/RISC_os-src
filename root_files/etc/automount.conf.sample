@@ -1,0 +1,18 @@
+-M /MIPSNET -R root -S /n -hosts -rw,bg,soft,intr,timeo=3,retry=3
+# The first line of this file contains ALL options which the
+# automounter uses when starting up at boottime.  See automount (1M).
+#
+# The above arguments tell the automounter to monitor the access point /n;
+# and if anyone accesses the name /n/oddjob, mount all of oddjob's NFS
+# file systems as follows:
+#
+#	oddjob:/	->	/MIPSNET/oddjob/root
+#	oddjob:/usr	->	/MIPSNET/oddjob/root/usr
+#
+# The -R <root/tail> option is recommended for systems where many NFS mounts
+# might be active at once.
+/* --------------------------------------------------- */
+/* | Copyright (c) 1990 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+#ident	"$Header: automount.conf.sample,v 1.1.1.1 90/04/13 15:13:41 wje Exp $"

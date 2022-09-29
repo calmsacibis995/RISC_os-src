@@ -1,0 +1,808 @@
+#
+#  $Header: common.system,v 1.14.1.4.1.2 90/07/20 14:55:46 hawkes Exp $
+#
+#  common.system: MKDEV database entries common to all UMIPS systems. 
+#
+#  Local changes should be made by adding local files, not by changing
+#  this one.  See MKDEV(1M) and DEV_DB(4) for more information.
+#
+
+#
+# Default class.  Note that not all classes are listed by default.
+#
+
+class(default,all) {
+        com.default
+}
+
+class(com.default) {
+	com.tty
+	memory
+	profile
+	pty
+	kernel-log
+	bsd43pty
+}
+
+#
+# ttys
+#
+# The "ttym" devices are entries to the device driver which support modem
+# control. The second pair of CPU board tty ports (tty[34]) are included
+# in the machine-specific database files for those machines which support
+# them.
+#
+
+class(com.tty) {
+	device(tty, c, 2, 0, 666, root, bin)
+	idevice(2, tty, 0, c, 0, 0, 622, root, bin)
+	idevice(2, ttym, 0, c, 0, 128, 622, root, bin)
+	console
+	device(ttykeybd, c, 37, 1, 666, root, bin)
+}
+
+class(console) {
+	link(tty0, console)
+	link(tty0, systty)
+	link(tty0, syscon)
+}
+
+#
+# Memory access
+#
+
+class(memory) {
+	device(mem, c, 1, 0, 640, root, sys)
+	device(kmem, c, 1, 1, 640, root, sys)
+	device(null, c, 1, 2, 666, root, sys)
+}
+
+#
+# System Profiler
+#
+
+class(profile) {
+	device(prf, c, 7, 0, 644, root, sys)
+}
+
+#
+# Kernel log driver
+#
+
+class(kernel-log) {
+	device(klog, c, 19, 0, 640, root, sys)
+}
+
+#
+# Streams log driver
+#
+
+class(streams-log) {
+	device(log, c, 10, 9, 666, root, sys)
+}
+
+#
+# Shell layers
+#
+
+class(sxt,layers) {
+	idevice(8, sxt/00, 0, c, 8, 0, 666, root, sys)
+	idevice(8, sxt/01, 0, c, 8, 8, 666, root, sys)
+	idevice(8, sxt/02, 0, c, 8, 16, 666, root, sys)
+}
+
+#
+# Pseudo-ttys
+#
+
+class(pty,ptys,pseudo-ttys) {
+	device(ptc, c, 10, 14, 666, root, sys)
+	idevice(256, ttyq, 0, c, 15, 0, 666, root, sys)
+}
+
+
+#
+# optional Pseudo-ttys (ttyq256 through ttyq1023)
+#
+
+class(optpty,optptys,optional-pseudo-ttys) {
+	device(ptcm, c, 10, 43, 666, root, sys)
+	device(ptmc0, c, 14, 0, 666, root, sys)
+	device(ptmc1, c, 43, 0, 666, root, sys)
+	device(ptmc2, c, 44, 0, 666, root, sys)
+	device(ptmc3, c, 45, 0, 666, root, sys)
+	idevice(256, ttyq, 256, c, 46, 0, 666, root, sys)
+	idevice(256, ttyq, 512, c, 47, 0, 666, root, sys)
+	idevice(256, ttyq, 768, c, 48, 0, 666, root, sys)
+}
+
+#
+# bsd43 Pseudo-ttys
+#
+
+class(bsd43pty,bsd43ptys,bsd43pseudo-ttys) {
+	idevice(10, ptyp, 0, c, 14, 64, 666, root, sys)
+	device(ptypa, c, 14, 74, 666, root, sys)
+	device(ptypb, c, 14, 75, 666, root, sys)
+	device(ptypc, c, 14, 76, 666, root, sys)
+	device(ptypd, c, 14, 77, 666, root, sys)
+	device(ptype, c, 14, 78, 666, root, sys)
+	device(ptypf, c, 14, 79, 666, root, sys)
+	idevice(10, ttyp, 0, c, 15, 64, 666, root, sys)
+	device(ttypa, c, 15, 74, 666, root, sys)
+	device(ttypb, c, 15, 75, 666, root, sys)
+	device(ttypc, c, 15, 76, 666, root, sys)
+	device(ttypd, c, 15, 77, 666, root, sys)
+	device(ttype, c, 15, 78, 666, root, sys)
+	device(ttypf, c, 15, 79, 666, root, sys)
+	idevice(10, ptyq, 0, c, 14, 0, 666, root, sys)
+	device(ptyqa, c, 14, 10, 666, root, sys)
+	device(ptyqb, c, 14, 11, 666, root, sys)
+	device(ptyqc, c, 14, 12, 666, root, sys)
+	device(ptyqd, c, 14, 13, 666, root, sys)
+	device(ptyqe, c, 14, 14, 666, root, sys)
+	device(ptyqf, c, 14, 15, 666, root, sys)
+	idevice(10, ttyq, 0, c, 15, 0, 666, root, sys)
+	device(ttyqa, c, 15, 10, 666, root, sys)
+	device(ttyqb, c, 15, 11, 666, root, sys)
+	device(ttyqc, c, 15, 12, 666, root, sys)
+	device(ttyqd, c, 15, 13, 666, root, sys)
+	device(ttyqe, c, 15, 14, 666, root, sys)
+	device(ttyqf, c, 15, 15, 666, root, sys)
+	idevice(10, ptyr, 0, c, 14, 80, 666, root, sys)
+	device(ptyra, c, 14, 90, 666, root, sys)
+	device(ptyrb, c, 14, 91, 666, root, sys)
+	device(ptyrc, c, 14, 92, 666, root, sys)
+	device(ptyrd, c, 14, 93, 666, root, sys)
+	device(ptyre, c, 14, 94, 666, root, sys)
+	device(ptyrf, c, 14, 95, 666, root, sys)
+	idevice(10, ttyr, 0, c, 15, 80, 666, root, sys)
+	device(ttyra, c, 15, 90, 666, root, sys)
+	device(ttyrb, c, 15, 91, 666, root, sys)
+	device(ttyrc, c, 15, 92, 666, root, sys)
+	device(ttyrd, c, 15, 93, 666, root, sys)
+	device(ttyre, c, 15, 94, 666, root, sys)
+	device(ttyrf, c, 15, 95, 666, root, sys)
+	idevice(10, ptys, 0, c, 14, 96, 666, root, sys)
+	device(ptysa, c, 14, 106, 666, root, sys)
+	device(ptysb, c, 14, 107, 666, root, sys)
+	device(ptysc, c, 14, 108, 666, root, sys)
+	device(ptysd, c, 14, 109, 666, root, sys)
+	device(ptyse, c, 14, 110, 666, root, sys)
+	device(ptysf, c, 14, 111, 666, root, sys)
+	idevice(10, ttys, 0, c, 15, 96, 666, root, sys)
+	device(ttysa, c, 15, 106, 666, root, sys)
+	device(ttysb, c, 15, 107, 666, root, sys)
+	device(ttysc, c, 15, 108, 666, root, sys)
+	device(ttysd, c, 15, 109, 666, root, sys)
+	device(ttyse, c, 15, 110, 666, root, sys)
+	device(ttysf, c, 15, 111, 666, root, sys)
+}
+#
+# optional bsd43 Pseudo-ttys
+#
+
+class(optbsd43pty,optbsd43ptys,optional-bsd43pseudo-ttys) {
+	idevice(10, ptyt, 0, c, 14, 112, 666, root, sys)
+	device(ptyta, c, 14, 122, 666, root, sys)
+	device(ptytb, c, 14, 123, 666, root, sys)
+	device(ptytc, c, 14, 124, 666, root, sys)
+	device(ptytd, c, 14, 125, 666, root, sys)
+	device(ptyte, c, 14, 126, 666, root, sys)
+	device(ptytf, c, 14, 127, 666, root, sys)
+	idevice(10, ttyt, 0, c, 15, 112, 666, root, sys)
+	device(ttyta, c, 15, 122, 666, root, sys)
+	device(ttytb, c, 15, 123, 666, root, sys)
+	device(ttytc, c, 15, 124, 666, root, sys)
+	device(ttytd, c, 15, 125, 666, root, sys)
+	device(ttyte, c, 15, 126, 666, root, sys)
+	device(ttytf, c, 15, 127, 666, root, sys)
+	idevice(10, ptyu, 0, c, 14, 16, 666, root, sys)
+	device(ptyua, c, 14, 26, 666, root, sys)
+	device(ptyub, c, 14, 27, 666, root, sys)
+	device(ptyuc, c, 14, 28, 666, root, sys)
+	device(ptyud, c, 14, 29, 666, root, sys)
+	device(ptyue, c, 14, 30, 666, root, sys)
+	device(ptyuf, c, 14, 31, 666, root, sys)
+	idevice(10, ttyu, 0, c, 15, 16, 666, root, sys)
+	device(ttyua, c, 15, 26, 666, root, sys)
+	device(ttyub, c, 15, 27, 666, root, sys)
+	device(ttyuc, c, 15, 28, 666, root, sys)
+	device(ttyud, c, 15, 29, 666, root, sys)
+	device(ttyue, c, 15, 30, 666, root, sys)
+	device(ttyuf, c, 15, 31, 666, root, sys)
+	idevice(10, ptyv, 0, c, 14, 32, 666, root, sys)
+	device(ptyva, c, 14, 42, 666, root, sys)
+	device(ptyvb, c, 14, 43, 666, root, sys)
+	device(ptyvc, c, 14, 44, 666, root, sys)
+	device(ptyvd, c, 14, 45, 666, root, sys)
+	device(ptyve, c, 14, 46, 666, root, sys)
+	device(ptyvf, c, 14, 47, 666, root, sys)
+	idevice(10, ttyv, 0, c, 15, 32, 666, root, sys)
+	device(ttyva, c, 15, 42, 666, root, sys)
+	device(ttyvb, c, 15, 43, 666, root, sys)
+	device(ttyvc, c, 15, 44, 666, root, sys)
+	device(ttyvd, c, 15, 45, 666, root, sys)
+	device(ttyve, c, 15, 46, 666, root, sys)
+	device(ttyvf, c, 15, 47, 666, root, sys)
+	idevice(10, ptyw, 0, c, 14, 48, 666, root, sys)
+	device(ptywa, c, 14, 58, 666, root, sys)
+	device(ptywb, c, 14, 59, 666, root, sys)
+	device(ptywc, c, 14, 60, 666, root, sys)
+	device(ptywd, c, 14, 61, 666, root, sys)
+	device(ptywe, c, 14, 62, 666, root, sys)
+	device(ptywf, c, 14, 63, 666, root, sys)
+	idevice(10, ttyw, 0, c, 15, 48, 666, root, sys)
+	device(ttywa, c, 15, 58, 666, root, sys)
+	device(ttywb, c, 15, 59, 666, root, sys)
+	device(ttywc, c, 15, 60, 666, root, sys)
+	device(ttywd, c, 15, 61, 666, root, sys)
+	device(ttywe, c, 15, 62, 666, root, sys)
+	device(ttywf, c, 15, 63, 666, root, sys)
+	idevice(10, ptyx, 0, c, 14, 128, 666, root, sys)
+	device(ptyxa, c, 14, 138, 666, root, sys)
+	device(ptyxb, c, 14, 139, 666, root, sys)
+	device(ptyxc, c, 14, 140, 666, root, sys)
+	device(ptyxd, c, 14, 141, 666, root, sys)
+	device(ptyxe, c, 14, 142, 666, root, sys)
+	device(ptyxf, c, 14, 143, 666, root, sys)
+	idevice(10, ttyx, 0, c, 15, 128, 666, root, sys)
+	device(ttyxa, c, 15, 138, 666, root, sys)
+	device(ttyxb, c, 15, 139, 666, root, sys)
+	device(ttyxc, c, 15, 140, 666, root, sys)
+	device(ttyxd, c, 15, 141, 666, root, sys)
+	device(ttyxe, c, 15, 142, 666, root, sys)
+	device(ttyxf, c, 15, 143, 666, root, sys)
+	idevice(10, ptyy, 0, c, 14, 144, 666, root, sys)
+	device(ptyya, c, 14, 154, 666, root, sys)
+	device(ptyyb, c, 14, 155, 666, root, sys)
+	device(ptyyc, c, 14, 156, 666, root, sys)
+	device(ptyyd, c, 14, 157, 666, root, sys)
+	device(ptyye, c, 14, 158, 666, root, sys)
+	device(ptyyf, c, 14, 159, 666, root, sys)
+	idevice(10, ttyy, 0, c, 15, 144, 666, root, sys)
+	device(ttyya, c, 15, 154, 666, root, sys)
+	device(ttyyb, c, 15, 155, 666, root, sys)
+	device(ttyyc, c, 15, 156, 666, root, sys)
+	device(ttyyd, c, 15, 157, 666, root, sys)
+	device(ttyye, c, 15, 158, 666, root, sys)
+	device(ttyyf, c, 15, 159, 666, root, sys)
+	idevice(10, ptyz, 0, c, 14, 160, 666, root, sys)
+	device(ptyza, c, 14, 170, 666, root, sys)
+	device(ptyzb, c, 14, 171, 666, root, sys)
+	device(ptyzc, c, 14, 172, 666, root, sys)
+	device(ptyzd, c, 14, 173, 666, root, sys)
+	device(ptyze, c, 14, 174, 666, root, sys)
+	device(ptyzf, c, 14, 175, 666, root, sys)
+	idevice(10, ttyz, 0, c, 15, 160, 666, root, sys)
+	device(ttyza, c, 15, 170, 666, root, sys)
+	device(ttyzb, c, 15, 171, 666, root, sys)
+	device(ttyzc, c, 15, 172, 666, root, sys)
+	device(ttyzd, c, 15, 173, 666, root, sys)
+	device(ttyze, c, 15, 174, 666, root, sys)
+	device(ttyzf, c, 15, 175, 666, root, sys)
+}
+
+class(decnet) {
+	device(ll, c, 41, 0, 666, root, sys)
+	idevice(34, ll, 1, c, 41, 1, 666, root, sys)
+	device(netman, c, 40, 0, 666, root, sys)
+}
+
+class (c_vdc0d0) {
+	idevice (16, rdsk/vdc0d0s, 0, c, 49, 0, 640, root, sys)
+}
+
+class (b_vdc0d0) {
+	idevice (16, dsk/vdc0d0s, 0, b, 49, 0, 640, root, sys)
+}
+
+class (vdc0d0) {
+	b_vdc0d0
+	c_vdc0d0
+}
+
+class (c_vdc0d1) {
+	idevice (16, rdsk/vdc0d1s, 0, c, 49, 16, 640, root, sys)
+}
+
+class (b_vdc0d1) {
+	idevice (16, dsk/vdc0d1s, 0, b, 49, 16, 640, root, sys)
+}
+
+class (vdc0d1) {
+	b_vdc0d1
+	c_vdc0d1
+}
+
+class (c_vdc0d2) {
+	idevice (16, rdsk/vdc0d2s, 0, c, 49, 32, 640, root, sys)
+}
+
+class (b_vdc0d2) {
+	idevice (16, dsk/vdc0d2s, 0, b, 49, 32, 640, root, sys)
+}
+
+class (vdc0d2) {
+	b_vdc0d2
+	c_vdc0d2
+}
+
+class (c_vdc0d3) {
+	idevice (16, rdsk/vdc0d3s, 0, c, 49, 48, 640, root, sys)
+}
+
+class (b_vdc0d3) {
+	idevice (16, dsk/vdc0d3s, 0, b, 49, 48, 640, root, sys)
+}
+
+class (vdc0d3) {
+	b_vdc0d3
+	c_vdc0d3
+}
+
+class (c_vdc0d4) {
+	idevice (16, rdsk/vdc0d4s, 0, c, 49, 64, 640, root, sys)
+}
+
+class (b_vdc0d4) {
+	idevice (16, dsk/vdc0d4s, 0, b, 49, 64, 640, root, sys)
+}
+
+class (vdc0d4) {
+	b_vdc0d4
+	c_vdc0d4
+}
+
+class (c_vdc0d5) {
+	idevice (16, rdsk/vdc0d5s, 0, c, 49, 80, 640, root, sys)
+}
+
+class (b_vdc0d5) {
+	idevice (16, dsk/vdc0d5s, 0, b, 49, 80, 640, root, sys)
+}
+
+class (vdc0d5) {
+	b_vdc0d5
+	c_vdc0d5
+}
+
+class (c_vdc0d6) {
+	idevice (16, rdsk/vdc0d6s, 0, c, 49, 96, 640, root, sys)
+}
+
+class (b_vdc0d6) {
+	idevice (16, dsk/vdc0d6s, 0, b, 49, 96, 640, root, sys)
+}
+
+class (vdc0d6) {
+	b_vdc0d6
+	c_vdc0d6
+}
+
+class (c_vdc0d7) {
+	idevice (16, rdsk/vdc0d7s, 0, c, 49, 112, 640, root, sys)
+}
+
+class (b_vdc0d7) {
+	idevice (16, dsk/vdc0d7s, 0, b, 49, 112, 640, root, sys)
+}
+
+class (vdc0d7) {
+	b_vdc0d7
+	c_vdc0d7
+}
+
+class (c_vdc0d8) {
+	idevice (16, rdsk/vdc0d8s, 0, c, 49, 128, 640, root, sys)
+}
+
+class (b_vdc0d8) {
+	idevice (16, dsk/vdc0d8s, 0, b, 49, 128, 640, root, sys)
+}
+
+class (vdc0d8) {
+	b_vdc0d8
+	c_vdc0d8
+}
+
+class (c_vdc0d9) {
+	idevice (16, rdsk/vdc0d9s, 0, c, 49, 144, 640, root, sys)
+}
+
+class (b_vdc0d9) {
+	idevice (16, dsk/vdc0d9s, 0, b, 49, 144, 640, root, sys)
+}
+
+class (vdc0d9) {
+	b_vdc0d9
+	c_vdc0d9
+}
+
+class (c_vdc0d10) {
+	idevice (16, rdsk/vdc0d10s, 0, c, 49, 160, 640, root, sys)
+}
+
+class (b_vdc0d10) {
+	idevice (16, dsk/vdc0d10s, 0, b, 49, 160, 640, root, sys)
+}
+
+class (vdc0d10) {
+	b_vdc0d10
+	c_vdc0d10
+}
+
+class (c_vdc0d11) {
+	idevice (16, rdsk/vdc0d11s, 0, c, 49, 176, 640, root, sys)
+}
+
+class (b_vdc0d11) {
+	idevice (16, dsk/vdc0d11s, 0, b, 49, 176, 640, root, sys)
+}
+
+class (vdc0d11) {
+	b_vdc0d11
+	c_vdc0d11
+}
+
+class (c_vdc0d12) {
+	idevice (16, rdsk/vdc0d12s, 0, c, 49, 192, 640, root, sys)
+}
+
+class (b_vdc0d12) {
+	idevice (16, dsk/vdc0d12s, 0, b, 49, 192, 640, root, sys)
+}
+
+class (vdc0d12) {
+	b_vdc0d12
+	c_vdc0d12
+}
+
+class (c_vdc0d13) {
+	idevice (16, rdsk/vdc0d13s, 0, c, 49, 208, 640, root, sys)
+}
+
+class (b_vdc0d13) {
+	idevice (16, dsk/vdc0d13s, 0, b, 49, 208, 640, root, sys)
+}
+
+class (vdc0d13) {
+	b_vdc0d13
+	c_vdc0d13
+}
+
+class (c_vdc0d14) {
+	idevice (16, rdsk/vdc0d14s, 0, c, 49, 224, 640, root, sys)
+}
+
+class (b_vdc0d14) {
+	idevice (16, dsk/vdc0d14s, 0, b, 49, 224, 640, root, sys)
+}
+
+class (vdc0d14) {
+	b_vdc0d14
+	c_vdc0d14
+}
+
+class (c_vdc0d15) {
+	idevice (15, rdsk/vdc0d15s, 0, c, 49, 240, 640, root, sys)
+}
+
+class (b_vdc0d15) {
+	idevice (15, dsk/vdc0d15s, 0, b, 49, 240, 640, root, sys)
+}
+
+class (vdc0d15) {
+	b_vdc0d15
+	c_vdc0d15
+}
+
+class (b_vdc0) {
+	b_vdc0d0
+	b_vdc0d1
+	b_vdc0d2
+	b_vdc0d3
+	b_vdc0d4
+	b_vdc0d5
+	b_vdc0d6
+	b_vdc0d7
+	b_vdc0d8
+	b_vdc0d9
+	b_vdc0d10
+	b_vdc0d11
+	b_vdc0d12
+	b_vdc0d13
+	b_vdc0d14
+	b_vdc0d15
+}
+
+class (c_vdc0) {
+	c_vdc0d0
+	c_vdc0d1
+	c_vdc0d2
+	c_vdc0d3
+	c_vdc0d4
+	c_vdc0d5
+	c_vdc0d6
+	c_vdc0d7
+	c_vdc0d8
+	c_vdc0d9
+	c_vdc0d10
+	c_vdc0d11
+	c_vdc0d12
+	c_vdc0d13
+	c_vdc0d14
+	c_vdc0d15
+}
+
+class (vdc0) {
+	b_vdc0
+	c_vdc0
+}
+
+class (c_vdc1d0) {
+	idevice (16, rdsk/vdc1d0s, 0, c, 50, 0, 640, root, sys)
+}
+
+class (b_vdc1d0) {
+	idevice (16, dsk/vdc1d0s, 0, b, 50, 0, 640, root, sys)
+}
+
+class (vdc1d0) {
+	b_vdc1d0
+	c_vdc1d0
+}
+
+class (c_vdc1d1) {
+	idevice (16, rdsk/vdc1d1s, 0, c, 50, 16, 640, root, sys)
+}
+
+class (b_vdc1d1) {
+	idevice (16, dsk/vdc1d1s, 0, b, 50, 16, 640, root, sys)
+}
+
+class (vdc1d1) {
+	b_vdc1d1
+	c_vdc1d1
+}
+
+class (c_vdc1d2) {
+	idevice (16, rdsk/vdc1d2s, 0, c, 50, 32, 640, root, sys)
+}
+
+class (b_vdc1d2) {
+	idevice (16, dsk/vdc1d2s, 0, b, 50, 32, 640, root, sys)
+}
+
+class (vdc1d2) {
+	b_vdc1d2
+	c_vdc1d2
+}
+
+class (c_vdc1d3) {
+	idevice (16, rdsk/vdc1d3s, 0, c, 50, 48, 640, root, sys)
+}
+
+class (b_vdc1d3) {
+	idevice (16, dsk/vdc1d3s, 0, b, 50, 48, 640, root, sys)
+}
+
+class (vdc1d3) {
+	b_vdc1d3
+	c_vdc1d3
+}
+
+class (c_vdc1d4) {
+	idevice (16, rdsk/vdc1d4s, 0, c, 50, 64, 640, root, sys)
+}
+
+class (b_vdc1d4) {
+	idevice (16, dsk/vdc1d4s, 0, b, 50, 64, 640, root, sys)
+}
+
+class (vdc1d4) {
+	b_vdc1d4
+	c_vdc1d4
+}
+
+class (c_vdc1d5) {
+	idevice (16, rdsk/vdc1d5s, 0, c, 50, 80, 640, root, sys)
+}
+
+class (b_vdc1d5) {
+	idevice (16, dsk/vdc1d5s, 0, b, 50, 80, 640, root, sys)
+}
+
+class (vdc1d5) {
+	b_vdc1d5
+	c_vdc1d5
+}
+
+class (c_vdc1d6) {
+	idevice (16, rdsk/vdc1d6s, 0, c, 50, 96, 640, root, sys)
+}
+
+class (b_vdc1d6) {
+	idevice (16, dsk/vdc1d6s, 0, b, 50, 96, 640, root, sys)
+}
+
+class (vdc1d6) {
+	b_vdc1d6
+	c_vdc1d6
+}
+
+class (c_vdc1d7) {
+	idevice (16, rdsk/vdc1d7s, 0, c, 50, 112, 640, root, sys)
+}
+
+class (b_vdc1d7) {
+	idevice (16, dsk/vdc1d7s, 0, b, 50, 112, 640, root, sys)
+}
+
+class (vdc1d7) {
+	b_vdc1d7
+	c_vdc1d7
+}
+
+class (c_vdc1d8) {
+	idevice (16, rdsk/vdc1d8s, 0, c, 50, 128, 640, root, sys)
+}
+
+class (b_vdc1d8) {
+	idevice (16, dsk/vdc1d8s, 0, b, 50, 128, 640, root, sys)
+}
+
+class (vdc1d8) {
+	b_vdc1d8
+	c_vdc1d8
+}
+
+class (c_vdc1d9) {
+	idevice (16, rdsk/vdc1d9s, 0, c, 50, 144, 640, root, sys)
+}
+
+class (b_vdc1d9) {
+	idevice (16, dsk/vdc1d9s, 0, b, 50, 144, 640, root, sys)
+}
+
+class (vdc1d9) {
+	b_vdc1d9
+	c_vdc1d9
+}
+
+class (c_vdc1d10) {
+	idevice (16, rdsk/vdc1d10s, 0, c, 50, 160, 640, root, sys)
+}
+
+class (b_vdc1d10) {
+	idevice (16, dsk/vdc1d10s, 0, b, 50, 160, 640, root, sys)
+}
+
+class (vdc1d10) {
+	b_vdc1d10
+	c_vdc1d10
+}
+
+class (c_vdc1d11) {
+	idevice (16, rdsk/vdc1d11s, 0, c, 50, 176, 640, root, sys)
+}
+
+class (b_vdc1d11) {
+	idevice (16, dsk/vdc1d11s, 0, b, 50, 176, 640, root, sys)
+}
+
+class (vdc1d11) {
+	b_vdc1d11
+	c_vdc1d11
+}
+
+class (c_vdc1d12) {
+	idevice (16, rdsk/vdc1d12s, 0, c, 50, 192, 640, root, sys)
+}
+
+class (b_vdc1d12) {
+	idevice (16, dsk/vdc1d12s, 0, b, 50, 192, 640, root, sys)
+}
+
+class (vdc1d12) {
+	b_vdc1d12
+	c_vdc1d12
+}
+
+class (c_vdc1d13) {
+	idevice (16, rdsk/vdc1d13s, 0, c, 50, 208, 640, root, sys)
+}
+
+class (b_vdc1d13) {
+	idevice (16, dsk/vdc1d13s, 0, b, 50, 208, 640, root, sys)
+}
+
+class (vdc1d13) {
+	b_vdc1d13
+	c_vdc1d13
+}
+
+class (c_vdc1d14) {
+	idevice (16, rdsk/vdc1d14s, 0, c, 50, 224, 640, root, sys)
+}
+
+class (b_vdc1d14) {
+	idevice (16, dsk/vdc1d14s, 0, b, 50, 224, 640, root, sys)
+}
+
+class (vdc1d14) {
+	b_vdc1d14
+	c_vdc1d14
+}
+
+class (c_vdc1d15) {
+	idevice (15, rdsk/vdc1d15s, 0, c, 50, 240, 640, root, sys)
+}
+
+class (b_vdc1d15) {
+	idevice (15, dsk/vdc1d15s, 0, b, 50, 240, 640, root, sys)
+}
+
+class (vdc1d15) {
+	b_vdc1d15
+	c_vdc1d15
+}
+
+class (b_vdc1) {
+	b_vdc1d0
+	b_vdc1d1
+	b_vdc1d2
+	b_vdc1d3
+	b_vdc1d4
+	b_vdc1d5
+	b_vdc1d6
+	b_vdc1d7
+	b_vdc1d8
+	b_vdc1d9
+	b_vdc1d10
+	b_vdc1d11
+	b_vdc1d12
+	b_vdc1d13
+	b_vdc1d14
+	b_vdc1d15
+}
+
+class (c_vdc1) {
+	c_vdc1d0
+	c_vdc1d1
+	c_vdc1d2
+	c_vdc1d3
+	c_vdc1d4
+	c_vdc1d5
+	c_vdc1d6
+	c_vdc1d7
+	c_vdc1d8
+	c_vdc1d9
+	c_vdc1d10
+	c_vdc1d11
+	c_vdc1d12
+	c_vdc1d13
+	c_vdc1d14
+	c_vdc1d15
+}
+
+class (vdc1) {
+	b_vdc1
+	c_vdc1
+}
+
+class (b_vd) {
+	b_vdc0
+	b_vdc1
+}
+
+class (c_vd) {
+	c_vdc0
+	c_vdc1
+}
+
+
+class (vd) {
+	b_vd
+	c_vd
+}

@@ -1,0 +1,102 @@
+    Should searching (/,?,~N,~P) grab 10-20 headers at a time?
+
+    Newsgroups' nntp-info's should be computed 10-20 newsgroups at a time.
+
+    similar hook-kill's handled en masse
+
+    Use window-configuration code
+ 
+    same-subject needs to be rewritten (via lists of related articles?)
+
+    cache up headers
+
+    improved .gnewsrc checkpointing--does this include GC!?
+
+    Catch failed postings.
+
+    article-save and article-pipe need to be loopable.
+
+    Article-saving/piping should have header control via a hook.
+
+    Integrate mail with an mbox.* news hierarchy?
+
+    saving large indices--via autosave?  (put info in a buffer?)
+
+    posting directly from news-mode
+
+    index-buffer backward expansion commands.  The logic needs thought.
+
+    group-hook-edit should be able to modify gnews-hook-{per,post?} directly.
+
+    (## REGEXP article-junk) means junk if REGEXP is in first ## lines.
+
+    Perhaps spaf shaddai will provide computable Message-ID's for *.newusers.
+
+    If default signaturing is nil, then fake a display of what inews will do.
+
+    Create an indexing cache on group entry--always?
+
+    improved hyphenation/refilling in reply modes
+
+    More than just (string-match regexp group) to trigger hooks on group
+	
+    newsgroup checking (ie, the rn "-c" flag)
+
+    locking of the .gnewsrc file
+
+    Provide backup versions of .hook (and .time?) files.
+
+[ ] clean mechanisms/hooks for variants on one-NNTP-server news reading
+
+[ ] reply-spell
+
+[ ] faster article deletion and more precomputation
+
+[ ] roster-mode
+
+[ ] If new groups arrive but news-new isn't invoked, save the new group list.
+
+[ ] An article history-mode?
+
+[ ] Articles should be buffered/nntp-exec backgrounded.
+
+[ ] digest-mode
+
+[*] an infotex manual
+
+[*] Minimize garbage.
+
+[*] Avoid running redundant nntp-exec's.
+
+[*] Provide internals to run off a news spool directory directly.
+
+[*] Get rid of the (nntp-exec t t "help") inside roster-new-update.
+
+[*] catch formfeeds
+
+[*] highlighting of subject lines
+
+[*] block meaningless commands when at the $-end of a newsgroup
+
+[*] Eliminate all internal uses of the kill-ring.
+
+[*] Background the index prep by send-stringing all the HEAD requests at once
+
+[*] group-digit should be usable to set standard prefix-arguments.
+
+[*] Better amark-list cleaning; article+/-1 should close up dead space.
+
+[*] The amark-* functions must be de-recursed
+
+[*] C code => (open-network-stream ...)
+
+[*] Block the running of pre-hooks until post-hooks have been run.
+
+[*] article header regexp searching already
+
+[*] Include a mailbox/folder option for article-save.
+
+[*] Slashify newsgroup names in save files
+--------------------------------------------------------------------------
+[ ] in progress
+[*] completed?

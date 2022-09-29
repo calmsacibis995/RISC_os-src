@@ -1,0 +1,75 @@
+#! /bin/sh
+
+#
+# Save core from kernel
+#
+
+Crashdir=/usr/adm/crash
+
+main()
+{
+	case "$1" in
+		start)
+			save_core
+			;;
+		stop)
+			;;
+		*)
+			echo "$0: usage: $0 [start|stop]"
+			exit 1
+			;;
+	esac
+}
+
+save_core()
+{
+	if [ -d "$Crashdir" ]
+	then
+		echo "checking for system core dump..."
+		Newcore=""
+		if [ -s "$Crashdir/bounds" ]
+		then
+			Newnum=`cat "$Crashdir/bounds"`
+		fi
+		/etc/savecore "$Crashdir"
+		case "$Newnum" in
+			"")
+				;;
+			*)
+				( link_unix "$Crashdir" $Newnum )
+				;;
+		esac
+	else
+		echo "No directory for saving core dumps"
+	fi
+}
+
+#
+# Look for unix.* files in the crash directory that are the same as the
+# current unix file, and link these together to save space.
+#
+
+link_unix()
+{
+	cd "$1"
+	if [ -f "unix.$2" ]
+	then
+		for unix in unix.*
+		{
+			case "$unix" in
+				"unix.$2")
+					continue
+					;;
+			esac
+			if cmp -s "unix.$2" "$unix" >/dev/null 2>&1
+			then
+				rm -f "unix.$2"
+				ln "$unix" "unix.$2"
+				return
+			fi
+		}
+	fi
+}
+
+main ${1+"$@"}
+exit 0

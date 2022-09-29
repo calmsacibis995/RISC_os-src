@@ -1,0 +1,13 @@
+#ident	"$Header: stdcshrc,v 1.2.2.3 90/02/15 14:59:46 wje Exp $"
+#	This is the default standard profile provided to a user.
+#	They are expected to edit it to meet their own needs.
+
+umask 022
+
+if ( $?prompt ) then
+	/bin/stty line 2 erase '^H' kill '^U' intr '^C' echoe ctlecho
+	eval `tset -s -Q`
+
+	# list directories in columns
+	alias ls 'ls -C'
+endif

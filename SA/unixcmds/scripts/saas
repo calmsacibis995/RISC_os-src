@@ -1,0 +1,5 @@
+#! /bin/sh
+# saas -- standalone assembler interface
+#
+set -x
+as -I -I/usr/sys/saio -I/usr/sys/prom -I/usr/sys -I/usr/include "$@"

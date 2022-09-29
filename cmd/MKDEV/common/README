@@ -1,0 +1,41 @@
+This directory contains the database used by MKDEV.
+
+See the manual page for DEV_DB(4) for details.
+
+Basically, the database consists of the concatenation of the following
+files in the given order:
+
+	common.system
+	common.local
+	common.{hostname}
+	{machine}.system
+	{machine}.local
+	{machine}.{hostname}
+
+The value of {hostname} is found by executing the command "hostname".
+If the command is not available, the 3rd and 6th files are not looked
+for.
+
+The value of {machine} is founf by executing the command "uname -t".
+
+Each file consists of classes, which have the format:
+
+	class(name,alias,...) {
+		{item}
+		...
+	}
+
+where {item} is one of
+
+	device
+		Describes a device
+	idevice
+		Describes a specially-related set of devices
+	link
+		Describes a link
+	ilink
+		Describes a specially-related set of links
+	message
+		Gives a message to print
+	{classname}
+		The name of a subclass to use

@@ -1,0 +1,15 @@
+*#ident	"$Header: mirror,v 1.1.1.1 90/03/15 14:32:52 wje Exp $"
+*
+* mirror: virtual disk mirror support.
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	-	-	-	
+				mirroradd() {false}
+				mirrorsize() {false}
+				mirrorstrategy() {false}
+				mirroropen() {false}
+				mirrorclose() {}
+				mi_sync() {}
+				mi_rer_start() {}
+
+$$$

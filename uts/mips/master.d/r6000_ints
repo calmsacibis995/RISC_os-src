@@ -1,0 +1,5 @@
+*
+* R6000 External Interrupt Handler.
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	

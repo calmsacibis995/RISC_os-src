@@ -1,0 +1,155 @@
+Newsgroups: news.software.b
+From: lwall@devvax.JPL.NASA.GOV (Larry Wall)
+Subject: Re: Looking for Version 4.4 of rn
+Date: 19 Jan 88 07:17:50 GMT
+Reply-To: lwall@jpl-devvax.JPL.NASA.GOV (Larry Wall)
+Organization: Jet Propulsion Laboratory, Pasadena, CA.
+
+In article <417@n8emr.UUCP> lwv@n8emr.UUCP (Larry W. Virden) writes:
+* Anyone know when version 4.4 of rn is slated for release?  I have tried
+* to find a path to Larry Wall, but my mail just bounces back to me...
+
+My current address is lwall@jpl-devvax.jpl.nasa.gov.
+
+I have even less idea when 4.4 will come out than you do.  
+
+No, I take that back.  I know exactly when 4.4 will come out.
+
+Never.    :-)
+
+Don't panic...it's just that there are so many changes that it ought
+to be called 5.0 when it comes out.  This is a major rewrite, folks.
+There have been some major changes in the internal organization of rn.
+The main one is called "virtual articles".  The display routines used
+to directly call file access routines.  Now they can call an entire
+pipeline of routines, specifiable on a newsgroup by newsgroup basis,
+that let you say where to get the articles from (spool dir, NNTP, mbox,
+personal archives, etc...) and how to format the article (highlighting,
+auto rot13, header line suppression, etc.).
+
+The other major change is that you will be able to deal with sets of
+articles as named entities.  These sets can be defined by rule or
+enumeration.  Sets defined by rule can have new articles added to them
+automatically.  You can define set generators that group articles into
+sets by, say, subject, or anything else you can specify via a % string.
+
+Kill processing and lookahead functions will work differently.  Kill
+processing falls out as a special case of preprocessing articles into
+article sets--they just happen to fall into sets you don't want to see.
+
+The .newsrc will be scrapped in favor of a .rnrc, which will contain
+much more info.  A .newsrc will be constructable from a .rnrc, and vice
+versa.  An entry in .rnrc will look something like this:
+
+comp.foo.bar: 1-12345,12347-12349,12351
+(SF 12345)
+(TH 1234)
+(IN =)
+(SW -ESUBJLIST="%S %D")
+(PI nntp | undig | autorot || myhead | hide | hilite)
+(SV ~/amiga/%s)
+(HD /^>/)
+(HI /\brn\b/)
+(KL
+	53:/foo/a:j
+)
+(CN
+	%s %s
+)
+(ST
+	321:/transmogrify/
+	/bar/ 1,3,5,7
+	/blah blah/ 78-82
+	/My machine is better than yours/ 38,42-43,92
+)
+(DG
+	123=5 513,1020,2192,3283,4182,5129
+)
+
+Most newsgroups will not have all these fields.  Note that the first line
+of each entry is the classical .newsrc line.  You can make the corresponding
+.newsrc with grep.  You'll be able to generate a .rnrc from a .newsrc by
+simply appending the .newsrc to the end of the .rnrc that you last used.
+
+Explanation of the fields
+(SF 12345)
+	A soft pointer into the active file.
+
+(TH 1234)
+	The THRU counter that used to be at the front of the KILL file.
+
+(IN =)
+	Any commands to do upon entering the newsgroup.
+
+(SW -ESUBJLIST="%S %D")
+	Any switches to set upon entering the newsgroup.  They are
+	automatically restored to their former value upon exiting the
+	newsgroup.
+
+(PI nntp | undig | autorot | myhead | hide | hilite)
+	The source and formatting of the articles in this newsgroup.
+	This line says take articles via NNTP, undigestify them, run the
+	autorotator on them, run through a heading customizer (that uses
+	% interpolations to build the header any way you choose), run
+	through a routine that hides unwanted lines, and a routine that
+	highlights any specifiable patterns.  All these filters will be
+	built in, but I expect if I don't recognize a filter name I'll
+	just pass it off to the shell, if you're willing to take the
+	overhead.
+
+(SV ~/amiga/%s)
+	Default location to save files from this newsgroup.
+
+(HD /^>/)
+	Pattern of lines that the hide filter hides.
+
+(HI /\brn\b/)
+	Patterns that the hilite filter highlights.
+
+(KL
+	53:/foo/a:j
+)
+	KILL set definitions.
+
+(CN
+	%s %s
+)
+	Set constructors--this one says classify by subject, use subject
+	for the set name.
+
+(ST
+	321:/transmogrify/
+	/bar/ 1,3,5,7
+	/blah blah/ 78-82
+	/My machine is better than yours/ 38,42-43,92
+)
+	Current sets.  They can contain articles that are marked read, but
+	the list-subjects command can do set intersections with the set of
+	unread articles.
+
+(DG
+	123=5@1438 513,1020,2192,3283,4182,5129
+)
+	Undigestification data used by undig filter.  This says something
+	like real article 123 turns into 5 articles starting at virtual
+	article number 1438, with the following offsets into the real
+	article.
+
+All this is subject to change, of course.  And there are other ideas
+floating around, such as if you run "rn -c" in your .login file it starts
+up a background rn that starts crunching through all your preprocessing
+for you until you run rn for real.  Or how about n-level undo?
+
+There's no limit on the number of newsgroups any more.
+
+There's a new newsgroup state "To Be Added" that will let you add new
+newsgroups at your leisure rather than forcing you to do it all now.
+
+Now for the bad news.  I don't think it'll run on a PDP-11.
+
+All this is about half done.  Which means things are very messy.  I drag it
+out and work on it once every few months.  Perhaps now that perl is coming
+out, I can look at it more often.  But call it 5.0.
+
+Larry Wall
+lwall@jpl-devvax.jpl.nasa.gov

@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+#
+
+REALFILE="/etc/init.d/set_kopts"
+
+if [ -f "$REALFILE" ]
+then
+	exec "$REALFILE" ${1+"$@"}
+else
+	echo "Warning: $REALFILE does not exist"
+# if set_kopts is missing, it's no biggie, so don't mess up the boot
+# by exit 1
+	exit 0
+fi

@@ -1,0 +1,3 @@
+usr/lib/libcrypt.a -r--r--r-- bin bin 1
+usr/lib/makekey -r-xr-xr-x bin bin 1
+

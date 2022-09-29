@@ -1,0 +1,977 @@
+/* $Header: kernel_common,v 1.26.1.13.1.6.1.8 90/12/21 09:33:13 beacker Exp $ */
+
+/*	kernel:	*/
+#include "values.h"
+#include "sys/types.h"
+#include "sys/param.h"
+#include "sys/sysmacros.h"
+#include "sys/termio.h"
+#include "sys/immu.h"
+#include "sys/buf.h"
+#include "sys/iobuf.h"
+#include "sys/file.h"
+#include "sys/region.h"
+#include "sys/sbd.h"
+#include "sys/cpu_board.h"
+#include "sys/proc.h"
+#include "sys/callo.h"
+#include "sys/map.h"
+#include "sys/var.h"
+#include "sys/tuneable.h"
+#include "sys/fcntl.h"
+#include "sys/flock.h"
+#include "sys/fstyp.h"
+#include "sys/limits.h"
+#include "sys/utsname.h"
+#include "sys/conf.h"
+#include "sys/fsid.h"
+#include "sys/nami.h"
+#include "sys/du_dep.h"
+#include "sys/queue.h"
+#include "sys/stream.h"
+#include "sys/sysinfo.h"
+#include "sys/ipc.h"
+#include "sys/shm.h"
+#include "sys/sem.h"
+#include "sys/msg.h"
+#include "sys/log.h"
+#include "sys/edt.h"
+#include "sys/debug.h"
+
+#include "sys/vnode.h"
+#include "sys/fs/ufs_inode.h"
+#include "sys/fs/ufs_mount.h"
+#include "sys/dnlc.h"
+
+#include "./machaddr"			/* Machine addresses */
+
+/*
+ * The following entries define the default kernel mode parameters
+ *
+ *  -1 => disabled 
+ *   0 => enabled
+ *
+ * Exception:  DISABLE_MACSI is the reverse (0 => enable MACSI, 
+ *			-1 => disable MACSI)
+ */
+
+#ifndef NFS_SYNC_WRITES
+#define NFS_SYNC_WRITES -1
+#endif NFS_SYNC_WRITES
+
+#ifndef POSIX_CHOWN_RESTRICTED
+#define POSIX_CHOWN_RESTRICTED -1
+#endif POSIX_CHOWN_RESTRICTED
+
+#ifndef POSIX_VDISABLE
+#define POSIX_VDISABLE 0
+#endif POSIX_VDISABLE
+
+#ifndef RISCOS_GROUP_PARENT
+#define RISCOS_GROUP_PARENT -1
+#endif RISCOS_GROUP_PARENT
+
+#ifndef RISCOS_UTIME_OWNER
+#define RISCOS_UTIME_OWNER -1
+#endif RISCOS_UTIME_OWNER
+
+#ifndef RISCOS_LINK_OWNER
+#define RISCOS_LINK_OWNER -1
+#endif RISCOS_LINK_OWNER
+
+#ifndef RISCOS_KILL_STOPPED_ORPHANS
+#define RISCOS_KILL_STOPPED_ORPHANS -1
+#endif RISCOS_KILL_STOPPED_ORPHANS
+
+#ifndef DISABLE_MACSI
+#define DISABLE_MACSI 0
+#endif DISABLE_MACSI
+
+/* The following flag is for use on non-62x0 machines since we don't
+ * perform roundup in that case (I/O system handles 16-bit block mode AM).
+ *
+ * Set true to disable the Eagle transmit packet roundup to a multiple of
+ * 4 bytes.  Roundup is performed so controller can use block mode to obtain
+ * packet.  Setting this flag will disable roundup & cause controller
+ * to NOT use block mode on packets whose length is not a four byte multiple.
+ * Only use to talk to machines which can't handle the extra bytes -- VME
+ * transfer rate drops from 30 MB/sec to 5 MB/sec.
+ */
+#ifndef EGL_NOROUNDUP
+#define EGL_NOROUNDUP 0
+#endif EGL_NOROUNDUP
+
+#ifndef RISCOS_TTYS_DEFAULT_CLOCAL
+#define RISCOS_TTYS_DEFAULT_CLOCAL 0
+#endif RISCOS_TTYS_DEFAULT_CLOCAL
+
+#ifndef RISCOS_IDLE_CLEAR_PAGES
+#define RISCOS_IDLE_CLEAR_PAGES -1
+#endif RISCOS_IDLE_CLEAR_PAGES
+
+#ifndef RISCOS_PRINT_EVERY
+#define RISCOS_PRINT_EVERY 100
+#endif RISCOS_PRINT_EVERY
+
+/*
+ *	Default initial value for the VM system constants
+ *	(if initial value is zero, vminit() sets a reasonable
+ *	default)
+ */
+
+#ifndef RISCOS_VM_MAXPGIO
+#define RISCOS_VM_MAXPGIO 0
+#endif RISCOS_VM_MAXPGIO
+
+#ifndef RISCOS_VM_LOTSFREE
+#define RISCOS_VM_LOTSFREE 0
+#endif RISCOS_VM_LOTSFREE
+
+#ifndef RISCOS_VM_MINFREE
+#define RISCOS_VM_MINFREE 0
+#endif RISCOS_VM_MINFREE
+
+#ifndef RISCOS_VM_DESFREE
+#define RISCOS_VM_DESFREE 0
+#endif RISCOS_VM_DESFREE
+
+#ifndef RISCOS_VM_SAFERSS
+#define RISCOS_VM_SAFERSS 6
+#endif RISCOS_VM_SAFERSS
+
+#ifndef RISCOS_VM_SLOWSCAN
+#define RISCOS_VM_SLOWSCAN 0
+#endif RISCOS_VM_SLOWSCAN
+
+#ifndef RISCOS_VM_FASTSCAN
+#define RISCOS_VM_FASTSCAN 0
+#endif RISCOS_VM_FASTSCAN
+
+#ifndef RISCOS_VM_MAXSLP
+#define RISCOS_VM_MAXSLP 20
+#endif RISCOS_VM_MAXSLP
+
+/*
+ * These are the modifiable kernel mode variables
+ * (changeable at boot time or via kopt)
+ */
+int	_nfs_sync_writes = NFS_SYNC_WRITES;
+int	_posix_chown_restricted = POSIX_CHOWN_RESTRICTED;
+int	_posix_vdisable = POSIX_VDISABLE;
+int	_riscos_group_parent = RISCOS_GROUP_PARENT;
+int	_riscos_utime_owner = RISCOS_UTIME_OWNER;
+int	_riscos_link_owner = RISCOS_LINK_OWNER;
+int	_riscos_kill_stopped_orphans = RISCOS_KILL_STOPPED_ORPHANS;
+int	disable_macsi = DISABLE_MACSI;
+int	egl_noroundup = EGL_NOROUNDUP;
+int	_riscos_ttys_default_clocal = RISCOS_TTYS_DEFAULT_CLOCAL;
+int	_riscos_idle_clear_pages = RISCOS_IDLE_CLEAR_PAGES;
+
+char	*console="l";
+char	*keyswtch="1";
+
+int	print_every=RISCOS_PRINT_EVERY;	/* consolidate like messages */
+
+int	maxpgio = RISCOS_VM_MAXPGIO;
+int	lotsfree = RISCOS_VM_LOTSFREE;
+int	minfree = RISCOS_VM_MINFREE;
+int	desfree = RISCOS_VM_DESFREE;
+int	saferss = RISCOS_VM_SAFERSS;
+int	slowscan = RISCOS_VM_SLOWSCAN;
+int	fastscan = RISCOS_VM_FASTSCAN;
+int	maxslp = RISCOS_VM_MAXSLP;
+
+
+/*
+ *	prom interface parameters
+ */
+
+#ifndef RISCOS_USE_PROM_EXIT
+#define RISCOS_USE_PROM_EXIT 0
+#endif RISCOS_USE_PROM_EXIT
+
+int	use_prom_exit = RISCOS_USE_PROM_EXIT;
+
+/*
+ * machine_type is a global that is used to index into machine dependent
+ *	arrays.
+ */
+
+int machine_type = RISCOS_MACHINE_TYPE;
+
+/*
+ * Configurable parameters for the virtual disk driver
+ */
+
+#ifndef DEFAULT_MI_BALANCED_MINIMUM
+#define DEFAULT_MI_BALANCED_MINIMUM	(17)	/* In 512 byte blocks */
+#endif /* DEFAULT_MI_BALANCED_MINIMUM */
+int default_mi_balanced_minimum = DEFAULT_MI_BALANCED_MINIMUM;
+
+#ifndef MI_BURST_TOTAL
+		/* Default burst count for doing mirror burst reads. */
+#define MI_BURST_TOTAL	(5)
+#endif /* MI_BURST_TOTAL */
+int default_mi_burst_total = MI_BURST_TOTAL;
+
+#ifndef READ_ERROR_THRESHOLD
+		/* Default threshold for disabling a partition */
+#define READ_ERROR_THRESHOLD	(50)
+#endif /* READ_ERROR_THRESHOLD */
+int default_read_error_threshold = READ_ERROR_THRESHOLD;
+
+#ifndef MIRROR_SYNC_BLKCNT
+		/* Blocksize to be used when syncing a mirror disk */
+#define MIRROR_SYNC_BLKCNT	(BTOBB(128*1024))
+#endif /* MIRROR_SYNC_BLKCNT */
+long default_mirror_sync_blkcnt = MIRROR_SYNC_BLKCNT;
+
+#ifndef MAX_VDBUF
+#define MAX_VDBUF	500	/* number of virtual disk buffers */
+#endif /* MAX_VDBUF */		/* to be allocated */
+int max_vdbuf = MAX_VDBUF;
+
+/*
+ * Tuneable parameters for async I/O.
+ */
+
+#ifndef DEFAULT_MAXIMUM_AIO_COUNT	/* Maximum number of aio requests per process. */
+#define DEFAULT_MAXIMUM_AIO_COUNT 256
+#endif /* DEFAULT_MAXIMUM_AIO_COUNT */
+int default_maximum_aio_count = DEFAULT_MAXIMUM_AIO_COUNT;
+
+#ifndef DESIRED_AIO_DAEMON_COUNT	/* Default number of async daemons. */
+#define DESIRED_AIO_DAEMON_COUNT 4
+#endif /* DESIRED_AIO_DAEMON_COUNT */
+int desired_aio_daemon_count = DESIRED_AIO_DAEMON_COUNT;
+
+#ifndef DEFAULT_AIO_HANDLE_TABLE_SIZE	/* Initial size of per process aio handle table. */
+#define DEFAULT_AIO_HANDLE_TABLE_SIZE	32
+#endif /* DEFAULT_AIO_HANDLE_TABLE_SIZE */
+int default_aio_handle_table_size = DEFAULT_AIO_HANDLE_TABLE_SIZE;
+
+
+/*
+ * Tuneable parameters for New kernel memory allocator
+ */
+
+#include "sys/kmem.h"
+
+#ifndef KMEMMAP
+#define	KMEMMAP		100	/* size of kmemmap */
+#endif KMEMMAP
+#ifndef MAXBUCKET
+#define	MAXBUCKET	32	/* maximum number of buckets to be allocated */
+				/* Must be less than 128 */
+#endif MAXBUCKET
+#ifndef MAXALLOCSAVE
+#if (NBPC >= 0x4000)
+#define MAXALLOCSAVE	(NBPC)		/* max memory allocation saved */
+#else
+#define MAXALLOCSAVE	(0x4000)	/* max memory allocation saved */
+#endif
+#endif MAXALLOCSAVE
+
+/*
+ * Preallocate following size buckets (must be terminated by 0 entry)
+ * Each bucket must be at least 16 bytes long.  This requirement may
+ * change in future.
+ */
+int	fixed_buckets[] = {
+	/* power 2 buckets */
+	16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384,
+	/* Miscellaneous buckets */
+	80, 112, 176, 224,
+	0
+};
+
+/*
+ * Variable declarations for kernel memory allocator
+ */
+
+int	kmemmapsz = KMEMMAP;	
+struct map kmemmap[KMEMMAP];
+struct kmembuckets	bucket[MAXBUCKET];
+int	maxbucket = MAXBUCKET;
+struct kmembsz kmembsz[MAXBUCKET];
+int	maxallocsave = MAXALLOCSAVE;
+
+/*
+ * uname
+ */
+struct utsname utsname = {
+	"MIPS",		/* sysname */
+	"MIPS",		/* nodename */
+	R_4_52,		/* release */
+	V_UMIPS,	/* version */
+	M_MIPS,		/* machine */
+	UTSNAME_MACHINE_TYPE,	/* m_type */
+	BR_V30_ATT,	/* base_rel */
+	"",		/* reserved5 */
+	"",		/* reserved4 */
+	"",		/* reserved3 */
+	"",		/* reserved2 */
+	"",		/* reserved1 */
+	""		/* reserved0 */
+};
+
+/*
+ * The following entries form the tunable parameter table.
+ */
+
+#ifndef NINODE
+#define NINODE 1500
+#endif NINODE
+
+#ifndef NFILE
+#define NFILE 1000
+#endif NFILE
+
+#ifndef NCALL
+#define NCALL 700
+#endif NCALL
+
+#ifndef NPROC
+#define NPROC 300
+#endif NPROC
+
+#ifndef NBUF
+#define NBUF 128
+#endif NBUF
+
+
+/*
+ *The following stuff is for streams.
+ */
+#ifndef NBLK4096
+#define NBLK4096 2
+#endif NBLK4096
+
+#ifndef NBLK2048
+#define NBLK2048 2
+#endif NBLK2048
+
+#ifndef NBLK1024
+#define NBLK1024 256
+#endif NBLK1024
+
+#ifndef NBLK512
+#define NBLK512 256
+#endif NBLK512
+
+#ifndef NBLK256
+#define NBLK256 256
+#endif NBLK256
+
+#ifndef NBLK128
+#define NBLK128 128
+#endif NBLK128
+
+#ifndef NBLK64
+#define NBLK64 256
+#endif NBLK64
+
+#ifndef NBLK16
+#define NBLK16 512
+#endif NBLK16
+
+#ifndef NBLK4
+#define NBLK4 256
+#endif NBLK4
+
+#ifndef NMUXLINK
+#define NMUXLINK 1
+#endif NMUXLINK
+
+#ifndef NSTRPUSH
+#define NSTRPUSH 9
+#endif NSTRPUSH
+
+#ifndef NSTREVENT
+#define NSTREVENT 1000
+#endif NSTREVENT
+
+#ifndef MAXSEPGCNT
+#define MAXSEPGCNT 1
+#endif MAXSEPGCNT
+
+#ifndef STRLOFRAC
+#define STRLOFRAC 80
+#endif STRLOFRAC
+
+#ifndef STRMEDFRAC
+#define STRMEDFRAC 90
+#endif STRMEDFRAC
+
+#ifndef STRMSGSZ
+#define STRMSGSZ 4096
+#endif STRMSGSZ
+
+#ifndef STRCTLSZ
+#define STRCTLSZ 1024
+#endif STRCTLSZ
+
+
+struct msgb mblock[NBLK4096+NBLK2048+NBLK1024+NBLK512+NBLK256+NBLK128+NBLK64+NBLK16+NBLK4 + ((NBLK4096+NBLK2048+NBLK1024+NBLK512+NBLK256+NBLK128+NBLK64+NBLK16+NBLK4)/4)];
+struct datab dblock[NBLK4096+NBLK2048+NBLK1024+NBLK512+NBLK256+NBLK128+NBLK64+NBLK16+NBLK4];
+struct linkblk linkblk[NMUXLINK];
+int nmuxlink = NMUXLINK;
+int nstrpush = NSTRPUSH;
+struct strevent  strevent[NSTREVENT];
+int nstrevent = NSTREVENT;
+int maxsepgcnt = MAXSEPGCNT;
+int strmsgsz = STRMSGSZ;
+int strctlsz = STRCTLSZ;
+char strlofrac = STRLOFRAC;
+char strmedfrac = STRMEDFRAC;
+int nmblock = NBLK4096+NBLK2048+NBLK1024+NBLK512+NBLK256+NBLK128+NBLK64+NBLK16+NBLK4 + ((NBLK4096+NBLK2048+NBLK1024+NBLK512+NBLK256+NBLK128+NBLK64+NBLK16+NBLK4)/4);
+
+/* starting default offset in dumpdev to dump kernel when it crashes */
+#ifndef DUMPLO
+#define DUMPLO 0
+#endif DUMPLO
+long dumplo = DUMPLO;
+
+/*
+ * nfs_max_dupreqs is the number of items in the nfs duplicate request
+ * cache.  It needs to be large enough to hold an entry for several
+ * retransmissions.
+ */
+
+#ifndef NFS_MAXDUPREQS
+#define NFS_MAXDUPREQS	1024
+#endif /* NFS_MAXDUPREQS */
+long nfs_maxdupreqs = NFS_MAXDUPREQS;
+
+/*
+ *maxup is the maximum number of processes per user
+ */
+
+#ifndef MAXUP
+#define MAXUP 100
+#endif MAXUP
+
+/*
+ * hashbuf must be a power of 2
+ */
+#ifndef NHBUF
+#define NHBUF 256
+#endif NHBUF
+
+#ifndef NPBUF
+#define NPBUF 64
+#endif NPBUF
+
+/*
+ * File region locking
+ */
+
+#ifndef FLCKREC
+#define FLCKREC 100
+#endif FLCKREC
+
+struct flckinfo flckinfo = {
+	FLCKREC, 0, 0, 0,
+};
+struct filock flox[FLCKREC];
+
+/*
+ * Shared Libraries:  Maximum number of libraries that can be
+ *                    attached to a process at one time.
+ */
+#ifndef SHLBMAX
+#define SHLBMAX 2
+#endif SHLBMAX
+
+#ifndef SHLBADDR
+#define SHLBADDR 0x40000000
+#endif SHLBADDR
+
+struct shlbinfo shlbinfo = {
+	SHLBMAX, 0, 0, 0, SHLBADDR,
+};
+
+/*
+ * Delay for delayted writes
+ */
+
+#ifndef NAUTOUP
+#define NAUTOUP 10
+#endif NAUTOUP
+
+
+/*
+ * Maximum number of open files per process.  Now a configurable
+ * parameter but only applies to direct open and close calls (i.e
+ * stdio, sh, etc will not make use of more than 20 in this release).
+ */
+
+#ifndef NOFILES
+#define NOFILES 100
+#endif NOFILES
+
+/*
+ * added for paging
+ */
+
+#ifndef NREGION
+#define NREGION 1000
+#endif NREGION
+
+#ifndef SPTMAP
+#define SPTMAP 100
+#endif SPTMAP
+
+#ifndef MAXPMEM
+#define MAXPMEM 0
+#endif MAXPMEM
+
+#ifndef MAXUMEM
+#define MAXUMEM 8192
+#endif MAXUMEM
+
+#ifndef BDFLUSHR
+#define BDFLUSHR 1
+#endif BDFLUSHR
+
+#ifndef MINARMEM
+#define MINARMEM 25
+#endif MINARMEM
+
+#ifndef MINASMEM
+#define MINASMEM 25
+#endif MINASMEM
+
+#ifndef PUTBUFSZ
+#define PUTBUFSZ 2000
+#endif PUTBUFSZ
+
+extern binit(), dnlc_init(), fsinit(), finit(), strinit(), flckinit(),
+	bsd_init(), syscall_init();
+
+extern	int	kmeminit();
+
+int (*init_tbl[])() = {
+	binit,
+	dnlc_init,
+	fsinit,
+	finit,
+	flckinit,
+	strinit,
+	bsd_init,
+	syscall_init,
+	0
+};
+
+#ifdef SABLE
+bsd_init()
+{
+}
+#endif
+
+struct buf pbuf[NPBUF];
+struct file file[NFILE];
+struct inode inode[NINODE];
+struct proc proc[NPROC];
+int	nproc = NPROC;
+struct region region[NREGION];
+struct map sptmap[SPTMAP];
+char putbuf[PUTBUFSZ];
+int putbufsz = PUTBUFSZ;
+
+struct callout callout[NCALL];
+short ncallout = NCALL;			/* # of the beasties */
+
+struct var v = {
+	NBUF,
+	NCALL,
+	NINODE,
+	(char *)(inode+NINODE),
+	NFILE,
+	(char *)(file+NFILE),
+	0,
+	(char *) NULL,
+	NPROC,
+	(char *)(proc+NPROC),
+	NREGION,
+	0,
+	MAXUP,
+	NHBUF,
+	NHBUF-1,
+	NPBUF,
+	SPTMAP,
+	0,
+	MAXPMEM,
+	NAUTOUP,
+	NOFILES,
+	0,
+	0,
+	NBLK4096,
+	NBLK2048,
+	NBLK1024,
+	NBLK512,
+	NBLK256,
+	NBLK128,
+	NBLK64,
+	NBLK16,
+	NBLK4,
+	0,
+};
+
+struct tune tune = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	MAXUMEM,
+	BDFLUSHR,
+	MINARMEM,
+	MINASMEM,
+};
+
+/*
+ * Buffer cache parameters.
+ *
+ *	    bio_maxbsize - Max size allowed for any buf.
+ *	    bio_pageshi	- Max number of pages allowed in the cache.
+ *	    bio_pageslo	- Min number pruned to during page stealing.
+ *
+ * Bio_maxbsize can be set directly here.  The kernel executes the functions
+ * bio_pageshi_init() and bio_pageslo_init() at boot time to determine
+ * the values for bio_pageshi and bio_pageslo.
+ *
+ * The kernel executes bio_nbuf_init() at boot time to determine the number
+ * of buffer headers to be used.
+ */
+#ifndef BIO_MAXBSIZE_LOG2
+#define	BIO_MAXBSIZE_LOG2	14		/* 16K max size */
+#endif BIO_MAXBSIZE_LOG2
+
+#define	BIO_MAXBSIZE		(1<<BIO_MAXBSIZE_LOG2)
+int	bio_maxbsize_log2 = BIO_MAXBSIZE_LOG2;
+int	bio_maxbsize = 1<<BIO_MAXBSIZE_LOG2;
+struct	buf *buf;
+
+/*
+ * These are the percentages used by the system to tune the buffer pool
+ *
+ * The system will try to keep bio_curpages at 
+ *	(((bio_targpages - bio_pageslo) * bio_despages_pct) / 100)
+ *
+ * The system will not attempt to initiate more delayed writes than dictated
+ * by normal "bdflush" aging, if the number of pending I/O's is greater than
+ *	((((bio_curpages * bio_page_pct) / 100) * bio_lots_io_pct) / 100)
+ *
+ * The number of "available buffers" is 
+ *	"BQ_AGE queue length" +
+ *	min("BQ_EMPTY queue length",
+ *	    ((min(max((bio_targpages - bio_curpages),0),freemem)
+			 * bio_page_pct) / 100))
+ * (This is the number of buffers which either have memory under them,
+ * or could easily have memory placed under them.)
+ *
+ * The number of "valid buffers" is the sum of the BQ_LRU and BQ_AGE
+ * queue lengths.
+ *
+ * The system will not throw away the last
+ *	((((min(bio_curpages,bio_targpages) * bio_page_pct) / 100)
+ *		 * bio_lru_min_pct) / 100)
+ * buffers in the BQ_LRU queue
+ *
+ * The system will not move any more buffers from the BQ_LRU queue to the
+ * BQ_AGE queue, if the number of "available buffers"
+ * is already over 
+ *	((((bio_targpages * bio_page_pct) / 100) * bio_age_max_pct) / 100)
+ *
+ * The system will more actively move buffers from the BQ_LRU queue to the BQ_AGE 
+ * queue, if the number of "available buffers" is less than
+ *	((((bio_targpages * bio_page_pct) / 100) * bio_age_min_pct) / 100)
+ * It will do so by aging buffers at a faster rate that required by normal
+ * "bdflush" activity.  It will not, however, do so if the number of 
+ * buffers for which I/O is pending is greater than
+ *	(("valid buffers" * bio_lots_io_pct) / 100)
+ */
+#ifndef BIO_DESPAGES_PCT
+#define BIO_DESPAGES_PCT	87
+#endif
+
+#ifndef BIO_LOTS_IO_PCT
+#define BIO_LOTS_IO_PCT	75
+#endif
+
+#ifndef BIO_LRU_MIN_PCT
+#define BIO_LRU_MIN_PCT	10
+#endif
+
+#ifndef BIO_AGE_MIN_PCT
+#define BIO_AGE_MIN_PCT	10
+#endif
+
+#ifndef BIO_AGE_MAX_PCT
+#define BIO_AGE_MAX_PCT	50
+#endif
+
+int	bio_despages_pct = BIO_DESPAGES_PCT;
+int	bio_lots_io_pct = BIO_LOTS_IO_PCT;
+int	bio_lru_min_pct = BIO_LRU_MIN_PCT;
+int	bio_age_min_pct = BIO_AGE_MIN_PCT;
+int	bio_age_max_pct = BIO_AGE_MAX_PCT;
+
+/*
+ * ((bio_cur_pages * bio_page_pct) / 100) should give a rough idea of how many
+ *	buffers are in use.  In mark I machine, most of the buffers have
+ *	two pages under them, so bio_page_pct is 60.  For mark II machine,
+ *	this should be 190, since most buffers share pages.
+ */
+#ifndef BIO_PAGE_PCT
+#ifdef R6000
+#define BIO_PAGE_PCT	190
+#else 
+#define BIO_PAGE_PCT	60
+#endif
+#endif
+
+int	bio_page_pct = BIO_PAGE_PCT;
+
+/*
+ *	number of read ahead blocks that the file system will start on
+ *	sequential read.
+ */
+#ifndef VNMRA
+#define VNMRA	4
+#endif	/* VNMRA */
+
+int vnmra = VNMRA;
+
+/*
+ *	memory allocation parameters
+ */
+
+#include "bsd/sys/mbuf.h"
+
+#ifndef MALLOC_LIMIT
+#define MALLOC_LIMIT (2048 * 1024)
+#endif MALLOC_LIMIT
+
+int malloc_limit = MALLOC_LIMIT;
+
+#ifndef	SYSSEG_MISC
+#define	SYSSEG_MISC	(16*1024*1024)
+#endif	SYSSEG_MISC
+int syssegmisc = SYSSEG_MISC;		/* miscellaneous virtual space
+					 * for PTEs, exec args, etc. */
+
+#ifndef MBUF_LIMIT
+#define MBUF_LIMIT (2048 * 1024)
+#endif MBUF_LIMIT
+
+int mbuf_limit = MBUF_LIMIT;
+
+#ifndef MBUF_SMALL_LIMIT
+#define MBUF_SMALL_LIMIT (256 * 1024)
+#endif MBUF_SMALL_LIMIT
+
+int mbuf_small_limit = MBUF_SMALL_LIMIT;
+
+char mclrefcnt[((MBUF_LIMIT / CLBYTES) - (MBUF_SMALL_LIMIT / CLBYTES)) *
+			(CLBYTES / MCLBYTES)];
+
+#ifndef MBUF_SMALL_PREALLOC
+#define MBUF_SMALL_PREALLOC ((128*1024)/CLBYTES)
+#endif MBUF_SMALL_PREALLOC
+
+int	mbuf_small_prealloc = MBUF_SMALL_PREALLOC;
+
+#ifndef MBUF_CLUSTER_PREALLOC
+#define MBUF_CLUSTER_PREALLOC ((320*1024)/CLBYTES)
+#endif MBUF_CLUSTER_PREALLOC
+
+int	mbuf_cluster_prealloc = MBUF_CLUSTER_PREALLOC;
+
+#ifndef MBUF_DES_CLUSTERS
+#define MBUF_DES_CLUSTERS MBUF_CLUSTER_PREALLOC * (CLBYTES / MCLBYTES)
+#endif MBUF_DES_CLUSTERS
+
+int	mbuf_des_clusters = MBUF_DES_CLUSTERS;
+
+/*
+ * Disk quota cache limit.  The following parameter sets the maximum
+ * number of structures which will be cached by the kernel.  One structure
+ * is needed by each user per file system which is locally mounted and
+ * has quota usage enabled.
+ */
+#ifndef RISCOS_MAX_DQUOT_CACHE
+#define RISCOS_MAX_DQUOT_CACHE 16
+#endif
+int _riscos_max_dquot_cache = RISCOS_MAX_DQUOT_CACHE;
+
+
+/*
+ * vfs_dnlc cache size.
+ */
+#ifndef RISCOS_NCSIZE
+#define RISCOS_NCSIZE 128
+#endif RISCOS_NCSIZE
+int	ncsize = RISCOS_NCSIZE;
+struct  ncache ncache_array[RISCOS_NCSIZE];
+struct	ncache *ncache = ncache_array;
+
+/*
+ *	kernel arguments (and kopt) decoding table
+ *
+ * The following is a table of symbolic names and addresses of kernel
+ * variables which can be tuned to alter the performance of the system.
+ * They can be modified at boot time as a boot parameter or by the mipskopt
+ * system call.  Variables marked as readonly can't be modifed after system
+ * boot time (i.e. through the mipskopt call).  "func" is called after the
+ * variable is set in case there is processing beyond storing the new value.
+ */
+
+extern char	*arg_rootname;
+extern char	*arg_root;
+extern char	*arg_swap;
+extern char	*arg_dump;
+extern int	showconfig;
+extern char	*prom_version;
+extern int	scsiexterr;
+extern int	scsi_id;
+extern int	scsi_reset;
+extern int	scsi_plock;
+extern char	*arg_initstate;
+extern char	*arg_initfile;
+extern int	prom_mon;
+extern int 	console_panic_enabled;
+extern int	disable_parity;
+extern int	ecc_noprint;
+extern int	cache_bufs;
+extern int	nocache_bufs;
+extern int	memory_limit;
+extern int	user_error;
+extern int	dbg_uart;
+extern int	dbg_kbd;
+extern int	cheapdbg;
+extern int	sha_disc;
+extern int	isd_syncmode;
+extern int	uart_silo;
+extern int	limitmem;
+extern int	check_mem_at_vfault;
+extern int	dbg_qt;
+extern int	desired_aio_daemon_count;
+extern int	blank;
+int		uart_dbx;
+char *arg_boot_dev;
+int	arg_use_bootparams;
+extern dev_t	rootdev;
+extern int	nfs_portmon;
+int	mono, color;
+ulong	rambo_clock_delay;
+char	*keyboard_str;
+
+/* Last 3 fields:
+ *	a) readonly flag
+ *	b) boolean flag
+ *	c) dostring flag      (Always copy string if != 0)
+ */
+struct	kernargs kernargs[] = {
+#ifndef SABLE
+	{ "rootname",		(int *) &arg_rootname,		1, 0, 1 },
+	{ "root",		(int *) &arg_root,		1, 0, 1 },
+	{ "swap",		(int *) &arg_swap,		1, 0, 1 },
+	{ "dump",		(int *) &arg_dump,		1, 0, 1 },
+	{ "askme",		(int *) &arg_root,		1, 0, 1 },
+	{ "showconfig",		(int *) &showconfig,		1, 0, 0 },
+	{ "version",		(int *) &prom_version,		1, 0, 1 },
+	{ "scsiexterr",		(int *) &scsiexterr,		1, 0, 0 },
+	{ "scsi_id",		(int *) &scsi_id,		1, 0, 0 },
+	{ "scsi_reset",		(int *) &scsi_reset,		1, 0, 0 },
+	{ "scsi_plock",		(int *) &scsi_plock,		1, 0, 0 },
+	{ "initfile",		(int *) &arg_initfile,		1, 0, 0 },
+	{ "initstate",		(int *) &arg_initstate,		1, 0, 0 },
+	{ "prom_mon",		(int *) &prom_mon,		0, 0, 0 },
+	{ "console_panic_enabled", (int *) &console_panic_enabled,0, 0, 0 },
+	{ "machine_type",	(int *) &machine_type,		1, 0, 0 },
+	{ "disable_parity",	(int *) &disable_parity,	1, 0, 0 },
+	{ "ecc_noprint",	(int *) &ecc_noprint,		0, 0, 0 },
+	{ "disable_macsi",	(int *) &disable_macsi,		1, 0, 0 },
+	{ "egl_noroundup",	(int *) &egl_noroundup,		0, 0, 0 },
+	{ "cache_bufs",		(int *) &cache_bufs,		1, 0, 0 },
+	{ "nocache_bufs",	(int *) &nocache_bufs,		1, 0, 0 },
+	{ "memory_limit",	(int *) &memory_limit,		1, 0, 0 },
+	{ "user_error",		(int *) &user_error,		0, 0, 0 },
+	{ "dbg_uart",		(int *) &dbg_uart,		0, 0, 0 },
+	{ "dbg_kbd",		(int *) &dbg_kbd,		0, 0, 0 },
+	{ "console",		(int *) &console,		0, 0, 1 },
+	{ "keyswtch",		(int *) &keyswtch,		0, 0, 1 },
+	{ "cheap",		(int *) &cheapdbg,		1, 0, 0 },
+	{ "disc",		(int *) &sha_disc,		1, 0, 0 },
+	{ "sync",		(int *) &isd_syncmode,		1, 0, 0 },
+	{ "silo",		(int *) &uart_silo,		1, 0, 0 },
+	{ "maxmem",		(int *) &limitmem,		1, 0, 0 },
+	{ "desired_aio_daemon_count",	(int *)&desired_aio_daemon_count, 0, 0, 0 },
+	{ "_nfs_sync_writes",	(int *) &_nfs_sync_writes,	0, 1, 0 },
+	{ "_posix_chown_restricted", (int *) &_posix_chown_restricted, 0, 1, 0 },
+	{ "_posix_vdisable", (int *) &_posix_vdisable, 		0, 1, 0 },
+	{ "_riscos_group_parent", (int *) &_riscos_group_parent, 0, 1, 0 },
+	{ "_riscos_utime_owner", (int *) &_riscos_utime_owner, 	0, 1, 0 },
+	{ "_riscos_link_owner", (int *) &_riscos_link_owner, 	0, 1, 0 },
+	{ "_riscos_kill_stopped_orphans", (int *) &_riscos_kill_stopped_orphans, 0, 1, 0 },
+	{ "check_mem_at_vfault", (int *)&check_mem_at_vfault,	0, 1, 0 },
+	{ "qt",			(int *) &dbg_qt,		0, 1, 0 },
+	{ "_riscos_ttys_default_clocal", (int *) &_riscos_ttys_default_clocal, 0, 1, 0 },
+	{ "_riscos_idle_clear_pages", (int *) &_riscos_idle_clear_pages, 1, 1, 0 },
+	{ "_riscos_max_disk_quota_cache", (int *) &_riscos_max_dquot_cache, 0, 0, 0 },
+	{ "uart_dbx",		(int *) &uart_dbx,		1, 0, 0 },
+	{ "vnmra",		(int *) &vnmra,			0, 0, 0 },
+	{ "use_prom_exit",	(int *) &use_prom_exit,		0, 0, 0 },
+	{ "use_bootparams",	(int *) &arg_use_bootparams,	1, 1, 0 },
+	{ "boot_dev",		(int *) &arg_boot_dev,		1, 0, 1 },
+	{ "rootdev",		(int *) &rootdev,		1, 0, 0 },
+	{ "nfs_portmon",	(int *) &nfs_portmon,		0, 0, 0 },
+	{ "mono",		(int *) &mono,			1, 0, 0 },
+	{ "color",		(int *) &color,			1, 0, 0 },
+	{ "nproc",		(int *) &nproc,			1, 0, 0 },
+	{ "_riscos_nproc",	(int *) &nproc,			1, 0, 0 },
+	{ "keyboard",		(int *) &keyboard_str,		1, 0, 1 },
+	{ "blank",              (int *) &blank,                 0, 0, 0 },
+#endif
+	{ 0, 0 },
+};
+
+#include "sys/dkio.h"
+
+
+struct devtable *Devboot;
+extern int has_rd(), has_dkip(), has_dkvj(), has_scsi(); 
+extern int has_dkisd(), has_dkxyl();
+#ifdef SABLE
+extern int has_dkxyl(), has_dksd();
+#endif
+
+struct bootdevtbl devlist[] = {
+	{ "rd", has_rd,},	/* Ram Disk */
+	{ "ipc", has_dkip,},	/* Interphase SMD disk */
+	{ "ips", has_dkip,},
+	{ "dkip", has_dkip,},
+	{ "ijc", has_dkvj,},	/* Interphase SCSI */
+	{ "isc", has_scsi,},	/* Internal SCSI */
+	{ "sdc", has_dkisd,},	/* Generic SCSI */
+	{ "xyl", has_dkxyl,},	/* Xylogics 712 VME ESDI disk */
+#ifdef SABLE
+	{ "sd", has_dksd,},	/* Sable disk */
+#endif
+	{ 0, 0,},
+};
+
+#ifdef PIXIE
+
+#define PIXIE_TABLE_SIZE	300000
+
+char	pixie[PIXIE_TABLE_SIZE];
+int	pixie_size = PIXIE_TABLE_SIZE;
+int	pixie_clr = 0;
+
+#endif PIXIE

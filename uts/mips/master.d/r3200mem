@@ -1,0 +1,21 @@
+*#ident "$Header"
+*
+* R3200 CPU Local Memory control and error handling for R3250/R3251 mem cards
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+os	r3200mem -	1
+				lmem_err_scan(){}
+				lmem_setmax(){}
+
+$$$
+#include "sys/r3250reg.h"
+#include "sys/r3200mem.h"
+#include "sys/elog.h"
+
+struct lmem_cntrl lmem_cntrl[R3200_MEM_MAX];	/* per-board control structs */
+
+int	r3200memvec = R3250VEC;	/* variable holding vector value	*/
+
+int	lmem_errcount = 0;	/* system total ecc error counter	*/
+
+int	lmem_spl = SPL_7;	/* priority level for interrupts	*/

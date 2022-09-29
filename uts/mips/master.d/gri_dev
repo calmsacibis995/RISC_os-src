@@ -1,0 +1,9 @@
+*#ident	"$Header: gri_dev,v 1.3.5.1 89/11/28 11:40:55 wje Exp $"
+*
+* GRI_DEV	- graphics input drivers for GF3 card
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+cs	gri	13	-	gro_dev
+				gl_softintr(){false}
+
+$$$

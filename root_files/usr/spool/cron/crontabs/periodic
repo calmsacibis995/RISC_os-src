@@ -1,0 +1,15 @@
+#
+#  This is a special file known only to cron (i.e., not in the
+#  /etc/passwd file) that runs as root.  Its purpose is to run
+#  special events for root apart from root functions that a 
+#  customer chooses to set up.  
+#
+#  See documentation in crontab(1) and cron(1M) for further
+#  details.
+#
+#  PLEASE DO NOT DELETE THIS FILE!!
+#
+0 * * * * /bin/sh /usr/adm/periodic/driver hourly >/dev/null 2>&1
+0 0 * * * /bin/sh /usr/adm/periodic/driver daily 2>&1 | mail root
+0 2 * * 6 /bin/sh /usr/adm/periodic/driver weekly 2>&1 | mail root
+0 4 1 * * /bin/sh /usr/adm/periodic/driver monthly 2>&1 | mail root

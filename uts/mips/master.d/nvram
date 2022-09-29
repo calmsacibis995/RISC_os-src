@@ -1,0 +1,11 @@
+* $Header
+*
+* nvram
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox		
+				environ_save(){}
+						
+
+$$$
+

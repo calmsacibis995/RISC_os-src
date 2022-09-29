@@ -1,0 +1,28 @@
+#ident "$Header: Makefile,v 1.2.2.1 90/07/18 16:22:33 huang Exp $"
+#
+# ..../saio/M2000/MIPS/Makefile -- Makefile to build the M2000_MIPS saio
+#
+
+SHELL=/bin/sh
+MAKE=/bin/make
+
+include ../../../Mkinc.release
+include ../../../Mkinc.common_defines
+
+default: all
+
+all remake clean clobber depend:
+	@for i in $(BINTYPES); \
+	do \
+		echo XXXXXX Make $@ for saio/M2000/MIPS/PSAIO_$$i XXXXXX; \
+		if [ -d PSAIO_$$i ]; \
+		then \
+			[ -r PSAIO_$$i/Makedepend ] || touch PSAIO_$$i/Makedepend; \
+			(cd PSAIO_$$i; $(MAKE) $@ $(MAKEARGS)); \
+		else \
+			echo XXXXXX WARNING $$i not supported: no actions taken XXXXXX; \
+		fi \
+	done
+	@echo saio/M2000/MIPS make $@ done
+
+

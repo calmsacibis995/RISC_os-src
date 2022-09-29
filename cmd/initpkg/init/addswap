@@ -1,0 +1,75 @@
+#! /bin/sh
+
+#
+# Add swap directories named in /etc/fstab.
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+	case "$1" in
+		start)
+			add_swap
+			;;
+		stop)
+			;;
+		*)
+			echo "$0: usage: $0 [start|stop]"
+			exit 1
+			;;
+	esac
+}
+
+#
+# find each swap device in /etc/fstab, and add it to the swap space
+#
+
+add_swap()
+{
+	get_dev | while read swapdev
+	do
+		swaplen=`get_len "$swapdev"`
+		case "$swaplen" in
+			[0-9]*)
+				;;
+			*)
+				echo "Could not get length for device $swapdev: $swaplen"
+				continue
+				;;
+		esac
+		echo "Adding swap device $swapdev"
+		/etc/swap -a "$swapdev" 0 "$swaplen"
+	done
+}
+
+#
+# get devices from /etc/fstab marked "swap".  The regular expression here
+# takes the last path element of the first field if the third field is
+# the word "swap".  We don't use awk because floating point wierdness can
+# cause awk to pass all of the filesystems, causing them to be mounted as
+# swap, which can destroy a system.
+#
+
+get_dev()
+{
+	sed -n 's/^\([^#][^ 	]*\)[ 	][ 	]*[^ 	]*[ 	][ 	]*swap[ 	].*$/\1/p' /etc/fstab
+}
+
+#
+# get the length of the named partition
+#
+
+get_len()
+{
+	part=`expr "$1" : '^.*s\([0-9][0-9]*\)$'`
+
+	rdev=`echo $1 | sed 's,^/dev/,/dev/r,'`
+	/etc/prtvtoc -h "$rdev" | awk '
+	($1 == "'"$part"'") {
+		print $5;
+	}'
+}
+
+main ${1+"$@"}
+exit 0

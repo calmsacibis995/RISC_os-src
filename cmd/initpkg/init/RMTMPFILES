@@ -1,0 +1,62 @@
+#! /bin/sh
+#	Clean up temporary files.
+
+set `who -r`
+if [ $9 != "S" ]
+then
+	exit 1
+fi
+
+main()
+{
+
+	/usr/lib/expreserve /tmp
+	clean_dir /tmp
+
+	# Conditional, so we won't make /usr/tmp if /usr file system
+	# did not mount successfully.  We check for /usr/bin in case
+	# /usr/tmp disappeared unexpectedly.
+
+	if [ -d /usr/tmp  -o  -d /usr/bin ]
+	then
+		clean_dir /usr/tmp
+	fi
+}
+
+#
+# clean_dir() cleans out the named temp directory, sets the mode, owner, and
+# group.  It is done in such a way that if the directory is really a
+# symlink that it will be cleaned and the symlink retained.
+#
+
+clean_dir()
+{
+	if [ ! -d "$1" ]
+	then
+		return
+	fi
+
+	cd "$1"
+
+	#
+	# NOTE: This is /bin/pwd to make sure that the path is a hard
+	#	path and not the name set by the previous "cd".
+	#
+	Here=`/bin/pwd`
+	if [ -f lost+found ]
+	then
+	# must be at a mount point, don't zap lost+found
+	    ls -a | grep -v lost+found | xargs rm -rf
+	else
+	# not at a mount pt, just clean out tree 
+	    rm -rf .
+	fi
+
+	mkdir "$Here" 2>/dev/null
+	chmod 777 "$Here"
+	chgrp sys "$Here"
+	chown sys "$Here"
+}
+
+main ${1+"$@"}
+exit 0

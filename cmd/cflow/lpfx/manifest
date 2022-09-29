@@ -1,0 +1,466 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: manifest,v 1.5.2.2 89/12/16 00:31:10 wje Exp $ */
+/* $Log:	manifest,v $
+# Revision 1.5.2.2  89/12/16  00:31:10  wje
+# add RID 1.6 to branch RISCOS_4_50_FIXES
+# 
+# Revision 1.6  89/12/12  13:50:34  jay
+# from cc2.0
+# 
+# Revision 2000.9  89/05/08  17:44:39  bettina
+# 2.0I
+# 
+ * Revision 1.2  87/12/09  11:41:44  gb
+ * added $Log keyword
+ *  */
+/*	ref.		date		description			*/
+/*	!01		16may85		introduced volatile		*/
+/*	!02		19aug85		added macro for determining	*/
+/*					register variables		*/
+/*	!03		10oct85		stripped volatile bit before    */
+/*					type comparison			*/
+/*	!04		19dec85		preseved register variable decl. */
+/*	!05		27dec85		ugen() needed temporary locations*/
+
+# include <stdio.h>
+/*	manifest constant file for the lex/yacc interface */
+
+# define ERROR 1
+# define NAME 2
+# define STRING 3
+# define ICON 4
+# define FCON 5
+# define PLUS 6
+# define MINUS 8
+# define MUL 11
+# define AND 14
+# define OR 17
+# define ER 19
+# define QUEST 21
+# define COLON 22
+# define ANDAND 23
+# define OROR 24
+
+/* the defines for ASOP, RELOP, EQUOP, DIVOP,
+   SHIFTOP, ICOP, UNOP, and STROP have been
+   moved to mfile1				*/
+/*	reserved words, etc */
+# define TYPE 33
+# define CLASS 34
+# define STRUCT 35
+# define RETURN 36
+# define GOTO 37
+# define IF 38
+# define ELSE 39
+# define SWITCH 40
+# define BREAK 41
+# define CONTINUE 42
+# define WHILE 43
+# define DO 44
+# define FOR 45
+# define DEFAULT 46
+# define CASE 47
+# define SIZEOF 48
+# define ENUM 49
+
+
+/*	little symbols, etc. */
+/*	namely,
+
+	LP	(
+	RP	)
+
+	LC	{
+	RC	}
+
+	LB	[
+	RB	]
+
+	CM	,
+	SM	;
+
+	*/
+
+/*  These defines are being moved to mfile1
+    to alleviate preprocessor problems with
+    second pass files.  
+# define LP 50
+# define RP 51
+# define LC 52
+# define RC 53
+*/
+# define LB 54
+# define RB 55
+# define CM 56
+# define SM 57
+# define ASSIGN 58
+# define ASM 59
+# define ELLIPSIS 113
+/*	END OF YACC */
+
+/*	left over tree building operators */
+# define COMOP 59
+# define DIV 60
+# define MOD 62
+# define LS 64
+# define RS 66
+# define DOT 68
+# define STREF 69
+# define CALL 70
+# define FORTCALL 73
+# define NOT 76
+# define COMPL 77
+# define INCR 78
+# define DECR 79
+# define EQ 80
+# define NE 81
+# define LE 82
+# define LT 83
+# define GE 84
+# define GT 85
+# define ULE 86
+# define ULT 87
+# define UGE 88
+# define UGT 89
+# define SETBIT 90
+# define TESTBIT 91
+# define RESETBIT 92
+# define ARS 93
+# define REG 94
+# define OREG 95
+# define CCODES 96
+# define FREE 97
+# define STASG 98
+# define STARG 99
+# define STCALL 100
+
+/*	some conversion operators */
+# define FLD 103
+# define SCONV 104
+# define PCONV 105
+# define PMCONV 106
+# define PVCONV 107
+
+/*	special node operators, used for special contexts */
+# define FORCE 108
+# define CBRANCH 109
+# define INIT 110
+# define CAST 111
+# define ELLIPSIS 113
+# define UNARY_VOLATILE_MUL 112
+# define PASSIGN  114
+/*	node types */
+# define LTYPE 02
+# define UTYPE 04
+# define BITYPE 010
+
+	/* DSIZE is the size of the dope array */
+# define DSIZE PASSIGN+1
+
+/*	type names, used in symbol table building */
+# define TNULL PTR    /* pointer to UNDEF */
+/*# define TNULL INCREF(MOETY)	/* pointer to MOETY -- impossible type */
+# define TVOID FTN	/* function returning UNDEF (for void) */
+# define UNDEF 0
+# define FARG 1
+# define CHAR 2
+# define SHORT 3
+# define INT 4
+# define LONG 5
+# define FLOAT 6
+# define DOUBLE 7
+# define STRTY 8
+# define UNIONTY 9
+# define ENUMTY 10
+# define MOETY 11
+# define UCHAR 12
+# define USHORT 13
+# define UNSIGNED 14
+# define ULONG 15
+# define SIGNED 16
+# define VARARG   17 /* function of variable number of arguments -- ELLIPSIS */
+
+# define NBTYPES VARARG+1   /* number of basic types */
+
+# define ASG 1+
+# define UNARY 2+
+# define NOASG (-1)+
+# define NOUNARY (-2)+
+
+/*	various flags */
+# define NOLAB (-1)
+
+/* type modifiers */
+
+# define PTR   040							/*!01*/
+# define FTN   0100						        /*!01*/
+# define ARY   0140							/*!01*/
+# define VOL   0200							/*!01*/
+# define CONST 0400   /* reserved for future use */
+# define VOLMSK 022222222200
+/* type packing constants */
+
+# define TMASK 0340							/*!01*/
+# define TMASK1 0300
+# define TMASK2  0360
+# define TMASK3 03740
+# define BTMASK 037							/*!01*/
+# define BTSHIFT 5
+# define TSHIFT 3
+# define PTR_TO_VOL 02040        /* pointer to volatile */
+# define VOL_PTR    0600         /* volatile pointer */
+# define VREG  01							/*!04*/
+
+
+/**************************************************************************/
+/* volatile macros:						  	  */
+/*   PTR_TO_VOL           -- pointer to volatile 			  */
+/*   VOL_PTR		  -- volatile pointer				  */
+/*   VOL		  -- volatile type qualifier			  */
+/*   ISEQUAL(t1,t2)	  -- are types equal ignoring volatile qualifiers?*/
+/*   ISVOL(X)		  -- is type volatile?				  */
+/*   ISPTV(X)		  -- is thing pointed to volatile?		  */
+/*   ISVP(X)	          -- is pointer volatile ?			  */
+/*   INCREFVP(X)	  -- add in a volatile pointer -- * volatile 	  */
+/*   DECREF(X)		  -- now removes volatile qualifiers for pointers */
+/*   VOLATILIZE		  -- condition to implicitly volatilize           */
+/*   BTQ(X)		  -- returns volatile part of basic type qualifer */
+/*   SETBTV(X)		  -- sets the base type of X to volatile          */
+/**************************************************************************/
+
+typedef unsigned int TWORD;
+# define TRUE  1
+# define FALSE 0
+typedef char boolean;
+extern int tyequal();	/* are types equal, ignoring volatile */
+extern TWORD rmtyq();   /* remove volatile qualifiers */
+extern int volt;	/* volatilize globals and non-register locals */
+extern TWORD btqualifier(); /* returns volatile part of basic type qualifier*/
+extern TWORD setbtv();  /* sets the base type to volatile */
+/*	macros	*/
+
+/* should rearrange the defines to make this test faster */
+#define IS_INTEGRAL_TYPE(t) ( (ISEQUAL(t,CHAR))    || (ISEQUAL(t,SHORT)) || \
+			      (ISEQUAL(t,SHORT))   || (ISEQUAL(t,INT))   || \
+			      (ISEQUAL(t,LONG))    || (ISEQUAL(t,MOETY)) || \
+			      (ISEQUAL(t,UCHAR))   || (ISEQUAL(t,USHORT))|| \
+			      (ISEQUAL(t,UNSIGNED))|| (ISEQUAL(t,ULONG)) || \
+			      (ISEQUAL(t,ENUMTY)))
+
+# define MODTYPE(x,y) ( x = ( (x)&(~BTMASK))|(y) )  /* set basic type of x to y */
+# define BTYPE(x)  ( (x)&BTMASK)   /* basic type of x */
+# define ISUNSIGNED(x) ((NORM(x))<=ULONG&&(NORM(x))>=UCHAR)
+# define UNSIGNABLE(x) ((NORM(x))<=LONG&&(NORM(x))>=CHAR)
+# define ENUNSIGN(x) ((NORM(x))+(UNSIGNED-INT))
+# define DEUNSIGN(x) ((NORM(x))+(INT-UNSIGNED))
+# define ISPTR(x) ((ISVP(x)) ? 1 : (((x)&TMASK)==PTR))		/*!03*/
+# define ISFTN(x) (((~VOL&(x))&TMASK)==FTN)  /* is x a function type     !03*/
+# define ISARY(x) (((~VOL&(x))&TMASK)==ARY)   /* is x an array type     !03*/
+# define ISVOL(x) (((x)&TMASK)==VOL)  /* is x volatile */		/*!01*/
+# define ISPTV(x) ((((x)&TMASK3)==PTR_TO_VOL) || (ISVP(x)&& ISVOL(DECREF(x))))
+# define ISVP(x)  (((x)&TMASK3)==VOL_PTR)        /* is x a volatile ptr */
+# define VOLATILIZE (volt)
+# define INCREF(x) ((( (x)&~BTMASK)<<TSHIFT)|PTR|( (x)&BTMASK))
+# define INCREFVP(x) ((( (x)&~BTMASK)<<(TSHIFT*2))|VOL_PTR|( (x)&BTMASK))
+# define DECREF(x) ((ISVP(x))? ((( (x)>>(TSHIFT*2))&~BTMASK)|( (x)&BTMASK)) : \
+			     ((( (x)>>TSHIFT)&~BTMASK)|( (x)&BTMASK)))
+# define DECREF1(x) ((( (x)>>TSHIFT)&~BTMASK)|( (x)&BTMASK))
+# define ISEQUAL(t1,t2) ( (t1 == t2) || tyequal(t1, t2))
+# define NORM(t)       ( (t&VOLMSK) ?  rmtyq(t) : t)
+# define BTQ(t)		btqualifier(t)
+# define SETBTV(t)	setbtv(t)
+# define SETOFF(x,y)   if( (x)%(y) != 0 ) (x) = ( ((x)/(y) + 1) * (y))
+		/* advance x to a multiple of y */
+# define NOFIT(x,y,z)   ( ( (x)%(z) + (y) ) > (z) )
+		/* can y bits be added to x without overflowing z */
+	/* pack and unpack field descriptors (size and offset) */
+# define PKFIELD(s,o) (( (o)<<6)| (s) )
+# define UPKFSZ(v)  ( (v) &077)
+# define UPKFOFF(v) ( (v) >>6)
+# define REGISTER_TYPE(x) ( (!ISEQUAL((x),STRTY)) && (!ISEQUAL((x),UNIONTY)) && !ISARY((x)) )
+# define REGVAR(x) ( (x) & VREG)
+/*	operator information */
+
+# define TYFLG 016
+# define ASGFLG 01
+# define LOGFLG 020
+
+# define SIMPFLG 040
+# define COMMFLG 0100
+# define DIVFLG 0200
+# define FLOFLG 0400
+# define LTYFLG 01000
+# define CALLFLG 02000
+# define MULFLG 04000
+# define SHFFLG 010000
+# define ASGOPFLG 020000
+
+# define SPFLG 040000
+
+#define optype(o) (dope[o]&TYFLG)
+#define asgop(o) (dope[o]&ASGFLG)
+#define logop(o) (dope[o]&LOGFLG)
+#define callop(o) (dope[o]&CALLFLG)
+
+/*	table sizes	*/
+
+# define TREESZ 1000 /* space for building parse tree */
+
+
+#ifdef FLEXNAMES
+	char		*hash();
+	char		*savestr();
+	char		*tstr();
+	extern int	tstrused;
+	extern char	**tstrbuf;
+	extern char	**curtstr;
+#	define freestr()	( curtstr = tstrbuf, tstrused = 0 )
+#else
+#	define NCHNAM 8  /* number of characters in a name */
+#endif
+
+/*	common defined variables */
+
+extern int nerrors;  /* number of errors seen so far */
+typedef struct function_prototype *function_prototype_list;
+typedef union ndu NODE;
+# define NIL (NODE *)0
+extern int dope[];  /* a vector containing operator information */
+extern char *opst[];  /* a vector containing names for ops */
+extern unsigned int offsz, caloff();
+
+# ifdef ONEPASS
+	/* in one-pass operation, define the tree nodes */
+
+union ndu {
+
+	struct {
+		int op;
+	        function_prototype_list prototype;
+	        int mflags;		/* misc. flags !04*/
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* length for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+   	        int rall;
+		TWORD type;
+		int su;
+#ifdef FLEXNAMES
+		char *name;
+		int stalign;
+#else
+		char name[NCHNAM];
+#endif
+		NODE *left;
+		NODE *right;
+		}in; /* interior node */
+	
+	struct {
+		int op;
+	        function_prototype_list prototype;
+	        int mflags;		/* misc. flags */
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* lenght for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+		int rall;
+		TWORD type;
+		int su;
+#ifdef FLEXNAMES
+		char *name;
+		int stalign;
+#else
+		char name[NCHNAM];
+#endif
+		CONSZ lval;
+		int rval;
+		}tn; /* terminal node */
+	
+	struct {
+		int op;
+	        function_prototype_list prototype;
+	        int mflags;		/* misc. flags */
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* length for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+		int rall;
+		TWORD type;
+		int su;
+		int label;  /* for use with branching */
+		}bn; /* branch node */
+
+	struct {
+		int op;
+	        function_prototype_list prototype;
+		int mflags;		/* misc. flags */
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* length for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+		int rall;
+		TWORD type;
+		int su;
+		int stsize;  /* sizes of structure objects */
+		int stalign;  /* alignment of structure objects */
+		}stn; /* structure node */
+
+	struct {
+		int op;
+	        function_prototype_list prototype;
+		int mflags;		/* misc. flags */
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* length for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+		int cdim;
+		TWORD type;
+		int csiz;
+		}fn; /* front node */
+	
+	struct {
+		/* this structure is used when a floating point constant
+		   is being computed */
+		int op;
+	        function_prototype_list prototype;
+		int mflags;		/* misc. flags */
+		TWORD tmploc1, tmploc2; /* temporary locations for ugen	 !05 */
+		TWORD arraylen;	        /* length for automatic arrays */
+		TWORD arraybase;        /* base address of automatic array */
+		int cdim;
+		TWORD type;
+		int csiz;
+		double dval;
+		}fpn; /* floating point node */
+
+	};
+# endif
+# ifdef BUG2
+# define BUG1
+# endif
+# ifdef BUG3
+# define BUG2
+# define BUG1
+# endif
+# ifdef BUG4
+# define BUG1
+# define BUG2
+# define BUG3
+# endif
+# ifndef ONEPASS
+
+# ifndef EXPR
+# define EXPR '.'
+# endif
+# ifndef BBEG
+# define BBEG '['
+# endif
+# ifndef BEND
+# define BEND ']'
+# endif
+
+# endif
+
+# ifndef CROSS
+# define SIGN signed
+# else
+# define SIGN 
+# endif

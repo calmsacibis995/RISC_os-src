@@ -1,0 +1,9 @@
+*#ident "$Header: monitor,v 1.2.5.1 89/11/28 11:45:54 wje Exp $"
+*
+* MONITOR - internal circular trace buffer
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	monitor	-
+				monitor() {}
+
+$$$

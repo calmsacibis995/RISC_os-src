@@ -1,0 +1,13 @@
+#
+#	Sample /etc/yp/updaters file
+#
+#	Update file for yellow pages
+
+# where the yp files live
+DIR=/etc
+# where the yp binaries live
+EXEDIR=/usr/etc/yp
+
+publickey.byname:
+	$(EXEDIR)/udpublickey $(DIR)/publickey  "make publickey"; \
+	echo "done"

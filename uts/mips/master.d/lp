@@ -1,0 +1,16 @@
+* $Header
+*
+* parallel port line printer driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+c	lp	38	1	iop
+						
+
+$$$
+/* parallel port line printer driver variable tables */
+#include "sys/lpreg.h"
+
+#define MAXLPCTLR 1
+struct lp_unitinfo lpunitinfo[MAXLPCTLR];	/* controller software state */
+int lpmajor = ##E;				/* external major # */
+int nlp = MAXLPCTLR;				/* number of units for sar */

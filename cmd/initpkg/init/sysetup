@@ -1,0 +1,232 @@
+#! /bin/sh
+
+#   This file contains system setup requirements for the system.
+  
+set `who -r`
+if [ $9 != "S" ]
+then
+	exit 1
+fi
+
+#   The ps_data file is always removed so that the ps command
+#   will be force to read the /unix file, since it may have recently
+#   been created.
+
+rm -f /etc/ps_data
+/bin/ps >/dev/null 2>&1
+
+#   if the prtconf command exists, then, the system configuration
+#   is printed
+
+#if [ -x /etc/prtconf ]
+#then
+#	/etc/prtconf
+#fi
+
+#  If there are trademark files, print them.
+
+if [ -d /etc/tm ]
+then
+	cat /etc/tm/* 2> /dev/null
+fi
+
+#  If there is an /etc/local_hostname file, use it to set the system name.
+
+###############start of mips additions for ease of installation###############
+#
+# this allows the system to come up with no_hostname_set
+# and yet will ask the user to kindly set the 5 things needed
+# 
+
+Hostnamefile=/etc/local_hostname
+Domainnamefile=/etc/local_domainname
+Hostsfile=/etc/hosts
+badhostname=no_hostname_set
+ask_user=y
+mytty=`tty`
+
+#if [ -f /etc/init.d/xdm ]
+#then
+#	grep -i no_hostname_set /etc/init.d/xdm >/dev/null 2>&1
+#	if [ $? -eq 0 ]
+#	then
+#	ed - /etc/init.d/xdm <<EOF
+#g/no_hostname_set/s//NO_HOSTNAME_set/
+#w
+#q
+#EOF
+#	fi
+#fi
+
+ask ()
+{
+
+if [ $# -lt 2 ]
+  then
+    echo "$0: usage: $0 prompt default choice ..."
+    exit 1
+  fi
+
+case $# in
+
+  2) Prompt=$1
+     Default=$2
+     echo "$Prompt [$Default]?\c "
+     set +x
+     read Ans < $mytty
+     case "$Ans" in
+       "") Ans=$Default ;;
+       esac
+     ;;
+
+  *) Prompt=$1
+     shift
+     Default=$1
+     shift
+     Choices=$*
+     
+     Asking=Y
+     
+     while [ "$Asking" = "Y" ]
+       do
+     
+         echo "$Prompt ($Choices) [$Default]?\c "
+         set +x
+         read Ans < $mytty
+     
+         case $Ans in
+           "") Ans=$Default ;;
+           esac
+         
+         Ans=`echo $Ans | tr [A-Z] [a-z]`
+         
+         for C in $*
+           do
+     	     if [ "$Ans" = "$C" ]
+               then
+     	         Asking=N
+     	       fi
+           done
+         
+         if [ "$Asking" = "Y" ]
+           then
+     	     echo "What?\c "
+           fi
+     
+       done
+     
+     ;;
+  esac           
+     
+}
+
+# if no file or $badhostname then ask them
+if [ -f $Hostnamefile ]
+then
+	grep $badhostname $Hostnamefile >/dev/null 2>&1
+	if [ $? -ne 0 ]
+	then
+		ask_user=n
+	fi
+fi
+
+if [ $ask_user = "y" ]
+then
+# now build a good local_hostname if it does not exist
+    stty erase '^H' echoe <$mytty
+    echo Erase set to Control-H or Backspace
+    Hostname=$badhostname
+    ask  "Set hostname" "$Hostname"
+    Hostname=$Ans
+
+    Netmask=0xffffff00
+    ask  "Set netmask" "$Netmask"
+    Netmask=$Ans
+
+    Broadcast=192.1.1.255
+    ask  "Set broadcast address" "$Broadcast"
+    Broadcast=$Ans
+
+    NetAddr=192.1.1.1
+    ask  "Set net address" "$NetAddr"
+    NetAddr=$Ans
+
+    echo Here is the new $Hostnamefile:
+    echo
+    echo $Hostname
+    echo netmask $Netmask broadcast $Broadcast
+    echo
+    ask  "Should we create the $Hostnamefile file" n y n
+    case $Ans in
+      y) cat > $Hostnamefile <<===EOF===
+$Hostname
+netmask $Netmask broadcast $Broadcast
+===EOF===
+         ;;
+      *) echo "Not Created" ;;
+    esac
+    echo
+    echo "$NetAddr $Hostname"
+    echo
+    ask  "Should we add the above entry to the $Hostsfile file" n y n
+    case $Ans in
+      y) cat >>$Hostsfile <<===EOF===
+$NetAddr $Hostname
+===EOF===
+         ;;
+      *) echo "Not Added" ;;
+    esac
+    echo "\n"
+
+# See if we should make the local_domainname file
+if [ -f $Domainnamefile -a -s $Domainnamefile ]
+then
+    Domainname=`/usr/ucb/head -1 $Domainnamefile`
+else
+    Domainname=your.com
+fi
+    ask  "Set domain name" "$Domainname"
+    Domainname=$Ans
+
+    echo Here is the new $Domainnamefile:
+    echo
+    echo $Domainname
+    echo
+    ask  "Should we create the $Domainnamefile file" n y n
+
+    case $Ans in
+      y) cat >$Domainnamefile <<===EOF===
+$Domainname
+===EOF===
+         ;;
+      *) echo "Not created" ;;
+    esac
+fi
+
+###############end of mips additions for ease of installation###############
+
+if [ -f /etc/local_hostname ]
+then
+	/usr/ucb/hostname `sed -n '1p' /etc/local_hostname`
+else
+	/usr/ucb/hostname "no_hostname_set"
+fi
+
+#  If there is an /etc/local_domainname file, use it to set the domain
+#  name.
+
+if [ -f /etc/local_domainname ]
+then
+	/etc/domainname `sed -n '1p' /etc/local_domainname`
+else
+	/etc/domainname "no_domainname_set"
+fi
+
+#   if the settz command exists, then, the bsd tz kernel variable
+#   is set.
+
+if [ -x /usr/etc/settz ]
+then
+	/usr/etc/settz
+fi
+exit 0

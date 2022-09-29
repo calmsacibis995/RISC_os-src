@@ -1,0 +1,275 @@
+#
+# |-----------------------------------------------------------|
+# | Copyright (c) 1990 MIPS Computer Systems, Inc.            |
+# | All Rights Reserved                                       |
+# |-----------------------------------------------------------|
+# |          Restrictive Rights Legend                        |
+# | Use, duplication, or disclosure by the Government is      |
+# | subject to restrictions as set forth in                   |
+# | subparagraph (c)(1)(ii) of the Rights in Technical        |
+# | Data and Computer Software Clause of DFARS 52.227-7013.   |
+# |         MIPS Computer Systems, Inc.                       |
+# |         928 Arques Avenue                                 |
+# |         Sunnyvale, CA 94086                               |
+# |-----------------------------------------------------------|
+#
+# $Header: Makefile.mark,v 1.3.1.4.1.1.1.2 91/01/09 11:55:21 beacker Exp $
+#
+
+#
+# Makefile to make the kernel for a particular cpu type
+#
+
+MARK=i
+
+DEPTH=.
+include $(DEPTH)/kcommondefs
+
+LIBS= $(BOOTAREA)/lib.os
+
+EXTRAMAKEFILES= \
+	decnet/Makefile \
+	fs/Makefile \
+	bsd/Makefile \
+	bsd/sys/Makefile \
+	sys/fs/Makefile \
+	sys/Makefile \
+	bsd43/Makefile \
+	klib/Makefile \
+	posix/Makefile
+
+LINKMAKEFILES= \
+	klib/rpcsvc/Makefile \
+	klib/rpc/Makefile \
+	klib/klm/Makefile \
+	klib/gen/Makefile \
+	klib/des/Makefile \
+	klib/gen.mips/Makefile
+
+MAKEFILES= \
+	$(LINKMAKEFILES) \
+	decnet/CommUnity/Makefile \
+	decnet/drivers/Makefile \
+	vdisk/Makefile \
+	bsd/mips/Makefile \
+	bsd/net/Makefile \
+	bsd/netinet/Makefile \
+	bsd/netns/Makefile \
+	bsd/socket/Makefile \
+	bsd/enet/Makefile \
+	fs/specfs/Makefile \
+	fs/proc/Makefile \
+	fs/nfs4/Makefile \
+	fs/ufs/Makefile \
+	ml/Makefile \
+	io/Makefile \
+	os/Makefile \
+	bsd43/glue/Makefile \
+	posix/glue/Makefile
+
+MASTERMAKEFILE= \
+	master.d/Makefile
+
+LINKSUBDIRS= net netinet netns
+
+# BUILD_TYPE=reconfig
+
+LOAD_ADDRESS=`[ -r master.d/$(X).loadaddress ] \
+	&& cat master.d/$(X).loadaddress || echo 80021000`
+UNIXLDFLAGS= -N -T $(LOAD_ADDRESS) -e start
+
+ASSUREINCLUDES= \
+	( LABEL=`dirname $$file | sed -e 's,/,_,g'` ; \
+	  [ -d $(BOOTAREA) ] || \
+		mkdir $(BOOTAREA) ; \
+	  [ -d $(BOOTAREA)/$$LABEL ] || \
+		mkdir $(BOOTAREA)/$$LABEL ; \
+	  [ -r $(BOOTAREA)/$$LABEL'_Makedepend' ] || \
+		touch $(BOOTAREA)/$$LABEL'_Makedepend' ; \
+	  [ -r $(BOOTAREA)/$$LABEL'_Makerules' ] || \
+		touch $(BOOTAREA)/$$LABEL'_Makerules' ; ) 
+
+MAKESUB= $(MAKE) $(MAKEARGS) MARK=$(MARK)
+
+#
+# Eliminate everything not required for binary reconfiguration.
+#
+clean:
+	if [ -d $(BOOTAREA) ] && [ -r $(BOOTAREA)/clean_list ] ; \
+	then \
+		cat $(BOOTAREA)/clean_list | xargs /bin/rm -rf ; \
+	fi
+
+#
+# Eliminate everything but the sources.
+#
+clobber:
+	if [ $(BUILD_TYPE)x = sourcex ] ; \
+	then \
+		if [ -d $(BOOTAREA) ] ; \
+		then \
+			for file in $(LINKMAKEFILES) ; \
+			{ \
+				$(ASSUREINCLUDES) ; \
+				DIRN=`dirname $$file` ; \
+				echo "(cd $$DIRN ; $(MAKESUB) clobber ) ;" ; \
+				(cd $$DIRN ; $(MAKESUB) clobber ) ; \
+			} ; \
+			echo "rm -rf $(BOOTAREA) ;" ; \
+			rm -rf $(BOOTAREA) ; \
+		fi ; \
+	fi
+
+generic:
+	$(GENERIC) -s $(SRCS) -h $(HDRS) -o $(OBJS) -p $(WHOAMI) \
+		$(INCLUDE) -R$(DESTROOT) -D$(WHEREIGO)
+
+link-mark: Makefile.mark Makefile kcommondefs kcommonrules
+	if [ ! -d $(BOOTAREA) ] ; \
+	then \
+		mkdir -p $(BOOTAREA) ; \
+	fi	
+	if [ $(BUILD_TYPE)x = sourcex ] ; \
+	then \
+		$(MAKE) -f Makefile $(MAKEARGS) sys-header-links ; \
+		rm -rf bsd43/mips/cpu.h ; \
+		ln -s ../../sys/sbd.h bsd43/mips/cpu.h ; \
+		rm -rf bsd43/mips/r2350mem.h ; \
+		ln -s ../../sys/r2300mem.h bsd43/mips/r2350mem.h ; \
+		rm -rf sys/mbuf.h ; \
+		ln -s ../bsd/sys/mbuf.h sys/mbuf.h ; \
+		rm -rf bsd43/sys/mbuf.h ; \
+		ln -s ../../bsd/sys/mbuf.h bsd43/sys/mbuf.h ; \
+		rm -rf sys/socketvar.h ; \
+		ln -s ../bsd/sys/socketvar.h sys/socketvar.h ; \
+		rm -rf bsd43/sys/socketvar.h ; \
+		ln -s ../../bsd/sys/socketvar.h bsd43/sys/socketvar.h ; \
+		for i in $(LINKSUBDIRS) ; \
+		{ \
+			rm -rf bsd43/$$i ; \
+			ln -s ../bsd/$$i bsd43/$$i ; \
+		} ; \
+		rm -rf bsd43/nfs ; \
+		mkdir bsd43/nfs ; \
+		ln -s ../../sys/fs/nfs.h bsd43/nfs/nfs.h ; \
+		ln -s ../../sys/fs/nfs_clnt.h bsd43/nfs/nfs_clnt.h ; \
+		ln -s ../../sys/fs/nfs_rnode.h bsd43/nfs/rnode.h ; \
+		ln -s ../../sys/fs/nfs_export.h bsd43/nfs/export.h ; \
+		rm -rf bsd43/h ; \
+		ln -s sys bsd43/h ; \
+		rm -rf bsd43/regdef.h bsd43/sys/regdef.h ; \
+		ln -s mips/regdef.h bsd43/regdef.h ; \
+		ln -s ../mips/regdef.h bsd43/sys/regdef.h ; \
+		rm -rf bsd43/machine ; \
+		ln -s mips bsd43/machine ; \
+		for file in $(LINKMAKEFILES) ; \
+		{ \
+			if [ -r $$file ] ; then \
+				$(ASSUREINCLUDES) ; \
+				DIRN=`dirname $$file` ; \
+				echo "(cd $$DIRN ; $(MAKESUB) source-links ) ;" ; \
+				(cd $$DIRN ; $(MAKESUB) source-links ) ; \
+			fi ; \
+		} ; \
+	fi ;
+	touch link-mark
+	
+$(MAKEFILES):
+
+header-links: link-mark
+
+rules-mark: kcommondefs kcommonrules Makefile Makefile.mark
+	rm -rf rules-mark
+	$(MAKE) $(MAKEARGS) rules-mark
+
+rules:
+	for file in $(MAKEFILES) ; \
+	{ \
+		if [ -r $$file ] ; then \
+			$(ASSUREINCLUDES) ; \
+			DIRN=`dirname $$file` ; \
+			echo "(cd $$DIRN; $(MAKESUB) rules ) ;" ; \
+			(cd $$DIRN; $(MAKESUB) rules ) ; \
+		fi ;\
+	} ;
+
+depend: link-mark $(BOOTAREA)/assym.s
+	for file in $(MAKEFILES) ; \
+	{ \
+		if [ -r $$file ] ; then \
+			$(ASSUREINCLUDES) ; \
+			DIRN=`dirname $$file` ; \
+			echo "(cd $$DIRN; $(MAKESUB) depend ) ;" ; \
+			(cd $$DIRN; $(MAKESUB) depend ) ; \
+		fi ;\
+	} ;
+
+FRC:
+
+#
+# $(BUILD_TYPE) type distinguishes between binary reconfiguration builds
+# and complete source builds.  Set it to "reconfig" for the former,
+# "source" for the later.  (Default is reconfig.)
+#
+
+unix_X: FRC 
+	[ -r $(BOOTAREA)/'master_'$(X)'_Makedepend' ] || \
+		touch $(BOOTAREA)/'master_'$(X)'_Makedepend' ; \
+	file=master.d/Makefile ; $(ASSUREINCLUDES) ; \
+		cd master.d; $(MAKESUB) default
+	$(LDF) $(UNIXLDFLAGS) -o unix.$(X) \
+		$(BOOTAREA)/kernel.o \
+		$(BOOTAREA)/id.o \
+		$(BOOTAREA)/master.$(X).o \
+		`cat $(BOOTAREA)/objlist.$(X)` \
+		$(BOOTAREA)/libklm.a \
+		$(BOOTAREA)/librpcsvc.a \
+		$(BOOTAREA)/librpc.a \
+		$(BOOTAREA)/libdes.a \
+		$(BOOTAREA)/bsd43.a \
+		$(BOOTAREA)/posix.a \
+		$(BOOTAREA)/libgen.a \
+		$(BOOTAREA)/libgen.mips.a ;
+	@echo unix.$(X) made.
+
+reconfig: reconfig-objects $(BOOTAREA)/id.o
+
+source: objects kernel-o $(BOOTAREA)/id.o
+
+kernel-o: link-mark rules-mark FRC
+	$(MAKE) $(MAKEARGS) -f Makefile.mark $(BOOTAREA)/kernel.o
+
+objects: link-mark rules-mark FRC
+	$(MAKE) $(MAKEARGS) -f Makefile.mark reconfig-objects
+
+reconfig-objects:
+	for file in $(MAKEFILES) ; \
+	{ \
+		if [ -r $$file ] ; then \
+			$(ASSUREINCLUDES) ; \
+			DIRN=`dirname $$file` ; \
+			echo "(cd $$DIRN; $(MAKESUB) default ) ;" ; \
+			(cd $$DIRN; $(MAKESUB) default ) ; \
+		fi ;\
+	} ;
+	
+$(BOOTAREA)/kernel.o: $(BOOTAREA)/locore.o $(LIBS) 
+	[ -d $(BOOTAREA)/. ] || mkdir $(BOOTAREA) 
+	$(LDF) -r -u reclock -o $@ $(BOOTAREA)/locore.o $(LIBS)
+
+$(BOOTAREA)/id.o: FRC
+	echo "char *id_string = \c" > $(BOOTAREA)/id.c
+	echo "\"`logname` -- RISC/os $(OSRELEASE) -- `date`\";" >> $(BOOTAREA)/id.c
+	$(CCF) -c -o $(BOOTAREA)/id.o $(BOOTAREA)/id.c
+
+$(BOOTAREA)/locore.o: 
+	file=ml/Makefile ; $(ASSUREINCLUDES) ; \
+	cd ml; $(MAKESUB) ml-locore-o
+
+$(LIBS): 
+	file=os/Makefile ; $(ASSUREINCLUDES) ; \
+	cd os; $(MAKESUB) os-libs
+
+$(BOOTAREA)/assym.s:
+	file=ml/Makefile ; $(ASSUREINCLUDES) ; \
+	cd ml; $(MAKESUB) ml-assym-s

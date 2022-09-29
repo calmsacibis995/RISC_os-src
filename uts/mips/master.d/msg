@@ -1,0 +1,32 @@
+*#ident "$Header: msg,v 1.1.5.2 90/01/09 18:24:38 wje Exp $"
+*
+* MSG
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	msg	-	-	ipc
+				msgsys(){nosys}
+
+$$$
+
+#define MSGMAP 100
+#define MSGMAX 8192
+#define MSGMNB 16384
+#define MSGMNI 50
+#define MSGSSZ 8
+#define MSGTQL 40
+#define MSGSEG 2048
+
+struct map msgmap[MSGMAP];
+struct msqid_ds msgque[MSGMNI];
+char msglock[MSGMNI];
+struct msg msgh[MSGTQL];
+struct msginfo msginfo = {
+	MSGMAP,
+	MSGMAX,
+	MSGMNB,
+	MSGMNI,
+	MSGSSZ,
+	MSGTQL,
+	MSGSEG,
+};
+

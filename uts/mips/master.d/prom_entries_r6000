@@ -1,0 +1,5 @@
+*
+* PROM routines for r6000
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	

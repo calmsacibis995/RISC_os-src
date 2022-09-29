@@ -1,0 +1,21 @@
+# This file, "exports",  describes the file systems which are being exported
+# to nfs clients.  It is created by the system administrator using a text
+# editor and processed by the request daemon, mountd(8C), in pre-RISC/OS 4.50
+# each time a mount request is received.  With RISC/OS 4.50, this file started
+# being read by exportfs(1M).  Every time the file changes, exportfs(1M) must
+# be re-run by executing 'exportfs -v -a'.  Executing 'exportfs' only shows the
+# current state of the world as believed by the kernel.  See exports(4) for
+# more options.
+#
+# The file system names are left justified and followed by a list of names
+# separated by white space.  The names will be looked up in /etc/netgroup
+# (may be symbolically linked to /usr/etc/netgroup) and then in /etc/hosts.
+# A file system name with no name list following means export to everyone.
+# A `#' anywhere in this file indicates a comment extending to the end of
+# the line it appears on.  Lines beginning with white space are continuation
+# lines.
+
+# EXAMPLE
+#    /usr       clients               # export to my clients
+#    /usr/local                       # export to the world
+#    /usr2      mips sprint quacky    # export to only these machines

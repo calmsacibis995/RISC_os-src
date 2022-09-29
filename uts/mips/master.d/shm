@@ -1,0 +1,31 @@
+*#ident	"$Header: shm,v 1.1.5.2.2.1.1.2 90/11/06 12:39:15 beacker Exp $"
+*
+* SHM
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	shm	-	-	ipc
+				shmsys(){nosys}
+				shmexec(){}
+				shmexit(){}
+				shmfork(){}
+				shmslp(){true}
+				shmtext(){}
+						
+
+$$$
+
+#define SHMMAX (2*1024*1024)
+#define SHMMIN 1
+#define SHMMNI 100
+#define SHMSEG 45
+#define SHMALL 512
+
+struct shmid_ds shmem[SHMMNI];
+struct shminfo shminfo = {
+	SHMMAX,
+	SHMMIN,
+	SHMMNI,
+	SHMSEG,
+	SHMALL,
+};
+

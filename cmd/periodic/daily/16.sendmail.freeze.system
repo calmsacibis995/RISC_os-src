@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# Refreeze the sendmail configuration file if it exists and
+# sendmail.cf or sendmail.smtp is newer.
+#
+# If the file is refrozen, the daemon must be restarted. This step is
+# saved for later, since it is required if a) the smtp file was updated
+# and/or b) if the configuration file is refrozen.
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	if [ ! -f "/usr/lib/sendmail.fc" -o ! -f "/usr/lib/sendmail.cf" ]
+	then
+		exit
+	fi
+
+	echo "\nRebuilding the frozen sendmail configuration file:"
+
+	if [ -f "/usr/lib/sendmail.smtp" ]
+	then
+		Update1=`find /usr/lib/sendmail.smtp -newer \
+			/usr/lib/sendmail.fc -print`
+	else
+		Update1=""
+	fi
+
+	Update2=`find /usr/lib/sendmail.cf -newer /usr/lib/sendmail.fc -print`
+
+	case "$Update1$Update2" in
+		"")
+			echo "No update required"
+			exit
+			;;
+	esac
+	echo "Refreezing...\n"
+	/usr/lib/sendmail -bz
+	echo "done."
+}
+
+main ${1+"$@"}
+exit 0

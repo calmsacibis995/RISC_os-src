@@ -1,0 +1,12 @@
+#! /bin/sh
+# sacc -- standalone compiler interface
+#
+if [ $1 = -sable ]
+then
+	LIB=/usr/lib/sable
+	shift
+else
+	LIB=/usr/lib/saio
+fi
+set -x
+cc -I/usr/sys/saio -I/usr/sys/prom -I/usr/sys -I/usr/include -N -T 80020000 -L -L$LIB "$@" -tr -h$LIB -B

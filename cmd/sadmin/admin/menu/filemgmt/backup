@@ -1,0 +1,176 @@
+#menu# backup files from built-in disk to tape
+#help# 
+#help#	Backup saves copies of files from the disk file systems to
+#help#	tape.  There are two kinds of backups: COMPLETE
+#help#	(copies all files; useful in case of serious file system damage)
+#help#	and  INCREMENTAL (copies files changed since the last backup).
+#help#	The normal usage is to do a complete backup of each file system
+#help#	and then periodically do incremental backups.  We recommend keeping
+#help#	2 cycles (one set of complete backups and several incrementals to
+#help#	each cycle).
+#help#	Files backed up with "backup" are restored using "restore".
+#help#	This script invokes dump.ffs, which is described in the System
+#help#	Administrator Reference Manual.
+
+
+flags="-qq -k$$"
+trap 'exit 0' 1 2  15
+
+alllist=`/etc/mount  |\
+   awk '{
+		if ($1 ~ /^[^:]*$/ && $2 == "on") {
+			printf "%s ", $1
+		}
+	}'`
+clist=`/etc/mount  |\
+   awk 'BEGIN {
+		count = 1;
+	}
+	{
+		if ($1 ~ /^[^:]*$/ && $2 == "on") {
+			printf "%d %s %s\n", count, $1, $3;
+			count++;
+		}
+	}'`
+
+while :
+do
+	choice=`checklist ${flags} -fe -l ' ' -H '
+	You may list more than one file system by number or either name,
+	and the special answer "ALL" will backup all the file systems listed.' \
+	"
+Available file systems:
+${clist}
+ALL
+Enter file system(s) you want to backup [?, q]:" ${clist} ALL`
+
+	case "${choice}" in
+	ALL )
+		fs=${alllist}
+		break
+		;;
+	?*ALL | ALL*? )
+		echo >&2 '\tALL must be used by itself.  Please try again.'
+		continue
+		;;
+	esac
+
+	fs=""
+	for i in ${choice}
+	{
+		entry=`echo "${clist}" | awk '
+		BEGIN {
+			Lookfor = "'"$i"'";
+			State = 0;
+		}
+		{
+			if (State == 1) {
+				next; # eat input from pipe
+			}
+			if ($1 == Lookfor || $2 == Lookfor || $3 == Lookfor) {
+				print $2;
+				State = 1;
+			}
+		}'`
+		case "${entry}" in
+			"")
+				echo >&2 '\tNo corresponding filesystem for $i'
+				fs=""
+				break
+				;;
+		esac
+		fs="${fs} ${entry}"
+	}
+	case "${fs}" in
+		"")
+			;;
+		*)
+			break
+			;;
+	esac
+done
+
+mode=`checklist ${flags} -h\? \
+		-H'
+	A complete backup copies everything in case of a complete  loss  of
+	information and an incremental backup copies files recently changed
+	in case a file or a few files are lost.' \
+	-pfe 'Select complete or incremental backup [c, i, ?, q]:' \
+	complete incremental`
+case "${mode}" in
+complete )
+	mode=c
+	level=0
+	;;	
+incremental )
+	mode=i
+	level=1
+	;;
+* )
+	admerr $0 "Bad answer '${mode}'"
+	exit 1
+esac
+
+
+dir=${0}.d
+if [ -d ${dir} ]
+then
+	patterns=`ls ${dir} 2>/dev/null`
+else
+	patterns=
+fi
+
+ddrive=`selectdevice -c $$ /dev/rmt ${patterns}`
+rndrive=`basename ${ddrive}`
+case "${rndrive}" in
+Q* | ctape* | m* ) ndrive="Cartridge Tape"
+	;;
+h0* | h4* ) ndrive="Half inch Tape"
+	;;
+hc* ) ndrive="High Capacity Tape"
+	;;
+esac
+case "${rndrive}" in
+Q24* | Q11* ) density=8000;length=570
+	;;
+Q120* | ctape* | m* ) density=16000;length=570
+	;;
+h0 | h4 ) density=6250; length=2300
+	;;
+# for exabytes, this is a 1GB P5 cart.
+hc*) density=43200;length=246
+	;;
+esac
+
+
+if [ -n "${patterns}" ]
+then
+	. ${dir}/`selpattern ${ddrive}`
+fi
+
+ case "${mode}" in
+i )
+	for f in ${fs}
+	{
+		fx="${f}[ 	]*0"
+		if ( grep -s "${fx}" /etc/dumpdates > /dev/null )
+		then
+			:
+		else
+		echo >&2 "\tA complete backup of '${f}' should be run before the first
+	incremental backup.  Please try again."
+			exit 0
+		fi
+	}
+	;;
+c )
+	;;
+esac
+
+echo "${msg}"  |  sed '	s/the next /the first /
+			s/%d/1/'
+for f in ${fs}
+{
+	echo Starting dump of $f
+	/etc/dump.ffs ${level}sduf $length $density $ddrive $f
+}

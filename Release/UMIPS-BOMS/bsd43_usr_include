@@ -1,0 +1,114 @@
+usr/include/bsd43 drwxr-xr-x bin bin 2
+usr/include/bsd43/arpa drwxr-xr-x bin bin 2
+usr/include/bsd43/arpa/ftp.h l--------- bin bin 1 ../sysv/bsd/arpa/ftp.h
+usr/include/bsd43/arpa/inet.h l--------- bin bin 1 ../sysv/bsd/arpa/inet.h
+usr/include/bsd43/arpa/nameser.h l--------- bin bin 1 ../sysv/bsd/arpa/nameser.h
+usr/include/bsd43/arpa/telnet.h l--------- bin bin 1 ../sysv/bsd/arpa/telnet.h
+usr/include/bsd43/arpa/tftp.h l--------- bin bin 1 ../sysv/bsd/arpa/tftp.h
+usr/include/bsd43/asm.h l--------- bin bin 1 mips/asm.h
+usr/include/bsd43/assert.h l--------- bin bin 1 sysv/assert.h
+usr/include/bsd43/bsd43 l--------- bin bin 1 .
+usr/include/bsd43/bsd43_.h -r--r--r-- bin bin 1
+usr/include/bsd43/ctype.h -r--r--r-- bin bin 1
+usr/include/bsd43/curses.h -r--r--r-- bin bin 1
+usr/include/bsd43/dbm.h l--------- bin bin 1 sysv/bsd/dbm.h
+usr/include/bsd43/des drwxr-xr-x bin bin 2
+usr/include/bsd43/des/sysv l--------- bin bin 1 ../sysv
+usr/include/bsd43/des/des.h l--------- bin bin 1 sysv/des/des.h
+usr/include/bsd43/des/softdes.h l--------- bin bin 1 sysv/des/softdes.h
+usr/include/bsd43/des/softdesdata.c l--------- bin bin 1 sysv/des/softdesdata.c
+usr/include/bsd43/des_crypt.h l--------- bin bin 1 sysv/des_crypt.h
+usr/include/bsd43/disktab.h -r--r--r-- bin bin 1
+usr/include/bsd43/errno.h l--------- bin bin 1 sys/errno.h
+usr/include/bsd43/exportent.h l--------- bin bin 1 sysv/exportent.h
+usr/include/bsd43/fcntl.h l--------- bin bin 1 sys/file.h
+usr/include/bsd43/fp_class.h l--------- bin bin 1 sysv/fp_class.h
+usr/include/bsd43/fpi.h l--------- bin bin 1 sysv/fpi.h
+usr/include/bsd43/fstab.h -r--r--r-- bin bin 1
+usr/include/bsd43/grp.h -r--r--r-- bin bin 1
+usr/include/bsd43/lastlog.h -r--r--r-- bin bin 1
+usr/include/bsd43/machine l--------- bin bin 1 mips
+usr/include/bsd43/memory.h l--------- bin bin 1 sysv/memory.h
+usr/include/bsd43/mntent.h l--------- bin bin 1 sysv/sun/mntent.h
+usr/include/bsd43/mp.h -r--r--r-- bin bin 1
+usr/include/bsd43/mtab.h -r--r--r-- bin bin 1
+usr/include/bsd43/ndbm.h l--------- bin bin 1 sysv/bsd/ndbm.h
+usr/include/bsd43/netdb.h l--------- bin bin 1 sysv/bsd/netdb.h
+usr/include/bsd43/protocols drwxr-xr-x bin bin 2
+usr/include/bsd43/protocols/dumprestore.h l--------- bin bin 1 ../sysv/bsd/protocols/dumprestore.h
+usr/include/bsd43/protocols/routed.h l--------- bin bin 1 ../sysv/bsd/protocols/routed.h
+usr/include/bsd43/protocols/rwhod.h l--------- bin bin 1 ../sysv/bsd/protocols/rwhod.h
+usr/include/bsd43/protocols/talkd.h l--------- bin bin 1 ../sysv/bsd/protocols/talkd.h
+usr/include/bsd43/protocols/timed.h l--------- bin bin 1 ../sysv/bsd/protocols/timed.h
+usr/include/bsd43/pwd.h -r--r--r-- bin bin 1
+usr/include/bsd43/regdef.h l--------- bin bin 1 mips/regdef.h
+usr/include/bsd43/resolv.h l--------- bin bin 1 sysv/bsd/resolv.h
+usr/include/bsd43/rpc drwxr-xr-x bin bin 2
+usr/include/bsd43/rpc/auth.h l--------- bin bin 1 ../../rpc/auth.h
+usr/include/bsd43/rpc/auth_des.h l--------- bin bin 1 ../../rpc/auth_des.h
+usr/include/bsd43/rpc/auth_unix.h l--------- bin bin 1 ../../rpc/auth_unix.h
+usr/include/bsd43/rpc/clnt.h l--------- bin bin 1 ../../rpc/clnt.h
+usr/include/bsd43/rpc/key_prot.h l--------- bin bin 1 ../../rpc/key_prot.h
+usr/include/bsd43/rpc/pmap_clnt.h l--------- bin bin 1 ../../rpc/pmap_clnt.h
+usr/include/bsd43/rpc/pmap_prot.h l--------- bin bin 1 ../../rpc/pmap_prot.h
+usr/include/bsd43/rpc/pmap_rmt.h l--------- bin bin 1 ../../rpc/pmap_rmt.h
+usr/include/bsd43/rpc/rpc.h l--------- bin bin 1 ../../rpc/rpc.h
+usr/include/bsd43/rpc/rpc_msg.h l--------- bin bin 1 ../../rpc/rpc_msg.h
+usr/include/bsd43/rpc/svc.h l--------- bin bin 1 ../../rpc/svc.h
+usr/include/bsd43/rpc/svc_auth.h l--------- bin bin 1 ../../rpc/svc_auth.h
+usr/include/bsd43/rpc/types.h l--------- bin bin 1 ../../rpc/types.h
+usr/include/bsd43/rpc/xdr.h l--------- bin bin 1 ../../rpc/xdr.h
+usr/include/bsd43/rpcsvc drwxr-xr-x bin bin 2
+usr/include/bsd43/rpcsvc/bootparam.h l--------- bin bin 1 ../../rpcsvc/bootparam.h
+usr/include/bsd43/rpcsvc/ether.h l--------- bin bin 1 ../../rpcsvc/ether.h
+usr/include/bsd43/rpcsvc/klm_prot.h l--------- bin bin 1 ../../rpcsvc/klm_prot.h
+usr/include/bsd43/rpcsvc/mount.h l--------- bin bin 1 ../../rpcsvc/mount.h
+usr/include/bsd43/rpcsvc/nlm_prot.h l--------- bin bin 1 ../../rpcsvc/nlm_prot.h
+usr/include/bsd43/rpcsvc/pwdnm.h l--------- bin bin 1 ../../rpcsvc/pwdnm.h
+usr/include/bsd43/rpcsvc/rex.h l--------- bin bin 1 ../../rpcsvc/rex.h
+usr/include/bsd43/rpcsvc/rquota.h l--------- bin bin 1 ../../rpcsvc/rquota.h
+usr/include/bsd43/rpcsvc/rstat.h l--------- bin bin 1 ../../rpcsvc/rstat.h
+usr/include/bsd43/rpcsvc/rusers.h l--------- bin bin 1 ../../rpcsvc/rusers.h
+usr/include/bsd43/rpcsvc/rwall.h l--------- bin bin 1 ../../rpcsvc/rwall.h
+usr/include/bsd43/rpcsvc/sm_inter.h l--------- bin bin 1 ../../rpcsvc/sm_inter.h
+usr/include/bsd43/rpcsvc/spray.h l--------- bin bin 1 ../../rpcsvc/spray.h
+usr/include/bsd43/rpcsvc/yp_prot.h l--------- bin bin 1 ../../rpcsvc/yp_prot.h
+usr/include/bsd43/rpcsvc/ypclnt.h l--------- bin bin 1 ../../rpcsvc/ypclnt.h
+usr/include/bsd43/rpcsvc/yppasswd.h l--------- bin bin 1 ../../rpcsvc/yppasswd.h
+usr/include/bsd43/rpcsvc/ypupdate_prot.h l--------- bin bin 1 ../../rpcsvc/ypupdate_prot.h
+usr/include/bsd43/rpcsvc/ypv1_prot.h l--------- bin bin 1 ../../rpcsvc/ypv1_prot.h
+usr/include/bsd43/rpcsvc/bootparam_prot.x l--------- bin bin 1 ../../rpcsvc/bootparam_prot.x
+usr/include/bsd43/rpcsvc/ether.x l--------- bin bin 1 ../../rpcsvc/ether.x
+usr/include/bsd43/rpcsvc/klm_prot.x l--------- bin bin 1 ../../rpcsvc/klm_prot.x
+usr/include/bsd43/rpcsvc/mount.x l--------- bin bin 1 ../../rpcsvc/mount.x
+usr/include/bsd43/rpcsvc/nfs_prot.x l--------- bin bin 1 ../../rpcsvc/nfs_prot.x
+usr/include/bsd43/rpcsvc/nlm_prot.x l--------- bin bin 1 ../../rpcsvc/nlm_prot.h
+usr/include/bsd43/rpcsvc/rex.x l--------- bin bin 1 ../../rpcsvc/rex.x
+usr/include/bsd43/rpcsvc/rnusers.x l--------- bin bin 1 ../../rpcsvc/rnusers.x
+usr/include/bsd43/rpcsvc/rquota.x l--------- bin bin 1 ../../rpcsvc/rquota.h
+usr/include/bsd43/rpcsvc/rstat.x l--------- bin bin 1 ../../rpcsvc/rstat.x
+usr/include/bsd43/rpcsvc/sm_inter.x l--------- bin bin 1 ../../rpcsvc/sm_inter.x
+usr/include/bsd43/rpcsvc/spray.x l--------- bin bin 1 ../../rpcsvc/spray.x
+usr/include/bsd43/rpcsvc/yp.x l--------- bin bin 1 ../../rpcsvc/yp.x
+usr/include/bsd43/rpcsvc/yppasswd.x l--------- bin bin 1 ../../rpcsvc/yppasswd.x
+usr/include/bsd43/setjmp.h -r--r--r-- bin bin 1
+usr/include/bsd43/shadow.h l--------- bin bin 1 sysv/shadow.h
+usr/include/bsd43/sgtty.h -r--r--r-- bin bin 1
+usr/include/bsd43/signal.h l--------- bin bin 1 sys/signal.h
+usr/include/bsd43/stdio.h -r--r--r-- bin bin 1
+usr/include/bsd43/string.h -r--r--r-- bin bin 1
+usr/include/bsd43/strings.h -r--r--r-- bin bin 1
+usr/include/bsd43/struct.h -r--r--r-- bin bin 1
+usr/include/bsd43/symbol.h l--------- bin bin 1 sysv/symbol.h
+usr/include/bsd43/syscall.h l--------- bin bin 1 sys/syscall.h
+usr/include/bsd43/sysexits.h -r--r--r-- bin bin 1
+usr/include/bsd43/syslog.h l--------- bin bin 1 sys/syslog.h
+usr/include/bsd43/sysmips.h l--------- bin bin 1 sys/sysmips.h
+usr/include/bsd43/sysv l--------- bin bin 1 ..
+usr/include/bsd43/tar.h l--------- bin bin 1 sysv/tar.h
+usr/include/bsd43/time.h -r--r--r-- bin bin 1
+usr/include/bsd43/ttyent.h -r--r--r-- bin bin 1
+usr/include/bsd43/tzfile.h l--------- bin bin 1 sysv/tzfile.h
+usr/include/bsd43/unctrl.h l--------- bin bin 1 sysv/unctrl.h
+usr/include/bsd43/utmp.h -r--r--r-- bin bin 1
+usr/include/bsd43/vfont.h -r--r--r-- bin bin 1

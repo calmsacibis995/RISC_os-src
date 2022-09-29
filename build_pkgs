@@ -1,0 +1,31 @@
+#  4.52 version with 2.11 C Compilers
+#
+#  This file contains the name of subdirectories to be visited
+#  when make is executed with the top-level UMIPS Makefile.
+#
+head
+cmplrs/cc2.11.2/include
+bsd_head
+uts_head
+lib_headers
+posix_head
+lib
+bsd_lib
+posix_lib
+root_files
+cmplrs_link
+cmplrs/pc2.11/libp
+cmplrs/cc2.11.2
+cmplrs/pc2.11
+cmd
+bsd_cmd
+posix_cmd
+man
+man/manpages/compilers/cmplrs
+uts
+SA
+SA/m12
+new_cmd
+pkg
+Release/UMIPS-BOMS
+Release/umips-pkg

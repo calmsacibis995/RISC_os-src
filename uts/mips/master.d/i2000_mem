@@ -1,0 +1,10 @@
+*#ident "$Header"
+*
+* R2300 CPU Local Memory control and error handling for R2350/R2850 mem boards
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+os	i2000_mem -	1
+				lmem_err_scan(){}
+				lmem_setmax(){}
+
+$$$

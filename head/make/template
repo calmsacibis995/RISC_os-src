@@ -1,0 +1,38 @@
+#
+#ident	"$Header: template,v 1.5.3.1 89/11/27 09:51:50 wje Exp $"
+#
+# Notes:
+#
+
+#
+# Common Definitions
+#
+include	$(ROOT)/usr/include/make/commondefs
+
+#
+# Compile Time Options
+#
+
+#
+# Local Definitions
+#
+
+#
+# Targets/Rules
+#
+default:
+
+clean:
+
+clobber:	clean
+
+FRC:
+
+#
+# Specific Target/Rules follow
+#
+install: default
+	$(INSTALL)
+
+depend: FRC
+	$(MKDEPEND)

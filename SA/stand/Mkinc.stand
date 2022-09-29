@@ -1,0 +1,134 @@
+#ident "$Header: Mkinc.stand,v 1.11 90/10/26 10:43:04 huang Exp $"
+#	%Q%	%I%	%M%
+#
+# Copyright 1985 by MIPS Computer Systems, Inc.
+#
+# Generic standalone program Makefile
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+include	../../Mkinc.common_defines
+include	../../Mkinc.release
+include	../../Mkinc.common_targets
+
+DEFINES= -DSTANDALONE -D$(VERSION)
+
+ASFLAGS= $(INCDIRS) -DLOCORE $(DEFINES) $(ASOPTS) $(ENDIAN) $(CASOPTS)
+CFLAGS=	$(INCDIRS) $(DEFINES) $(CCOPTS) $(ENDIAN) $(CCCOPTS)
+LDFLAGS= -non_shared -m -N -T 80020000 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+LDFLAGSU= -non_shared -m -N -T a0020000 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+
+SHELL=	/bin/sh
+
+VPATH=..
+DPATH=..
+
+SFILES=
+
+CFILES=\
+	../format.c ../qsort.c
+
+FORMATOBJS=\
+	format.o qsort.o 
+
+STANDPROGS=\
+	format
+
+all:	$(STANDPROGS)
+
+install : all
+		-if [ ! -d $(DESTDIR)/stand ]; \
+		then \
+			mkdir $(DESTDIR)/stand; \
+		fi
+		$(MAKE) package_install SRC=format DEST=$(DESTDIR)/stand
+
+install_umips : all
+		strip format
+		cp format format.std
+		-if [ ! -d $(DESTDIR)/stand ]; \
+		then \
+			mkdir $(DESTDIR)/stand; \
+		fi
+		$(MAKE) package_install SRC=format DEST=$(DESTDIR)/stand
+		$(MAKE) package_install SRC=format.std DEST=$(DESTDIR)/stand
+		-if [ ! -d $(DESTDIR)/usr/bfsd ]; \
+		then \
+			mkdir $(DESTDIR)/usr/bfsd; \
+		fi
+		$(MAKE) package_install SRC=format DEST=$(DESTDIR)/usr/bfsd
+		$(MAKE) package_install SRC=format.std DEST=$(DESTDIR)/usr/bfsd
+
+format:		$(FORMATOBJS) $(CSU) $(LIBSA) stand_vers.o
+		-rm -f format format.map format.nm format.$(RELEASE)
+		$(LD) $(LDFLAGS) -o format $(CSU) stand_vers.o \
+		    $(FORMATOBJS) $(LIBSA) > format.map
+		$(NM) -nx format > format.nm
+		$(SIZE) -x format
+		cp format format.$(RELEASE)
+
+remake:		clean depend
+		$(MAKE) all
+
+clobber:	clean
+		-rm -f errs
+		for i in $(STANDPROGS); \
+		do \
+			rm -f $$i*; \
+		done
+
+clean:
+		-rm -f *.o *.dis Makefile.bak stand_vers.c
+		for i in $(STANDPROGS); \
+		do \
+			rm -f $$i $$i.nm $$i.map; \
+		done
+
+stand_vers.c:	$(LIBOBJS) $(CSU)
+	-rm -f stand_vers.c
+	echo "/* Configuration Control File */" > stand_vers.c;
+	$(IF_SYSV) \
+		echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+		    >> stand_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>stand_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+		    >> stand_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>stand_vers.c; \
+	$(ENDIF)
+	echo "\";" >> stand_vers.c
+	$(IF_SYSV) \
+		echo "char *stand_version=\"\c" >> stand_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>stand_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char *stand_version=\"" >> stand_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>stand_vers.c; \
+	$(ENDIF)
+	echo "\";" >> stand_vers.c
+
+stand_vers.o:	stand_vers.c
+		-rm -f stand_vers.o
+		$(CC) $(CFLAGS) -c stand_vers.c
+
+depend:
+	-rm -f eddep makedep
+	$(CC) -M $(CFLAGS) $(SFILES) $(CFILES) | \
+	awk ' { if ($$1 != prev) { print rec; rec = $$0; prev = $$1; } \
+		else { if (length(rec $$2) > 78) { print rec; rec = $$0; } \
+		       else rec = rec " " $$2 } } ; \
+	      END { print rec } ' > makedep
+	echo '/^# DO NOT DELETE THIS LINE/+1,$$d' >eddep
+	echo '$$r makedep' >>eddep
+	echo 'w Makefile' >>eddep
+	-rm -f Makefile.bak
+	cp Makefile Makefile.bak
+	rm -f Makefile
+	ed - Makefile.bak < eddep
+	rm eddep makedep

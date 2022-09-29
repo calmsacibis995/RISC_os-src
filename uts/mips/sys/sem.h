@@ -1,0 +1,134 @@
+/*
+ * |-----------------------------------------------------------|
+ * | Copyright (c) 1990 MIPS Computer Systems, Inc.            |
+ * | All Rights Reserved                                       |
+ * |-----------------------------------------------------------|
+ * |          Restricted Rights Legend                         |
+ * | Use, duplication, or disclosure by the Government is      |
+ * | subject to restrictions as set forth in                   |
+ * | subparagraph (c)(1)(ii) of the Rights in Technical        |
+ * | Data and Computer Software Clause of DFARS 52.227-7013.   |
+ * |         MIPS Computer Systems, Inc.                       |
+ * |         928 Arques Avenue                                 |
+ * |         Sunnyvale, CA 94086                               |
+ * |-----------------------------------------------------------|
+ */
+/* $Header: sem.h,v 1.6.4.2 90/05/10 06:36:19 wje Exp $ */
+
+#ifndef	_SYS_SEM_
+#define	_SYS_SEM_	1
+
+
+/*	Copyright (c) 1984 AT&T	*/
+/*	  All Rights Reserved  	*/
+
+/*	THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T	*/
+/*	The copyright notice above does not evidence any   	*/
+/*	actual or intended publication of such source code.	*/
+
+/*
+**	IPC Semaphore Facility.
+*/
+
+/*
+**	Implementation Constants.
+*/
+
+#define	PSEMN	(PZERO + 3)	/* sleep priority waiting for greater value */
+#define	PSEMZ	(PZERO + 2)	/* sleep priority waiting for zero */
+
+/*
+**	Permission Definitions.
+*/
+
+#define	SEM_A	0200	/* alter permission */
+#define	SEM_R	0400	/* read permission */
+
+/*
+**	Semaphore Operation Flags.
+*/
+
+#define	SEM_UNDO	010000	/* set up adjust on exit entry */
+
+/*
+**	Semctl Command Definitions.
+*/
+
+#define	GETNCNT	3	/* get semncnt */
+#define	GETPID	4	/* get sempid */
+#define	GETVAL	5	/* get semval */
+#define	GETALL	6	/* get all semval's */
+#define	GETZCNT	7	/* get semzcnt */
+#define	SETVAL	8	/* set semval */
+#define	SETALL	9	/* set all semval's */
+
+/*
+**	Structure Definitions.
+*/
+
+/*
+**	There is one semaphore id data structure for each set of semaphores
+**		in the system.
+*/
+
+struct semid_ds {
+	struct ipc_perm	sem_perm;	/* operation permission struct */
+	struct sem	*sem_base;	/* ptr to first semaphore in set */
+	ushort		sem_nsems;	/* # of semaphores in set */
+	time_t		sem_otime;	/* last semop time */
+	time_t		sem_ctime;	/* last change time */
+};
+
+/*
+**	There is one semaphore structure for each semaphore in the system.
+*/
+
+struct sem {
+	ushort	semval;		/* semaphore text map address */
+	short	sempid;		/* pid of last operation */
+	ushort	semncnt;	/* # awaiting semval > cval */
+	ushort	semzcnt;	/* # awaiting semval = 0 */
+};
+
+/*
+**	There is one undo structure per process in the system.
+*/
+
+struct sem_undo {
+	struct sem_undo	*un_np;	/* ptr to next active undo structure */
+	short		un_cnt;	/* # of active entries */
+	struct undo {
+		short	un_aoe;	/* adjust on exit values */
+		short	un_num;	/* semaphore # */
+		int	un_id;	/* semid */
+	}	un_ent[1];	/* undo entries (one minimum) */
+};
+
+/*
+** semaphore information structure
+*/
+struct	seminfo	{
+	int	semmap,		/* # of entries in semaphore map */
+		semmni,		/* # of semaphore identifiers */
+		semmns,		/* # of semaphores in system */
+		semmnu,		/* # of undo structures in system */
+		semmsl,		/* max # of semaphores per id */
+		semopm,		/* max # of operations per semop call */
+		semume,		/* max # of undo entries per process */
+		semusz,		/* size in bytes of undo structure */
+		semvmx,		/* semaphore maximum value */
+		semaem;		/* adjust on exit max value */
+};
+
+/*
+**	User semaphore template for semop system calls.
+*/
+
+struct sembuf {
+	ushort	sem_num;	/* semaphore # */
+	short	sem_op;		/* semaphore operation */
+	short	sem_flg;	/* operation flags */
+};
+
+
+#endif	_SYS_SEM_

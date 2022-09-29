@@ -1,0 +1,119 @@
+#	Copyright (c) 1984 AT&T
+#	  All Rights Reserved
+
+#	THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF AT&T
+#	The copyright notice above does not evidence any
+#	actual or intended publication of such source code.
+
+#ident	"$Header"
+
+#
+# Field #2 indicates the system's default run level.  (X for unspecified.)
+#
+is:2:initdefault:
+
+#
+# Boot time system initialization.
+#
+sc::sysinit:/etc/sysconinit
+fs::sysinit:/etc/bcheckrc >/dev/syscon 2>&1	# Check (& fsck) root fs.
+mt::sysinit:/etc/brc >/dev/syscon 2>&1	 	# Initialize /etc/mtab.
+
+#
+# Run level changes.
+#
+s1:1:wait:/etc/shutdown -y -iS -g0 >/dev/syscon <&1 2>&1
+s2:23:wait:/etc/rc2 >/dev/syscon <&1 2>&1
+s3:3:wait:/etc/rc3 >/dev/syscon <&1 2>&1
+
+#
+# System shut down.
+#
+#   telinit 0 = Shutdown and halt.
+#   telinit 6 = Shutdown and then reboot.
+#   telinit 5 = Like 6, but asks operator which unix to boot. (DOESN'T WORK.)
+#
+s0:056:wait:/etc/rc0 >/dev/syscon <&1 2>&1		# Always run rc0.
+of:0:wait:/etc/uadmin 2 0 >/dev/syscon <&1 2>&1
+fw:5:wait:/etc/uadmin 2 2 >/dev/syscon <&1 2>&1
+RB:6:wait:echo "\nThe system is being restarted." >/dev/syscon <&1 2>&1
+rb:6:wait:/etc/uadmin 2 1 >/dev/syscon <&1 2>&1
+
+#
+# Gettys
+#
+# Enabled if field #3 is "respawn"; Dissabled if field #3 is "off".
+#
+# The h* entries are for M500/800/1000/2000.  The d* entries are for
+# M120 with the DIGI board.
+#
+co:234:respawn:/etc/getty console console none LDISC0 	# (console == tty0)
+t1:234:off:/etc/getty tty1 co_9600 none LDISC0
+t2:234:off:/etc/getty tty2 co_9600 none LDISC0
+t3:234:off:/etc/getty tty3 co_9600 none LDISC0
+g1:234:off:/etc/getty ttykeybd co_1200 none LDISC0
+h0:234:off:/etc/getty ttyh0 dx_19200 none LDISC0
+h1:234:off:/etc/getty ttyh1 dx_19200 none LDISC0
+h2:234:off:/etc/getty ttyh2 dx_19200 none LDISC0
+h3:234:off:/etc/getty ttyh3 dx_19200 none LDISC0
+h4:234:off:/etc/getty ttyh4 dx_19200 none LDISC0
+h5:234:off:/etc/getty ttyh5 dx_19200 none LDISC0
+h6:234:off:/etc/getty ttyh6 dx_19200 none LDISC0
+h7:234:off:/etc/getty ttyh7 dx_19200 none LDISC0
+h8:234:off:/etc/getty ttyh8 dx_19200 none LDISC0
+h9:234:off:/etc/getty ttyh9 dx_19200 none LDISC0
+ha:234:off:/etc/getty ttyh10 dx_19200 none LDISC0
+hb:234:off:/etc/getty ttyh11 dx_19200 none LDISC0
+hc:234:off:/etc/getty ttyh12 dx_19200 none LDISC0
+hd:234:off:/etc/getty ttyh13 dx_19200 none LDISC0
+he:234:off:/etc/getty ttyh14 dx_19200 none LDISC0
+hf:234:off:/etc/getty ttyh15 dx_19200 none LDISC0
+i0:234:off:/etc/getty ttyi0 dx_19200 none LDISC0
+i1:234:off:/etc/getty ttyi1 dx_19200 none LDISC0
+i2:234:off:/etc/getty ttyi2 dx_19200 none LDISC0
+i3:234:off:/etc/getty ttyi3 dx_19200 none LDISC0
+i4:234:off:/etc/getty ttyi4 dx_19200 none LDISC0
+i5:234:off:/etc/getty ttyi5 dx_19200 none LDISC0
+i6:234:off:/etc/getty ttyi6 dx_19200 none LDISC0
+i7:234:off:/etc/getty ttyi7 dx_19200 none LDISC0
+i8:234:off:/etc/getty ttyi8 dx_19200 none LDISC0
+i9:234:off:/etc/getty ttyi9 dx_19200 none LDISC0
+ia:234:off:/etc/getty ttyi10 dx_19200 none LDISC0
+ib:234:off:/etc/getty ttyi11 dx_19200 none LDISC0
+ic:234:off:/etc/getty ttyi12 dx_19200 none LDISC0
+id:234:off:/etc/getty ttyi13 dx_19200 none LDISC0
+ie:234:off:/etc/getty ttyi14 dx_19200 none LDISC0
+if:234:off:/etc/getty ttyi15 dx_19200 none LDISC0
+
+d0:234:off:/etc/getty ttyd0 dx_9600 none LDISC0
+d1:234:off:/etc/getty ttyd1 dx_9600 none LDISC0
+d2:234:off:/etc/getty ttyd2 dx_9600 none LDISC0
+d3:234:off:/etc/getty ttyd3 dx_9600 none LDISC0
+d4:234:off:/etc/getty ttyd4 dx_9600 none LDISC0
+d5:234:off:/etc/getty ttyd5 dx_9600 none LDISC0
+d6:234:off:/etc/getty ttyd6 dx_9600 none LDISC0
+d7:234:off:/etc/getty ttyd7 dx_9600 none LDISC0
+d8:234:off:/etc/getty ttyd8 dx_9600 none LDISC0
+d9:234:off:/etc/getty ttyd9 dx_9600 none LDISC0
+da:234:off:/etc/getty ttyd10 dx_9600 none LDISC0
+db:234:off:/etc/getty ttyd11 dx_9600 none LDISC0
+dc:234:off:/etc/getty ttyd12 dx_9600 none LDISC0
+dd:234:off:/etc/getty ttyd13 dx_9600 none LDISC0
+de:234:off:/etc/getty ttyd14 dx_9600 none LDISC0
+df:234:off:/etc/getty ttyd15 dx_9600 none LDISC0
+dg:234:off:/etc/getty ttyd16 dx_9600 none LDISC0
+dh:234:off:/etc/getty ttyd17 dx_9600 none LDISC0
+di:234:off:/etc/getty ttyd18 dx_9600 none LDISC0
+dj:234:off:/etc/getty ttyd19 dx_9600 none LDISC0
+dk:234:off:/etc/getty ttyd20 dx_9600 none LDISC0
+dl:234:off:/etc/getty ttyd21 dx_9600 none LDISC0
+dm:234:off:/etc/getty ttyd22 dx_9600 none LDISC0
+dn:234:off:/etc/getty ttyd23 dx_9600 none LDISC0
+do:234:off:/etc/getty ttyd24 dx_9600 none LDISC0
+dp:234:off:/etc/getty ttyd25 dx_9600 none LDISC0
+dq:234:off:/etc/getty ttyd26 dx_9600 none LDISC0
+dr:234:off:/etc/getty ttyd27 dx_9600 none LDISC0
+ds:234:off:/etc/getty ttyd28 dx_9600 none LDISC0
+dt:234:off:/etc/getty ttyd29 dx_9600 none LDISC0
+du:234:off:/etc/getty ttyd30 dx_9600 none LDISC0
+dv:234:off:/etc/getty ttyd31 dx_9600 none LDISC0

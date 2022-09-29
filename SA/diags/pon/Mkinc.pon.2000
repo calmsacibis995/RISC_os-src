@@ -1,0 +1,73 @@
+#ident "$Header: Mkinc.pon.2000,v 1.3.1.1 90/07/18 14:28:11 huang Exp $"
+
+#
+# Copyright 1988 by MIPS Computer Systems, Inc.
+#
+# makefile for R2000/3000-specific libpon diagnostic library
+#
+
+SFILES_MACHDEP=	\
+		../pon_asm_ecc.s \
+		../pon_cache1.s \
+		../pon_cache2.s \
+		../pon_cache3.s \
+		../pon_cache4.s \
+		../pon_subr_2000.s \
+		../pon_tlb.s \
+		../pon_wb.s
+
+CFILES_MACHDEP=	\
+		../pon_ecc.c \
+ 		../pon_lance.c \
+		../pon_dma_scsi.c \
+		../pon_parity.c \
+		../pon_scr.c \
+		../pon_scsi.c \
+		../pon_scctest.c \
+		../pon_buffer.c  \
+		../pon_buff_parity.c \
+		../pon_timers.c \
+		../pon_udcslave.c \
+		../pon_vme.c \
+		../pon_vm.c
+
+LIBOBJS_MACHDEP= \
+		pon_asm_ecc.o \
+		pon_cache1.o \
+		pon_cache2.o \
+		pon_cache3.o \
+		pon_cache4.o \
+		pon_ecc.o \
+ 		pon_lance.o \
+		pon_scctest.o \
+		pon_buffer.o \
+		pon_buff_parity.o \
+		pon_dma_scsi.o \
+		pon_parity.o \
+		pon_scr.o \
+		pon_scsi.o \
+		pon_subr_2000.o \
+		pon_timers.o \
+		pon_tlb.o \
+		pon_udcslave.o \
+		pon_vm.o \
+		pon_vme.o \
+		pon_wb.o
+
+LIB1OBJS_MACHDEP= \
+		ecc.o \
+		pon_cache1.o \
+		pon_cache2.o \
+		pon_cache3.o \
+		pon_cache4.o \
+		pon_lance.o \
+		pon_parity.o \
+		pon_scr.o \
+		pon_scsi.o \
+		pon_subr_2000.o \
+		pon_timers.o \
+		pon_tlb.o \
+		pon_udcslave.o \
+		pon_vm.o \
+		pon_vme.o \
+		pon_wb.o

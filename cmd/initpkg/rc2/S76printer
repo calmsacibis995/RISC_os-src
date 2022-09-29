@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# $Header: S76printer,v 1.1.1.1 90/02/15 14:39:27 wje Exp $
+# This script executes a corresponding script in /etc/init.d.
+# If you want to make a special local version of this
+# operation, copy the /etc/init.d file on top of this file and
+# make your modifications.  Do not change the file in
+# /etc/init.d.
+#
+
+REALFILE="/etc/init.d/printer"
+
+if [ -f "$REALFILE" ]
+then
+	exec "$REALFILE" ${1+"$@"}
+else
+	echo "No printer daemon started."
+	echo "Link either init.d/bsd43_lpd or init.d/lpsched to init.d/printer"
+	echo "(See the Release Notes for details)"
+	exit 0
+fi

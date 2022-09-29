@@ -1,0 +1,366 @@
+* $Header: sysgen.r3200_ijc,v 1.6.1.6 90/06/05 16:41:48 wje Exp $
+*VME Address, Interrupt Level and Bus Request Level Assignments for Clover1
+*==========================================================================
+*
+*ADDRESS SPACE
+*    1.	Only four of the SGI-designed clover 1 boards interface to the
+*	VME bus (IP4, GF3, EN1, CG2).
+*    2.	It is a good idea to leave special i/o (A16) addresses such as 0000
+*	and FFFF for buy-in boards.
+*    3.	IP4 occupies the entire A24 space, so we confine it to only
+*	non-privileged access, and assign all other A24 spaces to supervisor
+*	access only.  ALL A24 PERIPHERALS MUST RESPOND TO SUPERVISOR ACCESS
+*	ONLY!
+*    4.	Both IP4 and the MIPS board set generate ONLY data accesses to the
+*	VME bus.  Thus code access privilege is superfluous for all
+*	envisioned systems.  Both can generate both non-privileged and
+*	supervisor-only cycles.
+*
+*Privilege codes:
+*    np/s	non-privileged/supervisor access
+*    c/d	code/data access
+*
+*Access sizes:
+*    b/w/l	byte/word/long access
+*
+*A16 space:
+*    IP4 implements a single write-only byte in the A16 space.  When this
+*	    byte is written an on-board mailbox interrupt is generated:
+*	IP4 0   0001 00xx xxxx xxxx	    s/np, d, b
+*	IP4 1   0001 01xx xxxx xxxx	    s/np, d, b
+*	IP4 2   0001 10xx xxxx xxxx	    s/np, d, b
+*	IP4 3   0001 11xx xxxx xxxx	    s/np, d, b
+*    GF3 has 2 16-bit read/write registers:
+*     gro_dev 0 0010 000a xxxx xxx0	    s/np, d, w
+*     gro_dev 1 0010 001a xxxx xxx0	    s/np, d, w
+*    MIPS 4,8,16MByte RAM uses 1025 addresses, in various registers:
+*		0000 0000 0000 0000   (during autoconf)
+*		ssss ssaa aaaa aaaa   (ssss ss = CPU PROM chosen ID)
+*					currently start at 0001 00aa aaaa aaaa
+*					and go thru 0x1000+0x400*num_boards
+*    EN1 implements 10 16-bit registers:
+*	if_en0	0011 0000 00aa aaax	    s/np, d, w
+*	if_en1	0011 0001 00aa aaax	    s/np, d, w
+*    CG2 implements ? 8-bit registers:
+*	CG2 0	0011 0010 xxxx aaa0	    s/np, d, b
+*
+* 3rd-party Peripheral boards use the rest of A16:
+*		1xxx xxxx xxxx xxxx
+*    Interphase 3201 What size address space?
+*	dkip	1000 011a aaaa aaaa	    ?, ?, ??
+*    Xylogics 1/2" Tape, What size address space?
+*	xm	1000 1aaa aaaa aaaa	    ?, ?, ??
+*    Xylogics 712 ESDI
+*	xyl712	1001 000a aaaa aaaa	    ?, ?, ??
+*    IKON Hardcopy, What size address space?
+*	ikon	1001 0010 00aa aaaa	    ?, ?, ??
+*
+*
+*A24 space:
+*    IP4 cpu number 0 occupies the entire A24 non-privilege address space.
+*    The other IP4 cpus cannot be accessed in A24 mode:
+*	IP4 0   aaaa aaaa aaaa aaaa aaaa aaaa	np, c/d, b/w/l
+*	IP4 1	xxxx xxxx xxxx xxxx xxxx xxxx
+*	IP4 2	xxxx xxxx xxxx xxxx xxxx xxxx
+*	IP4 3	xxxx xxxx xxxx xxxx xxxx xxxx
+*
+*    EN1 1 uses 1 Mbyte in the A24 space:
+*	if_en1	0111 aaaa aaaa aaaa aaaa aaaa	s, d, b/w/l
+*    GF3 uses 2 Mbytes in the A24 space:
+*     gro_dev 0 100a aaaa aaaa aaaa aaaa aaaa	s, d, b/w/l (w/l to pipe)
+*     gro_dev 1 101a aaaa aaaa aaaa aaaa aaaa	s, d, b/w/l (w/l to pipe)
+*    EN1 0 uses 1 Mbyte in the A24 space:
+*	if_en0	1100 aaaa aaaa aaaa aaaa aaaa	s, d, b/w/l
+*    CMC ENP ethernet
+*	if_enp1	1101 110a aaaa aaaa aaaa aaaa	s
+*	if_enp0	1101 111a aaaa aaaa aaaa aaaa	s
+*    Central Data SIO
+*	cdsio	1111 0000 aaaa aaaa aaaa aaaa	s
+*    MCT T6010 (Qic02)
+*	??	1111 1111 1111 1110 0000 0000	s
+*    TS ISI TAPE CONTROLLER
+*	ts	1111 1111 1111 0101 0101 0000	s
+*
+*A32 space:
+*    Each of the 4 IP4s occupies 16 Mbytes in the A32 space:
+*	IP4 0	0000 0000 aaaa aaaa aaaa aaaa aaaa aaaa	    s/np, c/d, b/w/l
+*	IP4 1	0000 0001 aaaa aaaa aaaa aaaa aaaa aaaa	    s/np, c/d, b/w/l
+*	IP4 2	0000 0010 aaaa aaaa aaaa aaaa aaaa aaaa	    s/np, c/d, b/w/l
+*	IP4 3	0000 0011 aaaa aaaa aaaa aaaa aaaa aaaa	    s/np, c/d, b/w/l
+*
+*    PC/AT uses 2 Mbyte in the A32 space:
+*	PC1	0000 0100 001a aaaa aaaa aaaa aaaa aaaa     s/np, d, ????
+*    EN1 uses 1 Mbyte in the A32 space:
+*	en1	0000 0100 0111 aaaa aaaa aaaa aaaa aaaa	    s/np, d, b/w/l
+*    GF3 uses 2 Mbytes in the A32 space:
+*     gro_dev 0 0000 0100 100a aaaa aaaa aaaa aaaa aaaa	    s/np, d, b/w/l
+*     gro_dev 1	0000 0100 101a aaaa aaaa aaaa aaaa aaaa	    s/np, d, b/w/l
+*    EN1 uses 1 Mbyte in the A32 space:
+*	en0	0000 0100 1100 aaaa aaaa aaaa aaaa aaaa	    s/np, d, b/w/l
+*
+*
+*INTERRUPT LEVELS
+*  The VME interrupt levels are assigned as follows (IRQ1 is the lowest 
+*  priority; IRQ7 is the highest priority):
+*	IRQ1	0xb0	dkip (all 16)
+*	 "	0xc0	xm
+*	 "	0xa6	xyl712 unit 0
+*	 "	0xa7	xyl712 unit 1
+*	 "	????	MIPS RAM
+*	IRQ2
+*	IRQ3	????	MIPS RAM (default)
+*	IRQ4	0x94	ts
+*	 "	0xc1	if_enp0
+*	 "	0xc2	if_enp1
+*	 "	0x66	ikc
+*	IRQ 	0x1	en0
+*	 "	0x2	en1
+*	 "	0xb0	cdsio unit 0
+*	 "	0xb1	cdsio unit 1
+*	IRQ6	0x40	gro_dev
+*	IRQ7	????	MIPS RAM (R3200)
+*
+*BUS REQUEST LEVELS
+*  The VME bus request levels are assigned as follows (BR0 is the lowest 
+*  priority; BR3 is the highest priority):
+*	BR0
+*	BR1
+*	BR2
+*	BR3
+*
+*****************************************************************************
+* vector information		MUST BE FIRST!
+*
+* VECTOR: module [intr] [vector ipl unit] base [probe [probe_size]]
+*	
+*	module: boot module
+*	intr:	interrupt function (default: module_prefix|"intr")
+*	vector: vme interrupt vector
+*	ipl:	(vme IRQx) interrupt priority level
+*	base:	base address of card
+*	probe:	address read to determine existence of card
+*		(no probe address implies existence)
+*	probe_size: size of probe (default 4 bytes)
+*
+***  ISI tape controller
+* VECTOR: module=ts vector=0x94 ipl=4 unit=0 base=0xBCFFF550 
+
+VECTOR: module=r3200mem vector=0x20 ipl=7 unit=0
+
+VECTOR: module=dkip vector=0x80 ipl=1 unit=0 base=0xBD008600 
+VECTOR: module=dkip intr=dkipscintr vector=0x81 ipl=1 unit=0 base=0xBD008600 
+
+VECTOR: module=dkip vector=0x82 ipl=1 unit=1 base=0xBD008800 
+VECTOR: module=dkip intr=dkipscintr vector=0x83 ipl=1 unit=1 base=0xBD008800 
+
+VECTOR: module=dkip vector=0x84 ipl=1 unit=2 base=0xBD008A00 
+VECTOR: module=dkip intr=dkipscintr vector=0x85 ipl=1 unit=2 base=0xBD008A00 
+
+VECTOR: module=dkip vector=0x86 ipl=1 unit=3 base=0xBD008C00 
+VECTOR: module=dkip intr=dkipscintr vector=0x87 ipl=1 unit=3 base=0xBD008C00 
+
+VECTOR: module=dkip vector=0x88 ipl=1 unit=4 base=0xBD007600 
+VECTOR: module=dkip intr=dkipscintr vector=0x89 ipl=1 unit=4 base=0xBD007600 
+
+VECTOR: module=dkip vector=0x8a ipl=1 unit=5 base=0xBD007800 
+VECTOR: module=dkip intr=dkipscintr vector=0x8b ipl=1 unit=5 base=0xBD007800 
+
+VECTOR: module=dkip vector=0x8c ipl=1 unit=6 base=0xBD007A00 
+VECTOR: module=dkip intr=dkipscintr vector=0x8d ipl=1 unit=6 base=0xBD007A00 
+
+VECTOR: module=dkip vector=0x8e ipl=1 unit=7 base=0xBD007C00 
+VECTOR: module=dkip intr=dkipscintr vector=0x8f ipl=1 unit=7 base=0xBD007C00 
+
+VECTOR: module=dkvj vector=0xa8 ipl=1 unit=0 base=0xBD009000 
+VECTOR: module=dkvj vector=0xa9 ipl=1 unit=1 base=0xBD009800 
+VECTOR: module=dkvj vector=0xaa ipl=1 unit=2 base=0xBD00A000 
+VECTOR: module=dkvj vector=0xab ipl=1 unit=3 base=0xBD00A800 
+VECTOR: module=dkvj vector=0xac ipl=1 unit=4 base=0xBD00B000 
+VECTOR: module=dkvj vector=0xad ipl=1 unit=5 base=0xBD00B800 
+VECTOR: module=dkvj vector=0xae ipl=1 unit=6 base=0xBD00C000 
+VECTOR: module=dkvj vector=0xaf ipl=1 unit=7 base=0xBD00C800 
+
+* 9-track tape (Ciprico)
+* VECTOR: module=tth vector=0x10 ipl=3 unit=0 base=0xBD008500
+
+VECTOR:	module=cp vector=0x12 ipl=4 unit=0 base=0xBCFFF520
+VECTOR:	module=cp vector=0x13 ipl=4 unit=1 base=0xBCFFF580
+VECTOR:	module=cp vector=0x14 ipl=4 unit=2 base=0xBCFFF5a0
+VECTOR:	module=cp vector=0x15 ipl=4 unit=3 base=0xBCFFF5c0
+* VECTOR: module=gro_dev vector=0x40 ipl=6 unit=0 base=0xBD002002 
+* VECTOR: module=ikc vector=0x66 ipl=4 unit=0 base=0xBD009200 probe=0xBD009200 probe_size=2
+
+***** Xylogics 772 1/2 inch tape
+* VECTOR: module=xm vector=0xC0 ipl=1 unit=0 base=0xBD008800 probe=0xBD00880B probe_size=1
+
+***** CMC ENP10 ethernet boards
+VECTOR: module=if_enp vector=0xc1 ipl=4 unit=0 base=0xBCDE0000 probe=0xBCDE1000  probe_size=2
+VECTOR: module=if_enp vector=0xc2 ipl=4 unit=1 base=0xBCE00000 probe=0xBCE01000  probe_size=2
+
+***** SGI EN1 ethernet board
+* VECTOR: module=if_en vector=0x01 ipl=5 unit=0 base=0xBCC00000 probe=0xBBD03004 probe_size=2
+* VECTOR: module=if_en vector=0x02 ipl=5 unit=1 base=0xBC700000 probe=0xBBD03104 probe_size=2
+
+***** xyl712 disk controller vectors
+* VECTOR: module=xyl712 vector=0xa6 ipl=1 unit=0 base=0xBD009000 probe=0xBD00900B probe_size=1
+* VECTOR: module=xyl712 vector=0xa7 ipl=1 unit=1 base=0xBD009010 probe=0xBD00901B probe_size=1
+
+***** cd3608 serial controller vectors
+* VECTOR: module=cdsio vector=0xb0 ipl=5 unit=0 base=0xBCF00000 probe=0xBCF0FFFF probe_size=1
+* VECTOR: module=cdsio vector=0xb1 ipl=5 unit=1 base=0xBCF10000 probe=0xBCF1FFFF probe_size=1
+
+***** Interphase Eagle 4207 ethernet boards
+VECTOR: module=if_egl intr=egltint vector=0x20 ipl=1 unit=0 base=0xBD004000 
+VECTOR: module=if_egl intr=eglteint vector=0x21 ipl=1 unit=0 base=0xBD004000 
+VECTOR: module=if_egl intr=eglrint vector=0x22 ipl=1 unit=0 base=0xBD004000 
+VECTOR: module=if_egl intr=eglreint vector=0x23 ipl=1 unit=0 base=0xBD004000 
+VECTOR: module=if_egl intr=eglqint vector=0x24 ipl=1 unit=0 base=0xBD004000 
+
+VECTOR: module=if_egl intr=egltint vector=0x25 ipl=1 unit=1 base=0xBD004800 
+VECTOR: module=if_egl intr=eglteint vector=0x26 ipl=1 unit=1 base=0xBD004800 
+VECTOR: module=if_egl intr=eglrint vector=0x27 ipl=1 unit=1 base=0xBD004800 
+VECTOR: module=if_egl intr=eglreint vector=0x28 ipl=1 unit=1 base=0xBD004800 
+VECTOR: module=if_egl intr=eglqint vector=0x29 ipl=1 unit=1 base=0xBD004800 
+
+VECTOR: module=if_egl intr=egltint vector=0x2a ipl=1 unit=2 base=0xBD005000 
+VECTOR: module=if_egl intr=eglteint vector=0x2b ipl=1 unit=2 base=0xBD005000 
+VECTOR: module=if_egl intr=eglrint vector=0x2c ipl=1 unit=2 base=0xBD005000 
+VECTOR: module=if_egl intr=eglreint vector=0x2d ipl=1 unit=2 base=0xBD005000 
+VECTOR: module=if_egl intr=eglqint vector=0x2e ipl=1 unit=2 base=0xBD005000 
+
+VECTOR: module=if_egl intr=egltint vector=0x2f ipl=1 unit=3 base=0xBD005800 
+VECTOR: module=if_egl intr=eglteint vector=0x30 ipl=1 unit=3 base=0xBD005800 
+VECTOR: module=if_egl intr=eglrint vector=0x31 ipl=1 unit=3 base=0xBD005800 
+VECTOR: module=if_egl intr=eglreint vector=0x32 ipl=1 unit=3 base=0xBD005800 
+VECTOR: module=if_egl intr=eglqint vector=0x33 ipl=1 unit=3 base=0xBD005800 
+
+* kernel
+*
+KERNEL: kernel
+
+* device specifications
+*
+ROOTDEV: DEV(22,0)
+PIPEDEV: DEV(22,0)
+SWAPDEV: DEV(22,1) 0 0
+DUMPDEV: DEV(22,1)
+
+* compilation flags
+*
+CCOPTS: -Dident=undef -DR2300 -DINKERNEL -DKERNEL -Dsgi -DSOFTFP -DDEBUG -EB -g
+LDOPTS: -N -T 80021000 -e start -o unix
+
+* memory board handler (ECC)
+*
+INCLUDE: r3200mem
+
+* general I/O utilities
+*
+INCLUDE: io
+INCLUDE: vme
+INCLUDE: wbflush_r3000
+INCLUDE: graf_dummy
+INCLUDE: console
+INCLUDE: spl_std
+INCLUDE: cache_std
+INCLUDE: tlb_std
+INCLUDE: prom_entries_std
+EXCLUDE: r2400_ints
+INCLUDE: todc
+INCLUDE: leds
+EXCLUDE: nvram
+EXCLUDE: c8
+
+*
+* Time-of-day chip routines
+*
+INCLUDE: mk48t02
+
+* drivers to be included even though they may not appear to be equipped
+*
+INCLUDE: rd
+INCLUDE: sduart
+
+* drivers to be excluded even though they may
+* appear to be equipped
+*
+
+* Virtual Disk Driver
+*
+* To configure in vdisk comment out the "EXCLUDE vdisk" line and
+* uncomment the "INCLUDE vdisk" lines, to include stripping and mirror
+* uncomment the "INCLUDE stripe" and "INCLUDE mirror" lines.
+*
+EXCLUDE: vdisk
+#INCLUDE: vdisk
+#INCLUDE: stripe
+#INCLUDE: mirror
+
+* file systems
+*
+* Note that nfs, ufs and specfs implement file systems, but are NOT considered
+* filesystems by mboot, since they do not generate fstypsw entries.
+*
+INCLUDE: socket
+INCLUDE: proc
+INCLUDE: ufs
+INCLUDE: specfs
+INCLUDE: nfs
+
+* required kernel modules
+INCLUDE: disp
+INCLUDE: mem
+INCLUDE: klog
+
+* ttys and friends
+INCLUDE: clone
+INCLUDE: pts(4)
+INCLUDE: ptc(4)
+INCLUDE: gentty
+
+* SV InterProcess Communication
+INCLUDE: ipc
+INCLUDE: msg
+INCLUDE: sem
+
+* shared memory
+INCLUDE: shm
+
+* kernel debugging tools
+#kdebug#INCLUDE: monitor
+
+INCLUDE: prf
+
+* SLIP module
+INCLUDE: slip
+
+* CommUnity DECnet
+*
+* To configure in DECnet comment out the "EXCLUDE decnet" line and
+* uncomment the "INCLUDE ll" and "INCLUDE nm" lines.
+* To configure out DECnet comment out the "INCLUDE ll" and "INCLUDE nm"
+* lines and uncomment the "EXCLUDE decnet" line.
+
+#INCLUDE: ll
+#INCLUDE: nm
+EXCLUDE: decnet
+
+* Dummy stubs (These should come out sometime)
+*
+EXCLUDE: stubs
+
+* Modules which haven't been done yet
+*
+EXCLUDE: du
+
+*
+* This must be specifically excluded so that the functions in the
+* master files will be defined
+*
+EXCLUDE: scsi
+EXCLUDE: sd
+EXCLUDE: xyl712
+
+* if there is no mono screen attached
+*
+EXCLUDE: mono

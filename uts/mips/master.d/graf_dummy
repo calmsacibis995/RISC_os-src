@@ -1,0 +1,5 @@
+*
+* Graphics dummy routines for machines without any integral graphics
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	

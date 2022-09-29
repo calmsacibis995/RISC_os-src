@@ -1,0 +1,53 @@
+#ident "$Header: Mkinc.common_defines_spp,v 1.7 90/07/06 11:09:30 lian Exp $"
+#
+# Mkinc.common_defines (stand spp version)
+#
+# This make include file tailors the build environment for use
+# in a particular environment.
+#
+# These defines are common to all Makefiles for the Stand alone library
+#
+
+D1_PATH= ..
+D2_PATH= ../..
+D3_PATH= ../../..
+D4_PATH= ../../../..
+
+CC=	cc
+AS=	as
+LD=	ld
+
+SIZE=	size
+NM=	nm
+AR=	ar
+
+CONVERT=../../../../unixcmds/convert/convert
+FIND = find
+MAKE = /bin/make
+SHELL = /bin/sh
+WHOAMI = /usr/ucb/whoami
+BASENAME = /bin/basename
+DIRNAME  = /bin/dirname
+
+INCDIRS= -I../../include
+INCDIRS_SPLIT= -I../../../../include
+ETCDIR=/etc
+
+# These defines reflect the source liscencing a site has
+# Use the *_spp form for the package without bsd sources
+# Use the *_mips form for the package which has bsd sources
+
+SAIOMKINC=Mkinc.saio_spp
+#SAIOMKINC=Mkinc.saio_mips
+
+# These defines are used to determine whether this package is being built
+# one a UMIPS-V machine or UMIPS-BSD
+# (note this is a historical construct as RISC/OS is a merge of the two)
+
+IF_SYSV=SYSTYPE=`uname -v`; case "$$SYSTYPE" in *S)
+IF_BSD=SYSTYPE=`uname -v`; case "$$SYSTYPE" in *BSD)
+ENDIF=esac;
+
+# used by make depend
+
+AWKDEPEND=$(DEPTH)/awkdepend

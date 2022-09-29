@@ -1,0 +1,28 @@
+* $Header: holidays,v 1.3.1.2 90/02/22 19:10:18 wje Exp $
+* Prime/Nonprime Table for UNIX Accounting System
+*
+* this file is read by sscanf(3) calls, which are very sensitive to
+* the input format matching the expected values.  When changes are
+* made, make sure the format is correct by reviewing the output of
+* runacct, esp. errors reported on stdout.
+*
+* Curr	Prime	Non-Prime
+* Year	Start	Start
+* (processed by: scanf("%4d %4d %4d").  Must match scan string exactly.)
+1990 0830 1700
+*
+* Day of	Calendar	Company
+* Year		Date		Holiday
+*
+* processed by:  sscanf("%d	%*s %*s	%*[^\n]\n").  Must match scan string.
+* Limited to 20 holidays.  
+002	Jan 2		New Years Holiday
+050	Feb 19		President's Day
+103	Apr 13		Spring Holiday
+148	May 28		Memorial Day
+185	Jul 4		Independence Day
+246	Sep 3		Labor Day
+326	Nov 22		Thanksgiving Day
+327	Nov 23		day after Thanksgiving
+358	Dec 24		Floating Holiday
+359	Dec 25		Christmas

@@ -1,0 +1,36 @@
+*#ident "$Header: specfs,v 1.4.1.3 90/03/08 22:05:37 wje Exp $"
+*
+* specfs	- filesystem to implement special devices
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+oxr	spec_	-	-	
+
+$$$
+
+#include "sys/fs/fifo.h"
+
+/*
+ * ------------------- Beginning of Tuneable Parameters -----------------------
+ */
+
+#define FIFOBUF	5120	/* max # bytes stored in a fifo */
+#define	FIFOCNT	200	/* # active FIFOs in the system */
+
+/*
+ * ------------------- End of Tuneable Parameters -----------------------
+ */
+
+#define FIFOBSZ 2044	/* buffer size used to store FIFO data */
+			/* Must be  (a power of 2  -  4) */
+#define FIFOMAX INT_MAX	/* largest size of a single write to a fifo */
+
+/*
+ * initialize SystemV named-pipe (and pipe()) information structure
+ */
+
+struct fifoinfo fifoinfo = {
+      FIFOBUF,
+      FIFOMAX,
+      FIFOBSZ,
+      (FIFOCNT * FIFOBUF)
+};

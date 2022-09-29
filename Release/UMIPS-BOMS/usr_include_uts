@@ -1,0 +1,509 @@
+. drwxr-xr-x bin bin 2
+usr drwxr-xr-x bin bin 2
+usr/include drwxr-xr-x bin bin 2
+usr/include/bsd drwxr-xr-x bin bin 2
+usr/include/bsd/mips drwxr-xr-x bin bin 2
+usr/include/bsd/mips/if_enp.h -r--r--r-- bin bin 1
+usr/include/bsd/net drwxr-xr-x bin bin 2
+usr/include/bsd/net/af.h -r--r--r-- bin bin 1
+usr/include/bsd/net/if.h -r--r--r-- bin bin 1
+usr/include/bsd/net/if_arp.h -r--r--r-- bin bin 1
+usr/include/bsd/net/netisr.h -r--r--r-- bin bin 1
+usr/include/bsd/net/raw_cb.h -r--r--r-- bin bin 1
+usr/include/bsd/net/route.h -r--r--r-- bin bin 1
+usr/include/bsd/net/soioctl.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet drwxr-xr-x bin bin 2
+usr/include/bsd/netinet/icmp_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/if_ether.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/in.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/in_pcb.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/in_systm.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/in_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/ip.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/ip_icmp.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/ip_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp_debug.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp_fsm.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp_seq.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp_timer.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcp_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/tcpip.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/udp.h -r--r--r-- bin bin 1
+usr/include/bsd/netinet/udp_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netns drwxr-xr-x bin bin 2
+usr/include/bsd/netns/idp.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/idp_var.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/ns.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/ns_error.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/ns_if.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/ns_pcb.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/sp.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/spidp.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/spp_debug.h -r--r--r-- bin bin 1
+usr/include/bsd/netns/spp_var.h -r--r--r-- bin bin 1
+usr/include/bsd/sys drwxr-xr-x bin bin 2
+usr/include/bsd/sys/dir.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/domain.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/file.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/ioctl.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/mbuf.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/msgbuf.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/param.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/protosw.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/resource.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/signal.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/socket.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/socketvar.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/time.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/timeb.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/ttychars.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/types.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/uio.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/un.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/unpcb.h -r--r--r-- bin bin 1
+usr/include/bsd/sys/wait.h -r--r--r-- bin bin 1
+usr/include/bsd43 drwxr-xr-x bin bin 2
+usr/include/bsd43/machine l--------- bin bin 1 mips
+usr/include/bsd43/mips drwxr-xr-x bin bin 2
+usr/include/bsd43/mips/asm.h l--------- bin bin 1 ../sysv/sys/asm.h
+usr/include/bsd43/mips/cachectl.h l--------- bin bin 1 ../sysv/sys/cachectl.h 
+usr/include/bsd43/mips/cpu.h l--------- bin bin 1 ../sysv/sys/sbd.h 
+usr/include/bsd43/mips/cpu_board.h l--------- bin bin 1 ../sysv/sys/cpu_board.h 
+usr/include/bsd43/mips/debug.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/dkio.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/dvh.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/entrypt.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/fpu.h l--------- bin bin 1 ../sysv/sys/fpu.h 
+usr/include/bsd43/mips/hwconf.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/i8254clock.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/inst.h l--------- bin bin 1 ../sysv/sys/inst.h
+usr/include/bsd43/mips/machparam.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/pcb.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/ps_data.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/psl.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/pte.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/r2350mem.h l--------- bin bin 1 ../sysv/sys/r2300mem.h 
+usr/include/bsd43/mips/reg.h l--------- bin bin 1 ../sysv/sys/reg.h 
+usr/include/bsd43/mips/regdef.h l--------- bin bin 1 ../sysv/sys/regdef.h
+usr/include/bsd43/mips/s2681cons.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/sableclock.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/sablecons.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/softfp.h -r--r--r-- bin bin 1
+usr/include/bsd43/mips/vmparam.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsif drwxr-xr-x bin bin 2
+usr/include/bsd43/mipsif/if_enp.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme drwxr-xr-x bin bin 2
+usr/include/bsd43/mipsvme/cpreg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/dkipreg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/sdreg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/tsreg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/tthreg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/vmereg.h -r--r--r-- bin bin 1
+usr/include/bsd43/mipsvme/vmevar.h -r--r--r-- bin bin 1
+usr/include/bsd43/net drwxr-xr-x bin bin 2
+usr/include/bsd43/net/af.h l--------- bin bin 1 ../sysv/bsd/net/af.h
+usr/include/bsd43/net/if.h l--------- bin bin 1 ../sysv/bsd/net/if.h
+usr/include/bsd43/net/if_arp.h l--------- bin bin 1 ../sysv/bsd/net/if_arp.h
+usr/include/bsd43/net/netisr.h l--------- bin bin 1 ../sysv/bsd/net/netisr.h
+usr/include/bsd43/net/raw_cb.h l--------- bin bin 1 ../sysv/bsd/net/raw_cb.h
+usr/include/bsd43/net/route.h l--------- bin bin 1 ../sysv/bsd/net/route.h
+usr/include/bsd43/netimp drwxr-xr-x bin bin 2
+usr/include/bsd43/netimp/if_imp.h -r--r--r-- bin bin 1
+usr/include/bsd43/netimp/if_imphost.h -r--r--r-- bin bin 1
+usr/include/bsd43/netinet drwxr-xr-x bin bin 2
+usr/include/bsd43/netinet/icmp_var.h l--------- bin bin 1 ../sysv/bsd/netinet/icmp_var.h
+usr/include/bsd43/netinet/if_ether.h l--------- bin bin 1 ../sysv/bsd/netinet/if_ether.h
+usr/include/bsd43/netinet/in.h l--------- bin bin 1 ../sysv/bsd/netinet/in.h
+usr/include/bsd43/netinet/in_pcb.h l--------- bin bin 1 ../sysv/bsd/netinet/in_pcb.h
+usr/include/bsd43/netinet/in_systm.h l--------- bin bin 1 ../sysv/bsd/netinet/in_systm.h
+usr/include/bsd43/netinet/in_var.h l--------- bin bin 1 ../sysv/bsd/netinet/in_var.h
+usr/include/bsd43/netinet/ip.h l--------- bin bin 1 ../sysv/bsd/netinet/ip.h
+usr/include/bsd43/netinet/ip_icmp.h l--------- bin bin 1 ../sysv/bsd/netinet/ip_icmp.h
+usr/include/bsd43/netinet/ip_var.h l--------- bin bin 1 ../sysv/bsd/netinet/ip_var.h
+usr/include/bsd43/netinet/tcp.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp.h
+usr/include/bsd43/netinet/tcp_debug.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp_debug.h
+usr/include/bsd43/netinet/tcp_fsm.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp_fsm.h
+usr/include/bsd43/netinet/tcp_seq.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp_seq.h
+usr/include/bsd43/netinet/tcp_timer.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp_timer.h
+usr/include/bsd43/netinet/tcp_var.h l--------- bin bin 1 ../sysv/bsd/netinet/tcp_var.h
+usr/include/bsd43/netinet/tcpip.h l--------- bin bin 1 ../sysv/bsd/netinet/tcpip.h
+usr/include/bsd43/netinet/udp.h l--------- bin bin 1 ../sysv/bsd/netinet/udp.h
+usr/include/bsd43/netinet/udp_var.h l--------- bin bin 1 ../sysv/bsd/netinet/udp_var.h
+usr/include/bsd43/netns drwxr-xr-x bin bin 2
+usr/include/bsd43/netns/idp.h l--------- bin bin 1 ../sysv/bsd/netns/idp.h
+usr/include/bsd43/netns/idp_var.h l--------- bin bin 1 ../sysv/bsd/netns/idp_var.h
+usr/include/bsd43/netns/ns.h l--------- bin bin 1 ../sysv/bsd/netns/ns.h
+usr/include/bsd43/netns/ns_error.h l--------- bin bin 1 ../sysv/bsd/netns/ns_error.h
+usr/include/bsd43/netns/ns_if.h l--------- bin bin 1 ../sysv/bsd/netns/ns_if.h
+usr/include/bsd43/netns/ns_pcb.h l--------- bin bin 1 ../sysv/bsd/netns/ns_pcb.h
+usr/include/bsd43/netns/sp.h l--------- bin bin 1 ../sysv/bsd/netns/sp.h
+usr/include/bsd43/netns/spidp.h l--------- bin bin 1 ../sysv/bsd/netns/spidp.h
+usr/include/bsd43/netns/spp_debug.h l--------- bin bin 1 ../sysv/bsd/netns/spp_debug.h
+usr/include/bsd43/netns/spp_var.h l--------- bin bin 1 ../sysv/bsd/netns/spp_var.h
+usr/include/bsd43/nfs drwxr-xr-x bin bin 2
+usr/include/bsd43/nfs/export.h l--------- bin bin 1 ../sysv/sys/fs/nfs_export.h
+usr/include/bsd43/nfs/nfs.h l--------- bin bin 1 ../sysv/sys/fs/nfs.h
+usr/include/bsd43/nfs/nfs_clnt.h l--------- bin bin 1 ../sysv/sys/fs/nfs_clnt.h
+usr/include/bsd43/nfs/rnode.h l--------- bin bin 1 ../sysv/sys/fs/nfs_rnode.h
+usr/include/bsd43/prom drwxr-xr-x bin bin 2
+usr/include/bsd43/prom/entrypt.h -r--r--r-- bin bin 1
+usr/include/bsd43/prom/prom.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio drwxr-xr-x bin bin 2
+usr/include/bsd43/saio/arp.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/bfs.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/ctype.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/debug.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/ei.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/mbuf.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/ncp.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/parser.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/protocol.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/protoio.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/saio.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/saioctl.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/setjmp.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/socket.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/stringlist.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/tpd.h -r--r--r-- bin bin 1
+usr/include/bsd43/saio/undef.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys drwxr-xr-x bin bin 2
+usr/include/bsd43/sys/acct.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/bkmac.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/bootconf.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/buf.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/callout.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/clist.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/cmap.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/conf.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/des.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dir.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dk.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dkbad.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dirent.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dmap.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/dnlc.h l--------- bin bin 1 ../sysv/sys/dnlc.h
+usr/include/bsd43/sys/domain.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/errno.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/exec.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/fcntl.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/fd8272.h l--------- bin bin 1 ../sysv/sys/fd8272.h
+usr/include/bsd43/sys/file.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/fixpoint.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/ioctl.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/kernel.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/kstamp.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/map.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/mbuf.h l--------- bin bin 1 ../sysv/bsd/sys/mbuf.h 
+usr/include/bsd43/sys/mman.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/mount.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/msgbuf.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/mtio.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/namei.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/param.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/pathname.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/proc.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/prof.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/protosw.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/ptrace.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/quota.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/reboot.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/regdef.h l--------- bin bin 1 ../mips/regdef.h
+usr/include/bsd43/sys/resource.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/seg.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/signal.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/socket.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/socketvar.h l--------- bin bin 1 ../sysv/bsd/sys/socketvar.h
+usr/include/bsd43/sys/stat.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/syscall.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/syslog.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/sysmips.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/systm.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/tablet.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/text.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/time.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/timeb.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/times.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/trace.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/tty.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/ttychars.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/ttydev.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/types.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/ucred.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/uio.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/un.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/unpcb.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/user.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/utsname.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vadvise.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vcmd.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vfs.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vfs_stat.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vlimit.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vm.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vmmac.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vmmeter.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vmparam.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vmsystm.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vnode.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vsio.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/vtimes.h -r--r--r-- bin bin 1
+usr/include/bsd43/sys/wait.h -r--r--r-- bin bin 1
+usr/include/bsd43/ufs drwxr-xr-x bin bin 2
+usr/include/bsd43/ufs/fs.h -r--r--r-- bin bin 1
+usr/include/bsd43/ufs/fsdir.h -r--r--r-- bin bin 1
+usr/include/bsd43/ufs/inode.h -r--r--r-- bin bin 1
+usr/include/bsd43/ufs/mount.h -r--r--r-- bin bin 1
+usr/include/bsd43/ufs/quota.h -r--r--r-- bin bin 1
+usr/include/sys drwxr-xr-x bin bin 2
+usr/include/sys/acct.h -r--r--r-- bin bin 1
+usr/include/sys/adaptec_scsi.h -r--r--r-- bin bin 1
+usr/include/sys/adv.h -r--r--r-- bin bin 1
+usr/include/sys/am9516.h -r--r--r-- bin bin 1
+usr/include/sys/asm.h -r--r--r-- bin bin 1
+usr/include/sys/async.h -r--r--r-- bin bin 1
+usr/include/sys/bc.h -r--r--r-- bin bin 1
+usr/include/sys/bitmap.h -r--r--r-- bin bin 1
+usr/include/sys/bitmasks.h -r--r--r-- bin bin 1
+usr/include/sys/boot.h -r--r--r-- bin bin 1
+usr/include/sys/boothdr.h -r--r--r-- bin bin 1
+usr/include/sys/bsd_glue.h -r--r--r-- bin bin 1
+usr/include/sys/buf.h -r--r--r-- bin bin 1
+usr/include/sys/buzzer.h -r--r--r-- bin bin 1
+usr/include/sys/cachectl.h -r--r--r-- bin bin 1
+usr/include/sys/callo.h -r--r--r-- bin bin 1
+usr/include/sys/cdsioreg.h -r--r--r-- bin bin 1
+usr/include/sys/cirmgr.h -r--r--r-- bin bin 1
+usr/include/sys/clock.h -r--r--r-- bin bin 1
+usr/include/sys/cmn_err.h -r--r--r-- bin bin 1
+usr/include/sys/comm.h -r--r--r-- bin bin 1
+usr/include/sys/conf.h -r--r--r-- bin bin 1
+usr/include/sys/cpreg.h -r--r--r-- bin bin 1
+usr/include/sys/cpu_board.h -r--r--r-- bin bin 1
+usr/include/sys/crtctl.h -r--r--r-- bin bin 1
+usr/include/sys/ctlspace.h -r--r--r-- bin bin 1
+usr/include/sys/ctype.h -r--r--r-- bin bin 1
+usr/include/sys/debug.h -r--r--r-- bin bin 1
+usr/include/sys/dir.h -r--r--r-- bin bin 1
+usr/include/sys/dirent.h -r--r--r-- bin bin 1
+usr/include/sys/dkinreg.h -r--r--r-- bin bin 1
+usr/include/sys/dkio.h -r--r--r-- bin bin 1
+usr/include/sys/dkipdebug.h -r--r--r-- bin bin 1
+usr/include/sys/dkipreg.h -r--r--r-- bin bin 1
+usr/include/sys/dkvj_IPtypes.h -r--r--r-- bin bin 1
+usr/include/sys/dkvj_reg.h -r--r--r-- bin bin 1
+usr/include/sys/dkvj_scsi.h -r--r--r-- bin bin 1
+usr/include/sys/dkvj_struct.h -r--r--r-- bin bin 1
+usr/include/sys/dnlc.h -r--r--r-- bin bin 1
+usr/include/sys/du_dep.h -r--r--r-- bin bin 1
+usr/include/sys/dump.h -r--r--r-- bin bin 1
+usr/include/sys/dvh.h -r--r--r-- bin bin 1
+usr/include/sys/edt.h -r--r--r-- bin bin 1
+usr/include/sys/elog.h -r--r--r-- bin bin 1
+usr/include/sys/erec.h -r--r--r-- bin bin 1
+usr/include/sys/err.h -r--r--r-- bin bin 1
+usr/include/sys/errno.h -r--r--r-- bin bin 1
+usr/include/sys/fblk.h -r--r--r-- bin bin 1
+usr/include/sys/fd8272.h -r--r--r-- bin bin 1
+usr/include/sys/fcntl.h -r--r--r-- bin bin 1
+usr/include/sys/file.h -r--r--r-- bin bin 1
+usr/include/sys/filsys.h -r--r--r-- bin bin 1
+usr/include/sys/firmware.h -r--r--r-- bin bin 1
+usr/include/sys/fixpoint.h -r--r--r-- bin bin 1
+usr/include/sys/flio.h -r--r--r-- bin bin 1
+usr/include/sys/flock.h -r--r--r-- bin bin 1
+usr/include/sys/fpu.h -r--r--r-- bin bin 1
+usr/include/sys/fs drwxr-xr-x bin bin 2
+usr/include/sys/fs/bfs_bio.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_dir.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_fs.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_inode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_magic.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_param.h -r--r--r-- bin bin 1
+usr/include/sys/fs/bfs_yech.h -r--r--r-- bin bin 1
+usr/include/sys/fs/com_inode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/com_pncc.h -r--r--r-- bin bin 1
+usr/include/sys/fs/cs5_dir.h -r--r--r-- bin bin 1
+usr/include/sys/fs/fifo.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs_clnt.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs_compat.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs_export.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs_rnode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/nfs_stat.h -r--r--r-- bin bin 1
+usr/include/sys/fs/pipe_inode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/prfcntl.h -r--r--r-- bin bin 1
+usr/include/sys/fs/proc_fs.h -r--r--r-- bin bin 1
+usr/include/sys/fs/rnode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5dir.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5fblk.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5filsys.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5inode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5macros.h -r--r--r-- bin bin 1
+usr/include/sys/fs/s5param.h -r--r--r-- bin bin 1
+usr/include/sys/fs/snode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/ufs_fs.h -r--r--r-- bin bin 1
+usr/include/sys/fs/ufs_fsdir.h -r--r--r-- bin bin 1
+usr/include/sys/fs/ufs_inode.h -r--r--r-- bin bin 1
+usr/include/sys/fs/ufs_mount.h -r--r--r-- bin bin 1
+usr/include/sys/fs/ufs_quota.h -r--r--r-- bin bin 1
+usr/include/sys/fs/unp_fs_inode.h -r--r--r-- bin bin 1
+usr/include/sys/fsid.h -r--r--r-- bin bin 1
+usr/include/sys/fstyp.h -r--r--r-- bin bin 1
+usr/include/sys/gdpstr.h -r--r--r-- bin bin 1
+usr/include/sys/gen_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/getpages.h -r--r--r-- bin bin 1
+usr/include/sys/grafreg.h -r--r--r-- bin bin 1
+usr/include/sys/hd146818.h -r--r--r-- bin bin 1
+usr/include/sys/hdeioctl.h -r--r--r-- bin bin 1
+usr/include/sys/hdelog.h -r--r--r-- bin bin 1
+usr/include/sys/hetero.h -r--r--r-- bin bin 1
+usr/include/sys/i8042.h -r--r--r-- bin bin 1
+usr/include/sys/i8254clock.h -r--r--r-- bin bin 1
+usr/include/sys/idtab.h -r--r--r-- bin bin 1
+usr/include/sys/if_IPtypes.h -r--r--r-- bin bin 1
+usr/include/sys/if_egl.h -r--r--r-- bin bin 1
+usr/include/sys/if_laiocb.h -r--r--r-- bin bin 1
+usr/include/sys/if_lareg.h -r--r--r-- bin bin 1
+usr/include/sys/ik_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/ikcreg.h -r--r--r-- bin bin 1
+usr/include/sys/immu.h -r--r--r-- bin bin 1
+usr/include/sys/immu_r6000.h -r--r--r-- bin bin 1
+usr/include/sys/ino.h -r--r--r-- bin bin 1
+usr/include/sys/inode.h -r--r--r-- bin bin 1
+usr/include/sys/inst.h -r--r--r-- bin bin 1
+usr/include/sys/ioa.h -r--r--r-- bin bin 1
+usr/include/sys/iobuf.h -r--r--r-- bin bin 1
+usr/include/sys/ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/iop.h -r--r--r-- bin bin 1
+usr/include/sys/iop_clk.h -r--r--r-- bin bin 1
+usr/include/sys/iopvar.h -r--r--r-- bin bin 1
+usr/include/sys/ipc.h -r--r--r-- bin bin 1
+usr/include/sys/kbd_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/kbd.h -r--r--r-- bin bin 1
+usr/include/sys/keyboard.h -r--r--r-- bin bin 1
+usr/include/sys/keymap.h -r--r--r-- bin bin 1
+usr/include/sys/kmem.h -r--r--r-- bin bin 1
+usr/include/sys/ladefs.h -r--r--r-- bin bin 1
+usr/include/sys/lastruct.h -r--r--r-- bin bin 1
+usr/include/sys/lihdr.h -r--r--r-- bin bin 1
+usr/include/sys/limits.h -r--r--r-- bin bin 1
+usr/include/sys/lock.h -r--r--r-- bin bin 1
+usr/include/sys/log.h -r--r--r-- bin bin 1
+usr/include/sys/lpreg.h -r--r--r-- bin bin 1
+usr/include/sys/m12scsi.h -r--r--r-- bin bin 1
+usr/include/sys/m120scsi.h -r--r--r-- bin bin 1
+usr/include/sys/map.h -r--r--r-- bin bin 1
+usr/include/sys/mb87030.h -r--r--r-- bin bin 1
+usr/include/sys/mbuf.h l--------- bin bin 1 ../bsd/sys/mbuf.h
+usr/include/sys/mem_board.h -r--r--r-- bin bin 1
+usr/include/sys/message.h -r--r--r-- bin bin 1
+usr/include/sys/mipskopt.h -r--r--r-- bin bin 1
+usr/include/sys/mk48t02.h -r--r--r-- bin bin 1
+usr/include/sys/mman.h -r--r--r-- bin bin 1
+usr/include/sys/mount.h -r--r--r-- bin bin 1
+usr/include/sys/mouse.h -r--r--r-- bin bin 1
+usr/include/sys/mouse_dc.h -r--r--r-- bin bin 1
+usr/include/sys/mousereg.h -r--r--r-- bin bin 1
+usr/include/sys/msg.h -r--r--r-- bin bin 1
+usr/include/sys/mtio.h -r--r--r-- bin bin 1
+usr/include/sys/nami.h -r--r--r-- bin bin 1
+usr/include/sys/ncr53c94.h -r--r--r-- bin bin 1
+usr/include/sys/netid.h -r--r--r-- bin bin 1
+usr/include/sys/netman.h -r--r--r-- bin bin 1
+usr/include/sys/nserve.h -r--r--r-- bin bin 1
+usr/include/sys/numips.h -r--r--r-- bin bin 1
+usr/include/sys/nvram.h -r--r--r-- bin bin 1
+usr/include/sys/open.h -r--r--r-- bin bin 1
+usr/include/sys/param.h -r--r--r-- bin bin 1
+usr/include/sys/pcb.h -r--r--r-- bin bin 1
+usr/include/sys/pfdat.h -r--r--r-- bin bin 1
+usr/include/sys/poll.h -r--r--r-- bin bin 1
+usr/include/sys/proc.h -r--r--r-- bin bin 1
+usr/include/sys/psw.h -r--r--r-- bin bin 1
+usr/include/sys/ptrace.h -r--r--r-- bin bin 1
+usr/include/sys/pty_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/que.h -r--r--r-- bin bin 1
+usr/include/sys/queue.h -r--r--r-- bin bin 1
+usr/include/sys/r2300mem.h -r--r--r-- bin bin 1
+usr/include/sys/r2350reg.h -r--r--r-- bin bin 1
+usr/include/sys/r3030scsi.h -r--r--r-- bin bin 1
+usr/include/sys/r3200mem.h -r--r--r-- bin bin 1
+usr/include/sys/r3250reg.h -r--r--r-- bin bin 1
+usr/include/sys/rambo.h -r--r--r-- bin bin 1
+usr/include/sys/rdebug.h -r--r--r-- bin bin 1
+usr/include/sys/recover.h -r--r--r-- bin bin 1
+usr/include/sys/reg.h -r--r--r-- bin bin 1
+usr/include/sys/regdef.h -r--r--r-- bin bin 1
+usr/include/sys/region.h -r--r--r-- bin bin 1
+usr/include/sys/rfsys.h -r--r--r-- bin bin 1
+usr/include/sys/sablecons.h -r--r--r-- bin bin 1
+usr/include/sys/sabledsk.h -r--r--r-- bin bin 1
+usr/include/sys/sbd.h -r--r--r-- bin bin 1
+usr/include/sys/scc.h -r--r--r-- bin bin 1
+usr/include/sys/sccsid.h -r--r--r-- bin bin 1
+usr/include/sys/scsi.h -r--r--r-- bin bin 1
+usr/include/sys/sem.h -r--r--r-- bin bin 1
+usr/include/sys/sema.h -r--r--r-- bin bin 1
+usr/include/sys/sg.h -r--r--r-- bin bin 1
+usr/include/sys/sgs.h -r--r--r-- bin bin 1
+usr/include/sys/sha_errs.h -r--r--r-- bin bin 1
+usr/include/sys/shareg.h -r--r--r-- bin bin 1
+usr/include/sys/shm.h -r--r--r-- bin bin 1
+usr/include/sys/signal.h -r--r--r-- bin bin 1
+usr/include/sys/slip.h -r--r--r-- bin bin 1
+usr/include/sys/socket.h -r--r--r-- bin bin 1
+usr/include/sys/softfp.h -r--r--r-- bin bin 1
+usr/include/sys/ss.h -r--r--r-- bin bin 1
+usr/include/sys/stat.h -r--r--r-- bin bin 1
+usr/include/sys/statfs.h -r--r--r-- bin bin 1
+usr/include/sys/stermio.h -r--r--r-- bin bin 1
+usr/include/sys/stream.h -r--r--r-- bin bin 1
+usr/include/sys/strids.h -r--r--r-- bin bin 1
+usr/include/sys/strlog.h -r--r--r-- bin bin 1
+usr/include/sys/stropts.h -r--r--r-- bin bin 1
+usr/include/sys/strstat.h -r--r--r-- bin bin 1
+usr/include/sys/stty_ld.h -r--r--r-- bin bin 1
+usr/include/sys/swap.h -r--r--r-- bin bin 1
+usr/include/sys/syscall.h -r--r--r-- bin bin 1
+usr/include/sys/sysinfo.h -r--r--r-- bin bin 1
+usr/include/sys/sysmacros.h -r--r--r-- bin bin 1
+usr/include/sys/sysmips.h -r--r--r-- bin bin 1
+usr/include/sys/systm.h -r--r--r-- bin bin 1
+usr/include/sys/tcon.h -r--r--r-- bin bin 1
+usr/include/sys/teDevice.h -r--r--r-- bin bin 1
+usr/include/sys/teFont.h -r--r--r-- bin bin 1
+usr/include/sys/teState.h -r--r--r-- bin bin 1
+usr/include/sys/termio.h -r--r--r-- bin bin 1
+usr/include/sys/tihdr.h -r--r--r-- bin bin 1
+usr/include/sys/times.h -r--r--r-- bin bin 1
+usr/include/sys/timod.h -r--r--r-- bin bin 1
+usr/include/sys/tiuser.h -r--r--r-- bin bin 1
+usr/include/sys/tod.h -r--r--r-- bin bin 1
+usr/include/sys/trace.h -r--r--r-- bin bin 1
+usr/include/sys/tsreg.h -r--r--r-- bin bin 1
+usr/include/sys/tthreg.h -r--r--r-- bin bin 1
+usr/include/sys/tuneable.h -r--r--r-- bin bin 1
+usr/include/sys/types.h -r--r--r-- bin bin 1
+usr/include/sys/uadmin.h -r--r--r-- bin bin 1
+usr/include/sys/uart_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/uartreg.h -r--r--r-- bin bin 1
+usr/include/sys/ucred.h -r--r--r-- bin bin 1
+usr/include/sys/uio.h -r--r--r-- bin bin 1
+usr/include/sys/user.h -r--r--r-- bin bin 1
+usr/include/sys/wait.h -r--r--r-- bin bin 1
+usr/include/sys/ustat.h -r--r--r-- bin bin 1
+usr/include/sys/utsname.h -r--r--r-- bin bin 1
+usr/include/sys/var.h -r--r--r-- bin bin 1
+usr/include/sys/vcmd.h -r--r--r-- bin bin 1
+usr/include/sys/vfs.h -r--r--r-- bin bin 1
+usr/include/sys/vfs_stat.h -r--r--r-- bin bin 1
+usr/include/sys/vmereg.h -r--r--r-- bin bin 1
+usr/include/sys/vmevar.h -r--r--r-- bin bin 1
+usr/include/sys/vnode.h -r--r--r-- bin bin 1
+usr/include/sys/vtoc.h -r--r--r-- bin bin 1
+usr/include/sys/xm_ioctl.h -r--r--r-- bin bin 1
+usr/include/sys/xmreg.h -r--r--r-- bin bin 1
+usr/include/sys/xt.h -r--r--r-- bin bin 1
+usr/include/sys/xtproto.h -r--r--r-- bin bin 1
+usr/include/sys/xyl712reg.h -r--r--r-- bin bin 1

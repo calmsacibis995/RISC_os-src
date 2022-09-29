@@ -1,0 +1,23 @@
+*
+* TIRDWR  TLI read/write interface module
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES/VARIABLES
+m	trw	-
+
+$$$
+
+#include "sys/param.h"
+#include "sys/types.h"
+#include "sys/stream.h"
+#include "sys/stropts.h"
+#include "sys/tirdwr.h"
+
+struct trw_trw trw_trw[12]; /* Array of module state instances */
+int trw_cnt = 12; /* Maximum number of module instances */
+
+
+
+
+
+
+

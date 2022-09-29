@@ -1,0 +1,6 @@
+# $Header: root,v 1.4.1.4 90/05/09 14:59:19 wje Exp $
+#
+# Submit any bsd "at" jobs
+0,15,30,45 * * * * if ( test -x /bsd43/usr/lib/atrun ) ; then /bsd43/usr/lib/atrun ; fi
+# Perform accounting data collection.
+#

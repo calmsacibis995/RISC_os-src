@@ -1,0 +1,21 @@
+#
+# 4.3BSD window command virtual terminal. This is provided for people
+# doing rlogins.  There are now two of these.
+#
+window|window program version 1,
+	am, da, db, mir, xon,
+	cols#80, lines#24,
+	bel=^G, clear=\EE, cr=\r, cub1=\b, cud1=\EB, cuf1=\EC,
+	cup=\EY%p1%'\s'%+%c%p2%'\s'%+%c, cuu1=\EA, dch1=\EN,
+	dl1=\EM, ed=\EJ, el=\EK, home=\EH, ht=\t, il1=\EL,
+	ind=\n, rmacs=\EG, rmir=\EO, rmso=\Eq, rmul=\Es,
+	smacs=\EF, smir=\E@, smso=\Ep, smul=\Er,
+window-v2|window program version 2,
+	am, da, db, mir, xon,
+	cols#80, lines#24,
+	bel=^G, clear=\EE, cr=\r, cub1=\b, cud1=\EB, cuf1=\EC,
+	cup=\EY%p1%'\s'%+%c%p2%'\s'%+%c, cuu1=\EA, dch1=\EN,
+	dl1=\EM, ed=\EJ, el=\EK, home=\EH, ht=\t, il1=\EL,
+	ind=\n, rev=\EsA, rmacs=\ErH, rmir=\EO, rmso=\ErA,
+	rmul=\ErD, sgr0=\Er^_, smacs=\EsH, smir=\E@,
+	smso=\EsA, smul=\EsD,

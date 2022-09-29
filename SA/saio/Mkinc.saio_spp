@@ -1,0 +1,210 @@
+#ident "$Header: Mkinc.saio_spp,v 1.34 90/07/12 16:09:21 chungc Exp $"
+#	%Q%	%I%	%M%
+#
+# Copyright 1985 by MIPS Computer Systems, Inc.
+#
+# Generic Makefile for standalone library
+# SPP version (use when no sources for arp.c, att52.c bsd42.c and udpip.c)
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+include ../../../../Mkinc.common_defines
+include ../../../../Mkinc.release
+include ../../../../Mkinc.common_targets
+
+DEFINES= -D$(VERSION) -DSTANDALONE -DSYSV -DBSD_CODE $(MACH_DEFS) -Wo,-rege,8
+PROMOPTS= -DPROM -G 0
+
+HARDWARE_BUGS_6000= -DR6000_BUG_FLUSH -DR6000_BUG_IDPROM
+
+TMPOPTS= $(HARDWARE_BUGS_6000)
+
+ASFLAGS= $(INCDIRS_SPLIT) -DLOCORE $(DEFINES) $(ASOPTS) $(ENDIAN) $(CASOPTS) \
+	 $(TMPOPTS)
+CFLAGS=	$(INCDIRS_SPLIT) $(DEFINES) $(CCOPTS) $(ENDIAN) $(CCCOPTS) \
+	$(TMPOPTS)
+
+VPATH=.:../../..:../../../../saio
+DPATH=.:../../..:../../../device:../../../../saio
+.SUFFIXES: .O
+
+SUFILES=\
+	$(D3_PATH)/csu.mips.s
+
+SFILES=\
+	$(D3_PATH)/faultasm.s		$(D3_PATH)/initiate.s \
+	$(D3_PATH)/libasm.s		$(D3_PATH)/prom_entry.s
+
+CFILES=\
+	$(D3_PATH)/bfs.c		$(D3_PATH)/check_dbg.c \
+	$(D3_PATH)/cmc.c		$(D3_PATH)/$(DEVSRC) \
+	$(D3_PATH)/dkip.c		$(D3_PATH)/dvh.c \
+	$(D3_PATH)/exec.c		$(D3_PATH)/exec_stub.c \
+	$(D3_PATH)/fault.c		$(D3_PATH)/libc.c \
+	$(D3_PATH)/mbuf.c		$(D3_PATH)/mem.c \
+	$(D3_PATH)/ncp.c		$(D3_PATH)/parser.c \
+	$(D3_PATH)/pcons.c		$(D3_PATH)/protocol.c \
+	$(D3_PATH)/regdesc.c		$(D3_PATH)/s2681cons.c \
+	$(D3_PATH)/sablecons.c		$(D3_PATH)/saio.c \
+	$(D3_PATH)/sd.c			$(D3_PATH)/socket.c \
+	$(D3_PATH)/stdio.c		$(D3_PATH)/stringlist.c \
+	$(D3_PATH)/timer.c		$(D3_PATH)/tpd.c \
+	$(D3_PATH)/tpqic.c		$(D3_PATH)/dkis.c \
+	$(D3_PATH)/tpscsi.c \
+	$(D3_PATH)/spc_poll.c		$(D3_PATH)/if_lance.c \
+	$(D3_PATH)/machaddr.c		$(D3_PATH)/dkvjscsi.c \
+	$(D3_PATH)/tpvjscsi.c		$(D3_PATH)/bootp.c \
+	$(D3_PATH)/if_egl.c		$(D3_PATH)/fstbl.c \
+	$(D3_PATH)/scc_cons.c		$(D3_PATH)/errputs.c \
+	$(D3_PATH)/pdkis.c \
+	$(D3_PATH)/tftp.c		$(D3_PATH)/nfs.c \
+	$(D3_PATH)/ioa.c		$(D3_PATH)/gba.c \
+	$(D3_PATH)/asc_poll.c		$(D3_PATH)/scsi_probe.c \
+	$(D3_PATH)/bitmap.c		$(D3_PATH)/mono.c \
+        $(D3_PATH)/teDevColor8.c        $(D3_PATH)/teDevc8_r3030.c \
+        $(D3_PATH)/teDevice.c           $(D3_PATH)/teFont.c \
+        $(D3_PATH)/teParse.c            $(D3_PATH)/tePutChar.c \
+        $(D3_PATH)/teCommands.c \
+	$(D3_PATH)/r3030_mono.c		$(D3_PATH)/r3030_font.c \
+	$(D3_PATH)/video_cons.c		$(D3_PATH)/common_scsi.c \
+	$(D3_PATH)/ggetchar.c		$(D3_PATH)/keymap_r3030.c \
+	$(D3_PATH)/pkbd.c
+
+
+LIBOBJS=\
+	faultasm.o libasm.o \
+	arp.o bfs.o att52.o bsd42.o check_dbg.o cmc.o $(DEVOBJ) \
+	dkip.o dvh.o exec.o exec_stub.o fault.o gba.o ioa.o initiate.o \
+	libc.o mbuf.o mem.o ncp.o \
+	parser.o pcons.o prom_entry.o protocol.o regdesc.o s2681cons.o \
+	sablecons.o saio.o sd.o socket.o stdio.o stringlist.o \
+	tpd.o tpqic.o timer.o udpip.o \
+	atoi.o		dwmultu.o	fprintf.o	sprintf.o \
+	doprnt.o	flsbuf.o	memcpy.o	tenscale.o \
+	dtoa.o		fp_class.o	signal.o 	r_format.o \
+	dkis.o tpscsi.o spc_poll.o if_lance.o machaddr.o \
+	dkvjscsi.o tpvjscsi.o bootp.o if_egl.o fstbl.o scc_cons.o errputs.o \
+	pdkis.o tftp.o nfs.o asc_poll.o scsi_probe.o bitmap.o mono.o \
+        teCommands.o teDevColor8.o teDevc8_r3030.o teDevice.o teFont.o \
+        teParse.o tePutChar.o \
+	r3030_mono.o r3030_font.o video_cons.o common_scsi.o \
+	ggetchar.o keymap_r3030.o pkbd.o
+
+all:	$(LIB) $(CSU)
+
+$(LIB):	saio_vers.o $(LIBOBJS)
+	-rm -f $(LIB)
+	$(AR) crs $(LIB) saio_vers.o $(LIBOBJS)
+
+# $(LIBDIR) should be defined in the Makefile that includes this Mkinc
+# e.g. in MIPS_SAIO_O, etc
+# NOTE: If LIBDIR changes from usr/lib/SOMETHING, make sure the following
+#       install target will still work.
+install:
+	-rm -f crtn.s
+	-if [ ! -d $(DESTDIR)/$(LIBDIR) ]; \
+	then \
+		$(IF_SYSV) \
+			mkdir -p $(DESTDIR)/$(LIBDIR); \
+		$(ENDIF) \
+		$(IF_BSD) \
+			mkdir $(DESTDIR)/usr; \
+			mkdir $(DESTDIR)/usr/lib; \
+			mkdir $(DESTDIR)/$(LIBDIR); \
+		$(ENDIF) \
+	fi
+	$(IF_SYSV) \
+	 $(MAKE) package_c_install SRC=$(LIB) DEST=$(DESTDIR)$(LIBDIR)/libc.a; \
+	 $(MAKE) package_c_install SRC=$(CSU) DEST=$(DESTDIR)$(LIBDIR)/crt0.o; \
+	 $(MAKE) package_c_install SRC=$(CSU) DEST=$(DESTDIR)$(LIBDIR)/crt1.o; \
+	  touch crtn.s; \
+	  $(CC) crtn.s -c -o $(DESTDIR)$(LIBDIR)/crtn.o; \
+	$(ENDIF)
+	$(IF_BSD) \
+		$(INSTALL) -c $(LIB) $(DESTDIR)$(LIBDIR)/libc.a; \
+		$(INSTALL) -c $(CSU) $(DESTDIR)$(LIBDIR)/crt0.o; \
+	$(ENDIF)
+	-if [ ! -d $(DESTDIR)/usr/sys/saio ]; \
+	then \
+		$(IF_SYSV) \
+			mkdir -p $(DESTDIR)/usr/sys/saio; \
+			mkdir -p $(DESTDIR)/usr/sys/sys; \
+		$(ENDIF) \
+		$(IF_BSD) \
+			mkdir $(DESTDIR)/usr; \
+			mkdir $(DESTDIR)/usr/sys; \
+			mkdir $(DESTDIR)/usr/sys/saio; \
+			mkdir $(DESTDIR)/usr/sys/sys; \
+		$(ENDIF) \
+	fi
+	for i in ../../../*.h; \
+	do \
+	    $(MAKE) package_r_install SRC=$$i DEST=$(DESTDIR)/usr/sys/saio; \
+	done
+	$(MAKE) package_r_install SRC=../../../../include/sys/types.h DEST=$(DESTDIR)/usr/sys/sys
+
+remake:	clean depend
+	-rm -f $(LIB)
+	$(MAKE) all
+
+clobber: clean
+	-rm -f errs $(LIB)
+
+clean:
+	-rm -f *.o *.dis saio_vers.c sccs_vers.c Makefile.bak
+
+saio_vers.c:	$(LIBOBJS) $(CSU)
+	-rm -f saio_vers.c
+	echo "/* Configuration Control File */" > saio_vers.c;
+	$(IF_SYSV) \
+		echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+		    >> saio_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>saio_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+		    >> saio_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>saio_vers.c; \
+	$(ENDIF)
+	echo "\";" >> saio_vers.c
+	$(IF_SYSV) \
+		echo "char saio_version[]=\"\c" >> saio_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>saio_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char saio_version[]=\"" >> saio_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>saio_vers.c; \
+	$(ENDIF)
+	echo "\";" >> saio_vers.c
+	$(IF_SYSV) \
+		echo "char saio_release[]=\"$(RELEASE)\c" >> sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char saio_release[]=\"$(RELEASE)" >> sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+
+saio_vers.o:	saio_vers.c
+		-rm -f saio_vers.o
+		$(CC) $(CFLAGS) -c saio_vers.c
+
+depend:
+	$(CC) -M $(CFLAGS) $(SUFILES) $(SFILES) $(CFILES) | \
+	awk -f $(AWKDEPEND) | egrep -v 'saio_bsd|saio_sysv' > Mdepend.tmp$$$$ ;\
+	mv -f Mdepend.tmp$$$$ Makedepend
+.c.o:
+	-rm -f $@
+	$(CC) $(CFLAGS) -c $<
+
+.s.o:
+	-rm -f $@
+	$(AS) $(ASFLAGS) -o $@ $<
+
+.O.o:
+	-rm -f $@
+	cp $< $@

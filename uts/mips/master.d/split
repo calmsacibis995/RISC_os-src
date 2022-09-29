@@ -1,0 +1,13 @@
+*#ident	"$Header: split,v 1.1.1.1 90/03/15 14:33:21 wje Exp $"
+*
+* split: virtual disk split support.
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	-	-	-	
+				splitadd() {false}
+				splitsize() {false}
+				splitstrategy() {false}
+				splitopen() {false}
+				splitclose() {}
+
+$$$

@@ -1,0 +1,131 @@
+#!/bin/sh
+#
+# Conversion script to convert fstabs with the old "ips0d0s0" names
+# to "ipc0d0s0" (etc).
+#
+# ---------------------------------------------------
+# | Copyright (c) 1986 MIPS Computer Systems, Inc.  |
+# | All Rights Reserved.                            |
+# ---------------------------------------------------
+#
+
+if [ "$Onmini" = "y" ]
+then
+
+if grep "ips[0-9]d[0-9]s[0-9]" /mnt/etc/fstab >/dev/null 2>&1
+then
+
+echo "\
+
+Please note that this release uses a different naming convention for
+device files corresponding to Interphase disk controllers. In
+previous versions of UMIPS, these devices were named ipsNdNsN. These
+devices are now named ipcNdNsN, as we now follow the naming convention
+that the standard device names all have the form CCcNdMsO, where CC
+identifies the controller type, N is the controller number, M is the
+device number, and O is the partition number or device flags.
+
+We recommend that you modify any local additions which use the old
+("ips") names to use the new ("ipc") names, and then to remove
+/dev/{dsk,rdsk}/ips*.
+"
+
+cp /mnt/etc/fstab /mnt/etc/fstab.save
+sed -e 's/\/ips\([0-9]d[0-9]s[0-9][0-9]*[ 	]\)/\/ipc\1/g' \
+  /mnt/etc/fstab.save >/mnt/etc/fstab
+
+if /bin/cmp /mnt/etc/fstab /mnt/etc/fstab.save >/dev/null 2>&1
+  then
+    rm -f /mnt/etc/fstab.save
+    echo "\
+Your /etc/fstab did not contain occurrences of the old device names for
+Interphase disk controllers (ipsNdNsN), so no conversion is necessary.
+"
+  else
+    echo "\
+Your /etc/fstab has been converted to substitute the new device names
+for Interphase disk controllers (ipcNdNsN) for the old device names
+(ipsNdNsN). The old version of your /etc/fstab file is saved as
+/etc/fstab.save.
+"
+  fi
+
+else
+  echo " "
+  ##echo "No ips devices found in /etc/fstab."
+  ##echo " "
+fi
+
+echo " "
+echo "To take advantage of the improved parallel fsck, /etc/fstab will now "
+echo "be modified to allow the root partition to be fsck'd on the first pass."
+echo "All other local filesystems will be fsck'd on the second pass. "
+echo " "
+echo "A copy of /etc/fstab will be saved as /etc/fstab.save.1. "
+echo " "
+cp /mnt/etc/fstab /mnt/etc/fstab.save.1
+rm -f /mnt/etc/fstab.new
+exec 0< /mnt/etc/fstab.save.1
+while read line
+do
+  if [ "$line" != "" ]
+  then
+    set aaa $line
+    if [ "$4" = "ffs" -o "$4" = "ufs" -o "$4" = "4.3" ]
+    then
+      ## right kind of filesystem
+      if [ "$3" = "/" ]
+      then
+        ## the root partition
+        if [ "$7" = "0" ]
+        then
+          echo "The root partition will be checked on the first pass."
+          echo "$line" | sed "s/0$/1/" >>/mnt/etc/fstab.new
+	else
+          if [ "$7" != "1" ]
+          then
+            echo "Warning!  The root partition is being checked on pass: $7."
+            echo "We recommend that it be checked on pass 1."
+          fi
+	  echo "$line" >> /mnt/etc/fstab.new
+        fi
+      else
+        ## non-root partition, set it to 2 if 0 or 1
+        if [ "$7" = "0" -o "$7" = "1" ]
+        then
+          echo "partition $3 will be checked on the second pass."
+          echo "$line" | sed "s/.$/2/" >>/mnt/etc/fstab.new
+	else
+          if [ "$7" != "2" ]
+          then
+            echo "Warning!  Partition $3 is being checked on pass: $7."
+            echo "We recommend that it be checked on pass 2."
+          fi
+	  echo "$line" >> /mnt/etc/fstab.new
+        fi
+      fi
+    else
+      echo "$line" >> /mnt/etc/fstab.new
+    fi
+  fi
+done
+exec 0< /dev/tty
+mv /mnt/etc/fstab.new /mnt/etc/fstab
+if /bin/cmp /mnt/etc/fstab /mnt/etc/fstab.save.1 >/dev/null 2>&1
+then
+  rm -f /mnt/etc/fstab.save
+  echo " "
+  echo "No changes made. "
+  echo " "
+else
+  echo " "
+  echo "/etc/fstab has been modified."
+  echo "The non-optimized /etc/fstab has been saved in /etc/fstab.save.1. "
+  echo " "
+fi
+echo "Press return to continue: \c"
+read Ans
+echo " "
+
+fi
+exit 0

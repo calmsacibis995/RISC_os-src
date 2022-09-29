@@ -1,0 +1,227 @@
+* Any object which is to be included in a kernel by the self
+* configuration boot program must have a corresponding master file which
+* contains configuration specifications.  The master file name is the
+* basename of the object it describes.
+*
+* There are two sections in a master file: a tabulated ordering of flags,
+* phrases and values interpreted by the configuration program and used to
+* build device tables and the like, and a section of (mostly) C code.
+* All phrases uttered after a line beginnings with a dollar sign (`$') is
+* processed to interpret special characters, then compiled into the
+* kernel.  Special characters are discussed below.
+
+
+
+* Flags, phrases, values, et al...
+
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES/STUBS
+
+
+* FLAG
+*
+* Flags, and their meanings, include the following:
+*
+* k: this is a kernel object file -- only one such object can be
+*	configured into a kernel.
+* j: file system type
+* f: framework/stream type device
+* m: framework/stream module
+* o: allow only one specification of device
+* t: create cdevsw[].d_ttys "prefix|_tty"
+* r: required device
+* b: block type device
+* c: character type device
+* s: software device driver
+* x: not a driver; a configurable object module -- all driver related
+*	data is ignored.
+
+
+* PREFIX
+*
+* The prefix is a string of characters used to generate entries in
+* various tables ( e.g., the file system switch table).
+						
+
+* SOFT -- External Major Numbers
+*
+* The external major numbers (the major number used in the special file
+* for the device) is explicitly assigned in the /etc/master.d file for
+* that driver, whether it is a hardware driver or a "software" module.
+*
+* Note that the number used must not exceed 127. Also, the following
+* numbers are RESERVED for the specified drivers for various reasons and
+* should not be used:
+*
+*	DEVICE	MAJOR#
+*	------	------
+*	du	0
+*	mm	1
+*	sy	2
+*	rd	3	ram disk
+*	dkip	4	M/XXXX SMD disk
+*	ts	5	ISI VME QIC
+*	xyl712	6	xylogics ESDI
+*	prf	7
+*	cdsio	8
+*	dkip(2)	9
+*	cln	10
+*	il	11	ingress lock manager
+*	gro_	12	graphics output for GF3 card
+*	gri	13	graphics input for GF3 card
+*	ptc	14	pseudo tty console
+*	pts	15	pseudo tty slave
+*	ikc	16	ILON color printer
+*	cp	16	isi serial i/o
+*	scsi	16	m/120 scsi
+*	xm	17	xylogics 1/2"
+*	tth	17	ciprico 1/2"
+*	sd	18	sable disk
+*	klog	19	kernel error log
+*	nfs	20	network file system
+*	dkvj	22-29	interphase scsi
+*	c8	32	m/120 serial i/o
+*	sd	33 	m/12 scsi disk
+*	qt	34	m/12 qic tape
+*	fl	35	m/12 floppy
+*	gt	36	m/12 generic tape
+*	kbd	37	m/12 keyboard
+*	lp	38	m/12 line printer
+*	uart	39	m/12 line uart
+*	nm	40	decnet network manager
+*	ll	41	decnet logical link
+*	mouse	42	m/12 mouse (v50 uart port)
+*	ptc(2-4) 43-45	pty master, second through fourth
+*	pts(2-4) 46-48	pty slave, second through fourth
+*	vd	49-50	virtual disk
+*	enet	51	Ethernet packet filter
+*	tkd	52	Performace Tech's SCC board,also known as 'ice'
+*	sbe	53	SBE's SCC board
+*
+*	The following are optional test drivers used in the SVVS Streams TLI
+*	tests.Hence these major numbers are NOT normally used and can be
+*	taken if necessary
+*
+*	tid	54	SVVS/Streams TLI datagram test driver
+*	tiv	55	SVVS/Streams TLI virtual circuit test driver
+*	tmx	56	SVVS/Streams TLI multiplexor test driver
+*	lo	57	SVVS/Streams TLI loopback test driver
+*
+*	nlg	90	Portable Netware 
+*	nvt	94	Portable Netware 
+*	nspx	95	Portable Netware 
+*	ncp	96	Portable Netware 
+*	xecho	97	Portable Netware 
+*	ipx	98	Portable Netware 
+*	ipxs	99	Portable Netware 
+*
+* Address Space
+*
+*		A24
+*
+*		END	      -ffffff
+*		*
+*		cp	fff5c0-fff5df
+*		cp	fff5a0-fff5bf
+*		cp	fff580-fff59f
+*		ts	fff550-fff57f
+*		cp	fff520-fff53f
+*		*
+*		if_enp	e40000-e5ffff
+*		if_enp	e20000-e3ffff
+*		if_enp	e00000-e1ffff
+*		if_enp	de0000-dfffff
+*	 	egl	900000-980000
+*	 	sbe	800800-8fffff
+*	 	tkd	800000-8007ff
+*		*
+*		BEGIN 	000000
+*		
+*		
+*		
+*		A16
+*
+*		END	    -ffff
+*		dkvj	c000-cfff
+*		dkvj	c000-c7ff
+*		dkvj	b000-bfff
+*		dkvj	b000-b7ff
+*		dkvj	a000-afff
+*		dkvj	a000-a7ff
+*		dkvj	9800-9fff
+*		dkvj	9000-97ff
+*		*
+*		dkip	8c00-8dff
+*		dkip	8a00-8bff
+*		dkip	8800-89ff
+*		dkip	8600-87ff
+*		tth	8500-85ff
+*		*
+*		cmcdbg	8000-80ff
+*		*
+*		dkip2	7c00-7dff
+*		dkip2	7a00-7bff
+*		dkip2	7800-79ff
+*		dkip2	7600-77ff
+*		*
+*		egl	5800-5fff
+*		egl	5000-57ff
+*		egl	4800-4fff
+*		egl	4000-47ff
+*		*
+*		BEGIN	0000
+*
+*
+* Internal Major Numbers
+*
+* The internal major number is assigned by the self configuring boot
+* program at the time the drivers are loaded.  In general, these numbers
+* will be different after each boot.  Since the internal major number is
+* the number used to index into the [cb]devsw table, a driver may need
+* some way to determine this number.  The internal major number may be
+* obtained in two ways.  First, it appears in the MAJOR[] translation
+* table built by the boot program:
+*
+*		unsigned char MAJOR[127];
+*
+* This table is indexed by the external major number.  Thus, the internal
+* major number which corresponds to the external major number "X" is just:
+*
+*		internal_major = MAJOR[X]
+*
+* or the major() macro from sys/sysmacros.h may be used with the entire external
+* device number:
+*
+*		internal_major = major(external_device)
+*
+* The second means is via the capability of the master file syntax for
+* expressions.  The builtin function `##M' is used to refer to the internal
+* major number for the current driver.
+
+
+* DEPENDENCIES/STUBS
+*
+* A dependency names another module to be included at configuration time.
+* A stub specifies a routine stub to be generated if necessary at link time.
+* The stub format is "rtn(){keyword}".
+*
+*	KEYWORD		STUB
+*	------		----
+*			rtn() { }
+*	nulldev		rtn() { nulldev(); }
+*	nosys		rtn() { return(nosys()); }
+*	nodev		rtn() { return(nodev()); }
+*	true		rtn() { return(1); }
+*	false		rtn() { return(0); }
+*	fsnull		rtn() { return(fsnull()); }
+*	fsstray		rtn() { return(fsstray()); }
+*	nopkg		rtn() { nopkg(); }
+*	noreach		rtn() { noreach(); }
+
+
+* $$$
+*
+* Specifications beyond a `$' in the first column are C code, with the
+* exceptions that `##M' gets replaced with the Internal Major Number,
+* `##D' is replaced with the number of devices (#DEV field), and `##C' is
+* replaced by the number of controllers associated with the module -- the
+* number of controllers is determined at configuration (see /etc/system).

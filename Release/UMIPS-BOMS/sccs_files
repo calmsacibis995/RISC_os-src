@@ -1,0 +1,3 @@
+usr/bsd43/bin/sccs -r-xr-xr-x bin bin 1
+usr/ucb/sccs l--------- bin bin 1 ../../bsd43/bin/sccs
+usr/bin/sccsdiff -r-xr-xr-x bin bin 1

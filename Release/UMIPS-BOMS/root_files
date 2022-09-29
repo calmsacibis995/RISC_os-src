@@ -1,0 +1,60 @@
+.cshrc -r-xr--r-- root sys 1
+.login -r-xr--r-- root sys 1
+.profile -r-xr--r-- root sys 1
+etc/TIMEZONE -r-xr-xr-x bin bin 1
+etc/TIMEZONE.csh -r-xr-xr-x bin bin 1
+etc/TZ -r--r--r-- bin bin 1
+etc/automount.conf.sample -r--r--r-- bin bin 1
+etc/bootptab l--------- bin bin 1 ../usr/etc/bootptab
+etc/bupsched -rw-r--r-- bin bin 1
+etc/comsat -r-xr-xr-x bin bin 1
+etc/coredirs -rw-r--r-- bin bin 1
+etc/cshrc -r-xr-xr-x bin bin 1
+etc/disktab -r--r--r-- bin bin 1
+etc/dumpdates -r--r--r-- bin bin 1
+etc/ethers l--------- bin bin 1 ../usr/etc/ethers
+etc/exports l--------- bin bin 1 ../usr/etc/exports
+etc/fstab -r--r--r-- root sys 1
+etc/gated.conf.sample l--------- bin bin 1 ../usr/etc/gated.conf.sample
+etc/gettydefs -r-xr-xr-- bin bin 1
+etc/group -r--r--r-- bin bin 1
+etc/hosts -r--r--r-- root bin 1
+etc/hosts.slip -r--r--r-- root bin 1
+etc/inetd.conf l--------- bin bin 1 ../usr/etc/inetd.conf
+etc/inittab -r--r--r-- root sys 1
+etc/ioctl.syscon -rw-r--r-- root sys 1
+etc/local_hostname -rw-r--r-- root sys 1
+etc/lockd.conf.sample -r--r--r-- bin bin 1
+etc/magic -r--r--r-- bin bin 1
+etc/motd -rw-r--r-- root bin 1
+etc/mtab -rw-r--r-- root root 1
+etc/netgroup l--------- bin bin 1 ../usr/etc/netgroup
+etc/networks -r--r--r-- bin bin 1
+etc/passwd -rw-r--r-- root bin 1
+etc/profile -r-xr-xr-x bin bin 1
+etc/protocols -r--r--r-- bin bin 1
+etc/publickey -rw-r--r-- bin bin 1
+etc/remote -rw-r--r-- root sys 1
+etc/routed.conf l--------- bin bin 1 ../usr/etc/routed.conf
+etc/rpc l--------- bin bin 1 ../usr/etc/rpc
+etc/save.d/except -r--r--r-- bin sys 1
+etc/savecpio -r-xr-xr-- bin bin 1
+etc/services -r--r--r-- bin bin 1
+etc/shells -r--r--r-- bin bin 1
+etc/stdcshrc -r-xr-xr-x bin bin 1
+etc/stdprofile -r-xr-xr-- bin bin 1
+etc/sysdirlist -r--r--r-- bin bin 1
+etc/syslist -r--r--r-- bin bin 1
+etc/syslog.conf -r--r--r-- bin bin 1
+etc/termcap -rw-r--r-- root bin 1
+etc/timed.conf l--------- bin bin 1 ../usr/etc/timed.conf
+etc/ttytype -rw-r--r-- root sys 1
+etc/zoneinfo/SOURCES/asia -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/australasia -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/etcetera -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/europe -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/northamerica -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/pacificnew -r--r--r-- bin bin 1 
+etc/zoneinfo/SOURCES/systemv -r--r--r-- bin bin 1 
+etc/zoneinfo/uncompiled -r--r--r-- bin bin 1 
+usr/etc/comsat l--------- bin bin 1 ../../etc/comsat

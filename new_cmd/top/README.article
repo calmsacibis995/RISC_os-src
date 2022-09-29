@@ -1,0 +1,28 @@
+Path: uunet!rs
+From: rs@uunet.UU.NET (Rich Salz)
+Newsgroups: comp.sources.unix
+Subject: v10i063:  Top users display, 2.1 with Symmetric changes, Part01/02
+Message-ID: <692@uunet.UU.NET>
+Date: 23 Jul 87 00:24:13 GMT
+Organization: UUNET Communications Services, Arlington, VA
+Lines: 2065
+Approved: rs@uunet.UU.NET
+
+Submitted-by: hoptoad!vixie!paul (Paul Vixie Esq)
+Posting-Number: Volume 10, Issue 63
+Archive-name: top_s375/Part01
+
+Rich--  I've had this floating around for a while now.  I got it from the
+net, at which time it ran on Vax, Sun, and Pyramid systems.  It still does,
+but I've added a bunch of #ifdef and #ifndef to make it work on the Symmetric
+375.  I recently recompiled for a Vax, and it seems still to work quite well
+there -- so I don't think I screwed anything up.
+
+This is Stable Code -- it has run on three Symmetric 375s for five months or
+so now, with no changes.  You can bypass your usual policy of waiting a while
+for the author (or in my case, sender) of sources to change their mind and
+send in last-minute updates or whatever...
+
+I tried to send mail to the author, but he did not respond.  Perhaps he'll
+see this and integrate my changes into 2.2 (if such there be).
+

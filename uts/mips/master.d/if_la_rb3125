@@ -1,0 +1,8 @@
+*#ident "$Header: if_la_rb3125,v 1.1.2.1.1.1 90/06/28 15:37:03 root Exp $"
+*
+* LA - On-board Lance driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+-	la	-	-	bsd, if_lacomm
+
+$$$

@@ -1,0 +1,141 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: macdefs,v 1.5.2.2 89/12/10 22:25:00 wje Exp $ */
+/* $Log:	macdefs,v $
+# Revision 1.5.2.2  89/12/10  22:25:00  wje
+# add RID 1.6 to branch RISCOS_4_50_FIXES
+# 
+# Revision 1.6  89/12/10  18:42:00  jay
+# replaced with files from 2.0 C compiler's lint, modified to support cxref.
+# closes bugs 1373
+# 
+# Revision 2000.7  89/03/26  14:48:09  bettina
+# 2.0G
+# 
+# Revision 1040.6  88/09/29  15:52:56  bettina
+# bootstraped 1.40
+# 
+ * Revision 1.2  87/12/09  11:41:43  gb
+ * added $Log keyword
+ *  */
+/* ref.		date 		description				    */
+/*!02		27mar85		align doubles on 64 bit boundaries	   */
+/*!03		22may85		reserve room for pc and fp		   */
+/*!04		31may85		added byte-sex flags			   */
+# define makecc(val,i)  lastcon = (lastcon<<8)| ((val<<24)>>24)  
+# define makeucc(val,i) lastcon = (lastcon<<8)| (((unsigned)(val<<24))>>24)  
+
+# define  ARGINIT  0
+# define  AUTOINIT 0						/*!03*/
+# define  SZCHAR 8
+# define  SZINT 32
+# define  SZFLOAT 32
+# define  SZDOUBLE 64
+# define  SZLONG 32
+# define  SZSHORT 16
+# define SZPOINT 32
+# define ALCHAR 8
+# define ALINT 32
+# define ALFLOAT 32
+# define ALDOUBLE 64							/*!02*/
+# define ALLONG 32
+# define ALSHORT 16
+# define ALPOINT 32
+# define ALSTRUCT 8
+# define  ALSTACK 32 
+
+
+/*	size in which constants are converted */
+/*	should be long if feasable */
+
+# define CONSZ long
+# define CONFMT "%ld"
+
+/*	size in which offsets are kept
+/*	should be large enough to cover address space in bits
+*/
+
+# define OFFSZ long
+
+/* 	character set macro */
+
+# define  CCTRANS(x) x
+
+/* register cookie for stack poINTer */
+
+# define  STKREG 13
+# define ARGREG 12
+
+/*	maximum and minimum register variables */
+
+# define MAXRVAR 11
+# define MINRVAR 6
+
+	/* various standard pieces of code are used */
+# define STDPRTREE
+# define LABFMT ".L%d"
+
+/* show stack grows negatively */
+#define BACKAUTO
+#define BACKTEMP
+
+/* show field hardware support on VAX */
+#define FIELDOPS
+
+/* bytes are numbered from right to left */
+#define RTOLBYTES					                
+
+/* we want prtree included */
+# define STDPRTREE
+# define ONEPASS
+
+
+# define ENUMSIZE(high,low) INT
+
+
+# define ADDROREG
+# define FIXDEF(p) fixdef(p)
+# define FIXSTRUCT(p,q) strend(p)
+# define SETDCON(p) 1		/* setdcon(p) no need for side effects */
+
+# define SDB
+
+#ifdef LINT
+
+/* many macro definitions for functions irrelevant to lint */
+
+# define locctr(n) 0
+# define st_def(x,y) 0
+# define getlab() 10
+# define genswitch( x,y)
+# define bccode()
+# define cendarg()
+# define incode(a,s) (inoff += (s))
+# define fincode(a,s) (inoff += (s) )
+# define vfdzero(n) (inoff += (n))
+# define aobeg()
+# define aoend()
+# define defnamedlab(n, bn)
+# define fixdef(p) 
+# define st_textblock() 0
+# define st_forwstr(n)
+# define st_blockend(n) 0
+# define st_commset()
+# define st_communset()
+# define st_cuinit()
+# define p2init(x,y)
+# define init_ucode_writer(x,y)
+# define st_cleardim(x,y)
+# define st_blockbegin(x,y,z) 0
+# define WERROR	lwerror
+# define UERROR	luerror
+# define MESSAGE(x)	(x)
+# define unsetfile() 
+# define setfile(x,y)
+# define st_fix_array_size(x)
+# endif
+
+
+

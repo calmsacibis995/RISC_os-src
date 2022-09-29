@@ -1,0 +1,12 @@
+#! /bin/sh
+# sald -- standalone loader interface
+#
+if [ $1 = -sable ]
+then
+	LIB=/usr/lib/sable
+	shift
+else
+	LIB=/usr/lib/saio
+fi
+set -x
+ld -T 80020000 -N -L -L$LIB "$@"

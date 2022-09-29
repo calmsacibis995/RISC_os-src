@@ -1,0 +1,42 @@
+#! /bin/sh
+
+#	"Run Commands" for init state 0
+#	Leaves the system in a state where it is safe to turn off the power
+#	or go to firmware.
+
+stty sane clocal tab3 2>/dev/null
+echo 'The system is coming down.  Please wait.'
+
+if [ -d /etc/rc0.d ]
+then
+	for f in /etc/rc0.d/K*
+	{
+		if [ -s $f ]
+		then
+			/bin/sh $f stop
+		fi
+	}
+
+#	system cleanup functions ONLY (things that end fast!)	
+
+	for f in /etc/rc0.d/S*
+	{
+		if [ -s ${f} ]
+		then
+			/bin/sh ${f} start
+		fi
+	}
+fi
+
+trap "" 15
+kill -15 -1
+sleep 10
+/etc/killall  9
+sleep 10
+sync;sync;sync
+/etc/umount -v -k -t local
+stty sane clocal 2>/dev/null
+sync;  sync
+echo '
+The system is down.'
+sync

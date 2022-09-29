@@ -1,0 +1,74 @@
+#
+# RISC/os 4.52 OEM Source Release
+#
+package=umips-oem-src
+	id="RISC/os operating system OEM source"
+	version=4.52 timestamp=631386000
+
+media=Q120
+
+subpackage=kernel-src
+	id="RISC/os UNIX Kernel Source"
+	optional
+	splitboms="src_uts"
+        bom=kernel-src
+
+subpackage=usr-src
+	id="RISC/os System V Commands and Libraries Source"
+	optional
+	splitboms="src_dirs src_files"
+	bom=usr-src
+
+subpackage=bsd43-src
+	id="RISC/os 4.3 BSD Commands and Libraries Source"
+	optional
+	splitboms="bsd43_src_dirs bsd43_src_files"
+	bom=bsd43-src
+
+subpackage=posix-src
+	id="RISC/os POSIX 1003.1 Libraries and Include File Source"
+	optional
+	splitboms="posix_src_dirs posix_src_files"
+	bom=posix-src
+
+# man pages are subject to contract restrictions on distribution
+#subpackage=man_src
+#	id="RISC/os On-Line Manual Pages Source"
+#	optional
+#	splitboms="mansrc_dirs mansrc_files mansrc_bsd"
+#	bom=man_src
+#
+subpackage=sppbin
+	id="Standalone Programs and SPP Support"
+	version=4.20
+	splitboms="sppbin.bin"
+	bom=sppbin	
+
+subpackage=cmplrs
+	id="MIPS-C Compiler"
+	splitboms="cc.bin cc.dir cc.hdr cc.bsdhdr cc.lib cc.pkg"
+        bom=cmplrs
+
+subpackage=cmplrs-bsd43
+	id="MIPS-C 4.3 BSD Include Files and Libraries"
+	optional
+	splitboms="cc.bsd cc.bsdlnk"
+        bom=cmplrs-bsd43
+
+subpackage=pkgtools
+	id="RISC/os Software Packaging/Installation Tools Source"
+	optional
+	splitboms="pkgtools.src pkgtools.pkg"
+	bom=pkgtools
+
+subpackage=bsd_games
+	id="RISC/os 4.3 BSD Games Source"
+ 	optional
+ 	splitboms="games_src"
+ 	bom=bsd_games
+
+subpackage=new_cmd
+	id="RISC/os Contributed Software Source"
+ 	optional
+ 	splitboms="newcmd_src_dirs newcmd_src_files"
+ 	bom=new_cmd

@@ -1,0 +1,9 @@
+*#ident	"@(#)kern-port:master.d/mem	10.2"
+*#ident	"$Header: mem,v 1.1.5.1 89/11/28 11:45:38 wje Exp $"
+*
+* MEM
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+orcs	mm	1
+
+$$$

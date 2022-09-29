@@ -1,0 +1,53 @@
+#
+#  usr.preserves - RISC/os 4.52
+#
+#  This preserve list is fed to preserve following the list generated
+#  by findmods.
+#
+
+#
+#  local files which should be saved "as-is":
+#
+usr/adm/crash	-k
+usr/etc/exports	-k
+usr/etc/bootptab -k
+usr/etc/inetd.conf -k
+usr/etc/timed.conf	-k
+usr/lib/aliases	-k
+usr/lib/sendmail.cf	-k
+usr/lib/me/local.me	-k
+usr/tmp			-k
+
+#
+#  uucp config
+#
+usr/lib/uucp/Devconfig	-k
+usr/lib/uucp/Devices	-k
+usr/lib/uucp/Dialcodes	-k
+usr/lib/uucp/Dialers	-k
+usr/lib/uucp/Maxuuscheds	-k
+usr/lib/uucp/Maxuuxqts	-k
+usr/lib/uucp/Permissions	-k
+usr/lib/uucp/Poll	-k
+usr/lib/uucp/Sysfiles	-k
+usr/lib/uucp/Systems	-k
+usr/lib/uucp/Uutry	-k
+
+usr/spool/cron/crontabs/adm	-k
+usr/spool/cron/crontabs/periodic	-k
+usr/spool/cron/crontabs/root	-k
+usr/spool/cron/crontabs/sys	-k
+usr/spool/cron/crontabs/sysadm	-k
+usr/spool/cron/crontabs/uucp	-k
+
+usr/spool/lp/pstatus	-k
+usr/spool/lp/qstatus	-k
+
+#
+#  force use of the following update files:
+#
+usr/lib/crontab	-u
+
+#
+#  end of usr.preserves
+#

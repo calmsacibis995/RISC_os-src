@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# This script executes a corresponding script in /etc/init.d.
+# If you want to make a special local version of this
+# operation, copy the /etc/init.d file on top of this file and
+# make your modifications.  Do not change the file in
+# /etc/init.d.
+#
+
+REALFILE="/etc/init.d/syslog"
+
+if [ -f "$REALFILE" ]
+then
+	exec "$REALFILE" ${1+"$@"}
+else
+	echo "Warning: $REALFILE does not exist"
+	exit 1
+fi

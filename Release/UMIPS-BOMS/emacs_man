@@ -1,0 +1,5 @@
+usr/man drwxr-xr-x bin bin 2
+usr/man/catman drwxr-xr-x bin bin 2
+usr/man/catman/u_man drwxr-xr-x bin bin 2
+usr/man/catman/u_man/man1 drwxr-xr-x bin bin 2
+usr/man/catman/u_man/man1/emacs.1 -r--r--r-- bin bin 1

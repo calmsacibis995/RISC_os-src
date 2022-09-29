@@ -1,0 +1,9 @@
+posix drwxr-xr-x bin bin 2
+posix/posix l--------- bin bin 1 ./
+posix/sysv l--------- bin bin 1 ../
+posix/bin l--------- bin bin 1 ../usr/posix/bin
+posix/lib drwxr-xr-x bin bin 2
+posix/lib/locale l--------- bin bin 1 ../../usr/posix/usr/lib/locale
+posix/usr drwxr-xr-x bin bin 2
+posix/usr/lib l--------- bin bin 1 ../../usr/posix/usr/lib
+posix/usr/include l--------- bin bin 1 ../../usr/include/posix

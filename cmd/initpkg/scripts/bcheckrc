@@ -1,0 +1,63 @@
+#! /bin/sh
+
+# ***** This file has those commands necessary to check the file
+# system, date, and anything else that should be done before mounting
+# the file systems.
+
+PATH=/etc:/bin
+ROOTFS=/dev/root
+
+SYNC() { sync; sleep 1; sync; sleep 1; sync; }
+
+main() {
+	#
+	# The bcheckrc_X functions do not return, so failure means
+	# no function exists.
+	#
+	echo "\nChecking root file system (${rootfs}) if necessary."
+	FSTYPE=`fstyp $ROOTFS`
+	SYNC;
+	bcheckrc_$FSTYPE ${1+"$@"}
+	echo "Bad fs type for $ROOTFS: $FSTYPE"; 
+	exit 1;
+}
+
+bcheckrc_S51K() {
+	#
+	# Only fsck dirty file systems.
+	# Fsck handles remount or reboot itself.
+	#
+	fsstat $ROOTFS  >/dev/null 2>&1 ||
+		/etc/fsck.S51K -y -D -b ${rootfs}
+	exit
+}
+
+bcheckrc_ffs() {
+	fsstat $ROOTFS  >/dev/null 2>&1 && exit 0; 
+
+	fsck.ffs -d -y $ROOTFS 
+	case $? in
+	0)	echo "fsck.ffs: finished normally"
+		;;
+	2)	#
+		# Berkeley fsck semantics say enter single user now.
+		# Wish I could.
+		#
+		echo "fsck.ffs: received SIGQUIT -- ignored."
+		;;
+	4)	echo "\nAutomatically Rebooting UNIX."
+		uadmin 1 1;
+		echo "Auto-reboot failed.  Reboot UNIX manally."
+		;;
+	8)	echo "fsck.ffs: abnormal exit."
+		;;
+	12)	echo "fsck.ffs: received SIGINTR -- disk checks terminated."
+		;;
+	*)	echo "fsck.ffs: unknown exit status."
+		;;
+	esac
+
+	exit 0
+}
+
+main ${1+"$@"}

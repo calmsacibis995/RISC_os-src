@@ -1,0 +1,405 @@
+usr/bsd43 drwxr-xr-x bin bin 2
+usr/bsd43/bin drwxr-xr-x bin bin 2
+usr/bsd43/bin/ac -r-xr-xr-x bin bin 1
+usr/bsd43/bin/accton -r-xr-xr-x bin bin 1
+usr/bsd43/bin/addbib -r-xr-xr-x bin bin 1
+usr/bsd43/bin/aedplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/apply -r-xr-xr-x bin bin 1
+usr/bsd43/bin/apropos -r-xr-xr-x bin bin 3 usr/bsd43/bin/man
+usr/bsd43/bin/as -r-xr-xr-x bin bin 3 usr/bsd43/bin/cc
+usr/bsd43/bin/at -r-sr-sr-x daemon daemon 1
+usr/bsd43/bin/atl -r-sr-sr-x daemon daemon 1
+usr/bsd43/bin/atoplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/atq -r-sr-sr-x daemon daemon 1
+usr/bsd43/bin/atrm -r-sr-sr-x daemon daemon 1
+usr/bsd43/bin/awk -r-xr-xr-x bin bin 1
+usr/bsd43/bin/bgplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/biff -r-xr-xr-x bin bin 1
+usr/bsd43/bin/build_hlists -r-xr-xr-x bin bin 1
+usr/bsd43/bin/cat -r-xr-xr-x bin bin 1
+usr/bsd43/bin/cc -r-xr-xr-x bin bin 3
+usr/bsd43/bin/checkeq -r-xr-xr-x bin bin 1
+usr/bsd43/bin/checknr -r-xr-xr-x bin bin 1
+usr/bsd43/bin/chfn -r-sr-xr-x root sys 3 usr/bsd43/bin/passwd
+usr/bsd43/bin/chgrp -r-xr-xr-x bin bin 1
+usr/bsd43/bin/chmod -r-xr-xr-x bin bin 1
+usr/bsd43/bin/chown -r-xr-xr-x bin bin 1
+usr/bsd43/bin/chsh -r-sr-xr-x root sys 3 usr/bsd43/bin/passwd
+usr/bsd43/bin/clear -r-xr-xr-x bin bin 1
+usr/bsd43/bin/col -r-xr-xr-x bin bin 1
+usr/bsd43/bin/colcrt -r-xr-xr-x bin bin 1
+usr/bsd43/bin/colrm -r-xr-xr-x bin bin 1
+usr/bsd43/bin/compress l--------- bin bin 1 ../../ucb/compress
+usr/bsd43/bin/cp -r-xr-xr-x bin bin 1
+usr/bsd43/bin/crtplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/date -r-xr-xr-x bin bin 1
+usr/bsd43/bin/dd -r-xr-xr-x bin bin 1
+usr/bsd43/bin/deroff -r-xr-xr-x bin bin 1
+usr/bsd43/bin/df -r-sr-xr-x root bin 1
+usr/bsd43/bin/diction -r-xr-xr-x bin bin 1
+usr/bsd43/bin/diff -r-xr-xr-x bin bin 1
+usr/bsd43/bin/du -r-xr-xr-x bin bin 1
+usr/bsd43/bin/dumbplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/echo -r-xr-xr-x bin bin 1
+usr/bsd43/bin/efl -r-xr-xr-x bin bin 1
+usr/bsd43/bin/egrep -r-xr-xr-x bin bin 3 usr/bsd43/bin/grep
+usr/bsd43/bin/enroll -r-xr-xr-x bin bin 1
+usr/bsd43/bin/eqn -r-xr-xr-x bin bin 1
+usr/bsd43/bin/error -r-xr-xr-x bin bin 1
+usr/bsd43/bin/expand -r-xr-xr-x bin bin 1
+usr/bsd43/bin/explain -r-xr-xr-x bin bin 1
+usr/bsd43/bin/fgrep -r-xr-xr-x bin bin 3 usr/bsd43/bin/grep
+usr/bsd43/bin/find -r-xr-xr-x bin bin 1
+usr/bsd43/bin/fmt -r-xr-xr-x bin bin 1
+usr/bsd43/bin/fpr -r-xr-xr-x bin bin 1
+usr/bsd43/bin/from -r-xr-xr-x bin bin 1
+usr/bsd43/bin/fsplit -r-xr-xr-x bin bin 1
+usr/bsd43/bin/gigiplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/graph l--------- bin bin 1 ../../bin/graph
+usr/bsd43/bin/grep -r-xr-xr-x bin bin 3
+usr/bsd43/bin/grnplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/groups -r-xr-xr-x bin bin 1
+usr/bsd43/bin/head -r-xr-xr-x bin bin 1
+usr/bsd43/bin/hp7221plot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/hpplot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/implot -r-xr-xr-x bin bin 1
+usr/bsd43/bin/indent -r-xr-xr-x bin bin 1
+usr/bsd43/bin/indxbib -r-xr-xr-x bin bin 1
+usr/bsd43/bin/install -r-xr-xr-x bin bin 1
+usr/bsd43/bin/iostat -r-xr-sr-x bin sys 1
+usr/bsd43/bin/kill -r-xr-xr-x bin bin 1
+usr/bsd43/bin/last -r-xr-xr-x bin bin 1
+usr/bsd43/bin/lastcomm -r-xr-xr-x bin bin 1
+usr/bsd43/bin/ld -r-xr-xr-x bin bin 3 usr/bsd43/bin/cc
+usr/bsd43/bin/leave -r-xr-xr-x bin bin 1
+usr/bsd43/bin/lex -r-xr-xr-x bin bin 1
+usr/bsd43/bin/ln -r-xr-xr-x bin bin 1
+usr/bsd43/bin/lock -r-sr-xr-x root sys 1
+usr/bsd43/bin/look -r-xr-xr-x bin bin 1
+usr/bsd43/bin/lookbib -r-xr-xr-x bin bin 1
+usr/bsd43/bin/lpc -r-s--s--x root root 1
+usr/bsd43/bin/lpd -r-s--s--x root root 1
+usr/bsd43/bin/lpq -r-s--s--x root root 1
+usr/bsd43/bin/lpr -r-s--s--x root root 1
+usr/bsd43/bin/lprm -r-s--s--x root root 1
+usr/bsd43/bin/lptest -r-xr-xr-x bin bin 1
+usr/bsd43/bin/ls -r-xr-xr-x bin bin 1
+usr/bsd43/bin/make -r-xr-xr-x bin bin 1
+usr/bsd43/bin/man -r-xr-xr-x bin bin 3
+usr/bsd43/bin/mesg -r-xr-xr-x bin bin 1
+usr/bsd43/bin/msgs -r-xr-xr-x bin bin 1
+usr/bsd43/bin/mv -r-xr-xr-x bin bin 1
+usr/bsd43/bin/neqn -r-xr-xr-x bin bin 1
+usr/bsd43/bin/nohup -r-xr-xr-x bin bin 1
+usr/bsd43/bin/nroff -r-xr-xr-x bin bin 1
+usr/bsd43/bin/od -r-xr-xr-x bin bin 1
+usr/bsd43/bin/pagesize -r-xr-xr-x bin bin 1
+usr/bsd43/bin/passwd -r-sr-xr-x root sys 3
+usr/bsd43/bin/plot l--------- bin bin 1 ../../../bin/tplot
+usr/bsd43/bin/plottoa -r-xr-xr-x bin bin 1
+usr/bsd43/bin/pr -r-xr-xr-x bin bin 1
+usr/bsd43/bin/ps -r-sr-sr-x root sys 1
+usr/bsd43/bin/ptx -r-xr-xr-x bin bin 1
+usr/bsd43/bin/ratfor -r-xr-xr-x bin bin 1
+usr/bsd43/bin/refer -r-xr-xr-x bin bin 1
+usr/bsd43/bin/rev -r-xr-xr-x bin bin 1
+usr/bsd43/bin/rm -r-xr-xr-x bin bin 1
+usr/bsd43/bin/roffbib -r-xr-xr-x bin bin 1
+usr/bsd43/bin/sa -r-xr-xr-x bin bin 1
+usr/bsd43/bin/soelim -r-xr-xr-x bin bin 1
+usr/bsd43/bin/sort -r-xr-xr-x bin bin 1
+usr/bsd43/bin/sortbib -r-xr-xr-x bin bin 1
+usr/bsd43/bin/spell -r-xr-xr-x bin bin 1
+usr/bsd43/bin/spellin -r-xr-xr-x bin bin 1
+usr/bsd43/bin/spellout -r-xr-xr-x bin bin 1
+usr/bsd43/bin/spline -r-xr-xr-x bin bin 1
+usr/bsd43/bin/struct -r-xr-xr-x bin bin 1
+usr/bsd43/bin/stty -r-xr-xr-x bin bin 1
+usr/bsd43/bin/style -r-xr-xr-x bin bin 1
+usr/bsd43/bin/t300 -r-xr-xr-x bin bin 1
+usr/bsd43/bin/t300s -r-xr-xr-x bin bin 1
+usr/bsd43/bin/t4013 -r-xr-xr-x bin bin 1
+usr/bsd43/bin/t450 -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tabs -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tail -r-xr-xr-x bin bin 1
+usr/bsd43/bin/talk -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tar -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tbl -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tc -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tcopy -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tek -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tk -r-xr-xr-x bin bin 1
+usr/bsd43/bin/touch -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tr -r-xr-xr-x bin bin 1
+usr/bsd43/bin/troff -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tsort -r-xr-xr-x bin bin 1
+usr/bsd43/bin/tty -r-xr-xr-x bin bin 1
+usr/bsd43/bin/uncompress l--------- bin bin 1 ../../ucb/uncompress
+usr/bsd43/bin/unexpand -r-xr-xr-x bin bin 1
+usr/bsd43/bin/uniq -r-xr-xr-x bin bin 1
+usr/bsd43/bin/units -r-xr-xr-x bin bin 1
+usr/bsd43/bin/users -r-xr-xr-x bin bin 1
+usr/bsd43/bin/vacation -r-xr-xr-x bin bin 1
+usr/bsd43/bin/vgrind -r-xr-xr-x bin bin 1
+usr/bsd43/bin/vipw -r-xr-xr-x bin bin 1
+usr/bsd43/bin/w -r-xr-sr-x bin sys 1
+usr/bsd43/bin/wall -r-xr-xr-x bin bin 1
+usr/bsd43/bin/whatis -r-xr-xr-x bin bin 3 usr/bsd43/bin/man
+usr/bsd43/bin/whereis -r-xr-xr-x bin bin 1
+usr/bsd43/bin/window -r-xr-xr-x bin bin 1
+usr/bsd43/bin/write -r-xr-xr-x bin bin 1
+usr/bsd43/bin/xget -r-xr-xr-x bin bin 1
+usr/bsd43/bin/xsend -r-xr-xr-x bin bin 1
+usr/bsd43/bin/yacc -r-xr-xr-x bin bin 1
+usr/bsd43/bin/yes -r-xr-xr-x bin bin 1
+usr/bsd43/bin/zcat l--------- bin bin 1 ../../ucb/zcat
+usr/dict drwxrwxr-x bin bin 2
+usr/dict/hlist -r--r--r-- bin bin 1
+usr/dict/hlista -r--r--r-- bin bin 1
+usr/dict/hlistb -r--r--r-- bin bin 1
+usr/dict/hstop -r--r--r-- bin bin 1
+usr/lib drwxr-xr-x bin bin 2
+usr/lib/Mail.help -r--r--r-- bin bin 1
+usr/lib/Mail.rc -r--r--r-- bin bin 1
+usr/lib/Mail.tildehelp -r--r--r-- bin bin 1
+usr/lib/find drwxr-xr-x bin bin 2
+usr/lib/find/bigram -r-xr-xr-x bin bin 1
+usr/lib/find/code -r-xr-xr-x bin bin 1
+usr/lib/find/updatedb -r-xr-xr-x bin bin 1
+usr/lib/font drwxr-xr-x bin bin 2
+usr/lib/font/ftB -r--r--r-- bin bin 1
+usr/lib/font/ftBC -r--r--r-- bin bin 1
+usr/lib/font/ftC -r--r--r-- bin bin 1
+usr/lib/font/ftCE -r--r--r-- bin bin 1
+usr/lib/font/ftCI -r--r--r-- bin bin 1
+usr/lib/font/ftCK -r--r--r-- bin bin 1
+usr/lib/font/ftCW -r--r--r-- bin bin 1
+usr/lib/font/ftFD -r--r--r-- bin bin 1
+usr/lib/font/ftG -r--r--r-- bin bin 1
+usr/lib/font/ftGI -r--r--r-- bin bin 1
+usr/lib/font/ftGM -r--r--r-- bin bin 1
+usr/lib/font/ftGR -r--r--r-- bin bin 1
+usr/lib/font/ftH -r--r--r-- bin bin 1
+usr/lib/font/ftHI -r--r--r-- bin bin 1
+usr/lib/font/ftHM -r--r--r-- bin bin 1
+usr/lib/font/ftI -r--r--r-- bin bin 1
+usr/lib/font/ftL -r--r--r-- bin bin 1
+usr/lib/font/ftLI -r--r--r-- bin bin 1
+usr/lib/font/ftPA -r--r--r-- bin bin 1
+usr/lib/font/ftPB -r--r--r-- bin bin 1
+usr/lib/font/ftPI -r--r--r-- bin bin 1
+usr/lib/font/ftR -r--r--r-- bin bin 1
+usr/lib/font/ftS -r--r--r-- bin bin 1
+usr/lib/font/ftSB -r--r--r-- bin bin 1
+usr/lib/font/ftSI -r--r--r-- bin bin 1
+usr/lib/font/ftSM -r--r--r-- bin bin 1
+usr/lib/font/ftSb -r--r--r-- bin bin 1
+usr/lib/font/ftSi -r--r--r-- bin bin 1
+usr/lib/font/ftSr -r--r--r-- bin bin 1
+usr/lib/font/ftTB -r--r--r-- bin bin 1
+usr/lib/font/ftTI -r--r--r-- bin bin 1
+usr/lib/font/ftTR -r--r--r-- bin bin 1
+usr/lib/font/ftTS -r--r--r-- bin bin 1
+usr/lib/font/ftUD -r--r--r-- bin bin 1
+usr/lib/font/ftap -r--r--r-- bin bin 1
+usr/lib/font/ftbb -r--r--r-- bin bin 1
+usr/lib/font/ftbi -r--r--r-- bin bin 1
+usr/lib/font/ftbk -r--r--r-- bin bin 1
+usr/lib/font/ftbr -r--r--r-- bin bin 1
+usr/lib/font/ftcb -r--r--r-- bin bin 1
+usr/lib/font/ftch -r--r--r-- bin bin 1
+usr/lib/font/ftci -r--r--r-- bin bin 1
+usr/lib/font/ftcl -r--r--r-- bin bin 1
+usr/lib/font/ftco -r--r--r-- bin bin 1
+usr/lib/font/ftcr -r--r--r-- bin bin 1
+usr/lib/font/ftct -r--r--r-- bin bin 1
+usr/lib/font/ftcy -r--r--r-- bin bin 1
+usr/lib/font/ftdb -r--r--r-- bin bin 1
+usr/lib/font/ftdi -r--r--r-- bin bin 1
+usr/lib/font/ftdr -r--r--r-- bin bin 1
+usr/lib/font/ftfx -r--r--r-- bin bin 1
+usr/lib/font/ftgb -r--r--r-- bin bin 1
+usr/lib/font/ftgf -r--r--r-- bin bin 1
+usr/lib/font/ftgi -r--r--r-- bin bin 1
+usr/lib/font/ftgk -r--r--r-- bin bin 1
+usr/lib/font/ftgr -r--r--r-- bin bin 1
+usr/lib/font/fthb -r--r--r-- bin bin 1
+usr/lib/font/fthn -r--r--r-- bin bin 1
+usr/lib/font/ftm -r--r--r-- bin bin 1
+usr/lib/font/ftmb -r--r--r-- bin bin 1
+usr/lib/font/ftmi -r--r--r-- bin bin 1
+usr/lib/font/ftmn -r--r--r-- bin bin 1
+usr/lib/font/ftmr -r--r--r-- bin bin 1
+usr/lib/font/ftnb -r--r--r-- bin bin 1
+usr/lib/font/ftni -r--r--r-- bin bin 1
+usr/lib/font/ftnr -r--r--r-- bin bin 1
+usr/lib/font/ftob -r--r--r-- bin bin 1
+usr/lib/font/ftoe -r--r--r-- bin bin 1
+usr/lib/font/ftoi -r--r--r-- bin bin 1
+usr/lib/font/ftor -r--r--r-- bin bin 1
+usr/lib/font/ftpb -r--r--r-- bin bin 1
+usr/lib/font/ftpp -r--r--r-- bin bin 1
+usr/lib/font/ftsb -r--r--r-- bin bin 1
+usr/lib/font/ftsc -r--r--r-- bin bin 1
+usr/lib/font/ftsg -r--r--r-- bin bin 1
+usr/lib/font/ftsh -r--r--r-- bin bin 1
+usr/lib/font/ftsi -r--r--r-- bin bin 1
+usr/lib/font/ftsl -r--r--r-- bin bin 1
+usr/lib/font/ftsr -r--r--r-- bin bin 1
+usr/lib/font/fttB -r--r--r-- bin bin 1
+usr/lib/font/fttI -r--r--r-- bin bin 1
+usr/lib/font/fttR -r--r--r-- bin bin 1
+usr/lib/font/fttS -r--r--r-- bin bin 1
+usr/lib/font/fttb -r--r--r-- bin bin 1
+usr/lib/font/ftti -r--r--r-- bin bin 1
+usr/lib/font/fttr -r--r--r-- bin bin 1
+usr/lib/font/ftts -r--r--r-- bin bin 1
+usr/lib/font/ftwp -r--r--r-- bin bin 1
+usr/lib/font/ftxx -r--r--r-- bin bin 1
+usr/lib/grep_cmds drwxr-xr-x bin bin 2
+usr/lib/grep_cmds/egrep -r-xr-xr-x bin bin 1
+usr/lib/grep_cmds/fgrep -r-xr-xr-x bin bin 1
+usr/lib/grep_cmds/grep -r-xr-xr-x bin bin 1
+usr/lib/me drwxr-xr-x bin bin 2
+usr/lib/me/acm.me -r--r--r-- bin bin 1
+usr/lib/me/chars.me -r--r--r-- bin bin 1
+usr/lib/me/deltext.me -r--r--r-- bin bin 1
+usr/lib/me/eqn.me -r--r--r-- bin bin 1
+usr/lib/me/float.me -r--r--r-- bin bin 1
+usr/lib/me/footnote.me -r--r--r-- bin bin 1
+usr/lib/me/index.me -r--r--r-- bin bin 1
+usr/lib/me/letterhead.me -r--r--r-- bin bin 1
+usr/lib/me/local.me -r--r--r-- bin bin 1
+usr/lib/me/null.me -r--r--r-- bin bin 1
+usr/lib/me/refer.me -r--r--r-- bin bin 1
+usr/lib/me/sh.me -r--r--r-- bin bin 1
+usr/lib/me/tbl.me -r--r--r-- bin bin 1
+usr/lib/me/thesis.me -r--r--r-- bin bin 1
+usr/lib/ms drwxr-xr-x bin bin 2
+usr/lib/ms/README -r--r--r-- bin bin 1
+usr/lib/ms/end.awk -r--r--r-- bin bin 1
+usr/lib/ms/endnote -r-xr-xr-x bin bin 1
+usr/lib/ms/s.acc -r--r--r-- bin bin 1
+usr/lib/ms/s.cov -r--r--r-- bin bin 1
+usr/lib/ms/s.eqn -r--r--r-- bin bin 1
+usr/lib/ms/s.ref -r--r--r-- bin bin 1
+usr/lib/ms/s.tbl -r--r--r-- bin bin 1
+usr/lib/ms/s.ths -r--r--r-- bin bin 1
+usr/lib/ms/s.toc -r--r--r-- bin bin 1
+usr/lib/term drwxrwxr-x bin bin 2
+usr/lib/term/example -r--r--r-- bin bin 1
+usr/lib/term/tab300 -r--r--r-- bin bin 1
+usr/lib/term/tab300-12 -r--r--r-- bin bin 1
+usr/lib/term/tab300X -r--r--r-- bin bin 1
+usr/lib/term/tab300s -r--r--r-- bin bin 1
+usr/lib/term/tab300s-12 -r--r--r-- bin bin 1
+usr/lib/term/tab302 -r--r--r-- bin bin 1
+usr/lib/term/tab302-12 -r--r--r-- bin bin 1
+usr/lib/term/tab37 -r--r--r-- bin bin 1
+usr/lib/term/tab382 -r--r--r-- bin bin 1
+usr/lib/term/tab382-12 -r--r--r-- bin bin 1
+usr/lib/term/tab450 -r--r--r-- bin bin 1
+usr/lib/term/tab450-12 -r--r--r-- bin bin 1
+usr/lib/term/tab450-12-8 -r--r--r-- bin bin 1
+usr/lib/term/tab450X -r--r--r-- bin bin 1
+usr/lib/term/tab833 -r--r--r-- bin bin 1
+usr/lib/term/tab833-12 -r--r--r-- bin bin 1
+usr/lib/term/tabdtc -r--r--r-- bin bin 1
+usr/lib/term/tabdtc12 -r--r--r-- bin bin 1
+usr/lib/term/tabipsi -r--r--r-- bin bin 1
+usr/lib/term/tabipsi12 -r--r--r-- bin bin 1
+usr/lib/term/tabitoh -r--r--r-- bin bin 1
+usr/lib/term/tabitoh12 -r--r--r-- bin bin 1
+usr/lib/term/tablpr -r--r--r-- bin bin 1
+usr/lib/term/tabnec -r--r--r-- bin bin 1
+usr/lib/term/tabnec-t -r--r--r-- bin bin 1
+usr/lib/term/tabnec12 -r--r--r-- bin bin 1
+usr/lib/term/tabqume -r--r--r-- bin bin 1
+usr/lib/term/tabqume12 -r--r--r-- bin bin 1
+usr/lib/term/tabtn300 -r--r--r-- bin bin 1
+usr/lib/term/tabx-ecs -r--r--r-- bin bin 1
+usr/lib/term/tabx-ecs12 -r--r--r-- bin bin 1
+usr/lib/term/tabx1700 -r--r--r-- bin bin 1
+usr/lib/term/tabxerox -r--r--r-- bin bin 1
+usr/lib/term/tabxerox12 -r--r--r-- bin bin 1
+usr/lib/tmac drwxr-xr-x bin bin 2
+usr/lib/tmac/tmac.a -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.an -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.an.new -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.an6n -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.an6t -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.bib -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.cp -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.e -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.os -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.r -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.s -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.scover -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.sdisp -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.skeep -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.srefs -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.vcat -r--r--r-- bin bin 1
+usr/lib/tmac/tmac.vgrind -r--r--r-- bin bin 1
+usr/lib/units l--------- bin bin 1 unittab
+usr/ucb/Mail -r-xr-xr-x bin bin 2
+usr/ucb/apply l--------- bin bin 1 ../../bsd43/bin/apply
+usr/ucb/apropos l--------- bin bin 1 ../../bsd43/bin/apropos
+usr/ucb/biff l--------- bin bin 1 ../../bsd43/bin/biff
+usr/ucb/checknr l--------- bin bin 1 ../../bsd43/bin/checknr
+usr/ucb/clear l--------- bin bin 1 ../../bsd43/bin/clear
+usr/ucb/colcrt l--------- bin bin 1 ../../bsd43/bin/colcrt
+usr/ucb/colrm l--------- bin bin 1 ../../bsd43/bin/colrm
+usr/ucb/ctags l--------- bin bin 1 ../bin/ctags
+usr/ucb/dbx l--------- bin bin 1 ../bin/dbx
+usr/ucb/edit l--------- bin bin 1 ../bin/edit
+usr/ucb/error l--------- bin bin 1 ../../bsd43/bin/error
+usr/ucb/ex l--------- bin bin 1 ../bin/ex
+usr/ucb/expand l--------- bin bin 1 ../../bsd43/bin/expand
+usr/ucb/f l--------- bin bin 1 finger
+usr/ucb/fmt l--------- bin bin 1 ../../bsd43/bin/fmt
+usr/ucb/fold l--------- bin bin 1 ../bin/fold
+usr/ucb/fpr l--------- bin bin 1 ../../bsd43/bin/fpr
+usr/ucb/from l--------- bin bin 1 ../../bsd43/bin/from
+usr/ucb/fsplit l--------- bin bin 1 ../../bsd43/bin/fsplit
+usr/ucb/grep l--------- bin bin 1 ../../bsd43/bin/grep
+usr/ucb/groups l--------- bin bin 1 ../../bsd43/bin/groups
+usr/ucb/head l--------- bin bin 1 ../../bsd43/bin/head
+usr/ucb/indent l--------- bin bin 1 ../../bsd43/bin/indent
+usr/ucb/last l--------- bin bin 1 ../../bsd43/bin/last
+usr/ucb/lastcomm l--------- bin bin 1 ../../bsd43/bin/lastcomm
+usr/ucb/leave l--------- bin bin 1 ../../bsd43/bin/leave
+usr/ucb/lock l--------- root sys 1 ../../bsd43/bin/lock
+usr/ucb/lpq l--------- bin bin 1 ../../bsd43/bin/lpq
+usr/ucb/lpr l--------- bin bin 1 ../../bsd43/bin/lpr
+usr/ucb/lprm l--------- bin bin 1 ../../bsd43/bin/lprm
+usr/ucb/mail -r-xr-xr-x bin bin 2 usr/ucb/Mail
+usr/ucb/man l--------- bin bin 1 ../../bsd43/bin/man
+usr/ucb/mkstr l--------- bin bin 1 ../bin/mkstr
+usr/ucb/more l--------- bin bin 1 ../../bin/more
+usr/ucb/msgs l--------- bin bin 1 ../../bsd43/bin/msgs
+usr/ucb/netstat l--------- bin bin 1 ../etc/netstat
+usr/ucb/page l--------- bin bin 1 ../../bin/page
+usr/ucb/soelim l--------- bin bin 1 ../../bsd43/bin/soelim
+usr/ucb/sysline -r-xr-sr-x bin sys 1
+usr/ucb/systat -r-xr-sr-x bin sys 1
+usr/ucb/tail l--------- bin bin 1 ../../bsd43/bin/tail
+usr/ucb/talk l--------- bin bin 1 ../../bsd43/bin/talk
+usr/ucb/tcopy l--------- bin bin 1 ../../bsd43/bin/tcopy
+usr/ucb/unexpand l--------- bin bin 1 ../../bsd43/bin/unexpand
+usr/ucb/unifdef -r-xr-xr-x bin bin 1
+usr/ucb/users l--------- bin bin 1 ../../bsd43/bin/users
+usr/ucb/vacation l--------- bin bin 1 ../../bsd43/bin/vacation
+usr/ucb/vgrind l--------- bin bin 1 ../../bsd43/bin/vgrind
+usr/ucb/vi l--------- bin bin 1 ../bin/vi
+usr/ucb/view l--------- bin bin 1 ../bin/view
+usr/ucb/vmstat -r-xr-sr-x bin sys 1
+usr/ucb/w l--------- bin bin 1 ../../bsd43/bin/w
+usr/ucb/wc l--------- bin bin 1 ../../bin/wc
+usr/ucb/what l--------- bin bin 1 ../bin/what
+usr/ucb/whatis l--------- bin bin 1 ../../bsd43/bin/whatis
+usr/ucb/whereis l--------- bin bin 1 ../../bsd43/bin/whereis
+usr/ucb/which -r-xr-xr-x bin bin 1
+usr/ucb/whois -r-xr-xr-x bin bin 1
+usr/ucb/window l--------- bin bin 1 ../../bsd43/bin/window
+usr/ucb/xstr l--------- bin bin 1 ../bin/xstr
+usr/ucb/yes l--------- bin bin 1 ../../bsd43/bin/yes

@@ -1,0 +1,70 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: mac2defs,v 1.1.1.1 89/12/10 22:18:08 wje Exp $ */
+/* $Log:	mac2defs,v $
+# Revision 1.1.1.1  89/12/10  22:18:08  wje
+# Branch RISCOS_4_50_FIXES off of trunk.
+# 
+# Revision 1.1  89/12/10  18:41:52  jay
+# Initial revision
+# 
+# Revision 2000.7  89/03/26  14:48:08  bettina
+# 2.0G
+# 
+# Revision 1040.6  88/09/29  15:52:55  bettina
+# bootstraped 1.40
+# 
+ * Revision 1.2  87/12/09  11:41:42  gb
+ * added $Log keyword
+ *  */
+/*	VAX-11/780 Registers */
+/* ref.		date		description				*/
+/* !01          16sep85		disable double indexing		        */
+
+/* mips machine registers used for function return */
+# define NRREGS 3
+# define R2	2*32
+# define F0    32*32
+# define F2    34*32
+
+
+
+	/* special purpose */
+# define AP 12		/* argument pointer */
+# define FP 13		/* frame pointer */
+# define SP 14	/* stack pointer */
+# define PC 15	/* program counter */
+
+	/* floating registers */
+
+	/* there are no floating point registers on the VAX */
+
+extern int fregs;
+extern int maxargs;
+
+# define BYTEOFF(x) ((x)&03)
+# define wdal(k) (BYTEOFF(k)==0)
+# define BITOOR(x) ((x)>>3)  /* bit offset to oreg offset */
+
+# define REGSZ 16
+
+# define TMPREG FP
+
+/*!02 # define R2REGS		 permit double indexing */
+# define R2FLAGS 07	/* on a 16 bit host 03 is best you can do */
+
+# define STOARG(p)     /* just evaluate the arguments, and be done with it... */
+# define STOFARG(p)
+# define STOSTARG(p)
+# define genfcall(a,b) gencall(a,b)
+
+# define NESTCALLS
+
+# define MYREADER(p) myreader(p)
+int optim2();
+
+# define SCCON (SPECIAL|3)	/* -256 <= constant < 256 */
+# define SSCON (SPECIAL|4)	/* -32768 <= constant < 32768 */
+# define SSOREG (SPECIAL|5)	/* non-indexed OREG */

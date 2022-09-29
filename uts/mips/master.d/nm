@@ -1,0 +1,8 @@
+* $Header: nm,v 1.1.2.1 89/11/28 11:46:24 wje Exp $
+*
+* nm: Network management DECnet driver.
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+osc	nm	40	-	decnet
+$$$
+

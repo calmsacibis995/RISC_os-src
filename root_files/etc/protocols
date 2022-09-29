@@ -1,0 +1,17 @@
+#
+# Internet (IP) protocols
+#
+#	$Source: /usr4/co-rel4.50/root/usr/src/root_files/etc/RCS/protocols,v $
+#	$Revision: 1.2.3.1 $
+#	$Date: 89/11/28 09:37:02 $
+#
+ip	0	IP	# internet protocol, pseudo protocol number
+icmp	1	ICMP	# internet control message protocol
+ggp	3	GGP	# gateway-gateway protocol
+tcp	6	TCP	# transmission control protocol
+egp	8	EGP	# exterior gateway protocol
+pup	12	PUP	# PARC universal packet protocol
+udp	17	UDP	# user datagram protocol
+hmp	20	HMP	# host monitoring protocol
+xns-idp	22	XNS-IDP	# Xerox NS IDP
+rdp	27	RDP	# "reliable datagram" protocol

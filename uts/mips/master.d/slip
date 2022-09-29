@@ -1,0 +1,63 @@
+*
+* $Header: slip,v 1.2.2.1 89/11/28 11:50:05 wje Exp $ 
+*
+* slip:	SLIP module for stream TTY devices
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+om	slip -
+						
+
+$$$
+
+#include "sys/types.h"
+#include "sys/param.h"
+#include "sys/stream.h"
+#include "sys/stropts.h"
+#include "sys/log.h"
+#include "sys/sbd.h"
+
+#include "sys/signal.h"
+#include "sys/pcb.h"
+#include "sys/user.h"
+#if later
+#include "sys/systm.h"
+#include "bsd/sys/mbuf.h"
+#endif
+#include "bsd/sys/socket.h"
+#include "sys/errno.h"
+#include "sys/ioctl.h"
+#include "sys/file.h"
+
+#include "bsd/sys/uio.h"
+#include "bsd/net/if.h"
+#include "bsd/net/netisr.h"
+#include "bsd/net/route.h"
+#include "bsd/net/soioctl.h"
+
+#include "bsd/netinet/in.h"
+#include "bsd/netinet/in_systm.h"
+#include "bsd/netinet/in_var.h"
+#include "bsd/netinet/ip.h"
+#include "sys/slip.h"
+
+
+/* ----------- Beginning of Tuneable parameters ---------------------------- */
+
+/*
+ * The following tuneable parameters may be tuned to your configuration.
+ */
+
+#define	NSLIP	16		/* number of SLIP connections supported */
+
+
+/* ----------- End of Tuneable parameters ---------------------------------- */
+
+
+
+/*
+ * Space allocation for SLIP module data
+ */
+
+int	nslip = NSLIP;
+struct slipdata slippery[NSLIP];
+

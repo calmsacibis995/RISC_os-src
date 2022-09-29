@@ -1,0 +1,8 @@
+stand drwxr-xr-x bin bin 2
+etc drwxr-xr-x bin bin 2
+stand/format.std -r-xr-xr-x bin bin 2
+stand/sash.std -r-xr-xr-x bin bin 2
+etc/bfsd l--------- bin bin 1 ../usr/etc/bfsd
+usr/etc/bfsd -r-xr-xr-x bin bin 1
+stand/format -r-xr-xr-x bin bin 2 stand/format.std
+stand/sash -r-xr-xr-x bin bin 2 stand/sash.std

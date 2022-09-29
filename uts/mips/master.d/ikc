@@ -1,0 +1,16 @@
+*#ident "$Header: ikc,v 1.2.5.1 89/11/28 11:42:55 wje Exp $"
+*
+* IKC - IKON Color Printer controller
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+c	ikc	16	-	io
+
+$$$
+/* disk driver variable tables */
+# include "sys/sysmacros.h"
+# include "sys/sg.h"
+# include "sys/ikcreg.h"
+
+int ik_ccnt = ##C;
+struct iksoftc ik_softc[##C];
+struct iksoftc *ik_msoftc[IK_MAXCTLR];

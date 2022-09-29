@@ -1,0 +1,19 @@
+*
+* TIMOD  TLI cooperating/supporting module
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES/VARIABLES
+m	tim	-
+
+$$$
+#include "sys/param.h"
+#include "sys/types.h"
+#include "sys/stream.h"
+#include "sys/stropts.h"
+#include "sys/timodprv.h"
+
+/* variable tables for timod Streams module */
+
+struct tim_tim tim_tim[12];	/* Array of module state instances */
+int tim_cnt = 12;		/* maximum number of module instances */
+
+

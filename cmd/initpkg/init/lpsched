@@ -1,0 +1,25 @@
+#! /bin/sh
+#
+# Initialize/Shutdown System V lpsched
+#
+# $Header: lpsched,v 1.2.1.1 90/02/15 14:38:29 wje Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+case "$1" in
+'start')
+    rm -f /usr/spool/lp/SCHEDLOCK
+    /usr/lib/lpsched
+    echo "Starting lpsched"	>/dev/console
+    lpstat -t > /dev/console
+    ;;
+
+'stop')
+    /usr/lib/lpshut 
+    ;;
+
+*)
+    echo "usage: /etc/init.d/lpsched {start|stop}"
+    ;;
+esac
+exit 0

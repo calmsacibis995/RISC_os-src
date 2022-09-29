@@ -1,0 +1,44 @@
+#ident "$Header: Mkinc.pon.6000,v 1.1.8.1 90/07/18 14:28:26 huang Exp $"
+
+#
+# Copyright 1988 by MIPS Computer Systems, Inc.
+#
+# makefile for R6000-specific libpon diagnostic library
+#
+
+SFILES_MACHDEP=	\
+		../pon_cache1_6000.s \
+		../pon_cache2_6000.s \
+		../pon_cache3_6000.s \
+		../pon_cache4_6000.s \
+		../pon_subr_6000.s \
+		../pon_tlb_6000.s \
+		../pon_dummy_6000.s
+
+CFILES_MACHDEP=	\
+		../pon_ecc_6000.c \
+		../pon_timers_6000.c \
+		../pon_vm_6000.c
+
+LIBOBJS_MACHDEP= \
+		pon_cache1_6000.o \
+		pon_cache2_6000.o \
+		pon_cache3_6000.o \
+		pon_cache4_6000.o \
+		pon_ecc_6000.o \
+		pon_subr_6000.o \
+		pon_timers_6000.o \
+		pon_tlb_6000.o \
+		pon_vm_6000.o \
+		pon_dummy_6000.o
+
+LIB1OBJS_MACHDEP= \
+		pon_cache1_6000.o \
+		pon_cache2_6000.o \
+		pon_cache3_6000.o \
+		pon_cache4_6000.o \
+		pon_subr_6000.o \
+		pon_timers_6000.o \
+		pon_tlb_6000.o \
+		pon_vm_6000.o \
+		pon_dummy_6000.o

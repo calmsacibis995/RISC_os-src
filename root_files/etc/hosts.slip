@@ -1,0 +1,9 @@
+#
+# /etc/hosts.slip:   
+#
+# Each line in this file associates a name (generally a user login name) with
+# a localaddr, remoteaddr, and (sub)net mask for the SLIP configuration (see
+# slconfig(1m)).  The format of each line is as follows:
+#
+#	name mode localaddr remoteaddr netmask
+#

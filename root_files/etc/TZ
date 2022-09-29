@@ -1,0 +1,5 @@
+PST8PDT
+		# Timezone value used by login and /etc/TIMEZONE
+		# The value must start on the beginning of the first line
+		# and a newline must follow the value.
+#ident	"$Header: TZ,v 1.1.2.1 89/11/28 09:34:30 wje Exp $"

@@ -1,0 +1,6 @@
+vt100	systty
+vt100	console
+vt100	syscon
+?vt100	tty1
+?du	tty2
+?du	tty3

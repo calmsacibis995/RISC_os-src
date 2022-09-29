@@ -1,0 +1,21 @@
+*#ident "$Header: xyl712,v 1.1.5.2 89/12/26 13:03:50 wje Exp $"
+*
+* xyl712 - Xylogics 712 VME ESDI disk driver
+*
+* XXX - Bug in mboot requires devtable to use C instead of P
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+bc	xyl	6	-	io
+				has_dkxyl(){false}
+
+$$$
+/* disk driver variable tables */
+#include "sys/dvh.h"
+#include "sys/xyl712reg.h"
+struct xylctlrinfo xylctlrinfo[##C];
+int xylctlrs = ##C;
+#include "sys/dkio.h"
+#define MKDEV_XYL
+int xylmajors[##N] = ##X;
+struct devtable Dev_dkxyl[] = { ##N, ##C, XYLUPC, xylmajors};
+

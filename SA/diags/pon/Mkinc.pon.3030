@@ -1,0 +1,211 @@
+#ident "$Header: Mkinc.pon.3030,v 1.3.1.1 90/07/18 14:28:16 huang Exp $"
+
+#
+# Copyright 1990 by MIPS Computer Systems, Inc.
+#
+# makefile for libpon diagnostic library
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+include	../../../Mkinc.common_defines
+include	../../../Mkinc.release
+
+INCDIRS=	-I../../../include -I../../../include/prom
+DEFINES= 	-D$(VERSION) -DSTANDALONE -Wo,-rege,8
+PROMOPTS=	-DPROM -G 0
+
+ASFLAGS=	$(INCDIRS) -G 0 $(DEFINES) $(ASOPTS) $(ENDIAN) $(CASOPTS) -DLOCORE
+CFLAGS=		$(INCDIRS) -G 0 $(DEFINES) $(CCOPTS) $(ENDIAN) $(CCCOPTS) -DLANGUAGE_C
+
+SHELL=		/bin/sh
+
+VPATH=		..
+DPATH=		..
+
+LIB=		libpon.a
+
+SUFILES=
+
+SFILES= \
+		../pon_allexc.s \
+		../pon_banner_3030.s \
+		../pon_buzzer.s \
+		../pon_cache1.s \
+		../pon_cache2.s \
+		../pon_cache3.s \
+		../pon_cache4.s \
+		../pon_dblk_refill.s \
+		../pon_fp1.s \
+		../pon_fp2.s \
+		../pon_iblk_refill.s \
+		../pon_idprom.s \
+		../pon_kbd.s \
+		../pon_lomem.s \
+		../pon_mem_3030.s \
+		../pon_scc.s \
+		../pon_sequence.s \
+		../pon_subr.s \
+		../pon_subr_2000.s \
+		../pon_subr_3030.s \
+		../pon_tlb.s \
+		../pon_wb.s
+
+CFILES=	\
+		../pon_atdigi.c \
+		../pon_cfb.c \
+		../pon_fdc.c \
+		../pon_kbdtest.c \
+		../pon_lance.c \
+		../pon_ncr94.c \
+		../pon_nvram_3030.c \
+		../pon_parity_3030.c \
+		../pon_rambo.c \
+		../pon_scctest.c \
+		../pon_scsi.c \
+		../pon_status.c \
+		../pon_timers_3030.c \
+		../pon_vm_3030.c
+
+LIBOBJS= \
+		pon_allexc.o \
+		pon_atdigi.o \
+		pon_banner_3030.o \
+		pon_buzzer.o \
+		pon_cache1.o \
+		pon_cache2.o \
+		pon_cache3.o \
+		pon_cache4.o \
+		pon_cfb.o \
+		pon_dblk_refill.o \
+		pon_fdc.o \
+		pon_fp1.o \
+		pon_fp2.o \
+		pon_iblk_refill.o \
+		pon_idprom.o \
+		pon_kbd.o \
+		pon_kbdtest.o \
+		pon_lance.o \
+		pon_lomem.o \
+		pon_mem_3030.o \
+		pon_ncr94.o \
+		pon_nvram_3030.o \
+		pon_parity_3030.o \
+		pon_rambo.o \
+		pon_scc.o \
+		pon_scctest.o \
+		pon_sequence.o \
+		pon_status.o \
+		pon_subr.o \
+		pon_subr_2000.o \
+		pon_subr_3030.o \
+		pon_timers_3030.o \
+		pon_tlb.o \
+		pon_vm_3030.o \
+		pon_wb.o
+
+LIB1OBJS= \
+		pon_allexc.o \
+		pon_atdigi.o \
+		pon_banner_3030.o \
+		pon_buzzer.o \
+		pon_cache1.o \
+		pon_cache2.o \
+		pon_cache3.o \
+		pon_cache4.o \
+		pon_cfb.o \
+		pon_dblk_refill.o \
+		pon_fp1.o \
+		pon_fp2.o \
+		pon_iblk_refill.o \
+		pon_idprom.o \
+		pon_kbd.o \
+		pon_kbdtest.o \
+		pon_lance.o \
+		pon_lomem.o \
+		pon_mem_3030.o \
+		pon_ncr94.o \
+		pon_nvram_3030.o \
+		pon_parity_3030.o \
+		pon_rambo.o \
+		pon_scc.o \
+		pon_status.o \
+		pon_subr.o \
+		pon_subr_2000.o \
+		pon_subr_3030.o \
+		pon_timers_3030.o \
+		pon_tlb.o \
+		pon_vm_3030.o \
+		pon_wb.o
+
+all:		$(LIB)
+
+$(LIB):		pon_vers.o $(LIBOBJS)
+		-rm -f $(LIB)
+		$(AR) cr $(LIB) pon_vers.o $(LIBOBJS)
+		ranlib $(LIB)
+
+proms:		all
+
+remake:		clobber depend
+		$(MAKE) all
+
+clobber:	clean
+		-rm -f $(LIB)
+
+clean:
+		-rm -f *.o pon_vers.c makefile.bak
+
+pon_vers.c:	$(LIBOBJS) 
+		-rm -f pon_vers.c
+		echo "/* Configuration Control File */" > pon_vers.c;
+		$(IF_SYSV) \
+			echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+			    >> pon_vers.c; \
+			echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		$(IF_BSD) \
+			echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+			    >> pon_vers.c; \
+			echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		echo "\";" >> pon_vers.c
+		$(IF_SYSV) \
+		echo "char *pon_version=\"\c" >> pon_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `logname`"\c" \
+		    >>pon_vers.c; \
+		$(ENDIF)
+		$(IF_BSD) \
+			echo -n "char *pon_version=\"" >> pon_vers.c; \
+			echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+			    >>pon_vers.c; \
+		$(ENDIF)
+		echo "\";" >> pon_vers.c
+
+pon_vers.o:	pon_vers.c
+		-rm -f pon_vers.o
+		$(CC) $(CFLAGS) -c pon_vers.c
+
+depend:
+		-rm -f eddep makedep
+		$(CC) -M $(CFLAGS) $(SFILES) $(CFILES) | \
+		awk -f $(AWKDEPEND) - > makedep
+		echo '/^# DO NOT DELETE THIS LINE/+1,$$d' >eddep
+		echo '$$r makedep' >>eddep
+		echo 'w Makefile' >>eddep
+		-rm -f Makefile.bak
+		cp Makefile Makefile.bak
+		rm -f Makefile
+		ed - Makefile.bak < eddep
+		rm eddep makedep
+		-rm -f eddep makedep
+
+.c.o:
+		-rm -f $@
+		$(CC) $(CFLAGS) -c $<
+
+.s.o:
+		-rm -f $@
+		$(AS) $(ASFLAGS) -o $@ $<

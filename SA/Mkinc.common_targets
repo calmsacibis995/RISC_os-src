@@ -1,0 +1,39 @@
+#ident "$Header: Mkinc.common_targets,v 1.4 90/01/22 10:22:57 huang Exp $"
+#
+# Mkinc.defines
+#
+# This make include file contains targets used to install commands
+# in various ways in the SPP tree.
+#
+# These targets are common to all Makefiles for the Stand alone library
+#
+
+BASENAME= basename
+
+# default to make all
+default:	all
+
+# install a file, preserving owner, change permissions to executable
+package_install:
+	-rm -f $(DEST)/`$(BASENAME) $(SRC)`
+	-cp $(SRC) $(DEST)
+	-chmod 755 $(DEST)/`$(BASENAME) $(SRC)`
+
+# install a file, change name, presere owner, change permissions to executable
+package_c_install:
+	-rm -f $(DEST)
+	-cp $(SRC) $(DEST)
+	-chmod 755 $(DEST)
+
+# install a file, set owner to bin, change permissions to executable
+package_x_install:
+	-rm -f $(DEST)/`$(BASENAME) $(SRC)`
+	-cp $(SRC) $(DEST)
+	-chmod 755 $(DEST)/`$(BASENAME) $(SRC)`
+	-chown bin $(DEST)/`$(BASENAME) $(SRC)`
+
+# install a file, preserving owner, change permissions to read only
+package_r_install:
+	-rm -f $(DEST)/`$(BASENAME) $(SRC)`
+	-cp $(SRC) $(DEST)
+	-chmod 444 $(DEST)/`$(BASENAME) $(SRC)`

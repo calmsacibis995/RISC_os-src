@@ -1,0 +1,35 @@
+#!/bin/sh
+# $Header: 10.spellhist.system,v 1.1.1.1 90/05/09 14:35:00 wje Exp $
+#
+# Roll over the spellhist files
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRotating spellhist file"
+	roll3 /usr/lib/spell/spellhist
+
+}
+
+roll()
+{
+ 	if [ -f "$1" ]
+ 	then
+ 		mv "$1" "$2"
+ 	fi
+}
+
+roll3()
+{
+    roll "$1".2 "$1".3
+    roll "$1".1 "$1".2
+    roll "$1"   "$1".1
+    cp /dev/null $1
+    chmod 666 $1
+}
+
+main ${1+"$@"}
+exit 0

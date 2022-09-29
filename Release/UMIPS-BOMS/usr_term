@@ -1,0 +1,1369 @@
+usr/lib/tabset drwxrwxr-x root other 2
+usr/lib/tabset/3101 -r--r--r-- bin bin 1
+usr/lib/tabset/beehive -r--r--r-- bin bin 1
+usr/lib/tabset/std -r--r--r-- bin bin 1
+usr/lib/tabset/teleray -r--r--r-- bin bin 1
+usr/lib/tabset/vt100 -r--r--r-- bin bin 1
+usr/lib/tabset/xerox1720 -r--r--r-- bin bin 1
+usr/lib/terminfo drwxrwxr-x root other 2
+usr/lib/terminfo/1 drwxrwxr-x root other 2
+usr/lib/terminfo/1/100 -rw-rw-r-- root other 2
+usr/lib/terminfo/1/1520 -rw-rw-r-- root other 4
+usr/lib/terminfo/1/1521 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1520
+usr/lib/terminfo/1/1620 -rw-rw-r-- root other 4
+usr/lib/terminfo/1/1620-m8 -rw-rw-r-- root other 3
+usr/lib/terminfo/1/1640 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1620
+usr/lib/terminfo/1/1640-m8 -rw-rw-r-- root other 3 usr/lib/terminfo/1/1620-m8
+usr/lib/terminfo/1/1700 -rw-rw-r-- root other 4
+usr/lib/terminfo/1/1line -rw-rw-r-- root other 2
+usr/lib/terminfo/1/1linepty -rw-rw-r-- root other 2
+usr/lib/terminfo/2 drwxrwxr-x root other 2
+usr/lib/terminfo/2/2500 -rw-rw-r-- root other 3
+usr/lib/terminfo/2/2621 -rw-rw-r-- root other 8
+usr/lib/terminfo/2/2621-48 -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-a -rw-rw-r-- root other 3
+usr/lib/terminfo/2/2621-ba -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-fl -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-nl -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-nt -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-pb -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621-wl -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/2/2621A -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/2/2621P -rw-rw-r-- root other 3
+usr/lib/terminfo/2/2621a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/2/2621b -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621b-kx -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621b-kx-p -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621b-p -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621k45 -rw-rw-r-- root other 4
+usr/lib/terminfo/2/2621nl -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621nt -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621p -rw-rw-r-- root other 3 usr/lib/terminfo/2/2621P
+usr/lib/terminfo/2/2621p-a -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2621wl -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2622 -rw-rw-r-- root other 4
+usr/lib/terminfo/2/2622a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2622
+usr/lib/terminfo/2/2623 -rw-rw-r-- root other 4
+usr/lib/terminfo/2/2623a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2623
+usr/lib/terminfo/2/2624 -rw-rw-r-- root other 8
+usr/lib/terminfo/2/2624-10p -rw-rw-r-- root other 6
+usr/lib/terminfo/2/2624-4p -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/2/2624a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/2/2624a-10p -rw-rw-r-- root other 6 usr/lib/terminfo/2/2624-10p
+usr/lib/terminfo/2/2624b -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/2/2624b-10p -rw-rw-r-- root other 6 usr/lib/terminfo/2/2624-10p
+usr/lib/terminfo/2/2626 -rw-rw-r-- root other 8
+usr/lib/terminfo/2/2626-12 -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626-12-s -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626-12x40 -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626-ns -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626-s -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626-x40 -rw-rw-r-- root other 2
+usr/lib/terminfo/2/2626A -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/2/2626P -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/2/2626a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/2/2626p -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/2/2640 -rw-rw-r-- root other 3
+usr/lib/terminfo/2/2640a -rw-rw-r-- root other 3 usr/lib/terminfo/2/2640
+usr/lib/terminfo/2/2640b -rw-rw-r-- root other 4
+usr/lib/terminfo/2/2644a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2640b
+usr/lib/terminfo/2/2645 -rw-rw-r-- root other 3
+usr/lib/terminfo/2/2648 -rw-rw-r-- root other 5
+usr/lib/terminfo/2/2648A -rw-rw-r-- root other 5 usr/lib/terminfo/2/2648
+usr/lib/terminfo/2/2648a -rw-rw-r-- root other 5 usr/lib/terminfo/2/2648
+usr/lib/terminfo/3 drwxrwxr-x root other 2
+usr/lib/terminfo/3/300 -rw-rw-r-- root other 4
+usr/lib/terminfo/3/300s -rw-rw-r-- root other 4 usr/lib/terminfo/3/300
+usr/lib/terminfo/3/3045 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/31 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/3101 -rw-rw-r-- root other 4
+usr/lib/terminfo/3/33 -rw-rw-r-- root other 3
+usr/lib/terminfo/3/333 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/35 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/36 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/37 -rw-rw-r-- root other 2
+usr/lib/terminfo/3/380 -rw-rw-r-- root other 3
+usr/lib/terminfo/3/382 -rw-rw-r-- root other 3
+usr/lib/terminfo/3/3a -rw-rw-r-- root other 2
+usr/lib/terminfo/3/3a+ -rw-rw-r-- root other 3
+usr/lib/terminfo/4 drwxrwxr-x root other 2
+usr/lib/terminfo/4/40 -rw-rw-r-- root other 5
+usr/lib/terminfo/4/400 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4012 -rw-rw-r-- root other 3
+usr/lib/terminfo/4/4013 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4014 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4014-sm -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4015 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4015-sm -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4023 -rw-rw-r-- root other 3
+usr/lib/terminfo/4/4024 -rw-rw-r-- root other 8
+usr/lib/terminfo/4/4025 -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/4/4025-17 -rw-rw-r-- root other 3
+usr/lib/terminfo/4/4025-17-ws -rw-rw-r-- root other 4
+usr/lib/terminfo/4/4025-17ws -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-17-ws
+usr/lib/terminfo/4/4025-ex -rw-rw-r-- root other 4
+usr/lib/terminfo/4/4025cu -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/4/4025ex -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-ex
+usr/lib/terminfo/4/4027 -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/4/4027-17 -rw-rw-r-- root other 3 usr/lib/terminfo/4/4025-17
+usr/lib/terminfo/4/4027-17-ws -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-17-ws
+usr/lib/terminfo/4/4027-ex -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-ex
+usr/lib/terminfo/4/4027cu -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/4/4080 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4105 -rw-rw-r-- root other 4
+usr/lib/terminfo/4/4105-30 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4107 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4105
+usr/lib/terminfo/4/4109 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4105
+usr/lib/terminfo/4/4112 -rw-rw-r-- root other 5
+usr/lib/terminfo/4/4112-5 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4112-d -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4112-nd -rw-rw-r-- root other 5 usr/lib/terminfo/4/4112
+usr/lib/terminfo/4/4113 -rw-rw-r-- root other 5 usr/lib/terminfo/4/4112
+usr/lib/terminfo/4/4114 -rw-rw-r-- root other 5 usr/lib/terminfo/4/4112
+usr/lib/terminfo/4/4115 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/42 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/42-nl -rw-rw-r-- root other 2
+usr/lib/terminfo/4/43 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4410 -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4410-nfk -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4410-nsl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4410-w -rw-rw-r-- root other 6
+usr/lib/terminfo/4/4410v1 -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4410v1-w -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415 -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415+nl -rw-rw-r-- root other 6
+usr/lib/terminfo/4/4415-nl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-rv -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-rv-nl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-w -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-w-nl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-w-rv -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4415-w-rv-nl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4418 -rw-rw-r-- root other 6
+usr/lib/terminfo/4/4418-w -rw-rw-r-- root other 6
+usr/lib/terminfo/4/4420 -rw-rw-r-- root other 2
+usr/lib/terminfo/4/4424 -rw-rw-r-- root other 6
+usr/lib/terminfo/4/4424-1 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4424
+usr/lib/terminfo/4/4424-2 -rw-rw-r-- root other 4
+usr/lib/terminfo/4/4424-3 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4424
+usr/lib/terminfo/4/4425 -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4425-fk -rw-rw-r-- root other 4
+usr/lib/terminfo/4/4425-nl -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4425-nl-w -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4425-w -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4425-w-fk -rw-rw-r-- root other 7
+usr/lib/terminfo/4/4426 -rw-rw-r-- root other 4
+usr/lib/terminfo/4/450 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1620
+usr/lib/terminfo/5 drwxrwxr-x root other 2
+usr/lib/terminfo/5/500 -rw-rw-r-- root other 5
+usr/lib/terminfo/5/5051 -rw-rw-r-- root other 4
+usr/lib/terminfo/5/510 -rw-rw-r-- root other 10
+usr/lib/terminfo/5/510a -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/5/513bct -rw-rw-r-- root other 3
+usr/lib/terminfo/5/5320 -rw-rw-r-- root other 3
+usr/lib/terminfo/5/5410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/5/5410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/5/5410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/5/5410-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4410-w
+usr/lib/terminfo/5/5410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/5/5410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/5/5418 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418
+usr/lib/terminfo/5/5418-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418-w
+usr/lib/terminfo/5/5420 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/5/5420+nl -rw-rw-r-- root other 6 usr/lib/terminfo/4/4415+nl
+usr/lib/terminfo/5/5420-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/5/5420-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/5/5420-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/5/5420-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/5/5420-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/5/5420-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/5/5420-w-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/5/5420_2 -rw-rw-r-- root other 3
+usr/lib/terminfo/5/5420_2-w -rw-rw-r-- root other 3
+usr/lib/terminfo/5/5425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/5/5425-fk -rw-rw-r-- root other 4 usr/lib/terminfo/4/4425-fk
+usr/lib/terminfo/5/5425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/5/5425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/5/5425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/5/5425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/5/5520 -rw-rw-r-- root other 3
+usr/lib/terminfo/5/5620 -rw-rw-r-- root other 6
+usr/lib/terminfo/5/5620-24 -rw-rw-r-- root other 4
+usr/lib/terminfo/5/5620-34 -rw-rw-r-- root other 4
+usr/lib/terminfo/6 drwxrwxr-x root other 2
+usr/lib/terminfo/6/610 -rw-rw-r-- root other 4
+usr/lib/terminfo/6/610-w -rw-rw-r-- root other 4
+usr/lib/terminfo/6/610bct -rw-rw-r-- root other 4 usr/lib/terminfo/6/610
+usr/lib/terminfo/6/610bct-w -rw-rw-r-- root other 4 usr/lib/terminfo/6/610-w
+usr/lib/terminfo/7 drwxrwxr-x root other 2
+usr/lib/terminfo/7/7300 -rw-rw-r-- root other 5
+usr/lib/terminfo/7/735 -rw-rw-r-- root other 4
+usr/lib/terminfo/7/743 -rw-rw-r-- root other 4
+usr/lib/terminfo/7/745 -rw-rw-r-- root other 4 usr/lib/terminfo/7/743
+usr/lib/terminfo/7/7900 -rw-rw-r-- root other 4
+usr/lib/terminfo/7/7900-na -rw-rw-r-- root other 4
+usr/lib/terminfo/7/7900i -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900
+usr/lib/terminfo/7/7900i-na -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900-na
+usr/lib/terminfo/7/7900iv -rw-rw-r-- root other 2
+usr/lib/terminfo/7/7901 -rw-rw-r-- root other 2
+usr/lib/terminfo/8 drwxrwxr-x root other 2
+usr/lib/terminfo/8/8001 -rw-rw-r-- root other 3
+usr/lib/terminfo/8/8510 -rw-rw-r-- root other 3
+usr/lib/terminfo/9 drwxrwxr-x root other 2
+usr/lib/terminfo/9/912 -rw-rw-r-- root other 4
+usr/lib/terminfo/9/912-2p -rw-rw-r-- root other 5
+usr/lib/terminfo/9/9122p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/912b -rw-rw-r-- root other 5
+usr/lib/terminfo/9/912c -rw-rw-r-- root other 5 usr/lib/terminfo/9/912b
+usr/lib/terminfo/9/912cc -rw-rw-r-- root other 2
+usr/lib/terminfo/9/920 -rw-rw-r-- root other 4 usr/lib/terminfo/9/912
+usr/lib/terminfo/9/920-2p -rw-rw-r-- root other 5 usr/lib/terminfo/9/912-2p
+usr/lib/terminfo/9/9202p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/920b -rw-rw-r-- root other 4
+usr/lib/terminfo/9/920c -rw-rw-r-- root other 4 usr/lib/terminfo/9/920b
+usr/lib/terminfo/9/925 -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950 -rw-rw-r-- root other 3
+usr/lib/terminfo/9/950-2p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950-4p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950-rv-2p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950-rv-4p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/9502p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/9504p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950rv -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950rv2p -rw-rw-r-- root other 2
+usr/lib/terminfo/9/950rv4p -rw-rw-r-- root other 2
+usr/lib/terminfo/A drwxrwxr-x root other 2
+usr/lib/terminfo/A/ATT4410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/A/ATT4410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/A/ATT4410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/A/ATT4410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/A/ATT4410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/A/ATT4415 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/A/ATT4415+nl -rw-rw-r-- root other 6 usr/lib/terminfo/4/4415+nl
+usr/lib/terminfo/A/ATT4415-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/A/ATT4415-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/A/ATT4415-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/A/ATT4415-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/A/ATT4415-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/A/ATT4415-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/A/ATT4415-w-rv-n -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/A/ATT4418 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418
+usr/lib/terminfo/A/ATT4418-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418-w
+usr/lib/terminfo/A/ATT4424 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4424
+usr/lib/terminfo/A/ATT4424-2 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4424-2
+usr/lib/terminfo/A/ATT4425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/A/ATT4425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/A/ATT4425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/A/ATT4425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/A/ATT4425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/A/ATT4426 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4426
+usr/lib/terminfo/A/ATT500 -rw-rw-r-- root other 5 usr/lib/terminfo/5/500
+usr/lib/terminfo/A/ATT505-24 -rw-rw-r-- root other 3
+usr/lib/terminfo/A/ATT513 -rw-rw-r-- root other 3 usr/lib/terminfo/5/513bct
+usr/lib/terminfo/A/ATT5320 -rw-rw-r-- root other 3 usr/lib/terminfo/5/5320
+usr/lib/terminfo/A/ATT5410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/A/ATT5410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/A/ATT5410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/A/ATT5410-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4410-w
+usr/lib/terminfo/A/ATT5410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/A/ATT5410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/A/ATT5418 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418
+usr/lib/terminfo/A/ATT5418-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418-w
+usr/lib/terminfo/A/ATT5420 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/A/ATT5420+nl -rw-rw-r-- root other 6 usr/lib/terminfo/4/4415+nl
+usr/lib/terminfo/A/ATT5420-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/A/ATT5420-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/A/ATT5420-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/A/ATT5420-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/A/ATT5420-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/A/ATT5420-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/A/ATT5420-w-rv-n -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/A/ATT5420_2 -rw-rw-r-- root other 3 usr/lib/terminfo/5/5420_2
+usr/lib/terminfo/A/ATT5420_2-w -rw-rw-r-- root other 3 usr/lib/terminfo/5/5420_2-w
+usr/lib/terminfo/A/ATT5425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/A/ATT5425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/A/ATT5425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/A/ATT5425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/A/ATT5425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/A/ATT5620 -rw-rw-r-- root other 6 usr/lib/terminfo/5/5620
+usr/lib/terminfo/A/ATT5620-24 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-24
+usr/lib/terminfo/A/ATT5620-34 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-34
+usr/lib/terminfo/A/ATT610BCT -rw-rw-r-- root other 4 usr/lib/terminfo/6/610
+usr/lib/terminfo/A/ATT610BCT-w -rw-rw-r-- root other 4 usr/lib/terminfo/6/610-w
+usr/lib/terminfo/A/ATTPT505 -rw-rw-r-- root other 3
+usr/lib/terminfo/A/ATTPT510 -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/A/ATTPT510A -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/B drwxrwxr-x root other 2
+usr/lib/terminfo/B/BCT500 -rw-rw-r-- root other 5 usr/lib/terminfo/5/500
+usr/lib/terminfo/M drwxrwxr-x root other 2
+usr/lib/terminfo/M/MZ -rw-rw-r-- root other 6
+usr/lib/terminfo/P drwxrwxr-x root other 2
+usr/lib/terminfo/P/PC7300 -rw-rw-r-- root other 5 usr/lib/terminfo/7/7300
+usr/lib/terminfo/a drwxrwxr-x root other 2
+usr/lib/terminfo/a/a980 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa -rw-rw-r-- root other 4
+usr/lib/terminfo/a/aaa+dec -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa+rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa+unk -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-18 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-18-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-20 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-22 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-24 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-24-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-26 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-28 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-29 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-29-ctxt -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-29-np -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-29-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-29-rv-ctxt -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-30 -rw-rw-r-- root other 4 usr/lib/terminfo/a/aaa
+usr/lib/terminfo/a/aaa-30-ctxt -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-rv-ctxt -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-s -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-s-ctxt -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-s-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-30-s-rv-ct -rw-rw-r-- root other 3
+usr/lib/terminfo/a/aaa-30-srvctxt -rw-rw-r-- root other 3 usr/lib/terminfo/a/aaa-30-s-rv-ct
+usr/lib/terminfo/a/aaa-36 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-36-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-40 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-40-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-48 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-48-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-59 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-60 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-60-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-60-s -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-60-s-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-60-s-rv-de -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aaa-60-s-rvdec -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-60-s-rv-de
+usr/lib/terminfo/a/aaa-ctxt -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-ctxt
+usr/lib/terminfo/a/aaa-db -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa-rv -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-rv
+usr/lib/terminfo/a/aaa-rv-ctxt -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-rv-ctxt
+usr/lib/terminfo/a/aaa-s -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-s
+usr/lib/terminfo/a/aaa-s-ctxt -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-s-ctxt
+usr/lib/terminfo/a/aaa-s-rv -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa-30-s-rv
+usr/lib/terminfo/a/aaa-s-rv-ctxt -rw-rw-r-- root other 3 usr/lib/terminfo/a/aaa-30-s-rv-ct
+usr/lib/terminfo/a/aaa-unk -rw-rw-r-- root other 2 usr/lib/terminfo/a/aaa+unk
+usr/lib/terminfo/a/aaa18 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa20 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa22 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa24 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa26 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa28 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa29 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa30 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa36 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa40 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa48 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa59 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaa60 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aaadb -rw-rw-r-- root other 1
+usr/lib/terminfo/a/act4 -rw-rw-r-- root other 2
+usr/lib/terminfo/a/act5 -rw-rw-r-- root other 2
+usr/lib/terminfo/a/act5-s -rw-rw-r-- root other 2
+usr/lib/terminfo/a/act5s -rw-rw-r-- root other 2 usr/lib/terminfo/a/act5-s
+usr/lib/terminfo/a/addrinfo -rw-rw-r-- root other 1
+usr/lib/terminfo/a/adm1 -rw-rw-r-- root other 2
+usr/lib/terminfo/a/adm1a -rw-rw-r-- root other 2 usr/lib/terminfo/a/adm1
+usr/lib/terminfo/a/adm2 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/adm21 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/adm3 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/adm31 -rw-rw-r-- root other 2 usr/lib/terminfo/3/31
+usr/lib/terminfo/a/adm36 -rw-rw-r-- root other 2 usr/lib/terminfo/3/36
+usr/lib/terminfo/a/adm3a -rw-rw-r-- root other 2 usr/lib/terminfo/3/3a
+usr/lib/terminfo/a/adm3a+ -rw-rw-r-- root other 3 usr/lib/terminfo/3/3a+
+usr/lib/terminfo/a/adm3aplus -rw-rw-r-- root other 3 usr/lib/terminfo/3/3a+
+usr/lib/terminfo/a/adm42 -rw-rw-r-- root other 2 usr/lib/terminfo/4/42
+usr/lib/terminfo/a/adm42-nl -rw-rw-r-- root other 2 usr/lib/terminfo/4/42-nl
+usr/lib/terminfo/a/adm5 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/aed -rw-rw-r-- root other 2
+usr/lib/terminfo/a/aed512 -rw-rw-r-- root other 2 usr/lib/terminfo/a/aed
+usr/lib/terminfo/a/agile -rw-rw-r-- root other 2
+usr/lib/terminfo/a/agiles -rw-rw-r-- root other 2 usr/lib/terminfo/a/agile
+usr/lib/terminfo/a/aj -rw-rw-r-- root other 3
+usr/lib/terminfo/a/aj830 -rw-rw-r-- root other 3 usr/lib/terminfo/a/aj
+usr/lib/terminfo/a/aj832 -rw-rw-r-- root other 3 usr/lib/terminfo/a/aj
+usr/lib/terminfo/a/alto-h19 -rw-rw-r-- root other 4
+usr/lib/terminfo/a/alto-heath -rw-rw-r-- root other 4 usr/lib/terminfo/a/alto-h19
+usr/lib/terminfo/a/altoh19 -rw-rw-r-- root other 4 usr/lib/terminfo/a/alto-h19
+usr/lib/terminfo/a/altoheath -rw-rw-r-- root other 4 usr/lib/terminfo/a/alto-h19
+usr/lib/terminfo/a/ambas -rw-rw-r-- root other 4 usr/lib/terminfo/a/aaa
+usr/lib/terminfo/a/ambassador -rw-rw-r-- root other 4 usr/lib/terminfo/a/aaa
+usr/lib/terminfo/a/ampex -rw-rw-r-- root other 4
+usr/lib/terminfo/a/ampex175 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ampex175-b -rw-rw-r-- root other 1
+usr/lib/terminfo/a/annarbor -rw-rw-r-- root other 2 usr/lib/terminfo/4/4080
+usr/lib/terminfo/a/ansi -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+arrows -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+cup -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+erase -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+idc -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+idl -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+idl1 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+inittabs -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+local -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+local1 -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+pp -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+rca -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+rep -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+sgr -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+sgrbold -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+sgrdim -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+sgrso -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+sgrul -rw-rw-r-- root other 1
+usr/lib/terminfo/a/ansi+tabs -rw-rw-r-- root other 1
+usr/lib/terminfo/a/apple -rw-rw-r-- root other 2
+usr/lib/terminfo/a/apple-soroc -rw-rw-r-- root other 1
+usr/lib/terminfo/a/apple-v80 -rw-rw-r-- root other 2 usr/lib/terminfo/a/apple
+usr/lib/terminfo/a/arpanet -rw-rw-r-- root other 3
+usr/lib/terminfo/a/att4410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/a/att4410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/a/att4410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/a/att4410-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4410-w
+usr/lib/terminfo/a/att4410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/a/att4410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/a/att4415 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/a/att4415+nl -rw-rw-r-- root other 6 usr/lib/terminfo/4/4415+nl
+usr/lib/terminfo/a/att4415-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/a/att4415-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/a/att4415-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/a/att4415-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/a/att4415-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/a/att4415-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/a/att4415-w-rv-n -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/a/att4418 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418
+usr/lib/terminfo/a/att4418-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418-w
+usr/lib/terminfo/a/att4424 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4424
+usr/lib/terminfo/a/att4424-2 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4424-2
+usr/lib/terminfo/a/att4425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/a/att4425-fk -rw-rw-r-- root other 4 usr/lib/terminfo/4/4425-fk
+usr/lib/terminfo/a/att4425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/a/att4425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/a/att4425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/a/att4425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/a/att4426 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4426
+usr/lib/terminfo/a/att500 -rw-rw-r-- root other 5 usr/lib/terminfo/5/500
+usr/lib/terminfo/a/att505-24 -rw-rw-r-- root other 3 usr/lib/terminfo/A/ATT505-24
+usr/lib/terminfo/a/att510 -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/a/att510a -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/a/att513 -rw-rw-r-- root other 3 usr/lib/terminfo/5/513bct
+usr/lib/terminfo/a/att5320 -rw-rw-r-- root other 3 usr/lib/terminfo/5/5320
+usr/lib/terminfo/a/att5410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/a/att5410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/a/att5410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/a/att5410-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4410-w
+usr/lib/terminfo/a/att5410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/a/att5410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/a/att5418 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418
+usr/lib/terminfo/a/att5418-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4418-w
+usr/lib/terminfo/a/att5420 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/a/att5420+nl -rw-rw-r-- root other 6 usr/lib/terminfo/4/4415+nl
+usr/lib/terminfo/a/att5420-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/a/att5420-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/a/att5420-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/a/att5420-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/a/att5420-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/a/att5420-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/a/att5420-w-rv-n -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/a/att5420_2 -rw-rw-r-- root other 3 usr/lib/terminfo/5/5420_2
+usr/lib/terminfo/a/att5420_2-w -rw-rw-r-- root other 3 usr/lib/terminfo/5/5420_2-w
+usr/lib/terminfo/a/att5425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/a/att5425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/a/att5425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/a/att5425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/a/att5425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/a/att5620 -rw-rw-r-- root other 6 usr/lib/terminfo/5/5620
+usr/lib/terminfo/a/att5620-24 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-24
+usr/lib/terminfo/a/att5620-34 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-34
+usr/lib/terminfo/a/att610bct -rw-rw-r-- root other 4 usr/lib/terminfo/6/610
+usr/lib/terminfo/a/att610bct-w -rw-rw-r-- root other 4 usr/lib/terminfo/6/610-w
+usr/lib/terminfo/a/attgeneric -rw-rw-r-- root other 1
+usr/lib/terminfo/a/attpt505 -rw-rw-r-- root other 3 usr/lib/terminfo/A/ATTPT505
+usr/lib/terminfo/a/attpt510 -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/a/attpt510a -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/a/avt -rw-rw-r-- root other 5
+usr/lib/terminfo/a/avt+s -rw-rw-r-- root other 1
+usr/lib/terminfo/a/avt-ns -rw-rw-r-- root other 1
+usr/lib/terminfo/a/avt-rv -rw-rw-r-- root other 3
+usr/lib/terminfo/a/avt-rv-ns -rw-rw-r-- root other 1
+usr/lib/terminfo/a/avt-rv-s -rw-rw-r-- root other 3 usr/lib/terminfo/a/avt-rv
+usr/lib/terminfo/a/avt-rv-w -rw-rw-r-- root other 4
+usr/lib/terminfo/a/avt-s -rw-rw-r-- root other 5 usr/lib/terminfo/a/avt
+usr/lib/terminfo/a/avt-s-rv -rw-rw-r-- root other 3 usr/lib/terminfo/a/avt-rv
+usr/lib/terminfo/a/avt-w -rw-rw-r-- root other 2
+usr/lib/terminfo/a/avt-w-ns -rw-rw-r-- root other 1
+usr/lib/terminfo/a/avt-w-rv -rw-rw-r-- root other 4 usr/lib/terminfo/a/avt-rv-w
+usr/lib/terminfo/a/avt-w-rv-ns -rw-rw-r-- root other 1
+usr/lib/terminfo/a/avt-w-rv-s -rw-rw-r-- root other 4 usr/lib/terminfo/a/avt-rv-w
+usr/lib/terminfo/a/avt-w-s -rw-rw-r-- root other 2 usr/lib/terminfo/a/avt-w
+usr/lib/terminfo/a/avt-w-s-rv -rw-rw-r-- root other 4 usr/lib/terminfo/a/avt-rv-w
+usr/lib/terminfo/b drwxrwxr-x root other 2
+usr/lib/terminfo/b/bc -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bct500 -rw-rw-r-- root other 5 usr/lib/terminfo/5/500
+usr/lib/terminfo/b/beacon -rw-rw-r-- root other 1
+usr/lib/terminfo/b/beacon-s -rw-rw-r-- root other 1
+usr/lib/terminfo/b/beehive4 -rw-rw-r-- root other 2
+usr/lib/terminfo/b/beehiveIIIm -rw-rw-r-- root other 2
+usr/lib/terminfo/b/bg1.25 -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg1.25nv -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg1.25rv -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg2.0 -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg2.0nv -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg2.0rv -rw-rw-r-- root other 1
+usr/lib/terminfo/b/bg3.10 -rw-rw-r-- root other 2
+usr/lib/terminfo/b/bg3.10nv -rw-rw-r-- root other 2
+usr/lib/terminfo/b/bg3.10rv -rw-rw-r-- root other 2
+usr/lib/terminfo/b/bgn -rw-rw-r-- root other 2 usr/lib/terminfo/b/bg3.10
+usr/lib/terminfo/b/bgnv -rw-rw-r-- root other 2 usr/lib/terminfo/b/bg3.10nv
+usr/lib/terminfo/b/bgrv -rw-rw-r-- root other 2 usr/lib/terminfo/b/bg3.10rv
+usr/lib/terminfo/b/bh3m -rw-rw-r-- root other 2 usr/lib/terminfo/b/beehiveIIIm
+usr/lib/terminfo/b/bh4 -rw-rw-r-- root other 2 usr/lib/terminfo/b/beehive4
+usr/lib/terminfo/b/bitgraph -rw-rw-r-- root other 1
+usr/lib/terminfo/b/blit -rw-rw-r-- root other 2
+usr/lib/terminfo/b/blitlayer -rw-rw-r-- root other 2
+usr/lib/terminfo/b/bussiplexer -rw-rw-r-- root other 1
+usr/lib/terminfo/c drwxrwxr-x root other 2
+usr/lib/terminfo/c/c100 -rw-rw-r-- root other 5
+usr/lib/terminfo/c/c100-1p -rw-rw-r-- root other 3
+usr/lib/terminfo/c/c100-4p -rw-rw-r-- root other 5 usr/lib/terminfo/c/c100
+usr/lib/terminfo/c/c100-rv -rw-rw-r-- root other 4
+usr/lib/terminfo/c/c100-rv-4p -rw-rw-r-- root other 4 usr/lib/terminfo/c/c100-rv
+usr/lib/terminfo/c/c100-rv-4p-na -rw-rw-r-- root other 2
+usr/lib/terminfo/c/c100-rv-4p-pp -rw-rw-r-- root other 4 usr/lib/terminfo/c/c100-rv
+usr/lib/terminfo/c/c100-rv-na -rw-rw-r-- root other 2 usr/lib/terminfo/c/c100-rv-4p-na
+usr/lib/terminfo/c/c100-rv-pp -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c1004p -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rv -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rv4p -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rv4pna -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rv4ppp -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rvna -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rvpp -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100rvs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c100s -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c104 -rw-rw-r-- root other 5 usr/lib/terminfo/c/c100
+usr/lib/terminfo/c/c108 -rw-rw-r-- root other 4
+usr/lib/terminfo/c/c108+acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-4 -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-4p -rw-rw-r-- root other 2
+usr/lib/terminfo/c/c108-4p-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-8 -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-8p -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108
+usr/lib/terminfo/c/c108-8p-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-8p-na -rw-rw-r-- root other 5
+usr/lib/terminfo/c/c108-8p-rv-na -rw-rw-r-- root other 3
+usr/lib/terminfo/c/c108-na -rw-rw-r-- root other 5 usr/lib/terminfo/c/c108-8p-na
+usr/lib/terminfo/c/c108-na-8p -rw-rw-r-- root other 5 usr/lib/terminfo/c/c108-8p-na
+usr/lib/terminfo/c/c108-na-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/c/c108-rv-4p -rw-rw-r-- root other 3
+usr/lib/terminfo/c/c108-rv-4p-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-rv-8p -rw-rw-r-- root other 2 usr/lib/terminfo/c/c108-rv
+usr/lib/terminfo/c/c108-rv-8p-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-rv-na -rw-rw-r-- root other 3 usr/lib/terminfo/c/c108-8p-rv-na
+usr/lib/terminfo/c/c108-rv-na-8p -rw-rw-r-- root other 3 usr/lib/terminfo/c/c108-8p-rv-na
+usr/lib/terminfo/c/c108-rv-na-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c108-w -rw-rw-r-- root other 4
+usr/lib/terminfo/c/c108-w-8p -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108-w
+usr/lib/terminfo/c/c108-w-acs -rw-rw-r-- root other 1
+usr/lib/terminfo/c/c5 -rw-rw-r-- root other 5 usr/lib/terminfo/a/avt
+usr/lib/terminfo/c/ca22851 -rw-rw-r-- root other 1
+usr/lib/terminfo/c/carlock -rw-rw-r-- root other 2
+usr/lib/terminfo/c/cb-unix -rw-rw-r-- root other 3
+usr/lib/terminfo/c/cbblit -rw-rw-r-- root other 2
+usr/lib/terminfo/c/cbunix -rw-rw-r-- root other 3 usr/lib/terminfo/c/cb-unix
+usr/lib/terminfo/c/cdc -rw-rw-r-- root other 2
+usr/lib/terminfo/c/cdc456 -rw-rw-r-- root other 2 usr/lib/terminfo/c/cdc
+usr/lib/terminfo/c/cdc456tst -rw-rw-r-- root other 1
+usr/lib/terminfo/c/cdi -rw-rw-r-- root other 2
+usr/lib/terminfo/c/cdi1203 -rw-rw-r-- root other 2 usr/lib/terminfo/c/cdi
+usr/lib/terminfo/c/cg7900 -rw-rw-r-- root other 2
+usr/lib/terminfo/c/chromatics -rw-rw-r-- root other 2 usr/lib/terminfo/c/cg7900
+usr/lib/terminfo/c/ci8510 -rw-rw-r-- root other 3 usr/lib/terminfo/8/8510
+usr/lib/terminfo/c/citoh -rw-rw-r-- root other 3 usr/lib/terminfo/8/8510
+usr/lib/terminfo/c/citoh-6lpi -rw-rw-r-- root other 1
+usr/lib/terminfo/c/citoh-8lpi -rw-rw-r-- root other 1
+usr/lib/terminfo/c/citoh-comp -rw-rw-r-- root other 1
+usr/lib/terminfo/c/citoh-elite -rw-rw-r-- root other 1
+usr/lib/terminfo/c/citoh-pica -rw-rw-r-- root other 1
+usr/lib/terminfo/c/citoh-prop -rw-rw-r-- root other 3
+usr/lib/terminfo/c/citoh-ps -rw-rw-r-- root other 3 usr/lib/terminfo/c/citoh-prop
+usr/lib/terminfo/c/coherent -rw-rw-r-- root other 3
+usr/lib/terminfo/c/colorscan -rw-rw-r-- root other 2
+usr/lib/terminfo/c/compucolor2 -rw-rw-r-- root other 1
+usr/lib/terminfo/c/concept -rw-rw-r-- root other 5 usr/lib/terminfo/c/c100
+usr/lib/terminfo/c/concept-avt -rw-rw-r-- root other 5 usr/lib/terminfo/a/avt
+usr/lib/terminfo/c/concept100 -rw-rw-r-- root other 5 usr/lib/terminfo/c/c100
+usr/lib/terminfo/c/concept100-rv -rw-rw-r-- root other 4 usr/lib/terminfo/c/c100-rv
+usr/lib/terminfo/c/concept108 -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108
+usr/lib/terminfo/c/concept108-4p -rw-rw-r-- root other 2 usr/lib/terminfo/c/c108-4p
+usr/lib/terminfo/c/concept108-8p -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108
+usr/lib/terminfo/c/concept108-na- -rw-rw-r-- root other 5 usr/lib/terminfo/c/c108-8p-na
+usr/lib/terminfo/c/concept108-rv- -rw-rw-r-- root other 3 usr/lib/terminfo/c/c108-rv-4p
+usr/lib/terminfo/c/concept108-w-8 -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108-w
+usr/lib/terminfo/c/concept108-w8p -rw-rw-r-- root other 4 usr/lib/terminfo/c/c108-w
+usr/lib/terminfo/c/concept108na8p -rw-rw-r-- root other 5 usr/lib/terminfo/c/c108-8p-na
+usr/lib/terminfo/c/concept108rv4p -rw-rw-r-- root other 3 usr/lib/terminfo/c/c108-rv-4p
+usr/lib/terminfo/c/conceptavt -rw-rw-r-- root other 5 usr/lib/terminfo/a/avt
+usr/lib/terminfo/c/cops -rw-rw-r-- root other 3
+usr/lib/terminfo/c/cops-10 -rw-rw-r-- root other 3 usr/lib/terminfo/c/cops
+usr/lib/terminfo/c/cops10 -rw-rw-r-- root other 3 usr/lib/terminfo/c/cops
+usr/lib/terminfo/c/cs10 -rw-rw-r-- root other 2 usr/lib/terminfo/c/colorscan
+usr/lib/terminfo/c/cs10-w -rw-rw-r-- root other 1
+usr/lib/terminfo/c/ct82 -rw-rw-r-- root other 2
+usr/lib/terminfo/c/ct8500 -rw-rw-r-- root other 1
+usr/lib/terminfo/d drwxrwxr-x root other 2
+usr/lib/terminfo/d/d100 -rw-rw-r-- root other 2
+usr/lib/terminfo/d/d132 -rw-rw-r-- root other 2
+usr/lib/terminfo/d/d200 -rw-rw-r-- root other 2 usr/lib/terminfo/d/d100
+usr/lib/terminfo/d/d80 -rw-rw-r-- root other 4 usr/lib/terminfo/a/ampex
+usr/lib/terminfo/d/d800 -rw-rw-r-- root other 3
+usr/lib/terminfo/d/datagraphix -rw-rw-r-- root other 2 usr/lib/terminfo/d/d132
+usr/lib/terminfo/d/datakit -rw-rw-r-- root other 1
+usr/lib/terminfo/d/datamedia2500 -rw-rw-r-- root other 3 usr/lib/terminfo/2/2500
+usr/lib/terminfo/d/datapoint -rw-rw-r-- root other 3
+usr/lib/terminfo/d/dataspeed40 -rw-rw-r-- root other 5 usr/lib/terminfo/4/40
+usr/lib/terminfo/d/dd5000 -rw-rw-r-- root other 2
+usr/lib/terminfo/d/de -rw-rw-r-- root other 3
+usr/lib/terminfo/d/de-nroff -rw-rw-r-- root other 3 usr/lib/terminfo/d/de
+usr/lib/terminfo/d/decwriter -rw-rw-r-- root other 3
+usr/lib/terminfo/d/delta -rw-rw-r-- root other 2 usr/lib/terminfo/d/dd5000
+usr/lib/terminfo/d/deroff -rw-rw-r-- root other 3 usr/lib/terminfo/d/de
+usr/lib/terminfo/d/dg -rw-rw-r-- root other 2
+usr/lib/terminfo/d/dg6053 -rw-rw-r-- root other 2 usr/lib/terminfo/d/dg
+usr/lib/terminfo/d/diablo -rw-rw-r-- root other 4 usr/lib/terminfo/1/1620
+usr/lib/terminfo/d/diablo-m8 -rw-rw-r-- root other 3 usr/lib/terminfo/1/1620-m8
+usr/lib/terminfo/d/dialogue -rw-rw-r-- root other 4 usr/lib/terminfo/a/ampex
+usr/lib/terminfo/d/dialogue80 -rw-rw-r-- root other 4 usr/lib/terminfo/a/ampex
+usr/lib/terminfo/d/dialup -rw-rw-r-- root other 1
+usr/lib/terminfo/d/digilog -rw-rw-r-- root other 2 usr/lib/terminfo/3/333
+usr/lib/terminfo/d/direct -rw-rw-r-- root other 3 usr/lib/terminfo/d/d800
+usr/lib/terminfo/d/direct800 -rw-rw-r-- root other 3 usr/lib/terminfo/d/d800
+usr/lib/terminfo/d/dm1520 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1520
+usr/lib/terminfo/d/dm1521 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1520
+usr/lib/terminfo/d/dm2500 -rw-rw-r-- root other 3 usr/lib/terminfo/2/2500
+usr/lib/terminfo/d/dm3025 -rw-rw-r-- root other 1
+usr/lib/terminfo/d/dm3045 -rw-rw-r-- root other 2 usr/lib/terminfo/3/3045
+usr/lib/terminfo/d/dm80 -rw-rw-r-- root other 3
+usr/lib/terminfo/d/dm80-w -rw-rw-r-- root other 3
+usr/lib/terminfo/d/dmd -rw-rw-r-- root other 6 usr/lib/terminfo/5/5620
+usr/lib/terminfo/d/dmd-24 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-24
+usr/lib/terminfo/d/dmd-34 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5620-34
+usr/lib/terminfo/d/dmdt80 -rw-rw-r-- root other 3 usr/lib/terminfo/d/dm80
+usr/lib/terminfo/d/dmdt80-w -rw-rw-r-- root other 3 usr/lib/terminfo/d/dm80-w
+usr/lib/terminfo/d/dp3 -rw-rw-r-- root other 3 usr/lib/terminfo/d/datapoint
+usr/lib/terminfo/d/dp3360 -rw-rw-r-- root other 3 usr/lib/terminfo/d/datapoint
+usr/lib/terminfo/d/ds40 -rw-rw-r-- root other 5 usr/lib/terminfo/4/40
+usr/lib/terminfo/d/ds40-2 -rw-rw-r-- root other 5 usr/lib/terminfo/4/40
+usr/lib/terminfo/d/dt80 -rw-rw-r-- root other 3 usr/lib/terminfo/d/dm80
+usr/lib/terminfo/d/dt80-w -rw-rw-r-- root other 3 usr/lib/terminfo/d/dm80-w
+usr/lib/terminfo/d/dtc -rw-rw-r-- root other 4 usr/lib/terminfo/3/300
+usr/lib/terminfo/d/dtc300s -rw-rw-r-- root other 4 usr/lib/terminfo/3/300
+usr/lib/terminfo/d/dtc382 -rw-rw-r-- root other 3 usr/lib/terminfo/3/382
+usr/lib/terminfo/d/dumb -rw-rw-r-- root other 1
+usr/lib/terminfo/d/dw -rw-rw-r-- root other 3 usr/lib/terminfo/d/decwriter
+usr/lib/terminfo/d/dw1 -rw-rw-r-- root other 1
+usr/lib/terminfo/d/dw2 -rw-rw-r-- root other 3 usr/lib/terminfo/d/decwriter
+usr/lib/terminfo/d/dw3 -rw-rw-r-- root other 2
+usr/lib/terminfo/d/dw4 -rw-rw-r-- root other 1
+usr/lib/terminfo/e drwxrwxr-x root other 2
+usr/lib/terminfo/e/env230 -rw-rw-r-- root other 2
+usr/lib/terminfo/e/envision230 -rw-rw-r-- root other 2 usr/lib/terminfo/e/env230
+usr/lib/terminfo/e/ep40 -rw-rw-r-- root other 2
+usr/lib/terminfo/e/ep4000 -rw-rw-r-- root other 2 usr/lib/terminfo/e/ep40
+usr/lib/terminfo/e/ep4080 -rw-rw-r-- root other 2
+usr/lib/terminfo/e/ep48 -rw-rw-r-- root other 2 usr/lib/terminfo/e/ep4080
+usr/lib/terminfo/e/ergo4000 -rw-rw-r-- root other 2
+usr/lib/terminfo/e/esprit -rw-rw-r-- root other 1
+usr/lib/terminfo/e/ethernet -rw-rw-r-- root other 1
+usr/lib/terminfo/e/ex3000 -rw-rw-r-- root other 1
+usr/lib/terminfo/e/exidy -rw-rw-r-- root other 2
+usr/lib/terminfo/e/exidy2500 -rw-rw-r-- root other 2 usr/lib/terminfo/e/exidy
+usr/lib/terminfo/f drwxrwxr-x root other 2
+usr/lib/terminfo/f/f100 -rw-rw-r-- root other 3
+usr/lib/terminfo/f/f100-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/f/f110 -rw-rw-r-- root other 2
+usr/lib/terminfo/f/f110-14 -rw-rw-r-- root other 1
+usr/lib/terminfo/f/f110-14w -rw-rw-r-- root other 1
+usr/lib/terminfo/f/f110-w -rw-rw-r-- root other 1
+usr/lib/terminfo/f/f1720 -rw-rw-r-- root other 2
+usr/lib/terminfo/f/f1720a -rw-rw-r-- root other 2 usr/lib/terminfo/f/f1720
+usr/lib/terminfo/f/f200 -rw-rw-r-- root other 2
+usr/lib/terminfo/f/f200-w -rw-rw-r-- root other 1
+usr/lib/terminfo/f/f200vi -rw-rw-r-- root other 1
+usr/lib/terminfo/f/f200vi-w -rw-rw-r-- root other 1
+usr/lib/terminfo/f/falco -rw-rw-r-- root other 3
+usr/lib/terminfo/f/falco-p -rw-rw-r-- root other 2
+usr/lib/terminfo/f/falco-tsl-1sp -rw-rw-r-- root other 2 usr/lib/terminfo/f/falco-p
+usr/lib/terminfo/f/fixterm -rw-rw-r-- root other 2 usr/lib/terminfo/c/cbblit
+usr/lib/terminfo/f/fortune -rw-rw-r-- root other 1
+usr/lib/terminfo/f/freedom -rw-rw-r-- root other 3 usr/lib/terminfo/f/f100
+usr/lib/terminfo/f/freedom-rv -rw-rw-r-- root other 2 usr/lib/terminfo/f/f100-rv
+usr/lib/terminfo/f/freedom100 -rw-rw-r-- root other 3 usr/lib/terminfo/f/f100
+usr/lib/terminfo/f/freedom110 -rw-rw-r-- root other 2 usr/lib/terminfo/f/f110
+usr/lib/terminfo/f/freedom200 -rw-rw-r-- root other 2 usr/lib/terminfo/f/f200
+usr/lib/terminfo/f/fviewpoint -rw-rw-r-- root other 1
+usr/lib/terminfo/g drwxrwxr-x root other 2
+usr/lib/terminfo/g/gigi -rw-rw-r-- root other 2
+usr/lib/terminfo/g/gsi -rw-rw-r-- root other 1
+usr/lib/terminfo/g/gt100 -rw-rw-r-- root other 3
+usr/lib/terminfo/g/gt100a -rw-rw-r-- root other 3 usr/lib/terminfo/g/gt100
+usr/lib/terminfo/g/gt40 -rw-rw-r-- root other 1
+usr/lib/terminfo/g/gt42 -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru -rw-rw-r-- root other 3
+usr/lib/terminfo/g/guru+rv -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru+s -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru+unk -rw-rw-r-- root other 3 usr/lib/terminfo/g/guru
+usr/lib/terminfo/g/guru-24 -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-33 -rw-rw-r-- root other 3 usr/lib/terminfo/g/guru
+usr/lib/terminfo/g/guru-33-rv -rw-rw-r-- root other 2
+usr/lib/terminfo/g/guru-33-s -rw-rw-r-- root other 2
+usr/lib/terminfo/g/guru-44 -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-44-s -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-76 -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-76-lp -rw-rw-r-- root other 2
+usr/lib/terminfo/g/guru-76-s -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-76-w -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-76-w-s -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-76-wm -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-lp -rw-rw-r-- root other 2 usr/lib/terminfo/g/guru-76-lp
+usr/lib/terminfo/g/guru-nctxt -rw-rw-r-- root other 1
+usr/lib/terminfo/g/guru-rv -rw-rw-r-- root other 2 usr/lib/terminfo/g/guru-33-rv
+usr/lib/terminfo/g/guru-s -rw-rw-r-- root other 2 usr/lib/terminfo/g/guru-33-s
+usr/lib/terminfo/h drwxrwxr-x root other 2
+usr/lib/terminfo/h/h1000 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1420 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1500 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1510 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1510t -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1520 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1552 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h1552-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19 -rw-rw-r-- root other 7
+usr/lib/terminfo/h/h19-a -rw-rw-r-- root other 3
+usr/lib/terminfo/h/h19-b -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/h/h19-bs -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19-pb -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19-smul -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19-u -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19A -rw-rw-r-- root other 2
+usr/lib/terminfo/h/h19a -rw-rw-r-- root other 2 usr/lib/terminfo/h/h19A
+usr/lib/terminfo/h/h19b -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19bs -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h19u -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h2000 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/h89 -rw-rw-r-- root other 2
+usr/lib/terminfo/h/heath -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/h/heath-19 -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/h/heath-ansi -rw-rw-r-- root other 3 usr/lib/terminfo/h/h19-a
+usr/lib/terminfo/h/heathkit -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/h/heathkit-a -rw-rw-r-- root other 3 usr/lib/terminfo/h/h19-a
+usr/lib/terminfo/h/hewlett-packar -rw-rw-r-- root other 3
+usr/lib/terminfo/h/hewlettpackard -rw-rw-r-- root other 3 usr/lib/terminfo/h/hewlett-packar
+usr/lib/terminfo/h/hp -rw-rw-r-- root other 3 usr/lib/terminfo/h/hewlett-packar
+usr/lib/terminfo/h/hp+arrows -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp+labels -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp+pfk+arrows -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp+pfk+cr -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp+pfk-cr -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp+printer -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp110 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp150 -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp2382 -rw-rw-r-- root other 2
+usr/lib/terminfo/h/hp2382a -rw-rw-r-- root other 2 usr/lib/terminfo/h/hp2382
+usr/lib/terminfo/h/hp2621 -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/h/hp2621-48 -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-48
+usr/lib/terminfo/h/hp2621-a -rw-rw-r-- root other 3 usr/lib/terminfo/2/2621-a
+usr/lib/terminfo/h/hp2621-ba -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-ba
+usr/lib/terminfo/h/hp2621-fl -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-fl
+usr/lib/terminfo/h/hp2621-k45 -rw-rw-r-- root other 4 usr/lib/terminfo/2/2621k45
+usr/lib/terminfo/h/hp2621-nl -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-nl
+usr/lib/terminfo/h/hp2621-nt -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-nt
+usr/lib/terminfo/h/hp2621-pb -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621-pb
+usr/lib/terminfo/h/hp2621-wl -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/h/hp2621A -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/h/hp2621a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2621
+usr/lib/terminfo/h/hp2621a-a -rw-rw-r-- root other 3 usr/lib/terminfo/2/2621-a
+usr/lib/terminfo/h/hp2621b -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621b
+usr/lib/terminfo/h/hp2621b-kx -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621b-kx
+usr/lib/terminfo/h/hp2621b-kx-p -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621b-kx-p
+usr/lib/terminfo/h/hp2621b-p -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621b-p
+usr/lib/terminfo/h/hp2621k45 -rw-rw-r-- root other 4 usr/lib/terminfo/2/2621k45
+usr/lib/terminfo/h/hp2621nl -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621nl
+usr/lib/terminfo/h/hp2621nt -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621nt
+usr/lib/terminfo/h/hp2621p -rw-rw-r-- root other 3 usr/lib/terminfo/2/2621P
+usr/lib/terminfo/h/hp2621p-a -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621p-a
+usr/lib/terminfo/h/hp2621wl -rw-rw-r-- root other 2 usr/lib/terminfo/2/2621wl
+usr/lib/terminfo/h/hp2622 -rw-rw-r-- root other 4 usr/lib/terminfo/2/2622
+usr/lib/terminfo/h/hp2622a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2622
+usr/lib/terminfo/h/hp2623 -rw-rw-r-- root other 4 usr/lib/terminfo/2/2623
+usr/lib/terminfo/h/hp2623a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2623
+usr/lib/terminfo/h/hp2624 -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/h/hp2624-10p -rw-rw-r-- root other 6 usr/lib/terminfo/2/2624-10p
+usr/lib/terminfo/h/hp2624a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/h/hp2624a-10p -rw-rw-r-- root other 6 usr/lib/terminfo/2/2624-10p
+usr/lib/terminfo/h/hp2624b -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/h/hp2624b-10p -rw-rw-r-- root other 6 usr/lib/terminfo/2/2624-10p
+usr/lib/terminfo/h/hp2624b-10p-p -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp2624b-4p -rw-rw-r-- root other 8 usr/lib/terminfo/2/2624
+usr/lib/terminfo/h/hp2624b-4p-p -rw-rw-r-- root other 2
+usr/lib/terminfo/h/hp2624b-p -rw-rw-r-- root other 2 usr/lib/terminfo/h/hp2624b-4p-p
+usr/lib/terminfo/h/hp2626 -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/h/hp2626-12 -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-12
+usr/lib/terminfo/h/hp2626-12-s -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-12-s
+usr/lib/terminfo/h/hp2626-12x40 -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-12x40
+usr/lib/terminfo/h/hp2626-ns -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-ns
+usr/lib/terminfo/h/hp2626-s -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-s
+usr/lib/terminfo/h/hp2626-x40 -rw-rw-r-- root other 2 usr/lib/terminfo/2/2626-x40
+usr/lib/terminfo/h/hp2626a -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/h/hp2626p -rw-rw-r-- root other 8 usr/lib/terminfo/2/2626
+usr/lib/terminfo/h/hp262x -rw-rw-r-- root other 1
+usr/lib/terminfo/h/hp2640a -rw-rw-r-- root other 3 usr/lib/terminfo/2/2640
+usr/lib/terminfo/h/hp2640b -rw-rw-r-- root other 4 usr/lib/terminfo/2/2640b
+usr/lib/terminfo/h/hp2644a -rw-rw-r-- root other 4 usr/lib/terminfo/2/2640b
+usr/lib/terminfo/h/hp2645 -rw-rw-r-- root other 3 usr/lib/terminfo/2/2645
+usr/lib/terminfo/h/hp2648 -rw-rw-r-- root other 5 usr/lib/terminfo/2/2648
+usr/lib/terminfo/h/hp2648a -rw-rw-r-- root other 5 usr/lib/terminfo/2/2648
+usr/lib/terminfo/h/hp45 -rw-rw-r-- root other 3 usr/lib/terminfo/2/2645
+usr/lib/terminfo/i drwxrwxr-x root other 2
+usr/lib/terminfo/i/i100 -rw-rw-r-- root other 3 usr/lib/terminfo/g/gt100
+usr/lib/terminfo/i/i3101 -rw-rw-r-- root other 4 usr/lib/terminfo/3/3101
+usr/lib/terminfo/i/i400 -rw-rw-r-- root other 2 usr/lib/terminfo/4/400
+usr/lib/terminfo/i/ibm -rw-rw-r-- root other 4 usr/lib/terminfo/3/3101
+usr/lib/terminfo/i/ibm-pc -rw-rw-r-- root other 4 usr/lib/terminfo/5/5051
+usr/lib/terminfo/i/ibm-system1 -rw-rw-r-- root other 2
+usr/lib/terminfo/i/ibm3101 -rw-rw-r-- root other 4 usr/lib/terminfo/3/3101
+usr/lib/terminfo/i/ibm5051 -rw-rw-r-- root other 4 usr/lib/terminfo/5/5051
+usr/lib/terminfo/i/ibmpc -rw-rw-r-- root other 4 usr/lib/terminfo/5/5051
+usr/lib/terminfo/i/infotonKAS -rw-rw-r-- root other 1
+usr/lib/terminfo/i/intertec -rw-rw-r-- root other 3
+usr/lib/terminfo/i/intertube -rw-rw-r-- root other 3 usr/lib/terminfo/i/intertec
+usr/lib/terminfo/i/intertube2 -rw-rw-r-- root other 2
+usr/lib/terminfo/i/intext -rw-rw-r-- root other 1
+usr/lib/terminfo/i/intext2 -rw-rw-r-- root other 2
+usr/lib/terminfo/i/intextii -rw-rw-r-- root other 2 usr/lib/terminfo/i/intext2
+usr/lib/terminfo/i/ips -rw-rw-r-- root other 3 usr/lib/terminfo/c/citoh-prop
+usr/lib/terminfo/i/iq120 -rw-rw-r-- root other 2
+usr/lib/terminfo/i/iq140 -rw-rw-r-- root other 1
+usr/lib/terminfo/i/iris -rw-rw-r-- root other 1
+usr/lib/terminfo/i/iris40 -rw-rw-r-- root other 2
+usr/lib/terminfo/i/isc -rw-rw-r-- root other 3 usr/lib/terminfo/8/8001
+usr/lib/terminfo/i/isc8001 -rw-rw-r-- root other 3 usr/lib/terminfo/8/8001
+usr/lib/terminfo/i/it -rw-rw-r-- root other 3 usr/lib/terminfo/i/intertec
+usr/lib/terminfo/i/it2 -rw-rw-r-- root other 2 usr/lib/terminfo/i/intertube2
+usr/lib/terminfo/j drwxrwxr-x root other 2
+usr/lib/terminfo/j/jerq -rw-rw-r-- root other 2 usr/lib/terminfo/b/blit
+usr/lib/terminfo/k drwxrwxr-x root other 2
+usr/lib/terminfo/k/k45 -rw-rw-r-- root other 4 usr/lib/terminfo/2/2621k45
+usr/lib/terminfo/k/klc -rw-rw-r-- root other 2 usr/lib/terminfo/c/carlock
+usr/lib/terminfo/k/ktm -rw-rw-r-- root other 3 usr/lib/terminfo/3/380
+usr/lib/terminfo/l drwxrwxr-x root other 2
+usr/lib/terminfo/l/la120 -rw-rw-r-- root other 2 usr/lib/terminfo/d/dw3
+usr/lib/terminfo/l/lp -rw-rw-r-- root other 5
+usr/lib/terminfo/l/lpr -rw-rw-r-- root other 5 usr/lib/terminfo/l/lp
+usr/lib/terminfo/m drwxrwxr-x root other 2
+usr/lib/terminfo/m/m-100 -rw-rw-r-- root other 6 usr/lib/terminfo/M/MZ
+usr/lib/terminfo/m/m100 -rw-rw-r-- root other 6 usr/lib/terminfo/M/MZ
+usr/lib/terminfo/m/m8 -rw-rw-r-- root other 2 usr/lib/terminfo/e/ergo4000
+usr/lib/terminfo/m/mdl110 -rw-rw-r-- root other 1
+usr/lib/terminfo/m/megatek -rw-rw-r-- root other 1
+usr/lib/terminfo/m/memhp -rw-rw-r-- root other 1
+usr/lib/terminfo/m/microb -rw-rw-r-- root other 2
+usr/lib/terminfo/m/microbee -rw-rw-r-- root other 2 usr/lib/terminfo/m/microb
+usr/lib/terminfo/m/microkit -rw-rw-r-- root other 2
+usr/lib/terminfo/m/microterm -rw-rw-r-- root other 2 usr/lib/terminfo/a/act4
+usr/lib/terminfo/m/microterm5 -rw-rw-r-- root other 2 usr/lib/terminfo/a/act5
+usr/lib/terminfo/m/mime -rw-rw-r-- root other 5
+usr/lib/terminfo/m/mime-3a -rw-rw-r-- root other 2
+usr/lib/terminfo/m/mime-3ax -rw-rw-r-- root other 2
+usr/lib/terminfo/m/mime-adm3a -rw-rw-r-- root other 2 usr/lib/terminfo/m/mime-3a
+usr/lib/terminfo/m/mime-adm3ax -rw-rw-r-- root other 2 usr/lib/terminfo/m/mime-3ax
+usr/lib/terminfo/m/mime-fb -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime-hb -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime-na -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime-pb -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime1 -rw-rw-r-- root other 5 usr/lib/terminfo/m/mime
+usr/lib/terminfo/m/mime2 -rw-rw-r-- root other 5 usr/lib/terminfo/m/mime
+usr/lib/terminfo/m/mime2a -rw-rw-r-- root other 2
+usr/lib/terminfo/m/mime2a-s -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime2a-v -rw-rw-r-- root other 2 usr/lib/terminfo/m/mime2a
+usr/lib/terminfo/m/mime2as -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime2av -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mime314 -rw-rw-r-- root other 3
+usr/lib/terminfo/m/mimefb -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mimehb -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mimei -rw-rw-r-- root other 5 usr/lib/terminfo/m/mime
+usr/lib/terminfo/m/mimeii -rw-rw-r-- root other 5 usr/lib/terminfo/m/mime
+usr/lib/terminfo/m/minansi -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mkt -rw-rw-r-- root other 2 usr/lib/terminfo/m/microkit
+usr/lib/terminfo/m/mm3 -rw-rw-r-- root other 3 usr/lib/terminfo/m/mime314
+usr/lib/terminfo/m/mm314 -rw-rw-r-- root other 3 usr/lib/terminfo/m/mime314
+usr/lib/terminfo/m/mransi -rw-rw-r-- root other 1
+usr/lib/terminfo/m/mw2 -rw-rw-r-- root other 1
+usr/lib/terminfo/n drwxrwxr-x root other 2
+usr/lib/terminfo/n/ncr7900 -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900
+usr/lib/terminfo/n/ncr7900-na -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900-na
+usr/lib/terminfo/n/ncr7900i -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900
+usr/lib/terminfo/n/ncr7900i-na -rw-rw-r-- root other 4 usr/lib/terminfo/7/7900-na
+usr/lib/terminfo/n/ncr7900iv -rw-rw-r-- root other 2 usr/lib/terminfo/7/7900iv
+usr/lib/terminfo/n/ncr7901 -rw-rw-r-- root other 2 usr/lib/terminfo/7/7901
+usr/lib/terminfo/n/nec -rw-rw-r-- root other 3 usr/lib/terminfo/5/5520
+usr/lib/terminfo/n/net -rw-rw-r-- root other 3 usr/lib/terminfo/a/arpanet
+usr/lib/terminfo/n/netronics -rw-rw-r-- root other 2
+usr/lib/terminfo/n/netty -rw-rw-r-- root other 1
+usr/lib/terminfo/n/netty-Tabs -rw-rw-r-- root other 1
+usr/lib/terminfo/n/netty-vi -rw-rw-r-- root other 1
+usr/lib/terminfo/n/network -rw-rw-r-- root other 3 usr/lib/terminfo/a/arpanet
+usr/lib/terminfo/n/netx -rw-rw-r-- root other 2 usr/lib/terminfo/n/netronics
+usr/lib/terminfo/n/newhp -rw-rw-r-- root other 1
+usr/lib/terminfo/n/newhpkeyboard -rw-rw-r-- root other 1
+usr/lib/terminfo/n/nuc -rw-rw-r-- root other 3
+usr/lib/terminfo/n/nucterm -rw-rw-r-- root other 3 usr/lib/terminfo/n/nuc
+usr/lib/terminfo/o drwxrwxr-x root other 2
+usr/lib/terminfo/o/o31 -rw-rw-r-- root other 2
+usr/lib/terminfo/o/oadm31 -rw-rw-r-- root other 2 usr/lib/terminfo/o/o31
+usr/lib/terminfo/o/oblit -rw-rw-r-- root other 2
+usr/lib/terminfo/o/oc100 -rw-rw-r-- root other 3 usr/lib/terminfo/c/c100-1p
+usr/lib/terminfo/o/oconcept -rw-rw-r-- root other 3 usr/lib/terminfo/c/c100-1p
+usr/lib/terminfo/o/ofortune -rw-rw-r-- root other 2
+usr/lib/terminfo/o/ofos -rw-rw-r-- root other 2 usr/lib/terminfo/o/ofortune
+usr/lib/terminfo/o/ojerq -rw-rw-r-- root other 2 usr/lib/terminfo/o/oblit
+usr/lib/terminfo/o/omron -rw-rw-r-- root other 1
+usr/lib/terminfo/o/one_line -rw-rw-r-- root other 2 usr/lib/terminfo/1/1line
+usr/lib/terminfo/o/one_linepty -rw-rw-r-- root other 2 usr/lib/terminfo/1/1linepty
+usr/lib/terminfo/o/osborne -rw-rw-r-- root other 3
+usr/lib/terminfo/o/osborne1 -rw-rw-r-- root other 3 usr/lib/terminfo/o/osborne
+usr/lib/terminfo/o/otty5410 -rw-rw-r-- root other 1
+usr/lib/terminfo/o/otty5420 -rw-rw-r-- root other 1
+usr/lib/terminfo/o/ovi300 -rw-rw-r-- root other 1
+usr/lib/terminfo/o/ozzie -rw-rw-r-- root other 3 usr/lib/terminfo/o/osborne
+usr/lib/terminfo/p drwxrwxr-x root other 2
+usr/lib/terminfo/p/patch -rw-rw-r-- root other 3
+usr/lib/terminfo/p/patchboard -rw-rw-r-- root other 3 usr/lib/terminfo/p/patch
+usr/lib/terminfo/p/pbox -rw-rw-r-- root other 2
+usr/lib/terminfo/p/pc -rw-rw-r-- root other 1
+usr/lib/terminfo/p/pc-coherent -rw-rw-r-- root other 3 usr/lib/terminfo/c/coherent
+usr/lib/terminfo/p/pc-venix -rw-rw-r-- root other 2
+usr/lib/terminfo/p/pc7300 -rw-rw-r-- root other 5 usr/lib/terminfo/7/7300
+usr/lib/terminfo/p/pcz19 -rw-rw-r-- root other 3 usr/lib/terminfo/c/coherent
+usr/lib/terminfo/p/plasma -rw-rw-r-- root other 1
+usr/lib/terminfo/p/plugboard -rw-rw-r-- root other 3 usr/lib/terminfo/p/patch
+usr/lib/terminfo/p/print -rw-rw-r-- root other 5 usr/lib/terminfo/l/lp
+usr/lib/terminfo/p/printer -rw-rw-r-- root other 5 usr/lib/terminfo/l/lp
+usr/lib/terminfo/p/printerbox -rw-rw-r-- root other 2 usr/lib/terminfo/p/pbox
+usr/lib/terminfo/p/printing -rw-rw-r-- root other 5 usr/lib/terminfo/l/lp
+usr/lib/terminfo/p/ps -rw-rw-r-- root other 3 usr/lib/terminfo/3/382
+usr/lib/terminfo/p/pt505 -rw-rw-r-- root other 3 usr/lib/terminfo/A/ATTPT505
+usr/lib/terminfo/p/pt505-24 -rw-rw-r-- root other 3 usr/lib/terminfo/A/ATT505-24
+usr/lib/terminfo/p/pt510 -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/p/pt510a -rw-rw-r-- root other 10 usr/lib/terminfo/5/510
+usr/lib/terminfo/p/pty -rw-rw-r-- root other 1
+usr/lib/terminfo/q drwxrwxr-x root other 2
+usr/lib/terminfo/q/qms-diablo -rw-rw-r-- root other 1
+usr/lib/terminfo/q/qume -rw-rw-r-- root other 2
+usr/lib/terminfo/q/qume5 -rw-rw-r-- root other 2 usr/lib/terminfo/q/qume
+usr/lib/terminfo/r drwxrwxr-x root other 2
+usr/lib/terminfo/r/ramtek -rw-rw-r-- root other 1
+usr/lib/terminfo/r/rayterm -rw-rw-r-- root other 3 usr/lib/terminfo/n/nuc
+usr/lib/terminfo/r/reach -rw-rw-r-- root other 2 usr/lib/terminfo/h/h89
+usr/lib/terminfo/r/regent -rw-rw-r-- root other 1
+usr/lib/terminfo/r/regent100 -rw-rw-r-- root other 1
+usr/lib/terminfo/r/regent20 -rw-rw-r-- root other 1
+usr/lib/terminfo/r/regent200 -rw-rw-r-- root other 2
+usr/lib/terminfo/r/regent25 -rw-rw-r-- root other 1
+usr/lib/terminfo/r/regent40 -rw-rw-r-- root other 1
+usr/lib/terminfo/r/regent40+ -rw-rw-r-- root other 2
+usr/lib/terminfo/r/regent40-s -rw-rw-r-- root other 2 usr/lib/terminfo/r/regent40+
+usr/lib/terminfo/r/regent60 -rw-rw-r-- root other 2 usr/lib/terminfo/r/regent200
+usr/lib/terminfo/r/regent60-na -rw-rw-r-- root other 1
+usr/lib/terminfo/r/rwsiris -rw-rw-r-- root other 1
+usr/lib/terminfo/r/rwsiris24 -rw-rw-r-- root other 1
+usr/lib/terminfo/s drwxrwxr-x root other 2
+usr/lib/terminfo/s/s1500 -rw-rw-r-- root other 1
+usr/lib/terminfo/s/sb -rw-rw-r-- root other 3
+usr/lib/terminfo/s/sb1 -rw-rw-r-- root other 3 usr/lib/terminfo/s/sb
+usr/lib/terminfo/s/sb2 -rw-rw-r-- root other 2
+usr/lib/terminfo/s/sb3 -rw-rw-r-- root other 2 usr/lib/terminfo/s/sb2
+usr/lib/terminfo/s/sbg -rw-rw-r-- root other 3 usr/lib/terminfo/s/sb
+usr/lib/terminfo/s/sbi -rw-rw-r-- root other 2
+usr/lib/terminfo/s/sc410 -rw-rw-r-- root other 3
+usr/lib/terminfo/s/sc415 -rw-rw-r-- root other 3 usr/lib/terminfo/s/sc410
+usr/lib/terminfo/s/scanset -rw-rw-r-- root other 3 usr/lib/terminfo/s/sc410
+usr/lib/terminfo/s/scanset-n -rw-rw-r-- root other 1
+usr/lib/terminfo/s/scrhp -rw-rw-r-- root other 1
+usr/lib/terminfo/s/sexidy -rw-rw-r-- root other 1
+usr/lib/terminfo/s/simterm -rw-rw-r-- root other 1
+usr/lib/terminfo/s/smarterm -rw-rw-r-- root other 2
+usr/lib/terminfo/s/smarterm-s -rw-rw-r-- root other 2 usr/lib/terminfo/s/smarterm
+usr/lib/terminfo/s/smartvid -rw-rw-r-- root other 1
+usr/lib/terminfo/s/smiris -rw-rw-r-- root other 1
+usr/lib/terminfo/s/sol -rw-rw-r-- root other 2
+usr/lib/terminfo/s/sol1 -rw-rw-r-- root other 2 usr/lib/terminfo/s/sol
+usr/lib/terminfo/s/sol2 -rw-rw-r-- root other 1
+usr/lib/terminfo/s/soroc -rw-rw-r-- root other 2 usr/lib/terminfo/i/iq120
+usr/lib/terminfo/s/spinwriter -rw-rw-r-- root other 3 usr/lib/terminfo/5/5520
+usr/lib/terminfo/s/sun -rw-rw-r-- root other 3
+usr/lib/terminfo/s/sun1 -rw-rw-r-- root other 3 usr/lib/terminfo/s/sun
+usr/lib/terminfo/s/sun2 -rw-rw-r-- root other 3 usr/lib/terminfo/s/sun
+usr/lib/terminfo/s/superbee -rw-rw-r-- root other 2 usr/lib/terminfo/s/sbi
+usr/lib/terminfo/s/superbrain -rw-rw-r-- root other 1
+usr/lib/terminfo/s/switch -rw-rw-r-- root other 1
+usr/lib/terminfo/s/swtp -rw-rw-r-- root other 2 usr/lib/terminfo/c/ct82
+usr/lib/terminfo/s/synertek -rw-rw-r-- root other 3 usr/lib/terminfo/3/380
+usr/lib/terminfo/s/system1 -rw-rw-r-- root other 2 usr/lib/terminfo/i/ibm-system1
+usr/lib/terminfo/t drwxrwxr-x root other 2
+usr/lib/terminfo/t/t10 -rw-rw-r-- root other 3
+usr/lib/terminfo/t/t1061 -rw-rw-r-- root other 3 usr/lib/terminfo/t/t10
+usr/lib/terminfo/t/t1061f -rw-rw-r-- root other 1
+usr/lib/terminfo/t/t16 -rw-rw-r-- root other 2
+usr/lib/terminfo/t/t3700 -rw-rw-r-- root other 2
+usr/lib/terminfo/t/t3800 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/t500 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tab -rw-rw-r-- root other 2
+usr/lib/terminfo/t/tab132 -rw-rw-r-- root other 2 usr/lib/terminfo/t/tab
+usr/lib/terminfo/t/tab132-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tab132-w -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tab132-w-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tec -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tec400 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tec500 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tek -rw-rw-r-- root other 3 usr/lib/terminfo/4/4012
+usr/lib/terminfo/t/tek4012 -rw-rw-r-- root other 3 usr/lib/terminfo/4/4012
+usr/lib/terminfo/t/tek4013 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4013
+usr/lib/terminfo/t/tek4014 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4014
+usr/lib/terminfo/t/tek4014-sm -rw-rw-r-- root other 2 usr/lib/terminfo/4/4014-sm
+usr/lib/terminfo/t/tek4015 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4015
+usr/lib/terminfo/t/tek4015-sm -rw-rw-r-- root other 2 usr/lib/terminfo/4/4015-sm
+usr/lib/terminfo/t/tek4023 -rw-rw-r-- root other 3 usr/lib/terminfo/4/4023
+usr/lib/terminfo/t/tek4024 -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/t/tek4025 -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/t/tek4025-17 -rw-rw-r-- root other 3 usr/lib/terminfo/4/4025-17
+usr/lib/terminfo/t/tek4025-17-ws -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-17-ws
+usr/lib/terminfo/t/tek4025-ex -rw-rw-r-- root other 4 usr/lib/terminfo/4/4025-ex
+usr/lib/terminfo/t/tek4027 -rw-rw-r-- root other 8 usr/lib/terminfo/4/4024
+usr/lib/terminfo/t/tek4105-30 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4105-30
+usr/lib/terminfo/t/tek4112 -rw-rw-r-- root other 5 usr/lib/terminfo/4/4112
+usr/lib/terminfo/t/tek4112-5 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4112-5
+usr/lib/terminfo/t/tek4112-d -rw-rw-r-- root other 2 usr/lib/terminfo/4/4112-d
+usr/lib/terminfo/t/tek4115 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4115
+usr/lib/terminfo/t/teleray -rw-rw-r-- root other 3 usr/lib/terminfo/t/t10
+usr/lib/terminfo/t/teleray3700 -rw-rw-r-- root other 2 usr/lib/terminfo/t/t3700
+usr/lib/terminfo/t/teletec -rw-rw-r-- root other 1
+usr/lib/terminfo/t/televideo950 -rw-rw-r-- root other 3 usr/lib/terminfo/9/950
+usr/lib/terminfo/t/terak -rw-rw-r-- root other 1
+usr/lib/terminfo/t/terminet -rw-rw-r-- root other 5
+usr/lib/terminfo/t/terminet1200 -rw-rw-r-- root other 5 usr/lib/terminfo/t/terminet
+usr/lib/terminfo/t/terminet300 -rw-rw-r-- root other 5 usr/lib/terminfo/t/terminet
+usr/lib/terminfo/t/tex -rw-rw-r-- root other 3 usr/lib/terminfo/4/4023
+usr/lib/terminfo/t/ti -rw-rw-r-- root other 4 usr/lib/terminfo/7/743
+usr/lib/terminfo/t/ti700 -rw-rw-r-- root other 4 usr/lib/terminfo/7/735
+usr/lib/terminfo/t/ti733 -rw-rw-r-- root other 4 usr/lib/terminfo/7/735
+usr/lib/terminfo/t/ti735 -rw-rw-r-- root other 4 usr/lib/terminfo/7/735
+usr/lib/terminfo/t/ti745 -rw-rw-r-- root other 4 usr/lib/terminfo/7/743
+usr/lib/terminfo/t/ti800 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tk -rw-rw-r-- root other 4 usr/lib/terminfo/4/4105
+usr/lib/terminfo/t/tn1200 -rw-rw-r-- root other 5 usr/lib/terminfo/t/terminet
+usr/lib/terminfo/t/tn300 -rw-rw-r-- root other 5 usr/lib/terminfo/t/terminet
+usr/lib/terminfo/t/trs-100 -rw-rw-r-- root other 6 usr/lib/terminfo/M/MZ
+usr/lib/terminfo/t/trs-80 -rw-rw-r-- root other 3
+usr/lib/terminfo/t/trs100 -rw-rw-r-- root other 6 usr/lib/terminfo/M/MZ
+usr/lib/terminfo/t/trs16 -rw-rw-r-- root other 2
+usr/lib/terminfo/t/trs80 -rw-rw-r-- root other 3 usr/lib/terminfo/t/trs-80
+usr/lib/terminfo/t/trs80-1 -rw-rw-r-- root other 3 usr/lib/terminfo/t/trs-80
+usr/lib/terminfo/t/trs80-100 -rw-rw-r-- root other 6 usr/lib/terminfo/M/MZ
+usr/lib/terminfo/t/trs80-16 -rw-rw-r-- root other 2 usr/lib/terminfo/t/trs16
+usr/lib/terminfo/t/ts-1 -rw-rw-r-- root other 3 usr/lib/terminfo/f/falco
+usr/lib/terminfo/t/ts1 -rw-rw-r-- root other 3 usr/lib/terminfo/f/falco
+usr/lib/terminfo/t/ts100 -rw-rw-r-- root other 2
+usr/lib/terminfo/t/ts100-ctxt -rw-rw-r-- root other 1
+usr/lib/terminfo/t/ts100-sp -rw-rw-r-- root other 2 usr/lib/terminfo/t/ts100
+usr/lib/terminfo/t/tty -rw-rw-r-- root other 3 usr/lib/terminfo/3/33
+usr/lib/terminfo/t/tty33 -rw-rw-r-- root other 3 usr/lib/terminfo/3/33
+usr/lib/terminfo/t/tty35 -rw-rw-r-- root other 2 usr/lib/terminfo/3/35
+usr/lib/terminfo/t/tty37 -rw-rw-r-- root other 2 usr/lib/terminfo/3/37
+usr/lib/terminfo/t/tty40 -rw-rw-r-- root other 5 usr/lib/terminfo/4/40
+usr/lib/terminfo/t/tty43 -rw-rw-r-- root other 2 usr/lib/terminfo/4/43
+usr/lib/terminfo/t/tty4420 -rw-rw-r-- root other 2 usr/lib/terminfo/4/4420
+usr/lib/terminfo/t/tty4424 -rw-rw-r-- root other 6 usr/lib/terminfo/4/4424
+usr/lib/terminfo/t/tty4424-2 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4424-2
+usr/lib/terminfo/t/tty4426 -rw-rw-r-- root other 4 usr/lib/terminfo/4/4426
+usr/lib/terminfo/t/tty5410 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410
+usr/lib/terminfo/t/tty5410-nfk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nfk
+usr/lib/terminfo/t/tty5410-nsl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410-nsl
+usr/lib/terminfo/t/tty5410-w -rw-rw-r-- root other 6 usr/lib/terminfo/4/4410-w
+usr/lib/terminfo/t/tty5410v1 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1
+usr/lib/terminfo/t/tty5410v1-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4410v1-w
+usr/lib/terminfo/t/tty5420 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415
+usr/lib/terminfo/t/tty5420-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-nl
+usr/lib/terminfo/t/tty5420-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv
+usr/lib/terminfo/t/tty5420-rv-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-rv-nl
+usr/lib/terminfo/t/tty5420-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w
+usr/lib/terminfo/t/tty5420-w-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-nl
+usr/lib/terminfo/t/tty5420-w-rv -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv
+usr/lib/terminfo/t/tty5420-w-rv-n -rw-rw-r-- root other 7 usr/lib/terminfo/4/4415-w-rv-nl
+usr/lib/terminfo/t/tty5425 -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425
+usr/lib/terminfo/t/tty5425-fk -rw-rw-r-- root other 4 usr/lib/terminfo/4/4425-fk
+usr/lib/terminfo/t/tty5425-nl -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl
+usr/lib/terminfo/t/tty5425-nl-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-nl-w
+usr/lib/terminfo/t/tty5425-w -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w
+usr/lib/terminfo/t/tty5425-w-fk -rw-rw-r-- root other 7 usr/lib/terminfo/4/4425-w-fk
+usr/lib/terminfo/t/tty5620 -rw-rw-r-- root other 6 usr/lib/terminfo/5/5620
+usr/lib/terminfo/t/ttydmd -rw-rw-r-- root other 6 usr/lib/terminfo/5/5620
+usr/lib/terminfo/t/ttywilliams -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi -rw-rw-r-- root other 5 usr/lib/terminfo/9/912b
+usr/lib/terminfo/t/tvi-2p -rw-rw-r-- root other 5 usr/lib/terminfo/9/912-2p
+usr/lib/terminfo/t/tvi2p -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi803 -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi912 -rw-rw-r-- root other 4 usr/lib/terminfo/9/912
+usr/lib/terminfo/t/tvi912-2p -rw-rw-r-- root other 5 usr/lib/terminfo/9/912-2p
+usr/lib/terminfo/t/tvi9122p -rw-rw-r-- root other 2 usr/lib/terminfo/9/9122p
+usr/lib/terminfo/t/tvi912b -rw-rw-r-- root other 5 usr/lib/terminfo/9/912b
+usr/lib/terminfo/t/tvi912c -rw-rw-r-- root other 5 usr/lib/terminfo/9/912b
+usr/lib/terminfo/t/tvi912cc -rw-rw-r-- root other 2 usr/lib/terminfo/9/912cc
+usr/lib/terminfo/t/tvi920 -rw-rw-r-- root other 4 usr/lib/terminfo/9/912
+usr/lib/terminfo/t/tvi920-2p -rw-rw-r-- root other 5 usr/lib/terminfo/9/912-2p
+usr/lib/terminfo/t/tvi9202p -rw-rw-r-- root other 2 usr/lib/terminfo/9/9202p
+usr/lib/terminfo/t/tvi920b -rw-rw-r-- root other 4 usr/lib/terminfo/9/920b
+usr/lib/terminfo/t/tvi920c -rw-rw-r-- root other 4 usr/lib/terminfo/9/920b
+usr/lib/terminfo/t/tvi925 -rw-rw-r-- root other 2 usr/lib/terminfo/9/925
+usr/lib/terminfo/t/tvi950 -rw-rw-r-- root other 3 usr/lib/terminfo/9/950
+usr/lib/terminfo/t/tvi950-2p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950-2p
+usr/lib/terminfo/t/tvi950-4p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950-4p
+usr/lib/terminfo/t/tvi950-ap -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi950-b -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi950-ns -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi950-rv -rw-rw-r-- root other 2 usr/lib/terminfo/9/950-rv
+usr/lib/terminfo/t/tvi950-rv-2p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950-rv-2p
+usr/lib/terminfo/t/tvi950-rv-4p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950-rv-4p
+usr/lib/terminfo/t/tvi9502p -rw-rw-r-- root other 2 usr/lib/terminfo/9/9502p
+usr/lib/terminfo/t/tvi9504p -rw-rw-r-- root other 2 usr/lib/terminfo/9/9504p
+usr/lib/terminfo/t/tvi950b -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi950ns -rw-rw-r-- root other 1
+usr/lib/terminfo/t/tvi950rv -rw-rw-r-- root other 2 usr/lib/terminfo/9/950rv
+usr/lib/terminfo/t/tvi950rv2p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950rv2p
+usr/lib/terminfo/t/tvi950rv4p -rw-rw-r-- root other 2 usr/lib/terminfo/9/950rv4p
+usr/lib/terminfo/u drwxrwxr-x root other 2
+usr/lib/terminfo/u/ubell -rw-rw-r-- root other 2
+usr/lib/terminfo/u/ubellchar -rw-rw-r-- root other 2 usr/lib/terminfo/u/ubell
+usr/lib/terminfo/u/unitrm18 -rw-rw-r-- root other 1
+usr/lib/terminfo/u/unix_pc -rw-rw-r-- root other 5 usr/lib/terminfo/7/7300
+usr/lib/terminfo/u/unixpc -rw-rw-r-- root other 5 usr/lib/terminfo/7/7300
+usr/lib/terminfo/u/unknown -rw-rw-r-- root other 1
+usr/lib/terminfo/u/uts30 -rw-rw-r-- root other 1
+usr/lib/terminfo/v drwxrwxr-x root other 2
+usr/lib/terminfo/v/v50am -rw-rw-r-- root other 1
+usr/lib/terminfo/v/v5410 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/v90 -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vanilla -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vc103 -rw-rw-r-- root other 3
+usr/lib/terminfo/v/vc203 -rw-rw-r-- root other 3 usr/lib/terminfo/v/vc103
+usr/lib/terminfo/v/vc303 -rw-rw-r-- root other 3 usr/lib/terminfo/v/vc103
+usr/lib/terminfo/v/vc303-a -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vc403a -rw-rw-r-- root other 2 usr/lib/terminfo/v/vc303-a
+usr/lib/terminfo/v/vc404 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vc404-na -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vc404-s -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vc404-s-na -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vc415 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/venix -rw-rw-r-- root other 2 usr/lib/terminfo/p/pc-venix
+usr/lib/terminfo/v/vi200 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi200-f -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vi200-ic -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi200-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi200-rv-ic -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi300 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi300-aw -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi300-rv -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi300-ss -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vi50 -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vi550 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vic -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vic20 -rw-rw-r-- root other 2 usr/lib/terminfo/v/vic
+usr/lib/terminfo/v/viewpoint -rw-rw-r-- root other 1
+usr/lib/terminfo/v/viewpoint-90 -rw-rw-r-- root other 2 usr/lib/terminfo/v/v90
+usr/lib/terminfo/v/virtual -rw-rw-r-- root other 3 usr/lib/terminfo/c/cb-unix
+usr/lib/terminfo/v/visual -rw-rw-r-- root other 2 usr/lib/terminfo/v/vi200-f
+usr/lib/terminfo/v/visual50 -rw-rw-r-- root other 2 usr/lib/terminfo/v/vi50
+usr/lib/terminfo/v/vitty -rw-rw-r-- root other 2 usr/lib/terminfo/b/blitlayer
+usr/lib/terminfo/v/vk100 -rw-rw-r-- root other 2 usr/lib/terminfo/g/gigi
+usr/lib/terminfo/v/vs100 -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vs100s -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt-61 -rw-rw-r-- root other 3
+usr/lib/terminfo/v/vt100 -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt100-am -rw-rw-r-- root other 2 usr/lib/terminfo/v/vt100
+usr/lib/terminfo/v/vt100-bot-s -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt100-nam -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100-nam-w -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt100-nav -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100-nav-w -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt100-np -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100-s -rw-rw-r-- root other 3
+usr/lib/terminfo/v/vt100-s-bot -rw-rw-r-- root other 2 usr/lib/terminfo/v/vt100-bot-s
+usr/lib/terminfo/v/vt100-s-top -rw-rw-r-- root other 3 usr/lib/terminfo/v/vt100-s
+usr/lib/terminfo/v/vt100-top-s -rw-rw-r-- root other 3 usr/lib/terminfo/v/vt100-s
+usr/lib/terminfo/v/vt100-w -rw-rw-r-- root other 2
+usr/lib/terminfo/v/vt100-w-am -rw-rw-r-- root other 2 usr/lib/terminfo/v/vt100-w
+usr/lib/terminfo/v/vt100-w-nam -rw-rw-r-- root other 2 usr/lib/terminfo/v/vt100-nam-w
+usr/lib/terminfo/v/vt100-w-nav -rw-rw-r-- root other 2 usr/lib/terminfo/v/vt100-nav-w
+usr/lib/terminfo/v/vt100am -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100nam -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100s -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt100w -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt125 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt132 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt50 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt50h -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt52 -rw-rw-r-- root other 1
+usr/lib/terminfo/v/vt61 -rw-rw-r-- root other 3 usr/lib/terminfo/v/vt-61
+usr/lib/terminfo/v/vt61.5 -rw-rw-r-- root other 3 usr/lib/terminfo/v/vt-61
+usr/lib/terminfo/w drwxrwxr-x root other 2
+usr/lib/terminfo/w/w60 -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-25 -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-25-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-25-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25
+usr/lib/terminfo/w/w60-25-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-k
+usr/lib/terminfo/w/w60-25-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25
+usr/lib/terminfo/w/w60-25-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-k
+usr/lib/terminfo/w/w60-25-w -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-25-w-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-25-w-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w
+usr/lib/terminfo/w/w60-25-w-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w-k
+usr/lib/terminfo/w/w60-25-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w
+usr/lib/terminfo/w/w60-25-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w-k
+usr/lib/terminfo/w/w60-42 -rw-rw-r-- root other 4
+usr/lib/terminfo/w/w60-42-k -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-42-s -rw-rw-r-- root other 2
+usr/lib/terminfo/w/w60-42-s-k -rw-rw-r-- root other 2
+usr/lib/terminfo/w/w60-42-st -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42
+usr/lib/terminfo/w/w60-42-w -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-42-w-k -rw-rw-r-- root other 4
+usr/lib/terminfo/w/w60-42-w-s -rw-rw-r-- root other 2
+usr/lib/terminfo/w/w60-42-w-s-k -rw-rw-r-- root other 2
+usr/lib/terminfo/w/w60-42-w-st -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-42-w
+usr/lib/terminfo/w/w60-42-w-st-k -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42-w-k
+usr/lib/terminfo/w/w60-43 -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-43-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-43-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43
+usr/lib/terminfo/w/w60-43-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-k
+usr/lib/terminfo/w/w60-43-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43
+usr/lib/terminfo/w/w60-43-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-k
+usr/lib/terminfo/w/w60-43-w -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-43-w-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-43-w-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w
+usr/lib/terminfo/w/w60-43-w-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w-k
+usr/lib/terminfo/w/w60-43-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w
+usr/lib/terminfo/w/w60-43-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w-k
+usr/lib/terminfo/w/w60-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-s -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-s-k -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60
+usr/lib/terminfo/w/w60-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-k
+usr/lib/terminfo/w/w60-w -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-w-k -rw-rw-r-- root other 6
+usr/lib/terminfo/w/w60-w-s -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-w-s-k -rw-rw-r-- root other 3
+usr/lib/terminfo/w/w60-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w
+usr/lib/terminfo/w/w60-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w-k
+usr/lib/terminfo/w/window -rw-rw-r-- root other 1
+usr/lib/terminfo/w/window-v2 -rw-rw-r-- root other 1
+usr/lib/terminfo/w/wsiris -rw-rw-r-- root other 2 usr/lib/terminfo/i/iris40
+usr/lib/terminfo/w/wy-50 -rw-rw-r-- root other 4
+usr/lib/terminfo/w/wy100 -rw-rw-r-- root other 2 usr/lib/terminfo/1/100
+usr/lib/terminfo/w/wy50 -rw-rw-r-- root other 4 usr/lib/terminfo/w/wy-50
+usr/lib/terminfo/w/wy75-132 -rw-rw-r-- root other 2
+usr/lib/terminfo/w/wy75-80 -rw-rw-r-- root other 2
+usr/lib/terminfo/w/wyse-50 -rw-rw-r-- root other 4 usr/lib/terminfo/w/wy-50
+usr/lib/terminfo/w/wyse50 -rw-rw-r-- root other 4 usr/lib/terminfo/w/wy-50
+usr/lib/terminfo/w/wyse60 -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60
+usr/lib/terminfo/w/wyse60-24 -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60
+usr/lib/terminfo/w/wyse60-24-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-k
+usr/lib/terminfo/w/wyse60-24-s -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-s
+usr/lib/terminfo/w/wyse60-24-s-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-s-k
+usr/lib/terminfo/w/wyse60-24-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60
+usr/lib/terminfo/w/wyse60-24-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-k
+usr/lib/terminfo/w/wyse60-24-w -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w
+usr/lib/terminfo/w/wyse60-24-w-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w-k
+usr/lib/terminfo/w/wyse60-24-w-s-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-w-s-k
+usr/lib/terminfo/w/wyse60-24-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w
+usr/lib/terminfo/w/wyse60-24-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w-k
+usr/lib/terminfo/w/wyse60-25 -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25
+usr/lib/terminfo/w/wyse60-25-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-k
+usr/lib/terminfo/w/wyse60-25-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25
+usr/lib/terminfo/w/wyse60-25-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-k
+usr/lib/terminfo/w/wyse60-25-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25
+usr/lib/terminfo/w/wyse60-25-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-k
+usr/lib/terminfo/w/wyse60-25-w -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w
+usr/lib/terminfo/w/wyse60-25-w-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w-k
+usr/lib/terminfo/w/wyse60-25-w-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w
+usr/lib/terminfo/w/wyse60-25-w-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w-k
+usr/lib/terminfo/w/wyse60-25-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w
+usr/lib/terminfo/w/wyse60-25-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-25-w-k
+usr/lib/terminfo/w/wyse60-42 -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42
+usr/lib/terminfo/w/wyse60-42-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-42-k
+usr/lib/terminfo/w/wyse60-42-s -rw-rw-r-- root other 2 usr/lib/terminfo/w/w60-42-s
+usr/lib/terminfo/w/wyse60-42-s-k -rw-rw-r-- root other 2 usr/lib/terminfo/w/w60-42-s-k
+usr/lib/terminfo/w/wyse60-42-st -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42
+usr/lib/terminfo/w/wyse60-42-st-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-42-k
+usr/lib/terminfo/w/wyse60-42-w -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-42-w
+usr/lib/terminfo/w/wyse60-42-w-k -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42-w-k
+usr/lib/terminfo/w/wyse60-42-w-s -rw-rw-r-- root other 2 usr/lib/terminfo/w/w60-42-w-s
+usr/lib/terminfo/w/wyse60-42-w-s-k -rw-rw-r-- root other 2 usr/lib/terminfo/w/w60-42-w-s-k
+usr/lib/terminfo/w/wyse60-42-w-st-k -rw-rw-r-- root other 4 usr/lib/terminfo/w/w60-42-w-k
+usr/lib/terminfo/w/wyse60-43 -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43
+usr/lib/terminfo/w/wyse60-43-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-k
+usr/lib/terminfo/w/wyse60-43-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43
+usr/lib/terminfo/w/wyse60-43-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-k
+usr/lib/terminfo/w/wyse60-43-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43
+usr/lib/terminfo/w/wyse60-43-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-k
+usr/lib/terminfo/w/wyse60-43-w -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w
+usr/lib/terminfo/w/wyse60-43-w-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w-k
+usr/lib/terminfo/w/wyse60-43-w-s -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w
+usr/lib/terminfo/w/wyse60-43-w-s-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w-k
+usr/lib/terminfo/w/wyse60-43-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w
+usr/lib/terminfo/w/wyse60-43-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-43-w-k
+usr/lib/terminfo/w/wyse60-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-k
+usr/lib/terminfo/w/wyse60-s -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-s
+usr/lib/terminfo/w/wyse60-s-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-s-k
+usr/lib/terminfo/w/wyse60-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60
+usr/lib/terminfo/w/wyse60-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-k
+usr/lib/terminfo/w/wyse60-w -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w
+usr/lib/terminfo/w/wyse60-w-24-s -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-w-s
+usr/lib/terminfo/w/wyse60-w-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w-k
+usr/lib/terminfo/w/wyse60-w-s -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-w-s
+usr/lib/terminfo/w/wyse60-w-s-k -rw-rw-r-- root other 3 usr/lib/terminfo/w/w60-w-s-k
+usr/lib/terminfo/w/wyse60-w-st -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w
+usr/lib/terminfo/w/wyse60-w-st-k -rw-rw-r-- root other 6 usr/lib/terminfo/w/w60-w-k
+usr/lib/terminfo/w/wyse75 -rw-rw-r-- root other 2
+usr/lib/terminfo/w/wyse75-132 -rw-rw-r-- root other 2 usr/lib/terminfo/w/wy75-132
+usr/lib/terminfo/w/wyse75-80 -rw-rw-r-- root other 2 usr/lib/terminfo/w/wy75-80
+usr/lib/terminfo/w/wyse75-s -rw-rw-r-- root other 2
+usr/lib/terminfo/w/wyse75-st -rw-rw-r-- root other 2
+usr/lib/terminfo/w/wyse_75 -rw-rw-r-- root other 2 usr/lib/terminfo/w/wyse75
+usr/lib/terminfo/w/wyse_75-s -rw-rw-r-- root other 2 usr/lib/terminfo/w/wyse75-s
+usr/lib/terminfo/w/wyse_75-st -rw-rw-r-- root other 2 usr/lib/terminfo/w/wyse75-st
+usr/lib/terminfo/x drwxrwxr-x root other 2
+usr/lib/terminfo/x/x1700 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1700
+usr/lib/terminfo/x/x1720 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1700
+usr/lib/terminfo/x/x1750 -rw-rw-r-- root other 4 usr/lib/terminfo/1/1700
+usr/lib/terminfo/x/x820 -rw-rw-r-- root other 1
+usr/lib/terminfo/x/xitex -rw-rw-r-- root other 1
+usr/lib/terminfo/x/xl83 -rw-rw-r-- root other 1
+usr/lib/terminfo/x/xtalk -rw-rw-r-- root other 1
+usr/lib/terminfo/x/xterm -rw-rw-r-- root other 2 usr/lib/terminfo/v/vs100
+usr/lib/terminfo/x/xterms -rw-rw-r-- root other 2 usr/lib/terminfo/v/vs100s
+usr/lib/terminfo/y drwxrwxr-x root other 2
+usr/lib/terminfo/y/ya -rw-rw-r-- root other 2 usr/lib/terminfo/t/t16
+usr/lib/terminfo/z drwxrwxr-x root other 2
+usr/lib/terminfo/z/z19 -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/z/z29 -rw-rw-r-- root other 3
+usr/lib/terminfo/z/z29b -rw-rw-r-- root other 3 usr/lib/terminfo/z/z29
+usr/lib/terminfo/z/z30 -rw-rw-r-- root other 2
+usr/lib/terminfo/z/zen30 -rw-rw-r-- root other 2 usr/lib/terminfo/z/z30
+usr/lib/terminfo/z/zenith -rw-rw-r-- root other 7 usr/lib/terminfo/h/h19
+usr/lib/terminfo/z/zenith29 -rw-rw-r-- root other 3 usr/lib/terminfo/z/z29

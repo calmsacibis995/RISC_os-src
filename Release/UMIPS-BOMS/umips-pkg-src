@@ -1,0 +1,10 @@
+usr/src/Release drwxr-xr-x bin bin 2
+usr/src/Release/umips-pkg drwxr-xr-x bin bin 2
+usr/src/Release/umips-pkg/Makefile -r--r--r-- bin bin 1
+usr/src/Release/umips-pkg/m120.ctape -r-xr-xr-x bin bin 1
+usr/src/Release/umips-pkg/pkginfo -r--r--r-- bin bin 1
+usr/src/Release/umips-pkg/pkginfo-oem-src -r--r--r-- bin bin 1
+usr/src/Release/umips-pkg/pkginfo-src -r--r--r-- bin bin 1
+usr/src/Release/umips-pkg/root.fstab -r-xr-xr-x bin bin 1
+usr/src/Release/umips-pkg/root.preserves -r--r--r-- bin bin 1
+usr/src/Release/umips-pkg/usr.preserves -r--r--r-- bin bin 1

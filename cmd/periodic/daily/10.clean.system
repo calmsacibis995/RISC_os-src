@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# General cleanup.
+#
+
+PATH=/bin:/usr/bin
+
+#
+# Remove files whose names have the form #*.{12-digits}
+#
+# These were created by install and possibly rdist
+#
+
+echo "\nRemoving #*.{12-digits} files:"
+
+find / \
+  -local -type f \
+  -name "#*.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" \
+  -print 2>/dev/null | xargs rm -f 2>/dev/null
+
+echo "\nRemoving old vi/ex preserve files & their directories:"
+
+( cd /usr/preserve ; find . -type f -mtime +7 -exec rm -f {} \; )
+( cd /usr/preserve ; find . ! -name . -type d -mtime +7 -exec rmdir {} \; ) > /dev/null 2>&1

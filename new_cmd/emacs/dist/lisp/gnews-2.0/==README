@@ -1,0 +1,189 @@
+Welcome to Gnews, Copyright (C) 1987, 1988 by Matthew P Wiener.  Now you
+too can post just like us friendly folks at the Brahms Gang!
+
+Gnews is an Emacs clone of rrn--"remote rn".  Naive rn-like usage should
+work without surprises.  In particular, the default commands are unrelated
+to those used in M-x rnews.  Note that Gnews was not designed with either
+the Emacs or the rn beginner in mind, but with advancing code maturity,
+I'll see what I can do about making Gnews friendlier.
+
+The original design goal, as many of you might have guessed, was to make
+high-volume reading/posting/flaming doable.  This goal being well met,
+the current one is to emphasize user flexibility, and to encourage what
+I hope is a new era of user experimentation in the development of news-
+reading styles and configurations.  Go for it, people.  (And along the
+way, I'm introducing speedier code and nifty suggestions.)
+----------------------------------------------------------------------
+Gnews only works on BSD 4.{2,3} and related systems since its internals
+rely on sockets, namely the function open-network-stream.  Rewrite that
+and the rest should work straightforwardly.
+
+So far, it has worked, not always effortlessly, on a VAX 8800 under Ultrix
+V2.0, a VAX 750 under BSD 4.3, an RT under 4.2a ACIS, a Sun 3/50 under Sun
+4.2, an Apollo DN3000 running DOMAIN/IX, and an Alliant FX/8 running Con-
+centrix 3.0, all with GNU Emacs versions >> 18.40.
+
+It has been successfully ported, with changes in the Emacs C code, but no
+change in the ELisp, to an Altos SysV with EXOS TCP/IP.
+
+(The original version talked directly to an external NNTP process, coded
+in C.  Send me e-mail if something like is what you need, although current-
+ly this interface is way out-of-date.  The file Spool.el can be used for
+reading directly off a spool, ie, to make Gnews an rn-clone.  If you don't
+have a Sys-V based system, I recommend that you bring up NNTP instead.)
+----------------------------------------------------------------------
+The seventh draft of the texinfo manual is now ready.  Everything you
+need at a minimum and quite a bit more is there.  The number of missing
+items is now comfortably small.  Suggestions for improving it are most
+welcome--I've never written one of these before.
+
+To set up a manual, on-line or printed, mostly follow the directions in
+the `texinfo' node of the Emacs info tree.  Change the second line of
+the manual to suit yourself.
+
+To get the on-line version (in brief): visit =MANUAL in some buffer.  Be
+sure that there is no narrowing.  Execute `M-x texinfo-format-buffer'.
+Put a menu item for Gnews into your `dir' file.
+
+Emacs, for some reason, provides no internal mechanism for multiple Info
+directories.  So if you don't have the permissions to modify your site's
+Emacs Info directory, do the following: put
+    (setq Info-directory "my-info-directory")
+in your .emacs, and fill that directory with symbolic links to the real
+Info files.  Put the Gnews info files in that directory, along with a
+modified "dir" file that includes a node for Gnews.
+
+The manual should be installed, since some of the on-line help refers to
+it.  At each Gnews level, "h" provides a quick summary of the mode and
+"H" a longer summary, except in the two reply modes and hook-kill mode,
+which rely on "C-c ?" and "C-c C-h".  "M-h" and "C-M-h" are also bound
+at the top level to functions providing information about Gnews features
+in contrast with rn, and bugs, respectively.  "W" at the top level will
+fill a buffer with informative(?) samples of my own customizations.  A
+prefix argument with "H" or "C-c C-h", whichever is appropriate, goes to
+the info node for the Gnews mode.
+
+Don't forget to read the internal documentation for the 'Gnews command
+itself.
+
+Skim the top of the =CHANGES-1 file when you install an updated version.
+Some of the comments refer to internals, and are ignorable for casual
+usage.  (Although checking might give you a clue that some particular
+bug you hit is of the weemba-revamped-a-lot-but-darn-it-he-missed-one
+sort.)
+----------------------------------------------------------------------
+No script for initializing site-dependent stuff is given.  Instead, just
+manually fix the source once, at the top of Init.el, recompile, and save
+a diff for patching into later versions, both *.el and perhaps *.elc.
+(It is simpler, especially now while Gnews is being updated frequently,
+to have users autoload a gnews-site.el file that sets these variables,
+loads Init.el, and then redefines any site-particular functions, plus
+any bug-fixed functions.  Then such a gnews-site.el is the only one ever
+needs that to be changed.)  (As for myself, I just set these variables
+in my .emacs or gnews-start-hook.)
+
+The key site-dependent item that must be set before Gnews will work is
+gnews-spool-machine, a string containing the name of the machine you plan
+to read news off of remotely.  The "your.nntp.host" string should be
+changed to the name of the NNTP server.  You may also have to modify
+nntp-service, listed under the "obscure" site dependent variables.  By
+default it is just the string "nntp", but some older systems might need
+to refer directly to it via the port number 119.  NB: this is the number
+119, not the string "119".  (If you read news directory off a spool, you
+should change nntp-service to nil.)
+
+Some machines/operating systems--like the above mentioned Apollo DN3000--
+may have timing errors inside gnews-accept-process-output.  The current
+workaround is to avoid byte-compile-ing that function, say by changing
+the source's defun into an fset, or loading the uncompiled version via
+a gnews-site.el.  (The DN4000 under SR10 works as is here.)
+
+(Timing errors may be more widespread: I condition-case a "select error"
+deep inside the current article-get, apparently without ill effect.  This
+is obviously asking for trouble, so the older version, article-get-slow,
+is not being retired.  I do not know if this is a sign of bugs in my code,
+GNU Emacs, or somebody's Unix.  So far no one has complained.)
+
+The remaining site-dependent stuff--that I know of--is rather minor:
+gnews-organization, gnews-machine, path-host, path-service, gnews-bug-address
+
+gnews-organization is the name of your site's organization.  gnews-machine
+is the name of your machine as used by the "From" and "Reply-To" fields.
+By default it is set to (system-name); if that is not appropriate for news
+and mail purposes, you will have to change it.  gnews-bug-address is my
+e-mail address relative to your site; the bug reporting code uses it.  If
+your machine groks INTERNET addresses, then the supplied value should be
+correct.
+
+path-host is more esoteric and perhaps not very portable: it is the name
+of a server where a telnet'able pathalias database is kept, and is used
+only by the path-alias function.  If you have a different mechanism for
+generating paths--write it yourself (and let me know about it).  You may
+also have to change path-service from "uucp-path" to 117.  (See RFC 915)
+
+The variable gnews-code-directory is a hack, giving a path to the Gnews'
+internals.  I hope the little code that I wrote is general enough for
+everyone.  If it comes out nil for you, you'll have to replace it with
+a "/"-terminated string that names your Gnews' directory.  Because this
+is ugly and of very minor interest, it's placed at the end of Init.el.
+----------------------------------------------------------------------
+If you wish to emulate rn instead of rrn, set nntp-service to nil.  I
+am not able to test this directly, but some people have debugged it and
+gotten it to work.
+
+Note: it finally occurred to me to set up some toy news directories for
+small scale tinkering.  Still, this can't compare with the real thing.
+----------------------------------------------------------------------
+IMPORTANT NOTE about byte-compiling the Gnews source:
+
+*> The *.elc files may have come with your code. If they didn't, or if <*
+*> you change some source while installing, load prims.el BEFORE comp- <*
+*> iling the *.el files; otherwise some major macros won't be defined. <*
+
+If you are running Gnews off a separate "gnews" directory, then you should
+put directory either in your load-path, or one below some such directory.
+Something like (setq load-path (append load-path '(".../gnews-dir"))) in
+your .emacs file should do the trick.
+----------------------------------------------------------------------
+I would strongly prefer if major bug fixes and the like NOT be sent to
+me as patches--they will sit and rot for a while before I get to them.
+Quite simply, I do not want to change my code until I know what you've
+sent is correct; I'd rather eval your defuns and test things as they
+come in, or later, straight out of my mail archives.  This is Emacs,
+remember--let's play off its strengths.  (But please include comments
+to indicate the lines you changed/added/deleted, so that I can try to
+understand your code without too much effort.)
+
+Similarly, most of my bug fixes will not be patches: I recommend instead
+that you expand on the gnews-site.el idea mentioned above, and include
+any new function defuns at the end of such a file, and install each new
+Gnews version by just replacing the old Gnews files and cleaning up the
+end of your gnews-site.el.  And perhaps I'll get energetic someday and
+write a gnews-patch function which can be run on a buffer and installs
+the new code.
+
+The C-w command initializes a Gnews bug report--mail to me--in most modes.
+----------------------------------------------------------------------
+Some pedantic requests: observe that I spell the program name with a
+big-G, like Cheerios, and I'd appreciate if you did the same too when
+you're being careful.  (IE, if you're in the e-e-cummings mood, never
+mind.  But when you are precise with "NNTP", "Pnews", etc, do the same
+with "Gnews".)  And pronounce the name guh-NEWS, not JEE-news.  Can
+you guess why?
+
+Good luck, and happy flaming y'all.  And be warned about looking at my
+code for too long--I even >program< obnoxiously.  (Heh heh.)
+
+ucbvax!garnet!weemba	Matthew P Wiener/Brahms Gang/Berkeley CA 94720
+Without NNTP, the Brahms Gang itself would be impossible.--Erik E Fair
+----------------------------------------------------------------------
+PS-I have to thank the many people who have helped contribute to the
+coding of Gnews, tested it under more primitive circumstances, and/or
+improved my understanding of NNTP, GNU Emacs, and even Gnews itself.
+This includes (the late) Michael Ellis, Gene Ward Smith, Emile LeBlanc,
+Erik E Fair, Alex Z Liu, Rusty Wright, Fred Douglis, Henry Mensch, Len
+Tower, Michael I Bushnell, Ashwin Ram, John Robinson, Hal R Peterson,
+and Richard L Krawitz.
+
+Extra thanks goes to Larry Wall, Brian Kantor, Phil Lapsley, and of
+course, Richard M Stallman.

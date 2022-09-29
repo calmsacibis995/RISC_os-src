@@ -1,0 +1,30 @@
+* $Header: r2400_ints,v 1.1.4.1 89/11/28 11:47:49 wje Exp $
+*
+* R2400 (Intrepid) Interrupt Handler.
+*	Handles all Intrepid Level 0 interrupts (SCSI, Lance, AT, etc.)
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	
+				r2400_intr(){noreach}
+
+$$$
+
+/*
+ * This file contains the specifications for the required interrupt
+ * routines for Intrepid (R2400).  All the interrupt routines are
+ * Lboot'able by being place in here just in case someone wants to
+ * use their on interrupt routines
+ *
+ */
+
+extern laintr();		/* Lance interrupt */
+extern spcintr();		/* SPC interrupt -- SCSI */
+extern udcintr();		/* UDC interrupt -- should not happen */
+extern r2400_no_interrupt();	/* For MBUS for now */
+
+int (*LANCE_interrupt)() = laintr;
+int (*SPC_interrupt)() = spcintr;
+int (*UDC_interrupt)() = udcintr;
+int (*MBUS_interrupt)() = r2400_no_interrupt;	/* No MBUS devices yet */
+
+

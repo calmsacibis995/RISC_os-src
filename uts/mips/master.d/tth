@@ -1,0 +1,9 @@
+* $Header: tth,v 1.1.5.1 89/11/28 11:53:39 wje Exp $
+*
+* TTH	- 9 track tape
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+bc	tth	17	-	io
+
+$$$
+

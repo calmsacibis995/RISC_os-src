@@ -1,0 +1,146 @@
+#ident "$Header: Mkinc.sash,v 1.26 90/10/26 10:37:17 huang Exp $"
+#	%Q%	%I%	%M%
+#
+# Copyright 1985 by MIPS Computer Systems, Inc.
+#
+# Generic Standalone Shell Makefile
+#
+# CASOPTS, CCCOPTS, and CLDOPTS are for use from make command line
+#
+
+
+include	../../../../Mkinc.common_defines
+include ../../../../Mkinc.release
+include	../../../../Mkinc.common_targets
+
+LIBPATH=../../../../saio/SAIO/$(VERSION)/SAIO_$(BINTYPE)
+LIBSA=  $(LIBPATH)/libsa.a
+CSU=    $(LIBPATH)/csu.mips.o
+
+DEFINES= -DSASH -D$(VERSION) -Wo,-rege,8
+
+HARDWARE_BUGS_6000= -DR6000_BUG_FLUSH -DR6000_BUG_IDPROM
+
+TMPOPTS= $(HARDWARE_BUGS_6000)
+
+ASFLAGS= $(INCDIRS_SPLIT) -DLOCORE $(DEFINES) $(ASOPTS) \
+	 $(ENDIAN) $(CASOPTS) $(TMPOPTS)
+CFLAGS=	$(INCDIRS_SPLIT) $(DEFINES) $(CCOPTS)  \
+	 $(ENDIAN) $(CCCOPTS) $(TMPOPTS)
+LDFLAGS= -non_shared -m -N -T a0600000 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+LLDFLAGS= -non_shared -m -N -T a0020000 $(LDOPTS) $(ENDIAN) $(CLDOPTS)
+
+VPATH=..
+DPATH=../../..:../../../../saio:../../../../saio/device
+
+SFILES=\
+	$(D3_PATH)/clientasm.s
+
+CFILES=\
+	$(D3_PATH)/commands.c \
+	$(D3_PATH)/machdep.c		$(D3_PATH)/main.c \
+	$(D3_PATH)/promio.c
+
+OBJS=\
+	clientasm.o commands.o machdep.o main.o promio.o
+
+all:		sash
+
+install: all
+		-if [ ! -d $(DESTDIR)/stand ]; \
+		then \
+			mkdir $(DESTDIR)/stand; \
+		fi
+
+		$(MAKE) package_install SRC=sash DEST=$(DESTDIR)/stand
+
+		-if [ ! -d $(DESTDIR)/usr/sys/prom ]; \
+		then \
+			$(IF_SYSV) \
+				mkdir -p $(DESTDIR)/usr/sys/prom; \
+			$(ENDIF) \
+			$(IF_BSD) \
+				mkdir $(DESTDIR)/usr; \
+				mkdir $(DESTDIR)/usr/sys; \
+				mkdir $(DESTDIR)/usr/sys/prom; \
+			$(ENDIF) \
+		fi
+		for i in ../../../*.h; \
+		do \
+		  $(MAKE) package_r_install SRC=$$i DEST=$(DESTDIR)/usr/sys/prom; \
+		done
+
+install_umips:	sash
+		strip sash
+		cp sash sash.std
+		-if [ ! -d $(DESTDIR)/stand ]; \
+		then \
+			mkdir $(DESTDIR)/stand; \
+		fi
+		$(MAKE) package_install SRC=sash DEST=$(DESTDIR)/stand
+		$(MAKE) package_install SRC=sash.std DEST=$(DESTDIR)/stand
+
+		-if [ ! -d $(DESTDIR)/usr/bfsd ]; \
+		then \
+			mkdir $(DESTDIR)/usr/bfsd; \
+		fi
+		$(MAKE) package_install SRC=sash DEST=$(DESTDIR)/usr/bfsd
+		$(MAKE) package_install SRC=sash.std DEST=$(DESTDIR)/usr/bfsd
+
+sash:		$(CSU) sccs_vers.o $(OBJS) $(LIBSA)
+		-rm -f sash sash.map sash.nm sash.$(RELEASE)
+		$(LD) $(LDFLAGS) -o sash $(CSU) sccs_vers.o \
+			$(OBJS) $(LIBSA) > sash.map
+		$(NM) -nx sash > sash.nm
+		$(SIZE) -x sash
+		cp sash sash.$(RELEASE)
+
+remake:		clean depend
+		$(MAKE) all
+
+clobber:	clean
+		-rm -f errs sash*
+
+clean:
+		-rm -f sash sash.nm sash.map
+		-rm -f *.o *.dis strings xs.c x.c sccs_vers.c Makefile.bak
+
+sccs_vers.c:	$(CSU) $(OBJS) $(LIBSA)
+	-rm -f sccs_vers.c
+	echo "/* Configuration Control File */" > sccs_vers.c;
+	$(IF_SYSV) \
+		echo "static char *SccsId=\"@(#)Mips Computer Systems \c" \
+		    >> sccs_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `$(WHOAMI)`"\c" \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "static char *SccsId=\"@(#)Mips Computer Systems " \
+		    >> sccs_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+	$(IF_SYSV) \
+		echo "char sccs_version[]=\"\c" >> sccs_vers.c; \
+		echo "Version $(RELEASE) $(TYPE)" `date` `$(WHOAMI)`"\c" \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char sccs_version[]=\"" >> sccs_vers.c; \
+		echo -n "Version $(RELEASE) $(TYPE)" `date` `whoami` \
+		    >>sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+	$(IF_SYSV) \
+		echo "char version[]=\"$(RELEASE)\c" >> sccs_vers.c; \
+	$(ENDIF)
+	$(IF_BSD) \
+		echo -n "char version[]=\"$(RELEASE)" >> sccs_vers.c; \
+	$(ENDIF)
+	echo "\";" >> sccs_vers.c
+
+depend:
+	$(CC) -M $(CFLAGS) $(SFILES) $(CFILES) | \
+	awk -f $(AWKDEPEND) | egrep -v 'saio_bsd|saio_sysv' > Mdepend.tmp$$$$ ;\
+        mv -f Mdepend.tmp$$$$ Makedepend

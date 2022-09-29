@@ -1,0 +1,8 @@
+* MOUSE_DC:	streams `mouse data converter'
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+om	mouse_dc	-
+						
+
+$$$
+

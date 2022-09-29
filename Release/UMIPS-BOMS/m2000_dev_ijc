@@ -1,0 +1,43 @@
+dev/root brw-r----- root bin 22 0 3 dev/dsk/ijc0d0s0
+dev/swap brw-r----- root sys 22 1 3 dev/dsk/ijc0d0s1
+dev/usr brw-r----- root bin 22 6 3 dev/dsk/ijc0d0s6
+dev/vh brw-r----- root bin 22 8 4 dev/dsk/ijc0d0s8
+dev/rroot crw-r----- root bin 22 0 3 dev/rdsk/ijc0d0s0
+dev/rusr crw-r----- root bin 22 6 3 dev/rdsk/ijc0d0s6
+dev/rvh crw-r----- root bin 22 8 4 dev/rdsk/ijc0d0s8
+dev/rscsi/ijc1d5s0 crw-rw-rw- root sys 23 80 5
+dev/rscsi/ijc1d5s1 crw-rw-rw- root sys 23 81 5
+dev/mt/h0 crw-rw-rw- root sys 23 80 5 dev/rscsi/ijc1d5s0
+dev/mt/h4 crw-rw-rw- root sys 23 81 5 dev/rscsi/ijc1d5s1
+dev/mt/h1d5 crw-rw-rw- root sys 23 80 5 dev/rscsi/ijc1d5s0
+dev/mt/h1d5n crw-rw-rw- root sys 23 81 5 dev/rscsi/ijc1d5s1
+dev/rmt/h0 crw-rw-rw- root sys 23 80 5 dev/rscsi/ijc1d5s0
+dev/rmt/h4 crw-rw-rw- root sys 23 81 5 dev/rscsi/ijc1d5s1
+dev/rmt/h1d5 crw-rw-rw- root sys 23 80 5 dev/rscsi/ijc1d5s0
+dev/rmt/h1d5n crw-rw-rw- root sys 23 81 5 dev/rscsi/ijc1d5s1
+dev/dsk/ijc0d0s0 brw-r----- root bin 22 0 3
+dev/dsk/ijc0d0s1 brw-r----- root sys 22 1 3
+dev/dsk/ijc0d0s6 brw-r----- root bin 22 6 3
+dev/dsk/ijc0d0s8 brw-r----- root bin 22 8 4
+dev/dsk/ijc0d0vh brw-r----- root bin 22 8 4 dev/dsk/ijc0d0s8
+dev/rdsk/ijc0d0s0 crw-r----- root bin 22 0 3
+dev/rdsk/ijc0d0s6 crw-r----- root bin 22 6 3
+dev/rdsk/ijc0d0s8 crw-r----- root bin 22 8 4
+dev/rdsk/ijc0d0vh crw-r----- root bin 22 8 4 dev/rdsk/ijc0d0s8
+dev/scsi/ijc0d0s0 brw-r----- root bin 22 0 3 dev/dsk/ijc0d0s0
+dev/scsi/ijc0d0s1 brw-r----- root sys 22 1 3 dev/dsk/ijc0d0s1
+dev/scsi/ijc0d0s6 brw-r----- root bin 22 6 3 dev/dsk/ijc0d0s6
+dev/scsi/ijc0d0s8 brw-r----- root bin 22 8 4 dev/dsk/ijc0d0s8
+dev/rscsi/ijc0d0s0 crw-r----- root bin 22 0 3 dev/rdsk/ijc0d0s0
+dev/rscsi/ijc0d0s6 crw-r----- root bin 22 6 3 dev/rdsk/ijc0d0s6
+dev/rscsi/ijc0d0s8 crw-r----- root bin 22 8 4 dev/rdsk/ijc0d0s8
+dev/dsk/ipc0d0s0 brw-r----- root bin 4 0 1
+dev/dsk/ipc0d0s1 brw-r----- root bin 4 1 1
+dev/dsk/ipc0d0s6 brw-r----- root bin 4 6 1
+dev/dsk/ipc0d0s8 brw-r----- root bin 4 8 2
+dev/dsk/ipc0d0vh brw-r----- root bin 4 8 2 dev/dsk/ipc0d0s8
+dev/rdsk/ipc0d0s0 crw-r----- root bin 4 0 1
+dev/rdsk/ipc0d0s6 crw-r----- root bin 4 6 1
+dev/rdsk/ipc0d0s8 crw-r----- root bin 4 8 2
+dev/rdsk/ipc0d0vh crw-r----- root bin 4 8 2 dev/rdsk/ipc0d0s8
+

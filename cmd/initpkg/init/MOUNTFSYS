@@ -1,0 +1,17 @@
+#! /bin/sh
+#	Mount file systems
+
+cd /
+/etc/mountall
+_exit=$?
+if [ $_exit -ne 0 ]; then
+	exit $_exit
+fi
+
+if [ -x /etc/quotacheck ]; then
+	/etc/quotacheck -a -p
+fi
+if [ -x /etc/quotaon ]; then
+	/etc/quotaon -a
+fi
+exit 0

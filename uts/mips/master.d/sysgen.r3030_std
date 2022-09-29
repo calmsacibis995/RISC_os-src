@@ -1,0 +1,168 @@
+* $Header: sysgen.r3030_std,v 1.1.1.7 90/06/05 16:41:33 wje Exp $
+*****************************************************************************
+* ATBUS information		MUST BE FIRST!
+*
+* ATBUS: module [intr] irq [unit base]
+*	
+*	module: boot module
+*	intr:	interrupt function (default: module_prefix|"intr")
+*	irq:	ATBUS Interrupt request level.
+*	unit:	unit number of this device (maybe used for multiple devices)
+*	base:	base address of card (offset into ATBUS i/o space)
+*
+ATBUS: module=c8 irq=0x7 base=0x140
+
+*
+* kernel
+*
+KERNEL: kernel
+
+*
+* Devices that ALWAYS exist on R3030
+*
+*VECTOR: module=scsi
+VECTOR: module=r3030_scsi
+VECTOR: module=if_lance
+VECTOR: module=pkbd
+*INCLUDE: dma				/* On Board DMA chip */
+
+* device specifications
+*
+ROOTDEV: DEV(33,0)
+PIPEDEV: DEV(33,0)
+SWAPDEV: DEV(33,1) 0 0
+DUMPDEV: DEV(33,1)
+
+
+* compilation flags
+*
+CCOPTS: -Dident=undef -DR2300 -DINKERNEL -DKERNEL -Dsgi -DSOFTFP -DDEBUG -EB -g
+LDOPTS: -N -T 80021000 -e start -o unix
+
+* general I/O utilities
+*
+INCLUDE: io
+INCLUDE: r3030_ints
+INCLUDE: r3030_mem
+INCLUDE: r3030_mono
+INCLUDE: r3030_font
+INCLUDE: bitmap
+INCLUDE: wbflush_r2000
+INCLUDE: graf_r3030
+INCLUDE: ggetchar
+INCLUDE: keymap_r3030
+INCLUDE: mono
+INCLUDE: pkbd
+INCLUDE: cons3030
+*INCLUDE: sable_console
+INCLUDE: spl_r3030
+INCLUDE: cache_std
+INCLUDE: tlb_std
+INCLUDE: prom_entries_std
+EXCLUDE: vme
+INCLUDE: todc_r3030
+INCLUDE: leds
+EXCLUDE: nvram
+INCLUDE: if_lance
+INCLUDE: c8
+INCLUDE: fl8272
+
+INCLUDE: scc
+*INCLUDE: sabledsk
+
+*
+* Time-of-day chip routines
+*
+* tod routines are bundles into todc_r3030.c now, we don't need mk48t02
+*
+EXCLUDE: mk48t02
+
+* drivers to be included even though they may not appear to be equipped
+*
+*INCLUDE: sduart
+
+* drivers to be excluded even though they may
+* appear to be equipped
+*
+
+* Virtual Disk Driver
+*
+* To configure in vdisk comment out the "EXCLUDE vdisk" line and
+* uncomment the "INCLUDE vdisk" lines, to include stripping and mirror
+* uncomment the "INCLUDE stripe" and "INCLUDE mirror" lines.
+*
+EXCLUDE: vdisk
+#INCLUDE: vdisk
+#INCLUDE: stripe
+#INCLUDE: mirror
+
+* file systems
+*
+* WARNING: bfs must com *after* cs5 if both exist.
+*
+*INCLUDE: cs5
+*INCLUDE: bfs
+*INCLUDE: nfs
+*INCLUDE: com
+INCLUDE: socket
+INCLUDE: proc
+INCLUDE: ufs
+INCLUDE: specfs
+INCLUDE: nfs
+
+* required kernel modules
+INCLUDE: disp
+INCLUDE: mem
+INCLUDE: klog
+
+* ttys and friends
+INCLUDE: clone
+INCLUDE: pts
+INCLUDE: ptc
+INCLUDE: gentty
+
+* SV InterProcess Communication
+INCLUDE: ipc
+INCLUDE: msg
+INCLUDE: sem
+
+* shared memory
+INCLUDE: shm
+
+* kernel debugging tools
+#kdebug#INCLUDE: monitor
+
+INCLUDE: prf
+
+* SLIP module
+INCLUDE: slip
+
+* CommUnity DECnet
+*
+* To configure in DECnet comment out the "EXCLUDE decnet" line and
+* uncomment the "INCLUDE ll" and "INCLUDE nm" lines.
+* To configure out DECnet comment out the "INCLUDE ll" and "INCLUDE nm"
+* lines and uncomment the "EXCLUDE decnet" line.
+
+#INCLUDE: ll
+#INCLUDE: nm
+EXCLUDE: decnet
+
+* Dummy stubs (These should come out sometime)
+*
+EXCLUDE: stubs
+
+* Modules which haven't been done yet
+*
+EXCLUDE: du
+
+*
+* This must be specifically excluded so that the functions in the
+* master files will be defined
+*
+EXCLUDE: rd
+EXCLUDE: dkip
+EXCLUDE: dkvj
+*EXCLUDE: sd
+EXCLUDE: scsi
+EXCLUDE: xyl712

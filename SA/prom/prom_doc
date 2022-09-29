@@ -1,0 +1,441 @@
+#ident "$Header: prom_doc,v 1.1 87/08/18 16:21:29 mdove Exp $"
+The prom is made up of the following components:
+	- cpu initialization and diagnostic code
+		- initializes cpu status and cause registers
+		- clears and sizes cpu instruction and data caches
+			- must be done, caches come up in undetermined state
+		- clears cpu translation lookaside buffer
+			- comes up in undetermined state, "clearing" involves
+				setting high bit of VPN field of each TLB
+				entry to avoid matching any reference.  TLBHI
+				must NOT be cleared to zero, since that would
+				cause multiple matches on VPN 0, PID 0 and
+				possibly result in a TLB SHUTDOWN even though
+				entries are invalid.
+		- configures, clears and sizes main memory
+			- code to be written by Bromo, will be responsible
+				for setting base address and interleaving
+				for MIPS memory cards
+		- performs a number of system diagnostics
+			- these will be written by Bromo
+		- initializes prom fault handling
+			- copies short code sequences to exception
+				vector locations, these code sequences
+				jump to particular entry points in the prom
+		- determines appropriate boot mode by examining nv ram
+			- monitor mode
+				- RESET causes monitor to come up in
+					command mode
+			- warm start
+				- RESET causes monitor to look for properly
+					structured "restart block".  If
+					found, monitor calls user provided
+					restart routine; otherwise, cold
+					start is performed.
+			- cold start
+				- RESET causes monitor to load and transfer
+					to file specified by environment
+					variable "bootfile",  this variable
+					is stored in non-volatile ram (so
+					it persists even if machine is
+					powered off.)
+		- initializes non-volatile ram and "environment variables"
+			- a particular pattern ("Va") is written into nv ram
+				whenever it is initialized, if this pattern
+				is not found at RESET time, nv ram is
+				reinitialized from initial values that are
+				in prom.  Initial values for a small set
+				of environment variables are then initialized
+				from nv ram.
+			- environment variables currently initialized from prom
+				- netaddr -- internet address for this node
+					- initialized to 97.0.0.1 if
+						nv ram invalid
+				- lbaud -- baud rate for local console uart
+					- initialized to 9600 if nv ram invalid
+				- rbaud -- baud rate for remote console uart
+					- initialized to 1200 if nv ram invalid
+				- bootfile -- default bootfile for cold starts,
+					autoboots, and boot command
+					- initialized to dkip()sash if nv ram
+						invalid
+				- bootmode -- 'c' for cold starts, 'w' for
+					warms starts, and 'm' for monitor mode
+					- initialized to 'm' if nv ram invalid
+
+	- the code which implements the prom commands
+		- commands are structured the same as standalone programs
+			- they are passed arguments via the standard UNIX
+				practice of argc, argv
+			- an environment is maintained (like UNIX), and both
+				commands and standalones can examine this
+				environment
+			- the standalone library can be linked with both
+				standalones promgrams and the prom monitor
+				thus there is a common set of support routines
+				for both
+		- this eases the development of new commands since they can
+			be debugged as standalone programs and later integrated
+			into the PROM monitor
+		- commands are provided to load and transfer control to
+			other programs
+			- programs can be load from disk, tape, ethernet
+				or via the serial lines
+			- protocols are provided to insure reliable
+				transmission when loading via serial lines
+			- files to be loaded may be stated explicitly as
+				"device(ctlr, unit, part)file" or the
+				environment variable "path" may be set to
+				a list of devices (and partial pathnames)
+				to be searched if the given file does not
+				include a device specification
+		- commands are provided to deal with multiple consoles
+			at the prom monitor level (i.e. for remote diagnostic
+			consoles, etc.)
+
+	- the standalone library
+		- the standalone library attempts to emulate much of the
+			normal environment for programs under UNIX
+			- i/o system calls open, read, write, close,
+				ioctl are provide (although filename
+				syntax is slightly changed to be appropriate
+				to the standalone environment)
+				- filename syntax:
+					device(ctlr, unit, part)file
+			- stdio routines getchar, putchar, gets, puts,
+				and printf are provided
+			- a large number of other standard useful libc
+				routines are provided
+		- provides for flexible exception handling 
+			- default handlers describe fault condition
+				and return control to prom monitor
+			- standalone programs can deal with faults
+				themselves by declaring their fault
+				routines with setjmp and the global
+				variable "nofault".  Control will be
+				passed by longjmp'ing via the jmp_buf
+				pointed to by nofault on the occurrence
+				of any fault.  Cancel user fault handling
+				by setting nofault to zero.
+		- provides for easy inclusion of new device drivers
+			- make entry to "device switch" to describe
+				new device drivers
+				- device name
+					- matched with device portion of
+						filenames
+				- device open routine
+					- performs device initialization
+					- called with pointer to i/o
+						block (described later)
+					- should return 0 if open successful
+					- should return -1 if open fails
+				- device strategy routine
+					- performs i/o on device
+					- called with pointer to i/o
+						block and function number
+					- should return actual byte count
+						transferred if successful,
+						0 if end of file, -1 if
+						unrecovered error
+				- device close routine
+					- performs device clean-up
+					- called with pointer to i/o block
+					- should return 0 if no errors,
+						-1 if error
+				- device ioctl routine
+					- hook for special functions
+					- called with pointer to i/o block,
+						cmd word, and argument word
+					- should return 0 if no error
+						-1 if error
+				- device type (character, block, console)
+					- character devices may transfer
+						single characters
+					- block devices must transfer in
+						multiples of some block
+					- console devices (which must also
+						be specified as character
+						devices) may be "enable'd"
+						as a monitor command input/
+						output device
+				- device description (used for help text)
+					- a short string which describes the
+						device, this is printed as
+						help text when an incorrect
+						device is specified
+			- device drivers communicate with other standalone
+				library routines via "iob" i/o control block
+				- A DETAILED DESCRIPTION OF iob GOES HERE
+					describing each field and its use
+struct	iob {
+	/*
+	 * The following fields are initialized by the standalone i/o
+	 * library and passed to device drivers to parameterize the
+	 * requested operation.  (open, close, strategy, ioctl calls)
+	 * All are input parameters to device drivers.
+	 */
+	int	i_ctlr;		/* controller board number, used to
+				 * determine appropriate CSR address */
+	int	i_unit;		/* device unit number, to select among
+				 * multiple devices on a single controller */
+	int	i_part;		/* disk partition, to select logical partition
+				 * on a single disk drive */
+	char	*i_ma;		/* memory address of i/o buffer, 
+				 * indicates to device drivers where in
+				 * memory the requested transfer should
+				 * occur */
+	int	i_cc;		/* character count of transfer (bytes) */
+	daddr_t	i_bn;		/* block number, indicates block to read
+				 * for block devices (also frequently used
+				 * by file system routines to indicate the
+				 * current block in the iob buffer) */
+	/*
+	 * i_devaddr is a convienent place for device drivers to
+	 * save the csr address for the device associated with the
+	 * particular iob so it need not be recalculated from i_ctlr
+	 * on all calls
+	 */
+	u_int	i_devaddr;	/* csr address, device driver variable */
+	/*
+	 * i_errno should be set by device drivers to an appropriate
+	 * error number chosen from <errno.h> if they detect an error.
+	 *
+	 * File system / protocol routines should set i_errno to an
+	 * appropriate error number chosen from <errno.h> if they detect
+	 * an error.
+	 */
+	int	i_errno;	/* error number, output from device drivers */
+	/*
+	 * The following fields are internal to the standalone i/o
+	 * implementation, although they may be examined in some
+	 * cases by device drivers or file system / protocol routines.
+	 */
+	int	i_flgs;		/* flags indicating if the iob is inuse,
+				 * and if the file is open for read and/or
+				 * write access */
+	int	i_fstype;	/* file system type, used to select appropriate
+				 * file system / protocol routines */
+	struct device_table *i_dp;	/* pointer into device_table */
+	/*
+	 * the following variables are used by file system and protocol
+	 * routines to maintain information as necessary for their operation
+	 *
+	 * File system / protocol routines typically examine this information
+	 * to decide if the current buffer can be used to satisfy the requested
+	 * i/o operation, if not, the file system / protocol routines will
+	 * properly initialize the device driver fields indicated above
+	 * and then call the appropriate device driver entry point via
+	 * the i_dp pointer field.
+	 */
+	off_t	i_offset;	/* byte offset in file, used by file
+				 * system routines to calculate appropriate
+				 * block to read from block device */
+	char	*i_buf;		/* pointer to i/o buffer for blk devs,
+				 * file system / protocol variable */
+	union {
+#ifndef PROM
+		struct	inode ui_ino;		/* inode, if disk file */
+#endif
+#ifdef notdef	/* tape not implemented yet */
+		struct	tpdirent ui_tpd;	/* tape dir entry,
+						 * if tape file */
+#endif notdef
+		struct	ether_info ui_inet;	/* enet addresses, if net */
+		struct	volume_directory ui_vd;	/* dvh directory entry */
+	} i_un1;
+#ifndef PROM
+	union {
+		struct fs ui_fs;	/* file system super block info */
+		char dummy[SBSIZE];
+#ifndef notdef	/* tape not implemented yet */
+		struct tpdir ui_tp;	/* tape directory */
+#endif notdef
+	} i_un;
+#endif
+};
+
+			- library provides routines for dealing with
+				flow control on character devices and
+				meeting latency requirements of uarts
+				- DESCRIBE scandevs() and circular buffer
+					routines
+
+Implementation of flow control and timer facilities
+
+The standalone i/o library provides for flow control on serial lines
+and a general timer facility that are implemented without using interrupts.
+Interrupts are not used to minimize system functionality required by the
+monitor and to ease the design of diagnostics and other standalone programs
+which might wish to use interrupts.  The flow control and timer facilities
+are implemented via the standalone i/o library routine _scandevs().  This
+routine is called periodically during the execution of the library routines
+and is responsible for 1) moving a pattern through the led's on the cpu
+board, 2) checking for expired timers, and 3) polling the enabled console
+devices for input.
+
+Timers are set by first doing a setjmp() and setting the library global
+variable "_timer_jmpbuf" to the address of the jmp_buf used in the setjmp()
+call, and then making a call to the routine _set_timer(secs) where "secs"
+is the timer expiration period in seconds.  When the timer expires, the
+standalone library will longjmp via the jmp_buf pointed to in _timer_jmpbuf.
+A timer is cancelled by first calling _set_timer(0), and then assigning
+a 0 to _timer_jmpbuf.  The timers are internal implemented by the cpu
+time-of-day clock and require that it be correctly functioning.
+
+Flow control (Control S and Control Q), and additionally, a standalone
+i/o interrupt character (Control C), and a standalone "breakpoint"
+character (Control Z) are implemented by _scandevs().  The interrupt
+character aborts the execution of the standalone program and returns
+control to the prom monitor.  The breakpoint character causes the
+standalone library to execute a "break" instruction, which if the
+debug monitor is loaded, causes control to be passed to the debug monitor,
+if the debug monitor is not loaded, the standalone library catches a
+breakpoint exception and returns control to the prom monitor.  All of this
+is implemented by a two level character input system in the standalone
+library.  The lower level is implemented by _scandevs() calling each
+enabled console device via a special ioctl command "FIOCSCAN", this
+ioctl check the receiver of the serial device for an input character and
+one exists calls the standalone library routine _ttyinput() to queue
+the character for the upper half of the character input system.
+_ttyinput() checks for the special input characters and carries out
+the actions indicated if a control character is received, otherwise
+the input character is queued in a circular buffer.   The upper half
+of the character input system is invoked via the read() call on a
+character device and removes characters from the circular buffer.
+Note that this mechanism not only allows for flow control and other
+control functions, but also allows input when no read() call is
+pending (unsolicited input), thus simplifying the design of many
+programs.
+
+			- drivers are provided for current MIPS devices
+		- provides for easy inclusion of new file system and
+			communication network protocol code
+			- make entry to "file system switch" to describe
+				new file system formats and comm protocols
+				File system switch entries are:
+				- open routine
+					- called after device open routine
+					- called with io block pointer,
+						filename, and flags (as
+						per open(2))
+					- should return 0 if no errors,
+						-1 if error
+				- read routine
+					- reads from file structured device
+						or protocol layered network
+						device
+					- implemented via calls on lower
+						level device driver
+					- called with io block pointer,
+						user buffer pointer, and
+						requested transfer count
+					- should return actual characters
+						transferred if no error,
+						-1 if unrecoverable error,
+						0 if end of file
+				- write routine
+					- writes to file structured device
+						or protocol layered network
+						device
+					- implemented via calls on lower
+						level device driver
+					- called with io block pointer,
+						user buffer pointer, and
+						requested transfer count
+					- should return actual characters
+						transferred if no error,
+						-1 if unrecoverable error,
+						0 if end of file
+				- ioctl routine
+					- called with io block pointer,
+						command number, and command
+						argument
+					- should return 0 if no error, -1
+						if error
+				- close routine
+					- called with io block pointer
+					- typically used to return buffers
+						requested in open
+					- should return 0 if no error, -1
+						if error
+			- file system/protocol code interacts with other
+				standalone library routines and device drivers
+				via "iob" i/o control block (described above)
+			- standalone library provides routines for allocating
+				block buffers for file systems and message
+				buffers for network protocols
+			- MIPS provides code for volume headers, 4.2BSD,
+				(and eventually SysV) file systems, plus code
+				for UDP/IP/ARP network connections
+		- provides routines to deal with MIPS standard Disk
+			Volume Headers
+			- volume headers describe
+				- drive parameters such as number of
+					cylinders, heads, tracks,
+					interleave factor, sector gaps, etc
+				- drive partition table
+				- volume directory which indicates the
+					location of boot blocks, bad sector
+					tables, error summary tables, etc
+			- standalone file system code is included to
+				deal with MIPS volume headers (dvh.c)
+		- provides a table driven command parser
+			- uniform command syntax for PROM Monitor, Debug
+				Monitor, and Standalone Shell
+			- expands environment variable references, deals with
+				quoted strings
+
+The Standalone Shell (sash)
+	The PROM monitor as configured for the standard MIPS proms is
+	minimally configured.  This is to both save prom space and to
+	allow maximal flexibility for distributing new standalone level code.
+	Another more fully configured version of the monitor code that
+	is not prom resident, but loaded by the prom from some other
+	media is referred to as the "Standalone Shell" or "sash".
+	Sash is basically the same program as the prom monitor, but has
+	been configured to contain a larger variety of device drivers
+	and file system / protocol routines, along with being linked
+	to load into main memory.  The normal process of booting an
+	arbitrary file is a two step process where the prom monitor
+	loads the standalone shell which then loads the desired file.
+	This allows the boot environment to be updated for new devices
+	and file system protocols without requiring new proms to be
+	distributed.
+
+	Sash, when booted with a first argument of "-a" will automatically
+	boot in the file "vmunix" from partition 1 of the device from
+	which sash was booted.  The -a and any other arguments are passed
+	to the program "vmunix."  This feature is used by the prom to
+	implement automatic boots on cold starts.
+
+	Sash, when booted with a first argument of "-r" will set the
+	environment variables "dbgmon" and "rdebug" and then boot the
+	file given as the second argument passing any further arguments
+	(but not the -r) on to the booted file.  This feature is used
+	by remote debuggers to load program images and initiate the
+	debug monitor in remote debugging mode.
+
+	Sash, when booted with arguments and where the first argument
+	does not begin with a "-", will boot the file given by the
+	first argument and pass all remaining arguments to the booted
+	program.
+
+The Standalone Debugging Monitor (dbgmon)
+	The debugging monitor is a standalone program that can be
+	loaded co-residently with any standalone program to provide
+	debugging facilities.  These facilities include examining
+	and changing memory and registers, instruction disassembly,
+	plus flexible breakpoint and single step commands.
+
+	Also provided is a "remote debugging"
+	capability where the debugging monitor can communicate with
+	a remotely hosted debugging aid via a serial link to provide
+	for symbolic debugging.  The debugging monitor can be automatically
+	loaded by the program to be debugged via facilities in the
+	standalone library, or may be loaded manual via PROM monitor
+	commands.  The debugging monitor is automatically loaded by
+	the standalone library for a standalone program (except a program
+	loaded from the file "sash") when the environment variable "dbgmon"
+	is present in the environment, furthermore, if the environment
+	variable "rdebug" is present the debug monitor will immediately
+	go to remote debugging mode communicating via tty(1).

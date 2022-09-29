@@ -1,0 +1,30 @@
+*#ident "$Header: dkip,v 1.8.3.4.1.1.1.3 90/10/18 10:56:55 beacker Exp $"
+*
+* DKIP - Interphase VME 3200 disk driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+bc	dkip	4,9	4,4	io
+				has_dkip(){false}
+				dkip_resetbootctlr(){false}
+
+$$$
+/* disk driver variable tables */
+#include "sys/dvh.h"
+#include "sys/dkvj_IPtypes.h"
+#include "sys/dkipreg.h"
+#include "sys/elog.h"
+
+struct iotime dkipiotime[##C][DKIPUPC];	/* io statistics */
+struct dkipctlrinfo *dkipctlrptr[##C];	/* controller software state */
+int ndkip = ##C*DKIPUPC;		/* number of units for sar */
+int dkipctlrs = ##C;			/* maximum number of controllers */
+
+int dkipmajors = ##N;
+int dkipcontmaj = ##P;
+int dkiparray[##N] = ##X;
+char dkipecc[##C][DKIPUPC];		/* whether or not ECC is enabled */
+
+#include "sys/dkio.h"
+
+struct devtable Dev_dkip[] = { ##N, ##P, DKIPUPC, dkiparray};
+

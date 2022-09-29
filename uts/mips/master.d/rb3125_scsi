@@ -1,0 +1,37 @@
+*#ident ""
+*
+* SCSI - On board SCSI on Genesis
+*
+* XXX Bug in mboot causes devtable to use C instead of P
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+bc	scsi	33	7	io, common_scsi, asc, asc_poll
+				has_dkisd(){false}
+				ascintr(){noreach} 
+
+$$$
+
+#include "sys/types.h"
+#include "sys/param.h"
+#include "sys/buf.h"
+#include "sys/iobuf.h"
+#include "sys/dvh.h"
+#include "sys/elog.h"
+#include "sys/r3030scsi.h"
+#include "sys/scsi.h"
+
+#define NLUN ##N
+int scsi_Ntarget = NTARGET;	/* Used by scsi to tell how big */
+int scsi_Nlun = NLUN;		/* these lboot'able structures are */
+
+struct scsi_unit scsi_un[NTARGET*NLUN];
+				/* use 2X here to make room for aligning! */
+struct scsisge scsi_sge[NTARGET*NLUN][2*MAX_SGENTRY];
+struct iobuf  scsi_tab[NTARGET*NLUN]; /* for linking per unit activity */
+struct iotime isd_iotime[NTARGET];/* io statistics */
+int nisd = NLUN*NTARGET;		/* number of units for sar */
+int scsi_majors[##N] = ##X;		/* major numbers */
+int nscsi_majors = ##N;
+
+#include "sys/dkio.h"
+struct devtable Dev_dkisd[] = { ##N, ##C, NTARGET, scsi_majors};

@@ -1,0 +1,33 @@
+* $Header: r3030_ints,v 1.2.1.3 90/03/05 22:36:29 wje Exp $
+*
+* R3030 Interrupt Handler.
+*	Handles all Intrepid Level 0 interrupts (SCSI, Lance, AT, etc.)
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	
+				r3030_intr(){noreach}
+				r3030_intr1(){noreach}
+
+$$$
+
+/*
+ * This file contains the specifications for the required interrupt
+ * routines for R3030.  All the interrupt routines are
+ * Lboot'able by being place in here just in case someone wants to
+ * use their on interrupt routines
+ *
+ */
+
+extern laintr();		/* Lance interrupt */
+extern ascintr();		/* SPC interrupt -- SCSI */
+extern sccintr();		/* SCC interrupt -- 8530 */
+extern rambointr();		/* RAMBO interrupt -- dma ASIC */
+extern pkbdintr();		/* R3030 keyboard interrupt */
+extern r3030_no_interrupt();	/* For MBUS for now */
+
+int (*LANCE_interrupt)() = laintr;
+int (*ASC_interrupt)() = ascintr;
+int (*RAMBO_interrupt)() = rambointr;
+int (*SCC_interrupt)() = sccintr;
+int (*KBD_interrupt)() = pkbdintr;
+int (*MBUS_interrupt)() = r3030_no_interrupt;	/* No MBUS devices yet */

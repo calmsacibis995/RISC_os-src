@@ -1,0 +1,448 @@
+This is file =CHANGES-1 of Gnews, Copyright (C) 1988 Matthew P Wiener.
+----------------------------------------------------------------------
+	1.9 => 2.0	(?.?.88)
+
+## Lots of variable renaming.  The one essential change (gnews-hook-list
+## => hook-kill-all) is updated automatically just by running Gnews.  If
+## you do nothing, the only harm will be ignored customizations, including
+## some of the less common hook-kills.  To adapt, run `M-x gnews-rename'
+## (in Help.el) while visiting the following: your .emacs and other such
+## initialization files you use, and also your .gnewsrc.hook.
+
+## M-x gnews has been bound to giving you the detailed version of the
+## above automatically.   M-x Gnews is, for now, the true entry point
+## to running Gnews.
+
+The seventh draft of the texinfo manual is ready.  Internal docs cleaned
+up some more.
+
+article+/-1 rewritten: entering big newsgroups with mostly unread news
+should be much quicker.
+
+index-kill (k) and index-kill-permanent (K) implemented.
+
+index-auto (the list of regexps for automatic indexing) eliminated.
+Instead, use a pre-hook of the form (pre nil index-if).  And the
+corresponding hook-kill-insert-index (^C^I) command was added to
+Hook Kill mode.  See docs for more details and features.
+
+New user variables: group-save-junk and group-pipe-junk non-nil mean
+junk after "s,o,^O" and "|" respectively.  nntp-exec-verbose means
+run the NNTP internals in verbose mode.  nntp-exec-log-p means keep
+a log of NNTP commands (and returned information strings) in the
+variable nntp-exec-log.  reply-path, if a string, means use it as
+an explicit "Path:" header when posting, and if nil, things are as
+before.
+
+gnews-edit-rot13 (^C^R) (rot13 a region) added to Gnews Edit mode.
+
+reply-indent (^C^I) sets the region after indenting.
+
+reply-to-simplify (^C^T) rewritten and documented.  See doc string for
+the variable path-data-file for details.  See manual Section 5.7, Info
+node "mail headers" for full details.
+
+reply-newsgroup (^C^N) (for entering newsgroup names quickly) added.
+
+{news,group}-catchup (c), gnews: arguments changed to "P\np" order.
+
+More Group mode commands take explicit number prefixes: group-catchup
+(c) and the four reply commands (r,R,f,F).  In the catchup case, it
+means catch up all but that many articles.  In the reply cases, it's
+merely the same as a prefix argument.
+
+hook-kill-insert-{pre,junk,junk-local} (^C^P,^C^J,^C^L) will now take
+null headers.  [Formerly gnews-hook-insert-{pre,junk,junk-local}: see
+comment above about renaming.]
+
+article-digest-restart (<) added.
+
+("." "." setq hook-kill-continue nil) in hook-kills can be replaced
+with the more intuitive ("." "." article-yes): this means set to the
+article immediately, breaking out of hook-kill processing.  The Hook
+Kill mode command hook-kill-insert-yes (^C^Y) inserts one of these.
+
+gnews-legalese-{license,copying,no-warranty} (~LL,~LC,~LW) added.
+
+File save defaults have a further option.  See gnews-save-name docs.
+
+The way to set up Digest mode hooks for mixed digest/article newsgroups
+has been simplified immensely:
+	(pre nil article-digest-if "TeXhax@Score" t)
+is now all that is needed in comp.text to dedigestify TeXhax digests.
+See docs for article-digest-if.
+
+hook-kill-insert-digest (^C^D) improved to handle both kinds of digest
+hooks automatically.  With a prefix argument, it handles rot13-ed digests.
+
+Rot13-ing improved:
+ (1) Autorot13ing is now supported in per-hooks.  For example,
+		("Keywords" "rot13" setq gnews-rot13-p t)
+     will work as you might think.
+ (2) Rot13-ed digests are readable in a transparent manner by hooks
+     similar to the non-rot13-ed versions, with an extra "t" argument
+     in position 3 (for both article-digest and article-digest-if).
+
+Bug in reply-to-simplify (^C^T) fixed.  Bug in group-previous-unread (p)
+when at the index for the first item in the newsgroup fixed.  Dumbo bug
+in fast Spool indexing that made it impossible fixed.  An obscure bug in
+group-mark-permanent (~M) fixed.  Bug where new Gnewsers who don't read
+any articles can't quit fixed.  A (totally unrelated) bug whereby any
+hand-edited changes in a .gnewsrc get wiped out if you then run Gnews
+without reading any articles fixed.  A (sit-for 2) debugging statement
+left inside reply-yank-fill (^C^Q) removed.  article-digest-previous (p)
+bug in not resetting the %-age fixed.  article-down (d) and article-line
+(LFD,RET) now work with digests.  Null signatures don't add "-- ".
+group-next-same-subject (~N) catches not-found articles.
+
+	1.8 => 1.9	(8.8.88)
+
+The third draft of the texinfo manual is ready.
+
+gnews-describe-mode (H or ^C^H) with a prefix argument goes directly to
+the appropriate Info node.
+
+More digest mode: replies, followups and saves work.  If you wish to
+submit posted articles by mail, then setq n-reply-digest-mail to t,
+meaning derive an address from the digest's "From:", or set it to a
+string, meaning use that string as the address.
+
+article-not-found-hooks added to permit non-standard article retrieval.
+See docs for article-run-hooks.
+
+reply-yank-fill (^C^Q) rewritten--it is now much better at identifying
+indentation prefixes and paragraph breaks.
+
+Window-configuration code used when leaving Gnews or an index.  Gnews
+now returns to where you were when you last ran M-x gnews, not where
+you were when you first ran M-x gnews.
+
+Buffer popping/switching systemized: index-pop-up and gnews-hook-pop
+switch to the buffer when nil, pop when non-nil, and pop and resize
+the window to the indicated size when the variable is a number.  The
+variable index-window-height is now unsupported.  In general, you can
+rewrite the gnews-buffer function, now isolated.
+
+group-supersedes (S) renamed group-supersede; ditto for the hook.
+
+gnews-output-to-mbox-file (^O) added to group-mode.
+
+gnews-hook-mode rewritten.  Instead of ^C^O to create a generic hook-kill,
+there are six distinct ^C-bound keys for the standard ones, (like ^C^D
+for (pre nil article-digest)), and one apiece (^C^O,^C^P,^C^Q) for the
+generic pre/per/post-hooks respectively.
+
+reply-signature-point replaced with reply-signature-marker.
+
+Emacs keyboard macros work with Gnews now.  (!?)
+
+index and reply code no longer autoloaded, as this can break kill-hooks.
+
+Recentering improved.
+
+An article-history list is now maintained.  group-last-seen (-) rewritten
+to use it.  Suggestions?
+
+"Truncated articles" that are really a side effect of bad news software
+wrongly counting the blank line between the header and article text are
+now handled somewhat better.  No message or beep--just hit space twice.
+
+New new newsgroup group adder replaced.
+
+The followings bugs have been fixed:  Digest code hanging if last article
+contained a spurious digest separator.  First index article sometimes be-
+ing junked.  Erasure of post hooks when running group-index.  Hook-kills
+not setting local variables.  Hanging on multiple cancelled articles that
+are at the beginning of a just entered newsgroup.  No permanent marking.
+Not defaulting to the previous save file name with group-save (s) when
+gnews-save-style was t.  Wiping out post-hooks after group-reply-return
+(*).  group-get not calling first article interactively.
+
+	1.7 => 1.8	(11.7.88)
+
+New new newsgroup detector put in.  When you get the new newsgroup
+message, use news-new (~G) to go into a subscription loop.  Use name
+expansion to see the offered groups, and keyboard-quit (^G) to break
+the loop early.
+
+gnews-hook-kill-alist added, to allow a group's permanent kills and
+editing to refer to a regexp instead of the group name.  This makes it
+simple to handle the hook-kills for related newsgroups together.
+
+group-quit-restore added, but not bound.  You can quit a newsgroup and
+restore the .gnewsrc to what it was upon entry.
+
+article-header-hook is run upon exit from article-display-init (which
+initializes the header and header info) and article-restart-verbose (v).
+This permits radical header customization.
+
+article-digest-previous (p) moves back one digest article.
+
+Numerous '(lambda ...)s turned into (function (lambda ...))s.  The nntp-
+-index-filter is much less GC piggish.  Index-sort is now faster.
+
+New variable index-ding controls behavior upon completion of indexing.
+nil means finish silently.  t means ding the user.  Numeric means ding
+if the number of indexed articles is greater than this number.
+
+Spool code simplification: you can throw out the specialized start hook.
+In fact, you must.  Simply install Gnews with a nil nntp-service, and
+Gnews will do all the necessary scut work for you.  Fast indexing, con-
+trolled by news-index-fast, is now available for spool code also, and
+is the default.
+
+Bug where $-end pseudo-article (treated internally as one more than the
+last article) could sometimes be junked fixed.  Bug where group-first (^)
+sometimes got the second article fixed.  Bug in the handling of formfeeds
+after a failed article-previous-unread (p) fixed.  Bug in cancel/super-
+session with non-empty mail-header-separator fixed.
+
+	1.6 => 1.7 	(30.6.88)
+
+Several speed/GC improvements: news-{next,previous}-unread (n,p) are
+faster.  amark internals revamped to use setcar/setcdr/nconc; this
+should make for both speed and much less garbage collection.  News-
+group checkpointing is also faster and less of a GC hog.  Startup,
+unfortunately, is slightly slower.
+
+Due to popular demand, news-restart (R) added.  It restarts all of the
+NNTP internals and checkpoints everything in sight.
+
+Formfeeds are now caught.  They do not yet mix with rot13, which is due
+for an overhaul anyway.
+
+Put (per nil article-digest) in the hook-kills of digest newsgroups, eg,
+comp.risks.  This isn't digest-mode yet, but the improvement is dramatic.
+In particular, article-digest-next (n) moves forward one digest article.
+
+The user variable gnews-buffer-clean has been added: non-nil (the default)
+means delete, as opposed to bury, Gnews' buffers.  (You could unwittingly
+lose an unsent reply this way.  Caveat user.)
+
+group-forward-article unbound, since M-f is and will remain forward-word
+by default.  I've changed things so that "C-u r" and "C-u R", that is,
+e-reply with a prefix argument, runs group-forward-article.
+
+The cursor is now, by default, always in the minibuffer in news-mode.  It
+works for me, but if it messes things up for you, turn it off by setting
+news-grab-cursor to nil.
+
+Replies now erase, by default, the *gnews*reply* buffer's contents if the
+previous message has been sent.  Unsent messages still need confirmation
+before erasing.  See the documentation of reply-query-clear for the details.
+
+The amark-list variable has been renamed amark.
+
+Minor bug in news-last-seen (-) fixed.  Minor bugs where the running dots
+froze without a prompt on new newsgroups, and with temporary kill and
+permanent KILL side effecting each other fixed.  Serious bug in non-terse
+junking with article-get-slow in hook-kills fixed.  Serious bug in gnews-
+output-to-rmail-file (o) fixed.
+
+	1.5 => 1.6	(21.6.88)
+
+I fixed the indexing eat-one-character bug.  Talk about trivial hacks!
+
+group-forward-article (~F) added: it sets up a reply for forwarding the
+current article by e-mail.					[AR]
+
+article-get-msg-id (@) by default now offers to find the first article
+whose message-ID ends after point.				[AR]
+
+User variable article-junk-unsub (default t) added: if nil, junking will
+not mark your in-.gnewsrc-but-unsubscribed-to newsgroups.  Usage should
+cut down on some garbage collection.				[AR]
+
+gnews-set, gnews-fset, and gnews-key are now interactive.
+
+Bug in group-first (^) fixed.  Minor bug in amark-{loop,pool} fixed.
+Very minor bug in news-unsubscribe (u) fixed.
+
+Highlighting added: See if article-subject-hilite non-nil works for you.
+It doesn't work in a separate X-window Emacs, nor TVI-920s, nor Apollos.
+It does work on a Z-29, VT100, Suns, and a Sun X window with a shell.
+
+Behavior of group-{forward,backward} (N,P) changed: when the index is
+around, these now follow the index.  Also, they now take (positive)
+numeric arguments, which do the obvious thing.
+
+article-edit (W) added, allowing for in-line editing of article displays.
+I can't get the "edited" keyword to show up though.
+
+news-index (=) doesn't waste time stepping by 1 through the large gaps
+between the first few existing articles.
+
+caar, cadr, etc all changed to gnaar, gnadr, etc.  gnews-caar dropped.  I
+(and others) were running into too many problems trying to use code that
+had these as functions.  (Emacs libraries have generally been inconsistent
+about this, btw.)
+
+Help.el and index.el are now autoloaded, like reply.el.
+
+New newsgroup checking is now back to square 1: "newgroups" was removed
+from NNTP 1.5.  Sigh.  What a pain.
+
+nntp-version added.  (This will matter: NNTP 1.5 has XHDR.)
+
+	1.4 => 1.5	(3.6.88)
+
+Gnews source has been split into fifteen files: {Help,Init,NNTP,Roster,
+Spool,art,entry,group,hook,index,mail,news,prims,reply,utils}.el.  The
+primary entry point is now Init.el.  All site-specific initialization
+is at the top of Init.el.  Only Init.el needs to be re-byte-compiled
+to run Gnews fresh off of the ftp, and not even that if users set the
+site-specific variables themselves.  If you re-byte-compile the other
+*.el files, be sure to load prims.el first.  [Of course, if you have
+funny problems inside NNTP.el, say with Apollos, you still have to deal
+with that separately.]
+
+If gnews-caar is bound, caar, cadr, etc will be loaded from the value of
+gnews-caar.							[obsolete]
+
+index-article-get (=) added to index-mode.  It pops or switches, based on
+what your preference is, as indicated by the current value of index-pop
+(which by default is set to index-pop-up).  In other words, you should be
+able to "=====" your way back and forth between articles and an index,
+instead of "=o=o=" or "=f=f=".
+
+index-auto is a list of regexps matching those newsgroups to always index
+upon news-yes (y) group entry.					[AR]
+
+reply-yank (^c^y) was cleaned up a bit.
+
+Replies now start [and still end] life unmodified, as in mail-mode.
+
+The spool code "debugged"; some rewrites to accomodate it.	[HRP]
+
+Obscure bugs in article-get-{slow,msg-id} fixed.
+
+Erroneous post-Gnews return buffer bug fixed, mostly, sort of.
+
+news-next-unread (n) wraps to the beginning at the $-end pseudo-newsgroup;
+news-{first,next,previous}-* internals separated out as news-next-intern.
+Most news-* functions now ding when invoked at the $-end.
+
+Newsgroup restrictions, as set by news-only-match (o) and news-add-match (a),
+are now in effect with news-next-unread (n) and related motion commands.
+
+index-search-{forward,backward} (s,r) have been rebound to (/,?), so that
+in the future `s' will be bound to index-save.
+
+	1.3 => 1.4	(28.3.88)
+
+The gnews-spool-machine defvar was moved to the top of gnewsutils.el.
+This is for the benefit of those having great difficulty getting Gnews
+to load/compile.
+
+Use of the kill-ring eliminated from all(?) Gnews internals.
+
+The badly erroneous 1.3 hook-kill junking bug is fixed.
+
+The old, annoying can't-easily-enter-long-unread-newsgroups bug is fixed.
+
+Bugs in group-last-seen (-), group-mark-later (M), {group,index}-catchup
+(c), group-next-same-subject (~N), group-first (^), fixed.
+
+Warnings are not made when the error is only 1.
+
+gnews-output-to-rmail-file now saves full headers and a summary line.
+You will probably want to modify your rmail-ignored-headers variable to
+further ignore any ugly news headers like Path, Distribution, etc.
+
+Several amark-* primitives have become macros.  This should speed a few
+things up.
+
+The extra mail headers set by mail-self-blind, mail-archive-file-name,
+and mail-default-reply-to, are now set in e-reply buffers.
+
+DEL added as a binding for {group,pager}-mode's group-back (b), so that
+paging forward/backward through articles and indices are both more like
+view-mode.
+
+index-ignore (i) added for quick skipping over of topics.  So for large
+newsgroups, sorting the index-buffer and "i"gnoring, along with a final
+catchup, should be a quick way to pass through everything.
+
+index-undo (U) now not only sets the index-buffer window contents back,
+but also resets the amark-list to correspond to the new display.  Cross-
+posted junks are not undone, however.
+
+X/Mouse binding removed from index-mode-map.  index-x-select still exists.
+
+	1.2 => 1.3	(24.3.88)
+
+per-hooks are faster and leaner now.
+
+gnews-bug-report (^w) added to {news,group,index}-mode.
+
+A news-next-unread-maybe internal was introduced, so that group quitting
+tries to be smart about quitting and sitting versus quitting and seeking.
+Change that function if you want different behavior.
+
+Articles with missing Line fields are now counted correctly.  A tweak to
+handle the Penn State bozo Lines field is in gnews-weemba (W)--it some-
+times displays the wrong percentage on initial display, but it works.
+
+group-follow-yank (F) prompts for a file-name at the $-end of a newsgroup.
+
+news-default ( ) is set to news-next-unread (n) upon startup with a prefix.
+
+An NNTPSERVER environmental variable is recognized.
+
+{e,n}-reply-toggle (^c-) go back and forth between posting/mailing.  If
+you use my customization 'article-to-3, note that it had to change.
+
+group-catchup (c) with a zero argument catches up to current article.
+You have to type ^u0c, not 0c, unfortunately.  Later.
+
+Mode hooks are run before displaying the mode-string.  The group-mode
+default now shows the article number if possible.
+
+On a trace-back article, the group motion keys, like group-next-unread (n),
+return you to the originating article in the trace back.
+
+gnews-fset added, for use within pre-hooks.
+
+	1.1 => 1.2	(22.2.88)
+
+On initial no-connect, return to previous buffer.
+
+New variable group-all-headers: non-nil means show all the headers.
+This is intended for the *.test and control newsgroups.
+
+Bugs in group-mark (m), index-mark (m) fixed.
+
+gnews-hook-post is always(?) run now when leaving a newsgroup.
+
+Unsubscribe and catchup code invoke the corresponding roster-* for the
+internal work.
+
+reply->-replace (^C>) and reply->-count (^C%) have been added to
+n-reply-mode.  The first has also been added to e-reply-mode.
+
+group-digit (0-9) is now used to pass both amarks and numeric prefixes to
+commands.  Before it only passed amarks.  The 'group-range-prefix property
+is used to identify which to pass.  Thus, "3t" will trace back 3 articles.
+
+	1.0 => 1.1	(20.2.88)
+
+The user variable article-big is used to indicate big articles.  So far
+this means that articles this size and larger use article-init-display
+as if it were effectively nil.  (nil is its default anyway)
+
+Bugs in group-cancel (C), article-rot13 (X), article-rot13-restart (~^X),
+news-previous (P), group-next-same-subject (~N), group-supersedes (S),
+and news-move (M) fixed.
+
+Bug whereby Gnews hung on servers that did not return trailing ^M's fixed.
+
+Most of group-mode is now blocked when at the $-pseudo-article.
+
+group-trace (t) will take a 0 prefix argument: this means go to the first
+referenced article.
+
+False reset warnings on keyboard-quit (^G) have been eliminated.
+
+Newsgroup article counts should always be correct now.
+
+Bogus newsgroups are now indicated as such and blocked from entry.

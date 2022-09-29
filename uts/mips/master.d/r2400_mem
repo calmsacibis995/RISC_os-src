@@ -1,0 +1,10 @@
+*#ident "$Header"
+*
+* R2400 CPU Local Memory control and error handling
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+os	r2400_mem	-	1
+				lmem_err_scan(){}
+				lmem_setmax(){}
+
+$$$

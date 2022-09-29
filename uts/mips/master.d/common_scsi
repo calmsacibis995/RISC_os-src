@@ -1,0 +1,6 @@
+* $Header: common_scsi,v 1.1.3.1.1.1.1.2 90/11/20 15:12:32 beacker Exp $
+*
+* SCSI peripherals controller (MB87030)
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox

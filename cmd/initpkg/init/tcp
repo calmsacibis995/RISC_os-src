@@ -1,0 +1,120 @@
+#! /bin/sh
+#
+# Initialize/Shutdown the tcp software.
+#
+# $Header: tcp,v 1.24.1.4.1.2.1.3 91/01/09 19:13:11 beacker Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+USAGE="usage: /etc/init.d/tcp {start|stop}" ;
+
+not() {
+	eval ${1+"$@"} && return 1 || return 0
+}
+
+main() {
+	case $1 in
+	start)	tcp_start ${1+"$@"} 
+		;;
+	stop)	tcp_stop ${1+"$@"} 
+		;;
+	*)	echo "$USAGE"; 
+		exit 1 
+		;;
+	esac
+}
+
+tcp_start()
+{
+	#
+	# Have they set the hostname yet?  If not, don't start the network.
+	#
+	if [ "`hostname`" = "no_hostname_set" ] ; then
+		echo "WARNING: No hostname set.  Network not started"
+		exit 0
+	fi
+	#
+	# CPU-specific items.  The interface for the M/120 is called 'la0', and
+	# the M/120 should be run with -trailers unless otherwise specified in
+	# the /etc/local_hostname file.
+	#
+	case "`uname -t`" in
+	m2000-25|m2000-33|R[CS]3[23]30|RC3240|r[cs]2030|m120|m120-*)
+		Interface="la0"
+		Trailers="-trailers"
+		temp=`sed -n '2,$s/^.*trailers.*$/X/p' /etc/local_hostname`
+		case "$temp" in
+		"")
+			;;
+		*)
+			Trailers=""
+			;;
+		esac
+		;;
+	m2000|m2000-*|RC62*)
+		if (ifconfig "egl0" > /dev/null 2>&1)
+		then
+			Interface="egl0"
+		else
+			Interface="enp0"
+		fi
+		Trailers=""
+		;;
+	*)
+                ## old version assumed "enp0", let's try enp0
+                if (ifconfig "enp0" > /dev/null 2>&1)
+                then
+                  Interface="enp0"
+                  Trailers=""
+                else
+                  ## try egl0
+                  if (ifconfig "egl0" > /dev/null 2>&1)
+                  then
+                    Interface="egl0"
+                    Trailers=""
+                  else
+                    ## try la0
+                    if (ifconfig "la0" > /dev/null 2>&1)
+                    then
+                     Interface="la0"
+                     Trailers="-trailers"
+                     temp=`sed -n '2,$s/^.*trailers.*$/X/p' /etc/local_hostname`
+                     case "$temp" in
+                       "") ;;
+                       *) Trailers="" ;;
+                     esac
+                    else
+                     ## can't determine the Interface
+                     echo "WARNING: Can't determine the Ethernet Interface.  Network not started"
+                     exit 0
+                    fi
+                  fi
+                fi
+		;;	
+	esac
+
+	if test -x /etc/havetcp \
+	   && havetcp \
+	   && ifconfig "$Interface" `hostname` `sed -n '2,$p' /etc/local_hostname` $Trailers > /dev/null
+	then
+
+		hostid `hostname`
+
+	#   change and install the following line for gatewaying
+	#   ifconfig ex1 inet other-hostname
+
+		ifconfig lo0 localhost
+	fi
+}
+
+tcp_stop() 
+{
+	pid=`ps -e | grep ' portmap$' | sed -e 's/^  *//' -e 's/ .*//'`
+	pid="${pid} `ps -e | grep ' inetd$' | sed -e 's/^  *//' -e 's/ .*//'`"
+	if test "${pid}" != " "; then
+		kill ${pid}
+	fi
+}
+
+main ${1+"$@"}
+exit 0

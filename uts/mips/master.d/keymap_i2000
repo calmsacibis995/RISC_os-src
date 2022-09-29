@@ -1,0 +1,10 @@
+* $Header
+*
+* Keyboard mappings for scan codes
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ors	keymap_i2000
+						
+
+$$$
+

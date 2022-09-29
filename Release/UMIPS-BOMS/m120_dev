@@ -1,0 +1,766 @@
+dev/SA drwxr-xr-x root other 2
+dev/SA/ctape0 cr--r--r-- root sys 16 96 2
+dev/console crw--w--w- root bin 0 0 4
+dev/dsk drwxr-xr-x root other 2
+dev/dsk/isc0d0s0 brw-r----- root sys 16 0 3
+dev/dsk/isc0d0s1 brw-r----- root sys 16 1 3
+dev/dsk/isc0d0s10 brw-r----- root sys 16 10 2
+dev/dsk/isc0d0s11 brw-r----- root sys 16 11 2
+dev/dsk/isc0d0s12 brw-r----- root sys 16 12 2
+dev/dsk/isc0d0s13 brw-r----- root sys 16 13 2
+dev/dsk/isc0d0s14 brw-r----- root sys 16 14 2
+dev/dsk/isc0d0s15 brw-r----- root sys 16 15 2
+dev/dsk/isc0d0s2 brw-r----- root sys 16 2 2
+dev/dsk/isc0d0s3 brw-r----- root sys 16 3 2
+dev/dsk/isc0d0s4 brw-r----- root sys 16 4 2
+dev/dsk/isc0d0s5 brw-r----- root sys 16 5 2
+dev/dsk/isc0d0s6 brw-r----- root sys 16 6 3
+dev/dsk/isc0d0s7 brw-r----- root sys 16 7 2
+dev/dsk/isc0d0s8 brw-r----- root sys 16 8 4
+dev/dsk/isc0d0s9 brw-r----- root sys 16 9 2
+dev/dsk/isc0d0vh brw-r----- root sys 16 8 4 dev/dsk/isc0d0s8
+dev/dsk/isc0d1s0 brw-r----- root sys 16 16 2
+dev/dsk/isc0d1s1 brw-r----- root sys 16 17 2
+dev/dsk/isc0d1s10 brw-r----- root sys 16 26 2
+dev/dsk/isc0d1s11 brw-r----- root sys 16 27 2
+dev/dsk/isc0d1s12 brw-r----- root sys 16 28 2
+dev/dsk/isc0d1s13 brw-r----- root sys 16 29 2
+dev/dsk/isc0d1s14 brw-r----- root sys 16 30 2
+dev/dsk/isc0d1s15 brw-r----- root sys 16 31 2
+dev/dsk/isc0d1s2 brw-r----- root sys 16 18 2
+dev/dsk/isc0d1s3 brw-r----- root sys 16 19 2
+dev/dsk/isc0d1s4 brw-r----- root sys 16 20 2
+dev/dsk/isc0d1s5 brw-r----- root sys 16 21 2
+dev/dsk/isc0d1s6 brw-r----- root sys 16 22 2
+dev/dsk/isc0d1s7 brw-r----- root sys 16 23 2
+dev/dsk/isc0d1s8 brw-r----- root sys 16 24 3
+dev/dsk/isc0d1s9 brw-r----- root sys 16 25 2
+dev/dsk/isc0d1vh brw-r----- root sys 16 24 3 dev/dsk/isc0d1s8
+dev/dsk/isc0d2s0 brw-r----- root sys 16 32 2
+dev/dsk/isc0d2s1 brw-r----- root sys 16 33 2
+dev/dsk/isc0d2s10 brw-r----- root sys 16 42 2
+dev/dsk/isc0d2s11 brw-r----- root sys 16 43 2
+dev/dsk/isc0d2s12 brw-r----- root sys 16 44 2
+dev/dsk/isc0d2s13 brw-r----- root sys 16 45 2
+dev/dsk/isc0d2s14 brw-r----- root sys 16 46 2
+dev/dsk/isc0d2s15 brw-r----- root sys 16 47 2
+dev/dsk/isc0d2s2 brw-r----- root sys 16 34 2
+dev/dsk/isc0d2s3 brw-r----- root sys 16 35 2
+dev/dsk/isc0d2s4 brw-r----- root sys 16 36 2
+dev/dsk/isc0d2s5 brw-r----- root sys 16 37 2
+dev/dsk/isc0d2s6 brw-r----- root sys 16 38 2
+dev/dsk/isc0d2s7 brw-r----- root sys 16 39 2
+dev/dsk/isc0d2s8 brw-r----- root sys 16 40 3
+dev/dsk/isc0d2s9 brw-r----- root sys 16 41 2
+dev/dsk/isc0d2vh brw-r----- root sys 16 40 3 dev/dsk/isc0d2s8
+dev/dsk/isc0d3s0 brw-r----- root sys 16 48 2
+dev/dsk/isc0d3s1 brw-r----- root sys 16 49 2
+dev/dsk/isc0d3s10 brw-r----- root sys 16 58 2
+dev/dsk/isc0d3s11 brw-r----- root sys 16 59 2
+dev/dsk/isc0d3s12 brw-r----- root sys 16 60 2
+dev/dsk/isc0d3s13 brw-r----- root sys 16 61 2
+dev/dsk/isc0d3s14 brw-r----- root sys 16 62 2
+dev/dsk/isc0d3s15 brw-r----- root sys 16 63 2
+dev/dsk/isc0d3s2 brw-r----- root sys 16 50 2
+dev/dsk/isc0d3s3 brw-r----- root sys 16 51 2
+dev/dsk/isc0d3s4 brw-r----- root sys 16 52 2
+dev/dsk/isc0d3s5 brw-r----- root sys 16 53 2
+dev/dsk/isc0d3s6 brw-r----- root sys 16 54 2
+dev/dsk/isc0d3s7 brw-r----- root sys 16 55 2
+dev/dsk/isc0d3s8 brw-r----- root sys 16 56 3
+dev/dsk/isc0d3s9 brw-r----- root sys 16 57 2
+dev/dsk/isc0d3vh brw-r----- root sys 16 56 3 dev/dsk/isc0d3s8
+dev/dsk/isc0d4s0 brw-r----- root sys 16 64 2
+dev/dsk/isc0d4s1 brw-r----- root sys 16 65 2
+dev/dsk/isc0d4s10 brw-r----- root sys 16 74 2
+dev/dsk/isc0d4s11 brw-r----- root sys 16 75 2
+dev/dsk/isc0d4s12 brw-r----- root sys 16 76 2
+dev/dsk/isc0d4s13 brw-r----- root sys 16 77 2
+dev/dsk/isc0d4s14 brw-r----- root sys 16 78 2
+dev/dsk/isc0d4s15 brw-r----- root sys 16 79 2
+dev/dsk/isc0d4s2 brw-r----- root sys 16 66 2
+dev/dsk/isc0d4s3 brw-r----- root sys 16 67 2
+dev/dsk/isc0d4s4 brw-r----- root sys 16 68 2
+dev/dsk/isc0d4s5 brw-r----- root sys 16 69 2
+dev/dsk/isc0d4s6 brw-r----- root sys 16 70 2
+dev/dsk/isc0d4s7 brw-r----- root sys 16 71 2
+dev/dsk/isc0d4s8 brw-r----- root sys 16 72 3
+dev/dsk/isc0d4s9 brw-r----- root sys 16 73 2
+dev/dsk/isc0d4vh brw-r----- root sys 16 72 3 dev/dsk/isc0d4s8
+dev/dsk/isc0d5s0 brw-r----- root sys 16 80 2
+dev/dsk/isc0d5s1 brw-r----- root sys 16 81 2
+dev/dsk/isc0d5s10 brw-r----- root sys 16 90 2
+dev/dsk/isc0d5s11 brw-r----- root sys 16 91 2
+dev/dsk/isc0d5s12 brw-r----- root sys 16 92 2
+dev/dsk/isc0d5s13 brw-r----- root sys 16 93 2
+dev/dsk/isc0d5s14 brw-r----- root sys 16 94 2
+dev/dsk/isc0d5s15 brw-r----- root sys 16 95 2
+dev/dsk/isc0d5s2 brw-r----- root sys 16 82 2
+dev/dsk/isc0d5s3 brw-r----- root sys 16 83 2
+dev/dsk/isc0d5s4 brw-r----- root sys 16 84 2
+dev/dsk/isc0d5s5 brw-r----- root sys 16 85 2
+dev/dsk/isc0d5s6 brw-r----- root sys 16 86 2
+dev/dsk/isc0d5s7 brw-r----- root sys 16 87 2
+dev/dsk/isc0d5s8 brw-r----- root sys 16 88 3
+dev/dsk/isc0d5s9 brw-r----- root sys 16 89 2
+dev/dsk/isc0d5vh brw-r----- root sys 16 88 3 dev/dsk/isc0d5s8
+dev/klog crw-r----- root sys 19 0 1
+dev/kmem crw-r----- root sys 1 1 1
+dev/mem crw-r----- root sys 1 0 1
+dev/mt drwxr-xr-x root other 2
+dev/mt/Q120-0 crw-rw-rw- root sys 16 96 7
+dev/mt/Q120n-0 crw-rw-rw- root sys 16 97 7
+dev/mt/Q24-0 cr--r--r-- root sys 16 96 2 dev/SA/ctape0
+dev/mt/Q24n-0 cr--r--r-- root sys 16 97 1
+dev/mt/ctape0 crw-rw-rw- root sys 16 96 7 dev/mt/Q120-0
+dev/mt/ctape4 crw-rw-rw- root sys 16 97 7 dev/mt/Q120n-0
+dev/mt/m0 crw-rw-rw- root sys 16 96 7 dev/mt/Q120-0
+dev/mt/m4 crw-rw-rw- root sys 16 97 7 dev/mt/Q120n-0
+dev/null crw-rw-rw- root sys 1 2 1
+dev/prf crw-r--r-- root sys 7 0 1
+dev/ptc crw-rw-rw- root sys 10 14 1
+dev/rSA drwxr-xr-x root other 2
+dev/rSA/ctape0 cr--r--r-- root sys 16 96 2
+dev/rdsk drwxr-xr-x root other 2
+dev/rdsk/isc0d0s0 crw-r----- root sys 16 0 3
+dev/rdsk/isc0d0s1 crw-r----- root sys 16 1 2
+dev/rdsk/isc0d0s10 crw-r----- root sys 16 10 2
+dev/rdsk/isc0d0s11 crw-r----- root sys 16 11 2
+dev/rdsk/isc0d0s12 crw-r----- root sys 16 12 2
+dev/rdsk/isc0d0s13 crw-r----- root sys 16 13 2
+dev/rdsk/isc0d0s14 crw-r----- root sys 16 14 2
+dev/rdsk/isc0d0s15 crw-r----- root sys 16 15 2
+dev/rdsk/isc0d0s2 crw-r----- root sys 16 2 2
+dev/rdsk/isc0d0s3 crw-r----- root sys 16 3 2
+dev/rdsk/isc0d0s4 crw-r----- root sys 16 4 2
+dev/rdsk/isc0d0s5 crw-r----- root sys 16 5 2
+dev/rdsk/isc0d0s6 crw-r----- root sys 16 6 3
+dev/rdsk/isc0d0s7 crw-r----- root sys 16 7 2
+dev/rdsk/isc0d0s8 crw-r----- root sys 16 8 4
+dev/rdsk/isc0d0s9 crw-r----- root sys 16 9 2
+dev/rdsk/isc0d0vh crw-r----- root sys 16 8 4 dev/rdsk/isc0d0s8
+dev/rdsk/isc0d1s0 crw-r----- root sys 16 16 2
+dev/rdsk/isc0d1s1 crw-r----- root sys 16 17 2
+dev/rdsk/isc0d1s10 crw-r----- root sys 16 26 2
+dev/rdsk/isc0d1s11 crw-r----- root sys 16 27 2
+dev/rdsk/isc0d1s12 crw-r----- root sys 16 28 2
+dev/rdsk/isc0d1s13 crw-r----- root sys 16 29 2
+dev/rdsk/isc0d1s14 crw-r----- root sys 16 30 2
+dev/rdsk/isc0d1s15 crw-r----- root sys 16 31 2
+dev/rdsk/isc0d1s2 crw-r----- root sys 16 18 2
+dev/rdsk/isc0d1s3 crw-r----- root sys 16 19 2
+dev/rdsk/isc0d1s4 crw-r----- root sys 16 20 2
+dev/rdsk/isc0d1s5 crw-r----- root sys 16 21 2
+dev/rdsk/isc0d1s6 crw-r----- root sys 16 22 2
+dev/rdsk/isc0d1s7 crw-r----- root sys 16 23 2
+dev/rdsk/isc0d1s8 crw-r----- root sys 16 24 3
+dev/rdsk/isc0d1s9 crw-r----- root sys 16 25 2
+dev/rdsk/isc0d1vh crw-r----- root sys 16 24 3 dev/rdsk/isc0d1s8
+dev/rdsk/isc0d2s0 crw-r----- root sys 16 32 2
+dev/rdsk/isc0d2s1 crw-r----- root sys 16 33 2
+dev/rdsk/isc0d2s10 crw-r----- root sys 16 42 2
+dev/rdsk/isc0d2s11 crw-r----- root sys 16 43 2
+dev/rdsk/isc0d2s12 crw-r----- root sys 16 44 2
+dev/rdsk/isc0d2s13 crw-r----- root sys 16 45 2
+dev/rdsk/isc0d2s14 crw-r----- root sys 16 46 2
+dev/rdsk/isc0d2s15 crw-r----- root sys 16 47 2
+dev/rdsk/isc0d2s2 crw-r----- root sys 16 34 2
+dev/rdsk/isc0d2s3 crw-r----- root sys 16 35 2
+dev/rdsk/isc0d2s4 crw-r----- root sys 16 36 2
+dev/rdsk/isc0d2s5 crw-r----- root sys 16 37 2
+dev/rdsk/isc0d2s6 crw-r----- root sys 16 38 2
+dev/rdsk/isc0d2s7 crw-r----- root sys 16 39 2
+dev/rdsk/isc0d2s8 crw-r----- root sys 16 40 3
+dev/rdsk/isc0d2s9 crw-r----- root sys 16 41 2
+dev/rdsk/isc0d2vh crw-r----- root sys 16 40 3 dev/rdsk/isc0d2s8
+dev/rdsk/isc0d3s0 crw-r----- root sys 16 48 2
+dev/rdsk/isc0d3s1 crw-r----- root sys 16 49 2
+dev/rdsk/isc0d3s10 crw-r----- root sys 16 58 2
+dev/rdsk/isc0d3s11 crw-r----- root sys 16 59 2
+dev/rdsk/isc0d3s12 crw-r----- root sys 16 60 2
+dev/rdsk/isc0d3s13 crw-r----- root sys 16 61 2
+dev/rdsk/isc0d3s14 crw-r----- root sys 16 62 2
+dev/rdsk/isc0d3s15 crw-r----- root sys 16 63 2
+dev/rdsk/isc0d3s2 crw-r----- root sys 16 50 2
+dev/rdsk/isc0d3s3 crw-r----- root sys 16 51 2
+dev/rdsk/isc0d3s4 crw-r----- root sys 16 52 2
+dev/rdsk/isc0d3s5 crw-r----- root sys 16 53 2
+dev/rdsk/isc0d3s6 crw-r----- root sys 16 54 2
+dev/rdsk/isc0d3s7 crw-r----- root sys 16 55 2
+dev/rdsk/isc0d3s8 crw-r----- root sys 16 56 3
+dev/rdsk/isc0d3s9 crw-r----- root sys 16 57 2
+dev/rdsk/isc0d3vh crw-r----- root sys 16 56 3 dev/rdsk/isc0d3s8
+dev/rdsk/isc0d4s0 crw-r----- root sys 16 64 2
+dev/rdsk/isc0d4s1 crw-r----- root sys 16 65 2
+dev/rdsk/isc0d4s10 crw-r----- root sys 16 74 2
+dev/rdsk/isc0d4s11 crw-r----- root sys 16 75 2
+dev/rdsk/isc0d4s12 crw-r----- root sys 16 76 2
+dev/rdsk/isc0d4s13 crw-r----- root sys 16 77 2
+dev/rdsk/isc0d4s14 crw-r----- root sys 16 78 2
+dev/rdsk/isc0d4s15 crw-r----- root sys 16 79 2
+dev/rdsk/isc0d4s2 crw-r----- root sys 16 66 2
+dev/rdsk/isc0d4s3 crw-r----- root sys 16 67 2
+dev/rdsk/isc0d4s4 crw-r----- root sys 16 68 2
+dev/rdsk/isc0d4s5 crw-r----- root sys 16 69 2
+dev/rdsk/isc0d4s6 crw-r----- root sys 16 70 2
+dev/rdsk/isc0d4s7 crw-r----- root sys 16 71 2
+dev/rdsk/isc0d4s8 crw-r----- root sys 16 72 3
+dev/rdsk/isc0d4s9 crw-r----- root sys 16 73 2
+dev/rdsk/isc0d4vh crw-r----- root sys 16 72 3 dev/rdsk/isc0d4s8
+dev/rdsk/isc0d5s0 crw-r----- root sys 16 80 2
+dev/rdsk/isc0d5s1 crw-r----- root sys 16 81 2
+dev/rdsk/isc0d5s10 crw-r----- root sys 16 90 2
+dev/rdsk/isc0d5s11 crw-r----- root sys 16 91 2
+dev/rdsk/isc0d5s12 crw-r----- root sys 16 92 2
+dev/rdsk/isc0d5s13 crw-r----- root sys 16 93 2
+dev/rdsk/isc0d5s14 crw-r----- root sys 16 94 2
+dev/rdsk/isc0d5s15 crw-r----- root sys 16 95 2
+dev/rdsk/isc0d5s2 crw-r----- root sys 16 82 2
+dev/rdsk/isc0d5s3 crw-r----- root sys 16 83 2
+dev/rdsk/isc0d5s4 crw-r----- root sys 16 84 2
+dev/rdsk/isc0d5s5 crw-r----- root sys 16 85 2
+dev/rdsk/isc0d5s6 crw-r----- root sys 16 86 2
+dev/rdsk/isc0d5s7 crw-r----- root sys 16 87 2
+dev/rdsk/isc0d5s8 crw-r----- root sys 16 88 3
+dev/rdsk/isc0d5s9 crw-r----- root sys 16 89 2
+dev/rdsk/isc0d5vh crw-r----- root sys 16 88 3 dev/rdsk/isc0d5s8
+dev/rmt drwxr-xr-x root other 2
+dev/rmt/Q120-0 crw-rw-rw- root sys 16 96 7
+dev/rmt/Q120n-0 crw-rw-rw- root sys 16 97 7
+dev/rmt/Q24-0 cr--r--r-- root sys 16 96 2 dev/rSA/ctape0
+dev/rmt/Q24n-0 cr--r--r-- root sys 16 97 1
+dev/rmt/ctape0 crw-rw-rw- root sys 16 96 7 dev/rmt/Q120-0
+dev/rmt/ctape4 crw-rw-rw- root sys 16 97 7 dev/rmt/Q120n-0
+dev/rmt/m0 crw-rw-rw- root sys 16 96 7 dev/rmt/Q120-0
+dev/rmt/m4 crw-rw-rw- root sys 16 97 7 dev/rmt/Q120n-0
+dev/root brw-r----- root sys 16 0 3 dev/dsk/isc0d0s0
+dev/rroot crw-r----- root sys 16 0 3 dev/rdsk/isc0d0s0
+dev/rusr crw-r----- root sys 16 6 3 dev/rdsk/isc0d0s6
+dev/rscsi drwxr-xr-x root other 2
+dev/rscsi/isc0d0s0 crw-r----- root sys 16 0 3 dev/rdsk/isc0d0s0
+dev/rscsi/isc0d0s1 crw-r----- root sys 16 1 2 dev/rdsk/isc0d0s1
+dev/rscsi/isc0d0s10 crw-r----- root sys 16 10 2 dev/rdsk/isc0d0s10
+dev/rscsi/isc0d0s11 crw-r----- root sys 16 11 2 dev/rdsk/isc0d0s11
+dev/rscsi/isc0d0s12 crw-r----- root sys 16 12 2 dev/rdsk/isc0d0s12
+dev/rscsi/isc0d0s13 crw-r----- root sys 16 13 2 dev/rdsk/isc0d0s13
+dev/rscsi/isc0d0s14 crw-r----- root sys 16 14 2 dev/rdsk/isc0d0s14
+dev/rscsi/isc0d0s15 crw-r----- root sys 16 15 2 dev/rdsk/isc0d0s15
+dev/rscsi/isc0d0s2 crw-r----- root sys 16 2 2 dev/rdsk/isc0d0s2
+dev/rscsi/isc0d0s3 crw-r----- root sys 16 3 2 dev/rdsk/isc0d0s3
+dev/rscsi/isc0d0s4 crw-r----- root sys 16 4 2 dev/rdsk/isc0d0s4
+dev/rscsi/isc0d0s5 crw-r----- root sys 16 5 2 dev/rdsk/isc0d0s5
+dev/rscsi/isc0d0s6 crw-r----- root sys 16 6 3 dev/rdsk/isc0d0s6
+dev/rscsi/isc0d0s7 crw-r----- root sys 16 7 2 dev/rdsk/isc0d0s7
+dev/rscsi/isc0d0s8 crw-r----- root sys 16 8 4 dev/rdsk/isc0d0s8
+dev/rscsi/isc0d0s9 crw-r----- root sys 16 9 2 dev/rdsk/isc0d0s9
+dev/rscsi/isc0d1s0 crw-r----- root sys 16 16 2 dev/rdsk/isc0d1s0
+dev/rscsi/isc0d1s1 crw-r----- root sys 16 17 2 dev/rdsk/isc0d1s1
+dev/rscsi/isc0d1s10 crw-r----- root sys 16 26 2 dev/rdsk/isc0d1s10
+dev/rscsi/isc0d1s11 crw-r----- root sys 16 27 2 dev/rdsk/isc0d1s11
+dev/rscsi/isc0d1s12 crw-r----- root sys 16 28 2 dev/rdsk/isc0d1s12
+dev/rscsi/isc0d1s13 crw-r----- root sys 16 29 2 dev/rdsk/isc0d1s13
+dev/rscsi/isc0d1s14 crw-r----- root sys 16 30 2 dev/rdsk/isc0d1s14
+dev/rscsi/isc0d1s15 crw-r----- root sys 16 31 2 dev/rdsk/isc0d1s15
+dev/rscsi/isc0d1s2 crw-r----- root sys 16 18 2 dev/rdsk/isc0d1s2
+dev/rscsi/isc0d1s3 crw-r----- root sys 16 19 2 dev/rdsk/isc0d1s3
+dev/rscsi/isc0d1s4 crw-r----- root sys 16 20 2 dev/rdsk/isc0d1s4
+dev/rscsi/isc0d1s5 crw-r----- root sys 16 21 2 dev/rdsk/isc0d1s5
+dev/rscsi/isc0d1s6 crw-r----- root sys 16 22 2 dev/rdsk/isc0d1s6
+dev/rscsi/isc0d1s7 crw-r----- root sys 16 23 2 dev/rdsk/isc0d1s7
+dev/rscsi/isc0d1s8 crw-r----- root sys 16 24 3 dev/rdsk/isc0d1s8
+dev/rscsi/isc0d1s9 crw-r----- root sys 16 25 2 dev/rdsk/isc0d1s9
+dev/rscsi/isc0d2s0 crw-r----- root sys 16 32 2 dev/rdsk/isc0d2s0
+dev/rscsi/isc0d2s1 crw-r----- root sys 16 33 2 dev/rdsk/isc0d2s1
+dev/rscsi/isc0d2s10 crw-r----- root sys 16 42 2 dev/rdsk/isc0d2s10
+dev/rscsi/isc0d2s11 crw-r----- root sys 16 43 2 dev/rdsk/isc0d2s11
+dev/rscsi/isc0d2s12 crw-r----- root sys 16 44 2 dev/rdsk/isc0d2s12
+dev/rscsi/isc0d2s13 crw-r----- root sys 16 45 2 dev/rdsk/isc0d2s13
+dev/rscsi/isc0d2s14 crw-r----- root sys 16 46 2 dev/rdsk/isc0d2s14
+dev/rscsi/isc0d2s15 crw-r----- root sys 16 47 2 dev/rdsk/isc0d2s15
+dev/rscsi/isc0d2s2 crw-r----- root sys 16 34 2 dev/rdsk/isc0d2s2
+dev/rscsi/isc0d2s3 crw-r----- root sys 16 35 2 dev/rdsk/isc0d2s3
+dev/rscsi/isc0d2s4 crw-r----- root sys 16 36 2 dev/rdsk/isc0d2s4
+dev/rscsi/isc0d2s5 crw-r----- root sys 16 37 2 dev/rdsk/isc0d2s5
+dev/rscsi/isc0d2s6 crw-r----- root sys 16 38 2 dev/rdsk/isc0d2s6
+dev/rscsi/isc0d2s7 crw-r----- root sys 16 39 2 dev/rdsk/isc0d2s7
+dev/rscsi/isc0d2s8 crw-r----- root sys 16 40 3 dev/rdsk/isc0d2s8
+dev/rscsi/isc0d2s9 crw-r----- root sys 16 41 2 dev/rdsk/isc0d2s9
+dev/rscsi/isc0d3s0 crw-r----- root sys 16 48 2 dev/rdsk/isc0d3s0
+dev/rscsi/isc0d3s1 crw-r----- root sys 16 49 2 dev/rdsk/isc0d3s1
+dev/rscsi/isc0d3s10 crw-r----- root sys 16 58 2 dev/rdsk/isc0d3s10
+dev/rscsi/isc0d3s11 crw-r----- root sys 16 59 2 dev/rdsk/isc0d3s11
+dev/rscsi/isc0d3s12 crw-r----- root sys 16 60 2 dev/rdsk/isc0d3s12
+dev/rscsi/isc0d3s13 crw-r----- root sys 16 61 2 dev/rdsk/isc0d3s13
+dev/rscsi/isc0d3s14 crw-r----- root sys 16 62 2 dev/rdsk/isc0d3s14
+dev/rscsi/isc0d3s15 crw-r----- root sys 16 63 2 dev/rdsk/isc0d3s15
+dev/rscsi/isc0d3s2 crw-r----- root sys 16 50 2 dev/rdsk/isc0d3s2
+dev/rscsi/isc0d3s3 crw-r----- root sys 16 51 2 dev/rdsk/isc0d3s3
+dev/rscsi/isc0d3s4 crw-r----- root sys 16 52 2 dev/rdsk/isc0d3s4
+dev/rscsi/isc0d3s5 crw-r----- root sys 16 53 2 dev/rdsk/isc0d3s5
+dev/rscsi/isc0d3s6 crw-r----- root sys 16 54 2 dev/rdsk/isc0d3s6
+dev/rscsi/isc0d3s7 crw-r----- root sys 16 55 2 dev/rdsk/isc0d3s7
+dev/rscsi/isc0d3s8 crw-r----- root sys 16 56 3 dev/rdsk/isc0d3s8
+dev/rscsi/isc0d3s9 crw-r----- root sys 16 57 2 dev/rdsk/isc0d3s9
+dev/rscsi/isc0d4s0 crw-r----- root sys 16 64 2 dev/rdsk/isc0d4s0
+dev/rscsi/isc0d4s1 crw-r----- root sys 16 65 2 dev/rdsk/isc0d4s1
+dev/rscsi/isc0d4s10 crw-r----- root sys 16 74 2 dev/rdsk/isc0d4s10
+dev/rscsi/isc0d4s11 crw-r----- root sys 16 75 2 dev/rdsk/isc0d4s11
+dev/rscsi/isc0d4s12 crw-r----- root sys 16 76 2 dev/rdsk/isc0d4s12
+dev/rscsi/isc0d4s13 crw-r----- root sys 16 77 2 dev/rdsk/isc0d4s13
+dev/rscsi/isc0d4s14 crw-r----- root sys 16 78 2 dev/rdsk/isc0d4s14
+dev/rscsi/isc0d4s15 crw-r----- root sys 16 79 2 dev/rdsk/isc0d4s15
+dev/rscsi/isc0d4s2 crw-r----- root sys 16 66 2 dev/rdsk/isc0d4s2
+dev/rscsi/isc0d4s3 crw-r----- root sys 16 67 2 dev/rdsk/isc0d4s3
+dev/rscsi/isc0d4s4 crw-r----- root sys 16 68 2 dev/rdsk/isc0d4s4
+dev/rscsi/isc0d4s5 crw-r----- root sys 16 69 2 dev/rdsk/isc0d4s5
+dev/rscsi/isc0d4s6 crw-r----- root sys 16 70 2 dev/rdsk/isc0d4s6
+dev/rscsi/isc0d4s7 crw-r----- root sys 16 71 2 dev/rdsk/isc0d4s7
+dev/rscsi/isc0d4s8 crw-r----- root sys 16 72 3 dev/rdsk/isc0d4s8
+dev/rscsi/isc0d4s9 crw-r----- root sys 16 73 2 dev/rdsk/isc0d4s9
+dev/rscsi/isc0d5s0 crw-r----- root sys 16 80 2 dev/rdsk/isc0d5s0
+dev/rscsi/isc0d5s1 crw-r----- root sys 16 81 2 dev/rdsk/isc0d5s1
+dev/rscsi/isc0d5s10 crw-r----- root sys 16 90 2 dev/rdsk/isc0d5s10
+dev/rscsi/isc0d5s11 crw-r----- root sys 16 91 2 dev/rdsk/isc0d5s11
+dev/rscsi/isc0d5s12 crw-r----- root sys 16 92 2 dev/rdsk/isc0d5s12
+dev/rscsi/isc0d5s13 crw-r----- root sys 16 93 2 dev/rdsk/isc0d5s13
+dev/rscsi/isc0d5s14 crw-r----- root sys 16 94 2 dev/rdsk/isc0d5s14
+dev/rscsi/isc0d5s15 crw-r----- root sys 16 95 2 dev/rdsk/isc0d5s15
+dev/rscsi/isc0d5s2 crw-r----- root sys 16 82 2 dev/rdsk/isc0d5s2
+dev/rscsi/isc0d5s3 crw-r----- root sys 16 83 2 dev/rdsk/isc0d5s3
+dev/rscsi/isc0d5s4 crw-r----- root sys 16 84 2 dev/rdsk/isc0d5s4
+dev/rscsi/isc0d5s5 crw-r----- root sys 16 85 2 dev/rdsk/isc0d5s5
+dev/rscsi/isc0d5s6 crw-r----- root sys 16 86 2 dev/rdsk/isc0d5s6
+dev/rscsi/isc0d5s7 crw-r----- root sys 16 87 2 dev/rdsk/isc0d5s7
+dev/rscsi/isc0d5s8 crw-r----- root sys 16 88 3 dev/rdsk/isc0d5s8
+dev/rscsi/isc0d5s9 crw-r----- root sys 16 89 2 dev/rdsk/isc0d5s9
+dev/rscsi/isc0d6s0 crw-rw-rw- root sys 16 96 7 dev/rmt/Q120-0
+dev/rscsi/isc0d6s1 crw-rw-rw- root sys 16 97 7 dev/rmt/Q120n-0
+dev/rscsi/isc0d6s10 crw-rw-rw- root sys 16 106 1
+dev/rscsi/isc0d6s11 crw-rw-rw- root sys 16 107 1
+dev/rscsi/isc0d6s12 crw-rw-rw- root sys 16 108 1
+dev/rscsi/isc0d6s13 crw-rw-rw- root sys 16 109 1
+dev/rscsi/isc0d6s14 crw-rw-rw- root sys 16 110 1
+dev/rscsi/isc0d6s15 crw-rw-rw- root sys 16 111 1
+dev/rscsi/isc0d6s2 crw-rw-rw- root sys 16 98 1
+dev/rscsi/isc0d6s3 crw-rw-rw- root sys 16 99 1
+dev/rscsi/isc0d6s4 crw-rw-rw- root sys 16 100 1
+dev/rscsi/isc0d6s5 crw-rw-rw- root sys 16 101 1
+dev/rscsi/isc0d6s6 crw-rw-rw- root sys 16 102 1
+dev/rscsi/isc0d6s7 crw-rw-rw- root sys 16 103 1
+dev/rscsi/isc0d6s8 crw-rw-rw- root sys 16 104 1
+dev/rscsi/isc0d6s9 crw-rw-rw- root sys 16 105 1
+dev/rvh crw-r----- root sys 16 8 4 dev/rdsk/isc0d0s8
+dev/scsi drwxr-xr-x root other 2
+dev/scsi/isc0d0s0 brw-r----- root sys 16 0 3 dev/dsk/isc0d0s0
+dev/scsi/isc0d0s1 brw-r----- root sys 16 1 3 dev/dsk/isc0d0s1
+dev/scsi/isc0d0s10 brw-r----- root sys 16 10 2 dev/dsk/isc0d0s10
+dev/scsi/isc0d0s11 brw-r----- root sys 16 11 2 dev/dsk/isc0d0s11
+dev/scsi/isc0d0s12 brw-r----- root sys 16 12 2 dev/dsk/isc0d0s12
+dev/scsi/isc0d0s13 brw-r----- root sys 16 13 2 dev/dsk/isc0d0s13
+dev/scsi/isc0d0s14 brw-r----- root sys 16 14 2 dev/dsk/isc0d0s14
+dev/scsi/isc0d0s15 brw-r----- root sys 16 15 2 dev/dsk/isc0d0s15
+dev/scsi/isc0d0s2 brw-r----- root sys 16 2 2 dev/dsk/isc0d0s2
+dev/scsi/isc0d0s3 brw-r----- root sys 16 3 2 dev/dsk/isc0d0s3
+dev/scsi/isc0d0s4 brw-r----- root sys 16 4 2 dev/dsk/isc0d0s4
+dev/scsi/isc0d0s5 brw-r----- root sys 16 5 2 dev/dsk/isc0d0s5
+dev/scsi/isc0d0s6 brw-r----- root sys 16 6 3 dev/dsk/isc0d0s6
+dev/scsi/isc0d0s7 brw-r----- root sys 16 7 2 dev/dsk/isc0d0s7
+dev/scsi/isc0d0s8 brw-r----- root sys 16 8 4 dev/dsk/isc0d0s8
+dev/scsi/isc0d0s9 brw-r----- root sys 16 9 2 dev/dsk/isc0d0s9
+dev/scsi/isc0d1s0 brw-r----- root sys 16 16 2 dev/dsk/isc0d1s0
+dev/scsi/isc0d1s1 brw-r----- root sys 16 17 2 dev/dsk/isc0d1s1
+dev/scsi/isc0d1s10 brw-r----- root sys 16 26 2 dev/dsk/isc0d1s10
+dev/scsi/isc0d1s11 brw-r----- root sys 16 27 2 dev/dsk/isc0d1s11
+dev/scsi/isc0d1s12 brw-r----- root sys 16 28 2 dev/dsk/isc0d1s12
+dev/scsi/isc0d1s13 brw-r----- root sys 16 29 2 dev/dsk/isc0d1s13
+dev/scsi/isc0d1s14 brw-r----- root sys 16 30 2 dev/dsk/isc0d1s14
+dev/scsi/isc0d1s15 brw-r----- root sys 16 31 2 dev/dsk/isc0d1s15
+dev/scsi/isc0d1s2 brw-r----- root sys 16 18 2 dev/dsk/isc0d1s2
+dev/scsi/isc0d1s3 brw-r----- root sys 16 19 2 dev/dsk/isc0d1s3
+dev/scsi/isc0d1s4 brw-r----- root sys 16 20 2 dev/dsk/isc0d1s4
+dev/scsi/isc0d1s5 brw-r----- root sys 16 21 2 dev/dsk/isc0d1s5
+dev/scsi/isc0d1s6 brw-r----- root sys 16 22 2 dev/dsk/isc0d1s6
+dev/scsi/isc0d1s7 brw-r----- root sys 16 23 2 dev/dsk/isc0d1s7
+dev/scsi/isc0d1s8 brw-r----- root sys 16 24 3 dev/dsk/isc0d1s8
+dev/scsi/isc0d1s9 brw-r----- root sys 16 25 2 dev/dsk/isc0d1s9
+dev/scsi/isc0d2s0 brw-r----- root sys 16 32 2 dev/dsk/isc0d2s0
+dev/scsi/isc0d2s1 brw-r----- root sys 16 33 2 dev/dsk/isc0d2s1
+dev/scsi/isc0d2s10 brw-r----- root sys 16 42 2 dev/dsk/isc0d2s10
+dev/scsi/isc0d2s11 brw-r----- root sys 16 43 2 dev/dsk/isc0d2s11
+dev/scsi/isc0d2s12 brw-r----- root sys 16 44 2 dev/dsk/isc0d2s12
+dev/scsi/isc0d2s13 brw-r----- root sys 16 45 2 dev/dsk/isc0d2s13
+dev/scsi/isc0d2s14 brw-r----- root sys 16 46 2 dev/dsk/isc0d2s14
+dev/scsi/isc0d2s15 brw-r----- root sys 16 47 2 dev/dsk/isc0d2s15
+dev/scsi/isc0d2s2 brw-r----- root sys 16 34 2 dev/dsk/isc0d2s2
+dev/scsi/isc0d2s3 brw-r----- root sys 16 35 2 dev/dsk/isc0d2s3
+dev/scsi/isc0d2s4 brw-r----- root sys 16 36 2 dev/dsk/isc0d2s4
+dev/scsi/isc0d2s5 brw-r----- root sys 16 37 2 dev/dsk/isc0d2s5
+dev/scsi/isc0d2s6 brw-r----- root sys 16 38 2 dev/dsk/isc0d2s6
+dev/scsi/isc0d2s7 brw-r----- root sys 16 39 2 dev/dsk/isc0d2s7
+dev/scsi/isc0d2s8 brw-r----- root sys 16 40 3 dev/dsk/isc0d2s8
+dev/scsi/isc0d2s9 brw-r----- root sys 16 41 2 dev/dsk/isc0d2s9
+dev/scsi/isc0d3s0 brw-r----- root sys 16 48 2 dev/dsk/isc0d3s0
+dev/scsi/isc0d3s1 brw-r----- root sys 16 49 2 dev/dsk/isc0d3s1
+dev/scsi/isc0d3s10 brw-r----- root sys 16 58 2 dev/dsk/isc0d3s10
+dev/scsi/isc0d3s11 brw-r----- root sys 16 59 2 dev/dsk/isc0d3s11
+dev/scsi/isc0d3s12 brw-r----- root sys 16 60 2 dev/dsk/isc0d3s12
+dev/scsi/isc0d3s13 brw-r----- root sys 16 61 2 dev/dsk/isc0d3s13
+dev/scsi/isc0d3s14 brw-r----- root sys 16 62 2 dev/dsk/isc0d3s14
+dev/scsi/isc0d3s15 brw-r----- root sys 16 63 2 dev/dsk/isc0d3s15
+dev/scsi/isc0d3s2 brw-r----- root sys 16 50 2 dev/dsk/isc0d3s2
+dev/scsi/isc0d3s3 brw-r----- root sys 16 51 2 dev/dsk/isc0d3s3
+dev/scsi/isc0d3s4 brw-r----- root sys 16 52 2 dev/dsk/isc0d3s4
+dev/scsi/isc0d3s5 brw-r----- root sys 16 53 2 dev/dsk/isc0d3s5
+dev/scsi/isc0d3s6 brw-r----- root sys 16 54 2 dev/dsk/isc0d3s6
+dev/scsi/isc0d3s7 brw-r----- root sys 16 55 2 dev/dsk/isc0d3s7
+dev/scsi/isc0d3s8 brw-r----- root sys 16 56 3 dev/dsk/isc0d3s8
+dev/scsi/isc0d3s9 brw-r----- root sys 16 57 2 dev/dsk/isc0d3s9
+dev/scsi/isc0d4s0 brw-r----- root sys 16 64 2 dev/dsk/isc0d4s0
+dev/scsi/isc0d4s1 brw-r----- root sys 16 65 2 dev/dsk/isc0d4s1
+dev/scsi/isc0d4s10 brw-r----- root sys 16 74 2 dev/dsk/isc0d4s10
+dev/scsi/isc0d4s11 brw-r----- root sys 16 75 2 dev/dsk/isc0d4s11
+dev/scsi/isc0d4s12 brw-r----- root sys 16 76 2 dev/dsk/isc0d4s12
+dev/scsi/isc0d4s13 brw-r----- root sys 16 77 2 dev/dsk/isc0d4s13
+dev/scsi/isc0d4s14 brw-r----- root sys 16 78 2 dev/dsk/isc0d4s14
+dev/scsi/isc0d4s15 brw-r----- root sys 16 79 2 dev/dsk/isc0d4s15
+dev/scsi/isc0d4s2 brw-r----- root sys 16 66 2 dev/dsk/isc0d4s2
+dev/scsi/isc0d4s3 brw-r----- root sys 16 67 2 dev/dsk/isc0d4s3
+dev/scsi/isc0d4s4 brw-r----- root sys 16 68 2 dev/dsk/isc0d4s4
+dev/scsi/isc0d4s5 brw-r----- root sys 16 69 2 dev/dsk/isc0d4s5
+dev/scsi/isc0d4s6 brw-r----- root sys 16 70 2 dev/dsk/isc0d4s6
+dev/scsi/isc0d4s7 brw-r----- root sys 16 71 2 dev/dsk/isc0d4s7
+dev/scsi/isc0d4s8 brw-r----- root sys 16 72 3 dev/dsk/isc0d4s8
+dev/scsi/isc0d4s9 brw-r----- root sys 16 73 2 dev/dsk/isc0d4s9
+dev/scsi/isc0d5s0 brw-r----- root sys 16 80 2 dev/dsk/isc0d5s0
+dev/scsi/isc0d5s1 brw-r----- root sys 16 81 2 dev/dsk/isc0d5s1
+dev/scsi/isc0d5s10 brw-r----- root sys 16 90 2 dev/dsk/isc0d5s10
+dev/scsi/isc0d5s11 brw-r----- root sys 16 91 2 dev/dsk/isc0d5s11
+dev/scsi/isc0d5s12 brw-r----- root sys 16 92 2 dev/dsk/isc0d5s12
+dev/scsi/isc0d5s13 brw-r----- root sys 16 93 2 dev/dsk/isc0d5s13
+dev/scsi/isc0d5s14 brw-r----- root sys 16 94 2 dev/dsk/isc0d5s14
+dev/scsi/isc0d5s15 brw-r----- root sys 16 95 2 dev/dsk/isc0d5s15
+dev/scsi/isc0d5s2 brw-r----- root sys 16 82 2 dev/dsk/isc0d5s2
+dev/scsi/isc0d5s3 brw-r----- root sys 16 83 2 dev/dsk/isc0d5s3
+dev/scsi/isc0d5s4 brw-r----- root sys 16 84 2 dev/dsk/isc0d5s4
+dev/scsi/isc0d5s5 brw-r----- root sys 16 85 2 dev/dsk/isc0d5s5
+dev/scsi/isc0d5s6 brw-r----- root sys 16 86 2 dev/dsk/isc0d5s6
+dev/scsi/isc0d5s7 brw-r----- root sys 16 87 2 dev/dsk/isc0d5s7
+dev/scsi/isc0d5s8 brw-r----- root sys 16 88 3 dev/dsk/isc0d5s8
+dev/scsi/isc0d5s9 brw-r----- root sys 16 89 2 dev/dsk/isc0d5s9
+dev/scsi/isc0d6s10 brw-rw-rw- root sys 16 106 1
+dev/scsi/isc0d6s11 brw-rw-rw- root sys 16 107 1
+dev/scsi/isc0d6s12 brw-rw-rw- root sys 16 108 1
+dev/scsi/isc0d6s13 brw-rw-rw- root sys 16 109 1
+dev/scsi/isc0d6s14 brw-rw-rw- root sys 16 110 1
+dev/scsi/isc0d6s15 brw-rw-rw- root sys 16 111 1
+dev/scsi/isc0d6s2 brw-rw-rw- root sys 16 98 1
+dev/scsi/isc0d6s3 brw-rw-rw- root sys 16 99 1
+dev/scsi/isc0d6s4 brw-rw-rw- root sys 16 100 1
+dev/scsi/isc0d6s5 brw-rw-rw- root sys 16 101 1
+dev/scsi/isc0d6s6 brw-rw-rw- root sys 16 102 1
+dev/scsi/isc0d6s7 brw-rw-rw- root sys 16 103 1
+dev/scsi/isc0d6s8 brw-rw-rw- root sys 16 104 1
+dev/scsi/isc0d6s9 brw-rw-rw- root sys 16 105 1
+dev/swap brw-r----- root sys 16 1 3 dev/dsk/isc0d0s1
+dev/syscon crw--w--w- root bin 0 0 4 dev/console
+dev/systty crw--w--w- root bin 0 0 4 dev/console
+dev/tty crw-rw-rw- root bin 2 0 1
+dev/ttykeybd crw-rw-rw- root bin 37 1 1
+dev/tty0 crw--w--w- root bin 0 0 4 dev/console
+dev/tty1 crw--w--w- root bin 0 1 1
+dev/tty2 crw--w--w- root bin 0 2 1
+dev/tty3 crw--w--w- root bin 0 3 1
+dev/ttyd0 crw--w--w- root bin 32 0 1
+dev/ttyd1 crw--w--w- root bin 32 1 1
+dev/ttyd10 crw--w--w- root bin 32 10 1
+dev/ttyd11 crw--w--w- root bin 32 11 1
+dev/ttyd12 crw--w--w- root bin 32 12 1
+dev/ttyd13 crw--w--w- root bin 32 13 1
+dev/ttyd14 crw--w--w- root bin 32 14 1
+dev/ttyd15 crw--w--w- root bin 32 15 1
+dev/ttyd16 crw--w--w- root bin 32 16 1
+dev/ttyd17 crw--w--w- root bin 32 17 1
+dev/ttyd18 crw--w--w- root bin 32 18 1
+dev/ttyd19 crw--w--w- root bin 32 19 1
+dev/ttyd2 crw--w--w- root bin 32 2 1
+dev/ttyd20 crw--w--w- root bin 32 20 1
+dev/ttyd21 crw--w--w- root bin 32 21 1
+dev/ttyd22 crw--w--w- root bin 32 22 1
+dev/ttyd23 crw--w--w- root bin 32 23 1
+dev/ttyd24 crw--w--w- root bin 32 24 1
+dev/ttyd25 crw--w--w- root bin 32 25 1
+dev/ttyd26 crw--w--w- root bin 32 26 1
+dev/ttyd27 crw--w--w- root bin 32 27 1
+dev/ttyd28 crw--w--w- root bin 32 28 1
+dev/ttyd29 crw--w--w- root bin 32 29 1
+dev/ttyd3 crw--w--w- root bin 32 3 1
+dev/ttyd30 crw--w--w- root bin 32 30 1
+dev/ttyd31 crw--w--w- root bin 32 31 1
+dev/ttyd4 crw--w--w- root bin 32 4 1
+dev/ttyd5 crw--w--w- root bin 32 5 1
+dev/ttyd6 crw--w--w- root bin 32 6 1
+dev/ttyd7 crw--w--w- root bin 32 7 1
+dev/ttyd8 crw--w--w- root bin 32 8 1
+dev/ttyd9 crw--w--w- root bin 32 9 1
+dev/ttym0 crw--w--w- root bin 0 128 1
+dev/ttym1 crw--w--w- root bin 0 129 1
+dev/ttym2 crw--w--w- root bin 0 130 1
+dev/ttym3 crw--w--w- root bin 0 131 1
+dev/ttyq0 crw-rw-rw- root sys 15 0 1
+dev/ttyq1 crw-rw-rw- root sys 15 1 1
+dev/ttyq10 crw-rw-rw- root sys 15 10 1
+dev/ttyq100 crw-rw-rw- root sys 15 100 1
+dev/ttyq101 crw-rw-rw- root sys 15 101 1
+dev/ttyq102 crw-rw-rw- root sys 15 102 1
+dev/ttyq103 crw-rw-rw- root sys 15 103 1
+dev/ttyq104 crw-rw-rw- root sys 15 104 1
+dev/ttyq105 crw-rw-rw- root sys 15 105 1
+dev/ttyq106 crw-rw-rw- root sys 15 106 1
+dev/ttyq107 crw-rw-rw- root sys 15 107 1
+dev/ttyq108 crw-rw-rw- root sys 15 108 1
+dev/ttyq109 crw-rw-rw- root sys 15 109 1
+dev/ttyq11 crw-rw-rw- root sys 15 11 1
+dev/ttyq110 crw-rw-rw- root sys 15 110 1
+dev/ttyq111 crw-rw-rw- root sys 15 111 1
+dev/ttyq112 crw-rw-rw- root sys 15 112 1
+dev/ttyq113 crw-rw-rw- root sys 15 113 1
+dev/ttyq114 crw-rw-rw- root sys 15 114 1
+dev/ttyq115 crw-rw-rw- root sys 15 115 1
+dev/ttyq116 crw-rw-rw- root sys 15 116 1
+dev/ttyq117 crw-rw-rw- root sys 15 117 1
+dev/ttyq118 crw-rw-rw- root sys 15 118 1
+dev/ttyq119 crw-rw-rw- root sys 15 119 1
+dev/ttyq12 crw-rw-rw- root sys 15 12 1
+dev/ttyq120 crw-rw-rw- root sys 15 120 1
+dev/ttyq121 crw-rw-rw- root sys 15 121 1
+dev/ttyq122 crw-rw-rw- root sys 15 122 1
+dev/ttyq123 crw-rw-rw- root sys 15 123 1
+dev/ttyq124 crw-rw-rw- root sys 15 124 1
+dev/ttyq125 crw-rw-rw- root sys 15 125 1
+dev/ttyq126 crw-rw-rw- root sys 15 126 1
+dev/ttyq127 crw-rw-rw- root sys 15 127 1
+dev/ttyq128 crw-rw-rw- root sys 15 128 1
+dev/ttyq129 crw-rw-rw- root sys 15 129 1
+dev/ttyq13 crw-rw-rw- root sys 15 13 1
+dev/ttyq130 crw-rw-rw- root sys 15 130 1
+dev/ttyq131 crw-rw-rw- root sys 15 131 1
+dev/ttyq132 crw-rw-rw- root sys 15 132 1
+dev/ttyq133 crw-rw-rw- root sys 15 133 1
+dev/ttyq134 crw-rw-rw- root sys 15 134 1
+dev/ttyq135 crw-rw-rw- root sys 15 135 1
+dev/ttyq136 crw-rw-rw- root sys 15 136 1
+dev/ttyq137 crw-rw-rw- root sys 15 137 1
+dev/ttyq138 crw-rw-rw- root sys 15 138 1
+dev/ttyq139 crw-rw-rw- root sys 15 139 1
+dev/ttyq14 crw-rw-rw- root sys 15 14 1
+dev/ttyq140 crw-rw-rw- root sys 15 140 1
+dev/ttyq141 crw-rw-rw- root sys 15 141 1
+dev/ttyq142 crw-rw-rw- root sys 15 142 1
+dev/ttyq143 crw-rw-rw- root sys 15 143 1
+dev/ttyq144 crw-rw-rw- root sys 15 144 1
+dev/ttyq145 crw-rw-rw- root sys 15 145 1
+dev/ttyq146 crw-rw-rw- root sys 15 146 1
+dev/ttyq147 crw-rw-rw- root sys 15 147 1
+dev/ttyq148 crw-rw-rw- root sys 15 148 1
+dev/ttyq149 crw-rw-rw- root sys 15 149 1
+dev/ttyq15 crw-rw-rw- root sys 15 15 1
+dev/ttyq150 crw-rw-rw- root sys 15 150 1
+dev/ttyq151 crw-rw-rw- root sys 15 151 1
+dev/ttyq152 crw-rw-rw- root sys 15 152 1
+dev/ttyq153 crw-rw-rw- root sys 15 153 1
+dev/ttyq154 crw-rw-rw- root sys 15 154 1
+dev/ttyq155 crw-rw-rw- root sys 15 155 1
+dev/ttyq156 crw-rw-rw- root sys 15 156 1
+dev/ttyq157 crw-rw-rw- root sys 15 157 1
+dev/ttyq158 crw-rw-rw- root sys 15 158 1
+dev/ttyq159 crw-rw-rw- root sys 15 159 1
+dev/ttyq16 crw-rw-rw- root sys 15 16 1
+dev/ttyq160 crw-rw-rw- root sys 15 160 1
+dev/ttyq161 crw-rw-rw- root sys 15 161 1
+dev/ttyq162 crw-rw-rw- root sys 15 162 1
+dev/ttyq163 crw-rw-rw- root sys 15 163 1
+dev/ttyq164 crw-rw-rw- root sys 15 164 1
+dev/ttyq165 crw-rw-rw- root sys 15 165 1
+dev/ttyq166 crw-rw-rw- root sys 15 166 1
+dev/ttyq167 crw-rw-rw- root sys 15 167 1
+dev/ttyq168 crw-rw-rw- root sys 15 168 1
+dev/ttyq169 crw-rw-rw- root sys 15 169 1
+dev/ttyq17 crw-rw-rw- root sys 15 17 1
+dev/ttyq170 crw-rw-rw- root sys 15 170 1
+dev/ttyq171 crw-rw-rw- root sys 15 171 1
+dev/ttyq172 crw-rw-rw- root sys 15 172 1
+dev/ttyq173 crw-rw-rw- root sys 15 173 1
+dev/ttyq174 crw-rw-rw- root sys 15 174 1
+dev/ttyq175 crw-rw-rw- root sys 15 175 1
+dev/ttyq176 crw-rw-rw- root sys 15 176 1
+dev/ttyq177 crw-rw-rw- root sys 15 177 1
+dev/ttyq178 crw-rw-rw- root sys 15 178 1
+dev/ttyq179 crw-rw-rw- root sys 15 179 1
+dev/ttyq18 crw-rw-rw- root sys 15 18 1
+dev/ttyq180 crw-rw-rw- root sys 15 180 1
+dev/ttyq181 crw-rw-rw- root sys 15 181 1
+dev/ttyq182 crw-rw-rw- root sys 15 182 1
+dev/ttyq183 crw-rw-rw- root sys 15 183 1
+dev/ttyq184 crw-rw-rw- root sys 15 184 1
+dev/ttyq185 crw-rw-rw- root sys 15 185 1
+dev/ttyq186 crw-rw-rw- root sys 15 186 1
+dev/ttyq187 crw-rw-rw- root sys 15 187 1
+dev/ttyq188 crw-rw-rw- root sys 15 188 1
+dev/ttyq189 crw-rw-rw- root sys 15 189 1
+dev/ttyq19 crw-rw-rw- root sys 15 19 1
+dev/ttyq190 crw-rw-rw- root sys 15 190 1
+dev/ttyq191 crw-rw-rw- root sys 15 191 1
+dev/ttyq192 crw-rw-rw- root sys 15 192 1
+dev/ttyq193 crw-rw-rw- root sys 15 193 1
+dev/ttyq194 crw-rw-rw- root sys 15 194 1
+dev/ttyq195 crw-rw-rw- root sys 15 195 1
+dev/ttyq196 crw-rw-rw- root sys 15 196 1
+dev/ttyq197 crw-rw-rw- root sys 15 197 1
+dev/ttyq198 crw-rw-rw- root sys 15 198 1
+dev/ttyq199 crw-rw-rw- root sys 15 199 1
+dev/ttyq2 crw-rw-rw- root sys 15 2 1
+dev/ttyq20 crw-rw-rw- root sys 15 20 1
+dev/ttyq200 crw-rw-rw- root sys 15 200 1
+dev/ttyq201 crw-rw-rw- root sys 15 201 1
+dev/ttyq202 crw-rw-rw- root sys 15 202 1
+dev/ttyq203 crw-rw-rw- root sys 15 203 1
+dev/ttyq204 crw-rw-rw- root sys 15 204 1
+dev/ttyq205 crw-rw-rw- root sys 15 205 1
+dev/ttyq206 crw-rw-rw- root sys 15 206 1
+dev/ttyq207 crw-rw-rw- root sys 15 207 1
+dev/ttyq208 crw-rw-rw- root sys 15 208 1
+dev/ttyq209 crw-rw-rw- root sys 15 209 1
+dev/ttyq21 crw-rw-rw- root sys 15 21 1
+dev/ttyq210 crw-rw-rw- root sys 15 210 1
+dev/ttyq211 crw-rw-rw- root sys 15 211 1
+dev/ttyq212 crw-rw-rw- root sys 15 212 1
+dev/ttyq213 crw-rw-rw- root sys 15 213 1
+dev/ttyq214 crw-rw-rw- root sys 15 214 1
+dev/ttyq215 crw-rw-rw- root sys 15 215 1
+dev/ttyq216 crw-rw-rw- root sys 15 216 1
+dev/ttyq217 crw-rw-rw- root sys 15 217 1
+dev/ttyq218 crw-rw-rw- root sys 15 218 1
+dev/ttyq219 crw-rw-rw- root sys 15 219 1
+dev/ttyq22 crw-rw-rw- root sys 15 22 1
+dev/ttyq220 crw-rw-rw- root sys 15 220 1
+dev/ttyq221 crw-rw-rw- root sys 15 221 1
+dev/ttyq222 crw-rw-rw- root sys 15 222 1
+dev/ttyq223 crw-rw-rw- root sys 15 223 1
+dev/ttyq224 crw-rw-rw- root sys 15 224 1
+dev/ttyq225 crw-rw-rw- root sys 15 225 1
+dev/ttyq226 crw-rw-rw- root sys 15 226 1
+dev/ttyq227 crw-rw-rw- root sys 15 227 1
+dev/ttyq228 crw-rw-rw- root sys 15 228 1
+dev/ttyq229 crw-rw-rw- root sys 15 229 1
+dev/ttyq23 crw-rw-rw- root sys 15 23 1
+dev/ttyq230 crw-rw-rw- root sys 15 230 1
+dev/ttyq231 crw-rw-rw- root sys 15 231 1
+dev/ttyq232 crw-rw-rw- root sys 15 232 1
+dev/ttyq233 crw-rw-rw- root sys 15 233 1
+dev/ttyq234 crw-rw-rw- root sys 15 234 1
+dev/ttyq235 crw-rw-rw- root sys 15 235 1
+dev/ttyq236 crw-rw-rw- root sys 15 236 1
+dev/ttyq237 crw-rw-rw- root sys 15 237 1
+dev/ttyq238 crw-rw-rw- root sys 15 238 1
+dev/ttyq239 crw-rw-rw- root sys 15 239 1
+dev/ttyq24 crw-rw-rw- root sys 15 24 1
+dev/ttyq240 crw-rw-rw- root sys 15 240 1
+dev/ttyq241 crw-rw-rw- root sys 15 241 1
+dev/ttyq242 crw-rw-rw- root sys 15 242 1
+dev/ttyq243 crw-rw-rw- root sys 15 243 1
+dev/ttyq244 crw-rw-rw- root sys 15 244 1
+dev/ttyq245 crw-rw-rw- root sys 15 245 1
+dev/ttyq246 crw-rw-rw- root sys 15 246 1
+dev/ttyq247 crw-rw-rw- root sys 15 247 1
+dev/ttyq248 crw-rw-rw- root sys 15 248 1
+dev/ttyq249 crw-rw-rw- root sys 15 249 1
+dev/ttyq25 crw-rw-rw- root sys 15 25 1
+dev/ttyq250 crw-rw-rw- root sys 15 250 1
+dev/ttyq251 crw-rw-rw- root sys 15 251 1
+dev/ttyq252 crw-rw-rw- root sys 15 252 1
+dev/ttyq253 crw-rw-rw- root sys 15 253 1
+dev/ttyq254 crw-rw-rw- root sys 15 254 1
+dev/ttyq255 crw-rw-rw- root sys 15 255 1
+dev/ttyq26 crw-rw-rw- root sys 15 26 1
+dev/ttyq27 crw-rw-rw- root sys 15 27 1
+dev/ttyq28 crw-rw-rw- root sys 15 28 1
+dev/ttyq29 crw-rw-rw- root sys 15 29 1
+dev/ttyq3 crw-rw-rw- root sys 15 3 1
+dev/ttyq30 crw-rw-rw- root sys 15 30 1
+dev/ttyq31 crw-rw-rw- root sys 15 31 1
+dev/ttyq32 crw-rw-rw- root sys 15 32 1
+dev/ttyq33 crw-rw-rw- root sys 15 33 1
+dev/ttyq34 crw-rw-rw- root sys 15 34 1
+dev/ttyq35 crw-rw-rw- root sys 15 35 1
+dev/ttyq36 crw-rw-rw- root sys 15 36 1
+dev/ttyq37 crw-rw-rw- root sys 15 37 1
+dev/ttyq38 crw-rw-rw- root sys 15 38 1
+dev/ttyq39 crw-rw-rw- root sys 15 39 1
+dev/ttyq4 crw-rw-rw- root sys 15 4 1
+dev/ttyq40 crw-rw-rw- root sys 15 40 1
+dev/ttyq41 crw-rw-rw- root sys 15 41 1
+dev/ttyq42 crw-rw-rw- root sys 15 42 1
+dev/ttyq43 crw-rw-rw- root sys 15 43 1
+dev/ttyq44 crw-rw-rw- root sys 15 44 1
+dev/ttyq45 crw-rw-rw- root sys 15 45 1
+dev/ttyq46 crw-rw-rw- root sys 15 46 1
+dev/ttyq47 crw-rw-rw- root sys 15 47 1
+dev/ttyq48 crw-rw-rw- root sys 15 48 1
+dev/ttyq49 crw-rw-rw- root sys 15 49 1
+dev/ttyq5 crw-rw-rw- root sys 15 5 1
+dev/ttyq50 crw-rw-rw- root sys 15 50 1
+dev/ttyq51 crw-rw-rw- root sys 15 51 1
+dev/ttyq52 crw-rw-rw- root sys 15 52 1
+dev/ttyq53 crw-rw-rw- root sys 15 53 1
+dev/ttyq54 crw-rw-rw- root sys 15 54 1
+dev/ttyq55 crw-rw-rw- root sys 15 55 1
+dev/ttyq56 crw-rw-rw- root sys 15 56 1
+dev/ttyq57 crw-rw-rw- root sys 15 57 1
+dev/ttyq58 crw-rw-rw- root sys 15 58 1
+dev/ttyq59 crw-rw-rw- root sys 15 59 1
+dev/ttyq6 crw-rw-rw- root sys 15 6 1
+dev/ttyq60 crw-rw-rw- root sys 15 60 1
+dev/ttyq61 crw-rw-rw- root sys 15 61 1
+dev/ttyq62 crw-rw-rw- root sys 15 62 1
+dev/ttyq63 crw-rw-rw- root sys 15 63 1
+dev/ttyq64 crw-rw-rw- root sys 15 64 1
+dev/ttyq65 crw-rw-rw- root sys 15 65 1
+dev/ttyq66 crw-rw-rw- root sys 15 66 1
+dev/ttyq67 crw-rw-rw- root sys 15 67 1
+dev/ttyq68 crw-rw-rw- root sys 15 68 1
+dev/ttyq69 crw-rw-rw- root sys 15 69 1
+dev/ttyq7 crw-rw-rw- root sys 15 7 1
+dev/ttyq70 crw-rw-rw- root sys 15 70 1
+dev/ttyq71 crw-rw-rw- root sys 15 71 1
+dev/ttyq72 crw-rw-rw- root sys 15 72 1
+dev/ttyq73 crw-rw-rw- root sys 15 73 1
+dev/ttyq74 crw-rw-rw- root sys 15 74 1
+dev/ttyq75 crw-rw-rw- root sys 15 75 1
+dev/ttyq76 crw-rw-rw- root sys 15 76 1
+dev/ttyq77 crw-rw-rw- root sys 15 77 1
+dev/ttyq78 crw-rw-rw- root sys 15 78 1
+dev/ttyq79 crw-rw-rw- root sys 15 79 1
+dev/ttyq8 crw-rw-rw- root sys 15 8 1
+dev/ttyq80 crw-rw-rw- root sys 15 80 1
+dev/ttyq81 crw-rw-rw- root sys 15 81 1
+dev/ttyq82 crw-rw-rw- root sys 15 82 1
+dev/ttyq83 crw-rw-rw- root sys 15 83 1
+dev/ttyq84 crw-rw-rw- root sys 15 84 1
+dev/ttyq85 crw-rw-rw- root sys 15 85 1
+dev/ttyq86 crw-rw-rw- root sys 15 86 1
+dev/ttyq87 crw-rw-rw- root sys 15 87 1
+dev/ttyq88 crw-rw-rw- root sys 15 88 1
+dev/ttyq89 crw-rw-rw- root sys 15 89 1
+dev/ttyq9 crw-rw-rw- root sys 15 9 1
+dev/ttyq90 crw-rw-rw- root sys 15 90 1
+dev/ttyq91 crw-rw-rw- root sys 15 91 1
+dev/ttyq92 crw-rw-rw- root sys 15 92 1
+dev/ttyq93 crw-rw-rw- root sys 15 93 1
+dev/ttyq94 crw-rw-rw- root sys 15 94 1
+dev/ttyq95 crw-rw-rw- root sys 15 95 1
+dev/ttyq96 crw-rw-rw- root sys 15 96 1
+dev/ttyq97 crw-rw-rw- root sys 15 97 1
+dev/ttyq98 crw-rw-rw- root sys 15 98 1
+dev/ttyq99 crw-rw-rw- root sys 15 99 1
+dev/usr brw-r----- root sys 16 6 3 dev/dsk/isc0d0s6
+dev/vh brw-r----- root sys 16 8 4 dev/dsk/isc0d0s8

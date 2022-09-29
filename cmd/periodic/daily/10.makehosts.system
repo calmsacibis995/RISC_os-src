@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Make entries in /usr/hosts for each hostname and nickname.
+#
+
+PATH=/bin:/usr/bin
+set -e		# exit on error preserving old /usr/hosts if possible
+
+main()
+{
+
+	echo "\nRebuilding /usr/hosts:"
+
+	rm -rf /usr/hosts.new
+	mkdir /usr/hosts.new
+	cd /usr/hosts.new
+	getnames | while read hname
+	do
+		ln -s /usr/net/rsh "$hname"
+	done
+	rm -rf /usr/hosts.old
+	if [ -d /usr/hosts ]
+	then
+		mv /usr/hosts /usr/hosts.old
+		rm -rf /usr/hosts.old &
+	fi
+	mv /usr/hosts.new /usr/hosts
+}
+
+#
+# we get all names and nicknames and ignore bridge-boxes, annex-boxes,
+# cisco boxes, and ncd X terminals. Tune for your site.....
+#
+
+getnames()
+{
+	sed '
+		s/[	 ][	 ]*/ /g
+		s/^ //
+		s/#.*//
+		s/^[0-9.]* //
+		s/ $//
+		/^$/d
+	' /etc/hosts | egrep -v '^bridge|^annex|^minibridge|^cisco|^ncd' | \
+		tr ' ' '\012' | sort | uniq
+}
+
+main ${1+"$@"}
+exit 0

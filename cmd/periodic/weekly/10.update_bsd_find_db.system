@@ -1,0 +1,10 @@
+#!/bin/sh
+# $Header: 10.update_bsd_find_db.system,v 1.1.1.1 90/05/09 14:35:13 wje Exp $
+# 
+# update the find data base used by bsd43/bin/find
+#
+
+echo "Update find database"
+if test -x /usr/lib/find/updatedb ; then
+	/usr/lib/find/updatedb
+fi

@@ -1,0 +1,2 @@
+no_hostname_set
+netmask 0xff000000 broadcast 255.255.255.255

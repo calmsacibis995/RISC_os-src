@@ -1,0 +1,17 @@
+*#ident "$Header: sabledsk,v 1.3.2.2 89/12/26 13:02:33 wje Exp $"
+*
+* SD - SableDisk (a fake disk controller)
+*
+* XXX Bug in mboot causes devtable to use C instead of P
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sbc	sd	18	2	io
+				has_dksd(){false}
+
+$$$
+
+#include "sys/dkio.h"
+#include "sys/sabledsk.h"
+int sdmajors[##N] = ##X;
+struct devtable Dev_dksd[] = { ##N, ##P, NSD, sdmajors};
+

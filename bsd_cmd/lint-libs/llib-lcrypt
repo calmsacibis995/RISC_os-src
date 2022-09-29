@@ -1,0 +1,10 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1989 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: llib-lcrypt,v 1.1.1.1 90/01/09 22:22:05 wje Exp $ */
+
+/*LINTLIBRARY*/
+setkey(key) char* key; {}
+encrypt(block, edflag) char *block; int edflag;{}
+char *crypt(pw,salt) char *pw;char *salt;{ char *x; return(x); }

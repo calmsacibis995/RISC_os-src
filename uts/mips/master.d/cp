@@ -1,0 +1,10 @@
+* $Header: cp,v 1.2.4.1 89/11/28 11:39:04 wje Exp $
+*
+* MUX:	streams drivers for ISI MUX 
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	cp	16	4	stty_ld
+						
+
+$$$
+

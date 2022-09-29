@@ -1,0 +1,1223 @@
+add.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+addrsbr.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9,11c3,5
+< #include "mh.h"
+< #include "addrsbr.h"
+< #include "mf.h"
+---
+> #include "../h/mh.h"
+> #include "../h/addrsbr.h"
+> #include "../zotnet/mf.h"
+20c14
+<    addresses.  The routines in uip/addrsbr.c associate semantics with those
+---
+>    addresses.  The routines in sbr/addrsbr.c associate semantics with those
+136c130
+<      * In detail, `,' or eos terminate addresses.  "Empty" addresses
+---
+>      * In detail, `,' or newline terminate addresses.  "Empty" addresses
+147,148c141,142
+<      * non-comment text.  Blanks, tabs & newlines will not be included
+<      * in the mailbox portion of an address unless they are escaped.
+---
+>      * non-comment text.  Blanks & tabs will not be included in the mailbox
+>      * portion of an address unless they are escaped.
+171,174d164
+<     if (! addrs) {
+< 	adr_ptr = NULL;
+< 	return NULL;
+<     }
+178c168
+< 	addrs = saved_addr = getcpy(addrs);
+---
+> 	addrs = saved_addr = getcpy(addrs ? addrs : "");
+191,198d180
+< 	case NORMAL+'\n':	/* discard newlines */
+< 	case QS+'\n':
+< 	case COM+'\n':
+< 	case ERR+'\n':
+< 	    --nxtout;
+< 	    --adrcopy;
+< 	    break;
+< 
+252a235
+> 	case NORMAL+'\n':
+253a237
+> 	case ERR+'\n':
+261a246
+> 	case COM+'\n':
+268a254
+> 	case QS+'\n':
+298c284
+<     if ((ap = getadrx (addrs)) == NULL)
+---
+>     if ((ap = getadrx (addrs ? addrs : "")) == NULL)
+387a374
+>     mp -> m_next = NULL;
+516c503
+< void  mnfree (mp)
+---
+> void	mnfree (mp)
+675c662
+<     static struct mailname  mq;
+---
+>     static struct mailname  mq={NULL};
+745c732
+< 	    if (uprf (np -> m_host, cp) || np -> m_host[len] != '.')
+---
+> 	    if (!uprf (np -> m_host, cp) || np -> m_host[len] != '.')
+754c741
+< 	    if (uleq (np -> m_mbox, mq.m_text))
+---
+> 	    if (uleq (np -> m_mbox, mq.m_mbox))
+adios.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+admonish.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+advertise.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+51c45,46
+<     fprintf (stderr, "%s: ", invo_name);
+---
+>     if (invo_name && *invo_name)
+> 	fprintf (stderr, "%s: ", invo_name);
+67,70c62,67
+<     iov -> iov_len = strlen (iov -> iov_base = invo_name);
+<     iov++;
+<     iov -> iov_len = strlen (iov -> iov_base = ": ");
+<     iov++;
+---
+>     if (invo_name && *invo_name) {
+> 	iov -> iov_len = strlen (iov -> iov_base = invo_name);
+> 	iov++;
+> 	iov -> iov_len = strlen (iov -> iov_base = ": ");
+> 	iov++;
+>     }
+advise.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+ambigsw.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+atooi.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+brkstring.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+closefds.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+concat.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+copy.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+copyip.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+cpydata.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+cpydgst.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+discard.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+done.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+fdcompare.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+fmtcompile.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9,13c3,7
+< #include "mh.h"
+< #include "addrsbr.h"
+< #include "formatsbr.h"
+< #include "tws.h"
+< #include "fmtcompile.h"
+---
+> #include "../h/mh.h"
+> #include "../h/addrsbr.h"
+> #include "../h/formatsbr.h"
+> #include "../zotnet/tws.h"
+> #include "../h/fmtcompile.h"
+123a118,120
+> 
+> long time ();
+> 
+213c210
+<     bzero (&fmt_mnull, sizeof fmt_mnull);
+---
+>     bzero ((char *) &fmt_mnull, sizeof fmt_mnull);
+265a263,264
+> 	    PUTC (*cp);
+> 	    cp++;
+288a288
+> #ifndef	lint
+289a290
+> #endif	not lint
+294a296
+> #ifndef	lint
+295a298
+> #endif	not lint
+formataddr.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9,11c3,5
+< #include "mh.h"
+< #include "addrsbr.h"
+< #include "formatsbr.h"
+---
+> #include "../h/mh.h"
+> #include "../h/addrsbr.h"
+> #include "../h/formatsbr.h"
+26a21,22
+> 		int i = dst - buf;\
+> 		int n = last_dst - buf;\
+28a25,26
+> 		dst = buf + i;\
+> 		last_dst = buf + n;\
+formatsbr.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9,13c3,7
+< #include "mh.h"
+< #include "addrsbr.h"
+< #include "formatsbr.h"
+< #include "tws.h"
+< #include "fmtcompile.h"
+---
+> #include "../h/mh.h"
+> #include "../h/addrsbr.h"
+> #include "../h/formatsbr.h"
+> #include "../zotnet/tws.h"
+> #include "../h/fmtcompile.h"
+30a25,27
+> 
+> long	time ();
+> 
+53c50
+< 	if ((formats = malloc ((unsigned) st.st_size)) == NULLCP)
+---
+> 	if ((formats = malloc ((unsigned) st.st_size + 1)) == NULLCP)
+58a56,57
+> 	formats[st.st_size] = '\0';
+> 
+222c221
+<     while (cp < ep) {
+---
+>     for (;;) {
+gans.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+getans.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+26,27c20,21
+< register char  *prompt;
+< register struct swit   *ansp;
+---
+> char   *prompt;
+> struct swit   *ansp;
+29c23
+<     register int    i;
+---
+>     int    i;
+31,32c25,26
+<     register char  *cp,
+<                   **cpp;
+---
+>     char  *cp,
+> 	 **cpp;
+getanswer.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+getcpy.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+18,19c12,18
+<     if ((cp = malloc ((unsigned) (strlen ((str) ? (str) : "") + 1))) == NULL)
+< 	adios (NULLCP, "unable to allocate string storage");
+---
+>     if (!str) {
+> 	if ((cp = malloc ((unsigned) (1))) == NULL)
+> 	    adios (NULLCP, "unable to allocate string storage");
+> 	(void) strcpy (cp, "");
+>     } else {
+> 	if ((cp = malloc ((unsigned) (strlen (str) + 1))) == NULL)
+> 	    adios (NULLCP, "unable to allocate string storage");
+21c20,21
+<     (void) strcpy (cp, (str) ? (str) : "");
+---
+> 	(void) strcpy (cp, str);
+>     }
+help.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_atoi.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_backup.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_convert.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_delete.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_draft.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_find.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_fmsg.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_foil.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+28a23,25
+> 
+> 	if (mypath == NULL && (mypath = getenv ("HOME")) != NULL)
+> 	    mypath = getcpy (mypath);		
+m_getdefs.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_getfld.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+11c5
+< #include "mts.h"
+---
+> #include "../zotnet/mts.h"
+185a180
+> #ifndef	SYS5
+186a182,188
+>     register char  *ep;
+>     register char  *sp;
+> #else	SYS5
+>     register unsigned char  *bp;
+>     register unsigned char  *ep;
+>     register unsigned char  *sp;
+> #endif	SYS5
+191,192d192
+<     register char  *ep;
+<     register char  *sp;
+m_getfolder.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_gmprot.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_gmsg.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3,4
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+> #include "../h/local.h"
+11,21d5
+< #include <sys/types.h>
+< #include <sys/stat.h>
+< #ifndef	BSD42
+< #ifndef SYS5
+< #include <ndir.h>
+< #else	SYS5
+< #include <dir.h>
+< #endif  SYS5
+< #else	BSD42
+< #include <sys/dir.h>
+< #endif	BSD42
+31c15
+< static int  len;
+---
+> static int  len=0;
+51a36,38
+> #ifdef mips
+>     register struct dirent *dp;
+> #else
+52a40
+> #endif
+m_maildir.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_name.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_readefs.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+19a14
+> 	{ "faceproc",	&faceproc	},
+m_remsg.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_replace.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_scratch.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_seq.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_seqbits.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_seqflag.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_seqnew.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_setcur.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_setseq.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_setvis.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_sync.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+11a6,8
+> #ifndef	sigmask
+> #define	sigmask(s)	(1 << ((s) - 1))
+> #endif	not sigmask
+31,33c28
+< #ifdef BSD42
+<     int	    oldsig;
+< #else not BSD42
+---
+> #ifndef	BSD42
+35c30,32
+< #endif BSD42
+---
+> #else	BSD42
+>     int	    smask;
+> #endif	BSD42
+54c51
+<     private: ;
+---
+>     priv: ;
+69c66
+< 		    goto private;
+---
+> 		    goto priv;
+71,74c68
+< #ifdef BSD42
+< 		oldsig = sigblock (sigmask(SIGHUP) | sigmask(SIGINT) |
+< 				   sigmask(SIGQUIT) | sigmask(SIGTERM));
+< #else not BSD42
+---
+> #ifndef	BSD42
+79c73,76
+< #endif BSD42
+---
+> #else	BSD42
+> 		smask = sigblock (sigmask (SIGHUP) | sigmask (SIGINT)
+> 				    | sigmask (SIGQUIT) | sigmask (SIGTERM));
+> #endif	BSD42
+87,89c84
+< #ifdef BSD42
+< 	(void) sigsetmask (oldsig);
+< #else not BSD42
+---
+> #ifndef	BSD42
+94c89,91
+< #endif BSD42
+---
+> #else	BSD42
+> 	(void) sigsetmask (smask);
+> #endif	BSD42
+m_tmpfil.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+m_update.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+11a6,8
+> #ifndef	sigmask
+> #define	sigmask(s)	(1 << ((s) - 1))
+> #endif	not sigmask
+15a13
+> #ifndef	BSD42
+16a15,17
+> #else	BSD42
+>     int	    smask;
+> #endif	BSD42
+26a28
+> #ifndef	BSD42
+30a33,36
+> #else	BSD42
+>     smask = sigblock (sigmask (SIGHUP) | sigmask (SIGINT)
+> 			| sigmask (SIGQUIT) | sigmask (SIGTERM));
+> #endif	BSD42
+38a45
+> #ifndef	BSD42
+42a50,52
+> #else	BSD42
+>     (void) sigsetmask (smask);
+> #endif	BSD42
+m_whatnow.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+makedir.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+path.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+peekc.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+pidstatus.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+pidwait.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+21a16
+>     int     (*hstat) (), (*istat) (), (*qstat) (), (*tstat) ();
+27d21
+<     int     (*hstat) (), (*istat) (), (*qstat) (), (*tstat) ();
+printsw.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+push.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+putenv.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+pwd.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9,10c3
+< #include "mh.h"
+< #include <stdio.h>
+---
+> #include "../h/mh.h"
+12,19c5,7
+< #include <sys/types.h>
+< #include <sys/stat.h>
+< #ifndef SYS5
+< #include <ndir.h>
+< #else	SYS5
+< #include <dir.h>
+< #endif	SYS5
+< #endif	BSD42
+---
+> #include "../h/local.h"
+> #endif	not BSD42
+> #include <stdio.h>
+67a56,58
+> #ifdef mips
+>     register struct dirent *dp;
+> #else
+68a60
+> #endif
+r1bindex.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+refile.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+10c4
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+remdir.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+showfile.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+smatch.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+25a20,22
+> 
+>     if (string == 0)
+> 	return firstone;
+sprintb.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+ssequal.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+strindex.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+15,18d8
+< 
+<     if (p1 == 0 || p2 == 0) {
+< 	return (-1);
+<     }
+trimcpy.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+uleq.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+uprf.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+vfgets.c
+1,6d0
+< /* --------------------------------------------------- */
+< /* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+< /* | All Rights Reserved.                            | */
+< /* --------------------------------------------------- */
+< /* $Header: x,v 1.1.1.1 89/11/28 02:57:17 wje Locked $ */
+< 
+9c3
+< #include "mh.h"
+---
+> #include "../h/mh.h"
+38c32
+< 	    return (ferror (in) ? NOTOK : DONE);
+---
+> 	    return (ferror (in) && !feof (in) ? NOTOK : DONE);

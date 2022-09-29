@@ -1,0 +1,16 @@
+#
+# emacs virtual terminals
+#
+# emacs terminal emulator:
+emacs-virtual-0-0|emacs-virtual,
+	xon,
+	bel=^P^G, clear=^P\f, cr=^P^A, cub1=^P^B, cud1=^P\n,
+	cup=^P=%p1%'\s'%+%c%p2%'\s'%+%c, dch=^P^D%p1%'\s'%+%c,
+	dch1=^P^D!, dl=^P^K%p1%'\s'%+%c, dl1=^P^K!, ed=^PC,
+	el=^Pc, ich=^P_%p1%'\s'%+%c, ich1=^P_!,
+	il=^P^O%p1%'\s'%+%c, il1=^P^O!, ind=\n,
+# emacs dumb terminal shell window:
+emacs-su,
+	am, xon,
+	cols#80,
+	bel=^G, cr=\r, cud1=\n, ind=\n,

@@ -1,0 +1,26 @@
+*#ident	"@(#)kern-port:master.d/du	10.2"
+*#ident	"$Header: du,v 1.2.5.1 89/11/28 11:39:54 wje Exp $"
+*
+* DU (rfs package)
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	rfs	-	-
+				rfstart(){nopkg}
+				rfstop(){nopkg}
+				rmount(){nopkg}
+				rumount(){nopkg}
+				rfsys(){nopkg}
+				advfs(){nopkg}
+				unadvfs(){nopkg}
+				rnamei1(){noreach}
+				rnamei2(){noreach}
+				rnamei3(){noreach}
+				rnamei4(){noreach}
+				riget(){noreach}
+				remote_call(){noreach}
+				duustat(){nopkg}
+				rdebug(){nopkg}
+				rem_date(){}
+
+$$$
+

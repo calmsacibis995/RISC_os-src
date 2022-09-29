@@ -1,0 +1,14 @@
+bin	/usr/new/mh
+bboards	off
+etc	/usr/new/lib/mh
+mail	/usr/mail
+mandir  /usr/man/catman/u_man
+manuals	standard
+mts	sendmail
+options	BSD42 BSD43 BERK DUMB
+options	MHE BIND RPATHS ATZ
+options	SBACKUP='"\\043"'
+options RISCOS 
+pop	off
+ccoptions -systype bsd43 -signed 
+ldoptions -systype bsd43

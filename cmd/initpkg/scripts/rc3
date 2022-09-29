@@ -1,0 +1,41 @@
+#! /bin/sh
+
+#	"Run Commands" executed when the system is changing to init state 3,
+#	same as state 2 (multi-user) but with remote file sharing.
+#
+# NOTE: Any shells executed by the for-loops should return:
+#		0 : normal execution
+#		1 : bad/irregular usage
+#		2+: catastrophic error, don't continue
+set `who -r`
+if [ -d /etc/rc3.d ]
+then
+	for f in /etc/rc3.d/K*
+	{
+		if [ -s ${f} ]
+		then
+			/bin/sh ${f} stop
+			_exit=$?
+			if [ $_exit -gt 1 ]; then
+				exit $_exit
+			fi
+		fi
+	}
+
+	for f in /etc/rc3.d/S*
+	{
+		if [ -s ${f} ]
+		then
+			/bin/sh ${f} start
+			_exit=$?
+			if [ $_exit -gt 1 ]; then
+				exit $_exit
+			fi
+		fi
+	}
+fi
+if [ $9 = 'S' ]
+then
+	echo '
+The system is ready.'
+fi

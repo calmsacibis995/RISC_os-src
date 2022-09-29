@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Conversion script for adjusting QIC-24 deivice special files on m120s
+# with ARCHIVE VIPER QIC 24 tape drives.
+#
+# ---------------------------------------------------
+# | Copyright (c) 1986 MIPS Computer Systems, Inc.  |
+# | All Rights Reserved.                            |
+# ---------------------------------------------------
+#
+
+Cdpath=`/bin/pwd`
+
+if [ "$Onmini" = "y" -a "$Install" = "scratch" ]
+  then
+    set `devstr mt/m0`
+    case $1 in
+      ARCHIVE) case $2 in
+	         -VIPER) case $3 in
+	         	    60) echo $Dn "\
+Adjusting device special files for QIC-24 tape drive... $Sc"
+			        rm /dev/rmt/Q120*
+			        rm /dev/mt/Q120*
+				cd /dev ; ./MKDEV q24
+		 	   125) ;;
+	         	   esac
+		 	 ;;
+		 esac
+	       ;;
+     esac
+  fi
+
+cd $Cdpath
+
+#
+# End of conversion script for m120 QIC24 tape device special file adjust
+#
+ 

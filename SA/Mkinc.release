@@ -1,0 +1,198 @@
+#ident "$Header: Mkinc.release,v 1.25 90/11/30 13:58:48 chungc Exp $"
+#
+#
+#    This file must be modified to control the correct
+#    RELEASE/MACHINE/VERSION/BINTYPE that you wish to build.
+#
+#    The release numbering scheme works as follows:  
+#
+#    A prom release is numbered X.YZ  where,
+#	X  is the major revision number of the prom
+#	Y  is the platform identifier of the prom
+#	Z  is the version of the prom specific to the major/platform numbers
+#
+#
+#    The major revision number of the prom is specified by the macro:
+#
+#	MAJOR_REV_ID
+#
+#    This number should only be changed when significant changes have been
+#    made to the proms or the prom structure.
+#
+#    The platform identifier is based on the board type used by a machinem, 
+#    and specified by the following macros:
+#
+#	R2300_ID	: m500,m800,m1000
+#	R2400_ID	: m120, rc3240
+#	R3200_ID	: m2000, rc3260
+#	R6300_ID	: rc6280
+#	R3030_ID	: rx3230
+#	RB3125_ID	: m2000-25 - Genesis
+#
+#    These numbers should not be modified, if a new platform is to be
+#    supported added it board type to the end of this list and incriment
+#    the last number in the list to get a new platform id.
+#
+#    The version number for the current prom release for each individual
+#    platform is specified by the following macros:
+#
+#	M1000_RELEASE	: m500,m800,m1000
+#	M120_RELEASE	: m120, rc3240
+#	M2000_RELEASE	: m2000, rc3260
+#	RC6280_RELEASE	: rc6280
+#	Rx3230_RELEASE	: rx3230
+#	RB3125_RELEASE	: m2000-25 - Genesis
+#	PI_RELEASE	: platform independant release number (sash, etc)
+#
+#    To get the release number for a new release of proms incriment the 
+#    current number by 1.  Normally this should be the only macro that
+#    needs to be updated for a prom release.
+#
+#
+#    The following are the current available build options for a release
+# 
+#	MACHINES: M1000, M120, M2000, RC6280, Rx3230, RB3125, ALLMAC 
+#	VERSIONS: MIPS, SABLE, ALLVER
+#	BINTYPES: BG, BO, LG, LO, ALLBIN
+#
+#	note:  1. BINTYPES switches descriptions
+#
+#		BG -- big endian with debugging
+#		BO -- big endian with optimization
+#		LG -- little endian with debugging
+#		LO -- little endian with optimization
+#	       
+#	       2. Macro defines for ALLMAC/ALLVER/ALLBIN
+#
+#		ALLMAC= M1000 M120 M2000 RC6280 Rx3230 RB3125
+#		ALLVER= MIPS SABLE
+#		ALLBIN= BO BG LO LG
+#
+#	Examples:
+#	(in all the examples the release numbers are presented just as an
+#	 example for completeness)
+#
+#	(1) build prom for single machine with single version and single binary
+#	    type
+#
+#	M120_RELEASE= 1
+#
+#	MACHINES= M120
+#	VERSIONS= MIPS
+#	BINTYPES= BO
+#
+#	(2) build proms for multiple machines with single version and multiple
+#	    binary types
+#
+#	M1000_RELEASE= 0
+#	M2000_RELEASE= 1
+#	RC6280_RELEASE= 2
+#
+#	MACHINES= M1000 M2000 RC6280
+#	VERSIONS= MIPS
+#	BINTYPES= BG BO LG LO
+#
+#	(3) build proms for single machine with multiple versions and multiple
+#	    binary types
+#
+#	M1000_RELEASE= 0
+#
+#	MACHINES= M1000
+#	VERSIONS= MIPS SABLE
+#	BINTYPES= BG BO
+#
+#	(4) build proms for multiple machines with multiple versions and single
+#	    binary type
+#
+#	M120_RELEASE= 1
+#	RC6280_RELEASE= 3
+#	Rx3230_RELEASE= 4
+#
+#	MACHINES= M120 RC6280 Rx3230
+#	VERSIONS= MIPS SABLE
+#	BINTYPES= BO
+#
+#	(5) build proms for all machines/version/type
+#
+#	M1000_RELEASE= 0
+#	M120_RELEASE= 1
+#	M2000_RELEASE= 2
+#	RC6280_RELEASE= 3
+#	Rx3230_RELEASE= 4
+#
+#	MACHINES= $(ALLMAC)
+#	VERSIONS= $(ALLVER)
+#	BINTYPES= $(ALLBIN)
+#	
+##############################################################################
+
+#
+# SPP package release ID. This is only used to release a SPP package,
+# under normal circumstances this should not be modified
+#
+SPP_RELEASE= 5.03
+
+#
+# RISC/OS SA package release ID. This is only used to release a RISC/OS stand
+# alone package. For each release, this ID must be the same number as 
+# the RISC/OS release that it is bundled with.
+RISCOS_SA_RELEASE= 4.52
+
+#
+# PROM source release ID. This is used to release a PROM source package
+# for a specified paltform. So for each prom source release, the 
+# MAJOR_REV_ID, PLATFORM_ID and RELEASE_NUM must be modified to meet
+# the corresponding paltform needs.
+# note: the defaults value for these macros are always set to the most
+#	recently used.
+#
+PROM_SRC_RELEASE= $(MAJOR_REV_ID).$(PLATFORM_ID)$(RELEASE_NUM)
+PLATFORM_ID= $(RB3125_ID)
+RELEASE_NUM= $(RB3125_RELEASE)
+
+
+#
+# the major prom version number, under normal circumstances this should
+# not be modified
+MAJOR_REV_ID=5
+
+#
+# the following macros should not be modified
+# these are the platform identifiers
+#
+R2300_ID= 0
+R2400_ID= 1
+R3200_ID= 2
+R6300_ID= 3
+R3030_ID= 4
+RB3125_ID= 5
+
+#
+# the following macros contain the current release number
+#
+M1000_RELEASE=0
+M120_RELEASE=0
+M2000_RELEASE=0
+RC6280_RELEASE=3
+Rx3230_RELEASE=1
+RB3125_RELEASE=2
+PI_RELEASE=03
+
+#
+# all the machines, versions, and binary types
+#
+ALLMAC= M1000 M120 M2000 RC6280 Rx3230 RB3125
+ALLVER= MIPS SABLE
+ALLBIN= BO BG LO LG
+
+#
+# specify the targets you wish to build here
+#
+
+MACHINES= $(ALLMAC)
+VERSIONS= $(ALLVER)
+BINTYPES= BO BG
+
+#MACHINES= M120 M2000 RB3125
+#VERSIONS= MIPS
+#BINTYPES= BO

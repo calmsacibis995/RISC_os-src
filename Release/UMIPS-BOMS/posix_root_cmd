@@ -1,0 +1,8 @@
+usr/posix drwxr-xr-x bin bin 2
+usr/posix/bin drwxr-xr-x bin bin 2
+usr/posix/bin/as -r-xr-xr-x bin bin 3 usr/posix/bin/cc
+usr/posix/bin/cc -r-xr-xr-x bin bin 3
+usr/posix/bin/chrtbl -r-xr-xr-x bin bin 1
+usr/posix/bin/ld -r-xr-xr-x bin bin 3 usr/posix/bin/cc
+usr/posix/bsd43 l--------- bin bin 1 ../../bsd43
+usr/posix/sysv l--------- bin bin 1 ../../sysv

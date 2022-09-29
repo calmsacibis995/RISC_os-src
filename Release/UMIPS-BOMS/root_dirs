@@ -1,0 +1,24 @@
+. drwxr-xr-x bin bin 2
+bin drwxr-xr-x bin bin 2
+boot drwxr-xr-x bin bin 2
+dev drwxr-xr-x bin bin 2
+dev/DEV_DB drwxr-xr-x bin bin 2
+etc drwxr-xr-x bin bin 2
+etc/fstyp.d drwxr-xr-x bin bin 2
+etc/init.d drwxr-xr-x bin bin 2
+etc/named.d drwxr-xr-x bin bin 2
+etc/rc.d drwxr-xr-x bin bin 2
+etc/rc0.d drwxr-xr-x bin bin 2
+etc/rc2.d drwxr-xr-x bin bin 2
+etc/rc3.d drwxr-xr-x bin bin 2
+etc/save.d drwxr-xr-x bin bin 2
+etc/yp drwxr-xr-x bin bin 2
+etc/zoneinfo drwxr-xr-x bin bin 2
+etc/zoneinfo/SOURCES drwxr-xr-x bin bin 2
+lib drwxr-xr-x bin bin 2
+proc drwxr-xr-x bin bin 2
+stand drwxr-xr-x bin bin 2
+sysv l--------- bin bin 1 .
+tftpboot drwxr-xr-x bin bin 2
+tmp drwxrwxrwx bin bin 2
+usr drwxr-xr-x bin bin 2

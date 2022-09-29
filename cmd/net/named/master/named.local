@@ -1,0 +1,18 @@
+;/* --------------------------------------------------- */
+;/* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+;/* | All Rights Reserved.                            | */
+;/* --------------------------------------------------- */
+;/* $Header: named.local,v 1.2.2.1 89/11/26 22:52:44 wje Exp $ */
+
+;
+;	@(#)named.local	1.1	(Berkeley)	86/01/21
+;
+
+@	IN	SOA	ucbvax.Berkeley.EDU. kjd.ucbvax.Berkeley.EDU.  (
+			        1.1     ; Serial
+                                3600    ; Refresh
+                                300     ; Retry
+                                3600000 ; Expire
+                                14400 )  ; Minimum
+	IN	NS	ucbvax.berkeley.edu.
+1	IN	PTR	localhost.

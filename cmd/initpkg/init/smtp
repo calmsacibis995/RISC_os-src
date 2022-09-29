@@ -1,0 +1,42 @@
+#! /bin/sh
+#
+# Initialize/Shutdown the smtp software.
+#
+# $Header: smtp,v 1.3.2.3 90/02/01 09:43:06 wje Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+case "$1" in
+'start')
+#
+# Have they set the hostname yet.  If not, don't start SMTP.
+#
+	if [ "`hostname`" = "no_hostname_set" ] ; then
+		echo "WARNING: No hostname set.  SMTP not started"
+		exit 0
+	fi
+#
+#   Check for existence of sendmail first.
+#
+    if test ! -x /usr/lib/sendmail -o ! -r /usr/lib/sendmail.cf
+    then
+	exit 0
+    fi
+	
+    rm -f /usr/spool/mqueue/lf*
+    /usr/lib/sendmail -bd -q15m
+    ;;
+
+'stop')
+    pid=`ps -e | grep ' sendmail$' | sed -e 's/^  *//' -e 's/ .*//'`
+    if test "${pid} " != " "
+    then
+	kill ${pid}
+    fi
+    ;;
+
+*)
+    echo "usage: /etc/init.d/smtp {start|stop}"
+    ;;
+esac
+exit 0

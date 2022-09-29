@@ -1,0 +1,9 @@
+*
+* SCC:	streams drivers for scc
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	scc	0	-	stty_ld
+						
+
+$$$
+

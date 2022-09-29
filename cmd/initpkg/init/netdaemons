@@ -1,0 +1,123 @@
+#! /bin/sh
+#
+# Initialize/Shutdown the network daemons.
+#
+# $Header: netdaemons,v 1.5.1.5.1.1.1.2 90/10/05 10:00:56 beacker Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+not() {
+	eval ${1+"$@"} && return 1 || return 0
+}
+
+main() 
+{
+	case "$1" in
+		start)
+			netdaemons_start
+			;;
+		stop)
+			;;
+		*)
+			echo "$0: usage: `basename $0`: {start|stop}"
+			exit 1
+			;;
+	esac
+}
+
+netdaemons_start() 
+{
+	#
+	# Have they set the hostname yet?  If not, then the network has
+	# not been set up, so don't start the daemons.
+	#
+	if [ "`hostname`" = "no_hostname_set" ] ; then
+		echo "WARNING: No hostname set.  Network daemons not started"
+		exit 0
+	fi
+	#
+	#   Check for existance of tcp first.
+	#
+    	if [ ! -x /etc/havetcp ] || not /etc/havetcp
+	then
+		exit 0
+	fi
+
+	echo "Internet daemons:\c"
+
+	if test -x /etc/gated -a -r /etc/gated.conf ; then
+		gated;				echo " gated\c"
+	elif test -x /etc/routed ; then
+		if [ -r /etc/routed.conf ]; then
+			routed `sed -n 1p /etc/routed.conf`
+		else
+			routed
+		fi
+		echo " routed\c"
+	fi
+
+	# snmpd
+
+	if [ -x /etc/snmpd ]; then
+		/etc/snmpd;		echo " snmpd\c"
+	fi
+
+	# snmptrapd
+
+	if [ -x /etc/snmptrapd ]; then
+		/etc/snmptrapd;		echo " snmptrapd\c"
+	fi
+
+	#  named
+
+	rm -f /etc/named.pid
+	if [ -x /etc/named -a -r /etc/named.boot ]; then
+		/etc/named /etc/named.boot;		echo " named\c"
+	fi
+
+	#   Add routing commands here
+	#   Example: "route add destination gateway 1"
+	#
+	portmap > /dev/console 2>&1 &
+						echo " portmap\c"
+	inetd
+						echo " inetd\c"
+
+	#   Small networks can use rwho.  However, large sites, with > 20 rwho
+	#   machines can saturate the network.  In large networks, comment out
+	#   the following 6 lines.
+	if test -x /usr/etc/rwhod; then
+		if test ! -d /usr/spool/rwho; then
+			mkdir /usr/spool/rwho
+	    	fi
+		rwhod;				echo " rwhod\c"
+	fi
+
+	#  Start up timed if timed.conf is present.  The distributed system
+	#  is supplied with a "slave" timed.conf, so a bidding will now
+	#  take place to elect a master.  User processes will not be started
+	#  until a master is elected.
+	#
+	if [ -x /etc/timed -a -r /etc/timed.conf ]; then
+		state=`sed -n 1p /etc/timed.conf`
+		case "$state" in
+			[Mm][Aa][Ss][Tt][Ee][Rr])
+				/etc/timed -M `tail +2 /etc/timed.conf`
+					echo " timed(master)\c"
+				;;
+			[Ss][Ll][Aa][Vv][Ee])
+				/etc/timed `tail +2 /etc/timed.conf`
+					echo " timed(slave)\c"
+				;;
+			*)
+				/etc/timed
+					echo " timed(slave)\c"
+				;;
+		esac
+	fi
+	echo "."
+}
+
+
+main ${1+"$@"}
+exit 0

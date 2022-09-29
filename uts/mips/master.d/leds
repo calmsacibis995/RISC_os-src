@@ -1,0 +1,10 @@
+* $Header
+*
+* set leds routine
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ors	leds
+						
+
+$$$
+

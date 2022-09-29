@@ -1,0 +1,21 @@
+usr/man/catman/a_man/man1/uucheck.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uucico.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uucleanup.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uucpd.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uugetty.1m l--------- bin bin 1 getty.1m
+usr/man/catman/a_man/man1/uupoll.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uusched.1m -r--r--r-- bin bin 1
+usr/man/catman/a_man/man1/uuxqt.1m -r--r--r-- bin bin 1
+usr/man/catman/u_man/bsd_man1/cu.1 l--------- bin bin 1 tip.1c
+usr/man/catman/u_man/bsd_man1/tip.1c -r-xr-xr-x bin bin 1
+usr/man/catman/u_man/man1/cu.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uucp.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uuencode.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uustat.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uuto.1 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uux.1 -r--r--r-- bin bin 1
+usr/man/catman/p_man/man4/uuencode.4 -r--r--r-- bin bin 1
+usr/man/catman/u_man/man1/uudecode.1 l--------- bin bin 1 uuencode.1
+usr/man/catman/u_man/man1/uulog.1 l--------- bin bin 1 uucp.1
+usr/man/catman/u_man/man1/uuname.1 l--------- bin bin 1 uucp.1
+usr/man/catman/u_man/man1/uupick.1 l--------- bin bin 1 uuto.1

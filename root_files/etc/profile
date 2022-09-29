@@ -1,0 +1,49 @@
+#ident	"$Header: profile,v 1.1.2.2 89/12/13 11:59:48 wje Exp $"
+
+# The profile that all sh logins get before using their own .profile.
+
+trap ""  2 3
+
+umask 022
+MAIL=/usr/mail/${LOGNAME:?}
+export LOGNAME USER
+
+# This method of setting TZ is required for single user mode only.
+set `who -r`
+if expr $3 : "S" > /dev/null; then
+	. /etc/TIMEZONE
+fi
+
+#	Login and -su shells get /etc/profile services.
+#	-rsh is given its environment in its .profile.
+case "$0" in
+-su )
+	# omit '.' to close security hole
+	PATH=/usr/net:/bin:/usr/bin:/etc:/usr/ucb
+	export PATH
+	;;
+-sh )
+	PATH=$HOME/bin:/usr/net:/usr/bin:/bin:/usr/ucb:.
+	export PATH
+
+	if [ ! -f "$HOME/.hushlogin" ]
+	then
+		#	Allow the user to break the Message-Of-The-Day only.
+		trap "trap '' 2"  2
+		cat -s /etc/motd
+		trap "" 2
+
+		if mail -e
+		then
+			echo "you have mail"
+		fi
+	fi
+
+	if [ ${LOGNAME} != root ]
+	then
+		news -n
+	fi
+	;;
+esac
+
+trap  2 3

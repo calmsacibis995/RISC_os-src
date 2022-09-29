@@ -1,0 +1,50 @@
+#!/bin/sh
+# $Header: 10.syslogd.system,v 1.2.2.2 90/01/22 10:23:23 wje Exp $
+#
+# Roll over the syslogd log files
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRotating syslog log files:"
+
+	logfiles=`sed -n '
+	   /^#/d
+	   /^$/d
+	   /\?\/dev/d
+	  s/[^ 	]*[ 	]*\(\/.*\)/\1/p' < /etc/syslog.conf`
+	
+	for file in ${logfiles}
+	{
+		echo $file
+		roll5 $file
+	}
+
+	echo sending SIGHUP to syslogd
+ 	kill -1 `cat /etc/syslog.pid`
+}
+
+roll()
+{
+ 	if [ -f "$1" ]
+ 	then
+ 		mv "$1" "$2"
+ 	fi
+}
+
+roll5()
+{
+    roll "$1".4 "$1".5
+    roll "$1".3 "$1".4
+    roll "$1".2 "$1".3
+    roll "$1".1 "$1".2
+    roll "$1"   "$1".1
+    cp /dev/null $1
+    chmod 644 $1
+}
+
+main ${1+"$@"}
+exit 0

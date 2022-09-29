@@ -1,0 +1,48 @@
+#
+# $Header: commondefs,v 1.6.1.1 89/11/26 23:07:41 wje Exp $
+# ---------------------------------------------------
+# | Copyright (c) 1989 MIPS Computer Systems, Inc.  |
+# | All Rights Reserved.                            |
+# ---------------------------------------------------
+#
+
+SHELL	= /bin/sh
+
+ETCDIR = /etc
+
+SYSTEM = BSD43
+SYSTYPE = -systype bsd43
+LIB	= $(BASE)/lib
+DEBUG = -O2
+IFLAGS 	= -I. -I$(BASE)/snmp
+DFLAGS = -DINLINE
+ECFLAGS =
+CFLAGS = $(SYSTYPE) -signed $(DEBUG) $(IFLAGS) $(DFLAGS) $(ECFLAGS)
+
+LIBSNMP = $(BASE)/snmp/libsnmp.a
+
+CSOURCES =
+OBJECTS =
+WHOAMI =
+WHEREIGO =
+LIBRARIES = $(LIBSNMP)
+
+ETIDY = 
+ECLEAN =
+
+CC = cc
+AR = ar
+ARFLAGS = crs
+CHMOD = chmod
+INSTALL = $(ETCDIR)/mipsinstall
+INLINK =
+INFLAGS = -c $(INLINK)
+TOUCH = touch
+MAKEDEPEND = $(BASE)/makedepend
+DEPENDFLAGS = -f Makedepend
+AWKDEPEND= $(BASE)/mkdepend.awk
+DEPENDINCLUDE= /usr/include
+TEX = latex
+TEXFLAGS =
+GATED_INCLUDE =
+GATED_PATH =

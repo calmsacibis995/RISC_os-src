@@ -1,0 +1,10 @@
+usr/include drwxr-xr-x bin bin 2
+usr/include/bsd43 drwxr-xr-x bin bin 2
+usr/include/bsd43/math.h l--------- bin bin 1 sysv/math.h
+usr/include/bsd43/sys/varargs.h l--------- bin bin 1 ../varargs.h
+usr/include/bsd43/varargs.h l--------- bin bin 1 sysv/varargs.h
+usr/include/math.h -r--r--r-- bin bin 2 usr/include2.11/math.h
+usr/include/varargs.h -r--r--r-- bin bin 2 usr/include2.11/varargs.h
+usr/include2.11 drwxr-xr-x bin bin 2
+usr/include2.11/math.h -r--r--r-- bin bin 2
+usr/include2.11/varargs.h -r--r--r-- bin bin 2

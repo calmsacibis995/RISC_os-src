@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# $Header: K21account,v 1.1.1.1 90/02/15 14:39:06 wje Exp $
+# This script executes a corresponding script in /etc/init.d.
+# If you want to make a special local version of this
+# operation, copy the /etc/init.d file on top of this file and
+# make your modifications.  Do not change the file in
+# /etc/init.d.
+#
+
+REALFILE="/etc/init.d/account"
+
+if [ -f "$REALFILE" ]
+then
+	exec "$REALFILE" ${1+"$@"}
+else
+	echo "No process accounting startup/shutdown file."
+	exit 0
+fi

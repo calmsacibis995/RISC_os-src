@@ -1,0 +1,10 @@
+* $Header
+*
+* Pizazz keyboard
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	pkbd	37	1	stty_ld
+						
+
+$$$
+

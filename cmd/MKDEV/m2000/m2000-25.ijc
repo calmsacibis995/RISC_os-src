@@ -1,0 +1,18 @@
+#
+# These are the devices specific to M2000 SCSI disk based systems.
+#
+class(root_devices) {
+	scsi_jaguar
+	scsi_disks_0
+}
+
+class(extra_devices) {
+        link(dsk/ijc0d0s0, root)
+        link(dsk/ijc0d0s1, swap)
+        link(dsk/ijc0d0s6, usr)
+        link(dsk/ijc0d0vh, vh)
+        link(rdsk/ijc0d0s0, rroot)
+        link(rdsk/ijc0d0s6, rusr)
+        link(rdsk/ijc0d0vh, rvh)
+}
+

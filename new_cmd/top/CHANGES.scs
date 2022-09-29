@@ -1,0 +1,30 @@
+Changes for Symmetric Computer Systems s/375 (preprocessor constant: scs).
+
+These changes were not made at, by, or for SCS proper.  SCS would probably
+be interested in them, but so far only the users' group has them.  They were
+made in February, 1987, to version 2.1 of the program, by Paul Vixie
+(dual!ptsfa!vixie!paul@ucbvax.Berkeley.EDU).
+
+Some code cleanup was done, some for appearance sake, some (e.g., fmt_proc() in
+display.c) actually structural improvements.
+
+The SCS kernel is basically 4.2, but with a number of differences -- some I
+like, others I don't.  The list:
+
+	all page counts are in kilobytes (all the ones I had to use, anyway);
+	PGSHIFT is defined as 9 in <machine/param.h>, this may be an error;
+	the physical page size is 512, but the kernel pages are 1024. sigh...
+
+	in the proc structure, there is no p_rssize; p_tsize and p_dsize are
+	also missing, though combined in p_tdsize (whose value is in BYTES,
+	NOT PAGES).  p_ssize has either 0 or 16MB as its value, and is there-
+	fore useless.  p_addr is missing...
+
+	...however, there is a field p_spti which indexes into the page table
+	table.  each spt has a value telling how many pages are used (total
+	reference code), and how many are actually in memory.  these were used
+	for the "SIZE" and "RES" fields on the display...
+
+	...the lack of p_addr made it hard to find the U area for a proc, but
+	since SCS put the process name and CPU time into the proc structure
+	for use when ^T (info) is pressed, the U area wasn't needed anyway...

@@ -1,0 +1,6 @@
+#menu# stop all running programs then go to the PROM monitor
+#help# 
+#help#	Powerdown will stop all running programs, close any  open  files,
+#help#	write  out  information  to disk (such as directory information),
+#help#	then go to monitor mode
+. ${MENUTOP:?}/powerdown

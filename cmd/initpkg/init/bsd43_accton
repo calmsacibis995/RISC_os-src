@@ -1,0 +1,31 @@
+#! /bin/sh
+#
+# Initialize/Shutdown BSD 4.3 process accounting
+#
+# $Header: bsd43_accton,v 1.1.1.1 90/02/15 14:38:06 wje Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+case "$1" in
+'start')
+    if [ -x /bsd43/bin/accton ] 
+    then
+# use the same file name here as sysv acctg.  usr/adm/acct is a directory
+	/bsd43/bin/accton /usr/adm/pacct
+	echo "bsd43 accounting started" > /dev/console
+    fi
+    ;;
+
+'stop')
+    if [ -x /bsd43/bin/accton ]
+    then
+	/bsd43/bin/accton
+	echo "bsd43 accounting stopped" > /dev/console
+    fi
+    ;;
+
+*)
+    echo "usage: /etc/init.d/account {start|stop}"
+    ;;
+esac
+exit 0

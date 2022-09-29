@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# $Header: 10.wtmp.system,v 1.1.2.2 90/01/22 10:23:44 wje Exp $
+#
+# Roll over the wtmp file, if it exists
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRotating wtmp:"
+
+	cd /etc
+
+	if [ ! -f wtmp ]
+	then
+		echo "No wtmp file -- logins are not being recorded"
+		exit 0
+	fi
+	if [ -f /usr/adm/SVACCTG_ON ]
+	then
+		echo "System V Accounting is on.  Use runacct for rolling /etc/wtmp"
+		echo "Message from /usr/adm/periodic/monthly/10.wtmp.system"
+		exit 0
+	fi
+
+	cd /usr/adm
+	roll wtmp.3 wtmp.4
+	roll wtmp.2 wtmp.3
+	roll wtmp.1 wtmp.2
+	roll /etc/wtmp   wtmp.1
+
+	cp /dev/null /etc/wtmp
+	chmod 644 /etc/wtmp
+
+}
+
+roll()
+{
+	if [ -f "$1" ]
+	then
+		mv "$1" "$2"
+	fi
+}
+
+main ${1+"$@"}
+exit 0

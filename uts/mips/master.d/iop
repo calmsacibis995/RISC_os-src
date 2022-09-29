@@ -1,0 +1,10 @@
+* $Header
+*
+* SCSI: generic scsi driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+orx	iop_	
+						
+
+$$$
+

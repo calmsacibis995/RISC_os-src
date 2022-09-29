@@ -1,0 +1,147 @@
+Info file ../info/texinfo, produced by Makeinfo, -*- Text -*- from
+input file texinfo.texinfo.
+
+This file documents Texinfo, a documentation system that uses a
+single source file to produce both on-line help and a printed manual.
+
+This is edition 1.1 of the Texinfo documentation, and is for the
+Texinfo that is distributed as part of Version 18 of GNU Emacs.
+
+Copyright (C) 1988 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+Indirect:
+texinfo-1: 1062
+texinfo-2: 48666
+texinfo-3: 97179
+texinfo-4: 145221
+
+Tag Table:
+(Indirect)
+Node: Top1064
+Node: License6576
+Node: Overview8741
+Node: Info File11940
+Node: Printed Manual15504
+Node: Conventions17530
+Node: Short Sample20786
+Node: Texinfo Mode23991
+Node: Info on a Region25464
+Node: Showing the Structure26081
+Node: Inserting27224
+Node: Beginning a File28397
+Node: Header31578
+Node: First Line32337
+Node: Start-of-Header33331
+Node: Setfilename34278
+Node: Settitle34785
+Node: Setchapternewpage35794
+Node: End-of-Header36462
+Node: Permissions for Info37259
+Node: Titlepage & Copyright Page37976
+Node: Titlepage38726
+Node: Center39898
+Node: Copyright & Printed Permissions40145
+Node: Top Node42152
+Node: License and Distribution44829
+Node: Ending a File46326
+Node: Contents47194
+Node: Indices48668
+Node: Index Entries51164
+Node: Combining Indices53362
+Node: Printing Indices & Menus54994
+Node: Structuring57366
+Node: Chapter62698
+Node: Unnumbered and Appendix63297
+Node: Section63764
+Node: Subsection64352
+Node: Subsubsection64851
+Node: Node65377
+Node: Menu70074
+Node: Quotations and Examples73137
+Node: Quotation74075
+Node: Example74673
+Node: Display75832
+Node: Lists and Tables76190
+Node: Itemize77502
+Node: Enumerate79382
+Node: Table80621
+Node: Itemx83151
+Node: Cross References85326
+Node: Xref87155
+Node: Pxref91436
+Node: Inforef92369
+Node: Formatting Paragraphs92986
+Node: Refilling & Noindent94252
+Node: Refill95058
+Node: Noindent96227
+Node: Breaks Blank-Lines Groups97181
+Node: Line Breaks98711
+Node: Sp99121
+Node: Br99382
+Node: W99626
+Node: Page99893
+Node: Group100126
+Node: Need100881
+Node: Marking Text101179
+Node: Specifying102037
+Node: Code104505
+Node: Samp106356
+Node: File107391
+Node: Kbd107793
+Node: Key108799
+Node: Ctrl109860
+Node: Var110762
+Node: Dfn111646
+Node: Cite112249
+Node: Braces Atsigns Periods112445
+Node: Inserting An Atsign113603
+Node: Insert Left Brace113772
+Node: Insert Colon114031
+Node: Insert Period114759
+Node: Dots Bullets Tex115510
+Node: Dots116350
+Node: Bullet116721
+Node: Tex116923
+Node: Emphasis117124
+Node: Emph and Strong117934
+Node: Fonts118270
+Node: Conditionals118853
+Node: Using Tex Commands120387
+Node: Printing Hardcopy121408
+Node: Requirements126443
+Node: Compile-Command129114
+Node: Creating an Info File129917
+Node: Installing an Info File133299
+Node: Catching Mistakes135093
+Node: Debugging with Info136327
+Node: Using the Emacs Lisp Debugger139498
+Node: Debugging with Tex141688
+Node: Using texinfo-show-structure145223
+Node: Using Occur147845
+Node: Running Info-Validate149307
+Node: Info-Validating a Large File151417
+Node: Splitting153179
+Node: Command Syntax154710
+Node: Include Files156964
+Node: TeX Input160127
+Node: Sample Permissions162159
+Node: Ifinfo Permissions165030
+Node: Titlepage Permissions166692
+Node: Command Index167997
+Node: Concept Index170145
+
+End Tag Table

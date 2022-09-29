@@ -1,0 +1,13 @@
+* $Header
+*
+* uart: uart driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	uart	0	2	stty_ld, iop
+						
+
+$$$
+/* debug flag for usage with dbx on port 1 of IOP */
+/* set to 1 to disallow initialzation of port 1 */
+#define UART_DBX 0
+int uart_dbx = UART_DBX;

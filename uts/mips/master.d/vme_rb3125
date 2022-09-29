@@ -1,0 +1,26 @@
+* $Header: vme_rb3125,v 1.1.2.1.1.1 90/06/28 15:38:47 root Exp $
+*
+* VME Interrupt and init routines.
+*	(Level 0 interrupt routine for M-series and M2000).
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	
+				vme_intr(){noreach}
+
+$$
+extern	int laintr();
+extern	int lamemerr();
+extern	int ascintr();
+extern	int dma_error();
+
+int	(*rb3125_ints[])() = {
+	dma_error,	/* DMAError */
+	dma_error,	/* Zero half transfer complete */
+	lamemerr,	/* Buffer error for lance memory  */
+	laintr,		/* Lance Interrupt */
+	ascintr, 	/* SCSI Intr */
+	0,
+	0,
+	0,
+	};
+

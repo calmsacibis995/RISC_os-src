@@ -1,0 +1,374 @@
+RISCos4.0 l--------- bin bin 2 usr/RISCos4.0
+usr/RISCos4.0/bsd43 drwxr-xr-x bin bin 2
+usr/RISCos4.0/bsd43/usr drwxr-xr-x bin bin 2
+usr/RISCos4.0/bsd43/usr/include l--------- bin bin 2 ../../usr/include/bsd43
+usr/RISCos4.0/bsd43/usr/lib l--------- bin bin 2 ../../usr/bsd43/usr/lib
+usr/RISCos4.0/usr/bsd43/usr/lib/lib300.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/lib300s.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/lib4013.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/lib4014.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/lib450.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libc.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libc_G0.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libcrypt.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libcurses.a -r--r--r-- bin bin 3 
+usr/RISCos4.0/usr/bsd43/usr/lib/libdbm.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libf77plot.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libl.a -r--r--r-- bin bin 2 
+usr/RISCos4.0/usr/bsd43/usr/lib/libln.a -r--r--r-- bin bin 2 
+usr/RISCos4.0/usr/bsd43/usr/lib/libmp.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplot.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplot2648.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplot7221.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplotaed.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplotbg.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplotdumb.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplotgigi.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libplotimagen.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/librpcsvc.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/libtermcap.a -r--r--r-- bin bin 3 usr/RISCos4.0/usr/bsd43/usr/lib/libcurses.a
+usr/RISCos4.0/usr/bsd43/usr/lib/libtermlib.a -r--r--r-- bin bin 3 usr/RISCos4.0/usr/bsd43/usr/lib/libcurses.a
+usr/RISCos4.0/usr/bsd43/usr/lib/libvt0.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/bsd43/usr/lib/liby.a -r--r--r-- bin bin 1 
+usr/RISCos4.0/usr/include/bsd43 drwxr-xr-x bin bin 18
+usr/RISCos4.0/usr/include/bsd43/arpa drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/arpa/ftp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/arpa/inet.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/arpa/nameser.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/arpa/telnet.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/arpa/tftp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/asm.h l--------- bin bin 1 mips/asm.h
+usr/RISCos4.0/usr/include/bsd43/assert.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/bsd43 l--------- bin bin 1 .
+usr/RISCos4.0/usr/include/bsd43/bsd43_.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ctype.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/curses.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/dbm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/disktab.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/errno.h l--------- bin bin 1 sys/errno.h
+usr/RISCos4.0/usr/include/bsd43/fcntl.h l--------- bin bin 1 sys/file.h
+usr/RISCos4.0/usr/include/bsd43/fp_class.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/fpi.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/fstab.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/grp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/lastlog.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/machine l--------- bin bin 1 mips
+usr/RISCos4.0/usr/include/bsd43/math.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/memory.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/mips/asm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/cachectl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/cpu.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/cpu_board.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/debug.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/dkio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/dvh.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/entrypt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/fpu.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/hwconf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/i8254clock.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/inst.h l--------- bin bin 1 ../../sys/inst.h
+usr/RISCos4.0/usr/include/bsd43/mips/machparam.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/pcb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/ps_data.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/psl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/pte.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/r2350mem.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/reg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/regdef.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/s2681cons.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/sableclock.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/sablecons.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/softfp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mips/vmparam.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsif drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/mipsif/if_enp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/mipsvme/cpreg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/dkipreg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/sdreg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/tsreg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/tthreg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/vmereg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mipsvme/vmevar.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mntent.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/mtab.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ndbm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/net/af.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net/if.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net/if_arp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net/netisr.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net/raw_cb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/net/route.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netdb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netimp drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/netimp/if_imp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netimp/if_imphost.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/netinet/icmp_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/if_ether.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/in.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/in_pcb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/in_systm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/in_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/ip.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/ip_icmp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/ip_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp_debug.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp_fsm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp_seq.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp_timer.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcp_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/tcpip.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/udp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netinet/udp_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/netns/idp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/idp_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/ns.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/ns_error.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/ns_if.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/ns_pcb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/sp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/spidp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/spp_debug.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/netns/spp_var.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/nfs drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/nfs/nfs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/nfs/nfs_clnt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/nfs/rnode.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/prom drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/prom/entrypt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/prom/prom.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/protocols drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/protocols/dumprestore.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/protocols/routed.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/protocols/rwhod.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/protocols/talkd.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/protocols/timed.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/pwd.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/regdef.h l--------- bin bin 1 mips/regdef.h
+usr/RISCos4.0/usr/include/bsd43/resolv.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/rpc/auth.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/auth_unix.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/clnt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/pmap_clnt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/pmap_prot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/rpc.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/rpc_msg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/svc.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/svc_auth.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/types.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpc/xdr.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/bootparam.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/ether.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/klm_prot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/mount.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/nlm_prot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/rex.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/rquota.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/rstat.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/rusers.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/rwall.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/sm_inter.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/spray.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/yp_prot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/ypclnt.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/yppasswd.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/rpcsvc/ypv1_prot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/saio/arp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/bfs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/ctype.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/debug.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/ei.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/mbuf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/ncp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/parser.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/protocol.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/protoio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/saio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/saioctl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/setjmp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/socket.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/stringlist.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/tpd.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/saio/undef.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/setjmp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sgtty.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/signal.h l--------- bin bin 1 sys/signal.h
+usr/RISCos4.0/usr/include/bsd43/stdio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/string.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/strings.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/struct.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/sys/acct.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/bkmac.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/buf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/callout.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/clist.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/cmap.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/conf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/des.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/dir.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/dk.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/dkbad.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/dmap.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/dnlc.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/domain.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/errno.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/exec.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/fcntl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/file.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/fixpoint.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/gprof.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/ioctl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/kernel.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/kstamp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/map.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/mbuf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/mman.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/mount.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/msgbuf.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/mtio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/namei.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/param.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/pathname.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/proc.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/prof.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/protosw.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/ptrace.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/quota.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/reboot.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/regdef.h l--------- bin bin 1 ../regdef.h
+usr/RISCos4.0/usr/include/bsd43/sys/resource.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/seg.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/signal.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/socket.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/socketvar.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/stat.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/syscall.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/syslog.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/sysmips.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/systm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/tablet.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/text.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/time.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/timeb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/times.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/trace.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/tty.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/ttychars.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/ttydev.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/types.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/uio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/un.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/unpcb.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/user.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/utsname.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vadvise.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/varargs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vcmd.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vfs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vlimit.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vmmac.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vmmeter.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vmparam.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vmsystm.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vnode.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vsio.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/vtimes.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sys/wait.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/syscall.h l--------- bin bin 1 sys/syscall.h
+usr/RISCos4.0/usr/include/bsd43/sysexits.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/syslog.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/sysmips.h l--------- bin bin 1 sys/sysmips.h
+usr/RISCos4.0/usr/include/bsd43/sysv l--------- bin bin 1 ..
+usr/RISCos4.0/usr/include/bsd43/time.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ttyent.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/tzfile.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ufs drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/include/bsd43/ufs/fs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ufs/fsdir.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ufs/inode.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ufs/mount.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/ufs/quota.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/unctrl.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/utmp.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/varargs.h -r--r--r-- bin bin 1
+usr/RISCos4.0/usr/include/bsd43/vfont.h -r--r--r-- bin bin 1
+# from the compiler boms  cmplrs-bsd43
+usr/RISCos4.0/bsd43 drwxr-xr-x bin bin 2
+usr/RISCos4.0/bsd43/usr drwxr-xr-x bin bin 2
+usr/RISCos4.0/bsd43/usr/include l--------- bin bin 2 ../../usr/include/bsd43
+usr/RISCos4.0/bsd43/usr/include2.0 l--------- bin bin 1 ../../usr/include2.0
+usr/RISCos4.0/bsd43/usr/lib l--------- bin bin 2 ../../usr/bsd43/usr/lib
+usr/RISCos4.0/usr drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43 drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43/usr drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43/usr/lib drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/as l--------- bin bin 1 as2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/as2.0 l--------- bin bin 1 cc2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc l--------- bin bin 1 cc2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0 drwxr-xr-x bin bin 2
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/crt1.o l--------- bin bin 1 crt1.o2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/crt1.o2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/crtn.o l--------- bin bin 1 crtn.o2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/crtn.o2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libexc.a l--------- bin bin 1 libexc_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libexc_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libexc_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libexc_G0.a l--------- bin bin 1 libexc_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfastm.a l--------- bin bin 1 libfastm_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfastm_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfastm_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfastm_G0.a l--------- bin bin 1 libfastm_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfe.a l--------- bin bin 1 libfe_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfe_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfe_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libfe_G0.a l--------- bin bin 1 libfe_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm.a l--------- bin bin 1 libm_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm43.a l--------- bin bin 1 libm43_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm43_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm43_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm43_G0.a l--------- bin bin 1 libm43_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libm_G0.a l--------- bin bin 1 libm_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmisc.a l--------- bin bin 1 libmisc_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmisc_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmisc_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmisc_G0.a l--------- bin bin 1 libmisc_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmld.a l--------- bin bin 1 libmld_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmld_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmld_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libmld_G0.a l--------- bin bin 1 libmld_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libprof1.a l--------- bin bin 1 libprof1_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libprof1_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libprof1_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libprof1_G0.a l--------- bin bin 1 libprof1_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/librptrace.a l--------- bin bin 1 librptrace_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/librptrace_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/librptrace_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/librptrace_G0.a l--------- bin bin 1 librptrace_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libu.a l--------- bin bin 1 libu_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libu_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libu_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libu_G0.a l--------- bin bin 1 libu_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libus.a l--------- bin bin 1 libus_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libus_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libus_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libus_G0.a l--------- bin bin 1 libus_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libxmalloc.a l--------- bin bin 1 libxmalloc_BSD.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libxmalloc_BSD.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libxmalloc_BSDG0.a2.0 -rwxr-xr-x bin bin 1
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/libxmalloc_G0.a l--------- bin bin 1 libxmalloc_BSDG0.a2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/mcrt1.o l--------- bin bin 1 mcrt1.o2.0
+usr/RISCos4.0/usr/bsd43/usr/lib/cmplrs/cc2.0/mcrt1.o2.0 -rwxr-xr-x bin bin 1

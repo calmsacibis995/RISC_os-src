@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# look for regular files in /dev (people have a bad habit of doing
+# things like "cpio ... > /dev/rmtQ24-0" and "cpio... > /dev/rmt8"
+# as root, creating huge files that are forgotten).
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nLooking for accidental files in /dev:"
+
+	find /dev -mount -type f -print |\
+		xargs ls -lds |\
+		egrep -v '(MKDEV$)|(DEV_DB)'
+
+}
+
+main ${1+"$@"}
+exit 0

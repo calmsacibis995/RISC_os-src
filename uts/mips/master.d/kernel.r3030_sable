@@ -1,0 +1,104 @@
+*#ident	"$Header: kernel.r3030_sable,v 1.1.1.1 90/01/09 17:36:48 wje Exp $"
+*
+* KERNEL
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+k	-	 -	  -
+	
+$$$
+
+#include "values.h"
+#include "sys/param.h"
+
+#define UTSNAME_MACHINE_TYPE MT_R3030
+
+/*
+ * machine_type is a global that is used to index into machine dependent
+ *	arrays.  omachine_type will be used to sanity check the value
+ *	passed in from the prom.
+ */
+
+#define RISCOS_MACHINE_TYPE BRDTYPE_R3030
+
+/*
+ * Setup c0 vector table here instead of startup.c for new machines.
+ * This seems the cleanest way to specify new level 0 interrupt routine
+ * which is also lboot'able.
+ *
+ * DO NOT MESS WITH THIS: unless you really know what you are doing!
+ *
+ */
+
+extern timein(), netintr(), r3030_intr(), rambo_intr(); clock(), stray();
+extern buserror_intr(), fp_intr(), handle_clock_intr();
+
+#ifdef KGCLOCK
+extern prof_intr();
+#endif
+
+int  (*c0vec_tbl[8])() = {
+	/* softint 1 */		timein,
+	/* softint 2 */		netintr,
+	/* hardint 3 */		r3030_intr,	/* Handle all Level 0 ints */
+	/* hardint 4 */		handle_clock_intr, /* rambo timer interrupt */
+	/* hardint 5 */		stray,		/* rambo_intr, */
+#ifdef KGCLOCK
+	/* hardint 7 */		prof_intr,
+#else
+	/* hardint 7 */		stray,
+#endif
+	/* hardint 8 */		buserror_intr
+};
+
+/*
+ * The level 0 generic init routine.  This call is done in os/startup.c
+ */
+
+/*
+extern r3030_init(), r3030_add_onboard();
+int (*level0_init)() = r3030_init;
+*/
+
+static int level0_sable_init()
+{     /* nop */
+}
+int (*level0_init)() = level0_sable_init;
+int (*interrupt_init)() = level0_sable_init;
+
+/*
+ * Buffer cache parameters.
+ *
+ *	    bio_pageshi	- Max number of pages allowed in the cache.
+ *	    bio_pageslo	- Min number pruned to during page stealing.
+ *
+ * The kernel executes the functions
+ * bio_pageshi_init() and bio_pageslo_init() at boot time to determine
+ * the values for bio_pageshi and bio_pageslo.
+ *
+ * The kernel executes bio_nbuf_init() at boot time to determine the number
+ * of buffer headers to be used.
+ */
+
+extern int physmem;
+
+bio_pageslo_init()	{ return max(physmem/10, 256*1024/NBPC); }
+bio_pageshi_init()	{ return physmem/2; }
+bio_nbuf_init()		{ return max(bio_pageshi_init()*NBPC/(8*1024), 64); }
+
+/*
+ * Memory allocation parameters
+ */
+#define MALLOC_LIMIT (4096 * 1024)
+
+/*
+ * Add definitions here for modified kernel mode parameters
+ * (see kernel_common for common defaults)
+ */
+
+#include "kernel_common"
+
+rambo_intr()
+{
+	*(unsigned long *)0x1c000d00 = 6250000 + *(unsigned long *)0x1c000c00;
+	printf("X");
+}

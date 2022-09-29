@@ -1,0 +1,15 @@
+* $Header: c8,v 1.2.3.3 90/04/05 23:53:12 wje Exp $
+*
+* C8: Comm-8 driver for Digiboard Dumb Card
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sf	c8	32	4	stty_ld
+				c8intr(){noreach}
+				is_digi(){false}
+
+$$$
+/* driver variables */
+int c8_poll_loopcnt	= 17;	/* Max characters/line each poll */
+int c8_poll_mode	= 1;	/* 0 = don't poll;  1 = poll if fifo chips */
+
+

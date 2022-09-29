@@ -1,0 +1,58 @@
+#! /bin/sh
+
+#	cron control
+
+#
+# killcron() kills any currently running cron processes.  Note
+# that the current shell script is called cron, so it must be
+# ignored.  Also note that you can't use a pipe with a while
+# loop because it will generate another process called "cron".
+#
+
+killcron()
+{
+	pidlist=`ps -e |\
+		grep ' cron$' |\
+		sed -n 's/^[ 	]*\([0-9]*\)[ 	].*$/\1/p'`
+	case "$pidlist" in
+		"")
+			return
+			;;
+	esac
+
+	for pid in $pidlist
+	{
+		case "$pid" in
+			"$$")
+				;;
+			*)
+				/bin/kill "$pid" >/dev/null 2>&1
+				;;
+		esac
+	}
+}
+case $1 in
+'start')
+	set `who -r`
+	if [ $9 = "S" ]
+	then
+		killcron
+
+		rm -f /usr/lib/cron/FIFO
+		if [ -x /usr/bin/cron ]
+		then
+			/usr/bin/cron
+		elif [ -x /etc/cron ]
+		then
+			/etc/cron
+		fi
+	fi
+	;;
+'stop')
+	killcron
+	;;
+*)
+	echo "usage: /etc/init.d/cron {start|stop}"
+	;;
+esac
+exit 0

@@ -1,0 +1,17 @@
+/* --------------------------------------------------- */
+/* | Copyright (c) 1989 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: llib-ll,v 1.2.1.1 90/01/09 22:23:19 wje Exp $ */
+
+/* LINTLIBRARY */
+#include <stdio.h>
+allprint(c) char c; {return 0;}
+sprint(s) char *s; {return;}
+printable(c) int c; { return c;}
+main(){ yylex(); }
+yyreject(){return;}
+yyrac(m) int m; { return (m);}
+yyless(x) int x; { return 0;}
+yywrap(){return (1);}
+

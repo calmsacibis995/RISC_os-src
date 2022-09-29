@@ -1,0 +1,298 @@
+#!/bin/sh
+#
+# $Header: Top,v 1.4.2.7.1.1.1.3 90/11/29 16:13:02 beacker Exp $
+#
+# ---------------------------------------------------
+# | Copyright (c) 1986 MIPS Computer Systems, Inc.  |
+# | All Rights Reserved.                            |
+# ---------------------------------------------------
+#
+#  This script performs a top-level build on a MIPS system.
+#
+
+if [ "$#" -lt 2 ]
+  then
+    echo "usage: $0 target dir ..."
+    exit 1
+  fi
+
+TARGET=$1
+shift
+
+#
+#  If "dir" is "build_pkgs", then use the contents of the build_pkgs file
+#
+if [ "$1" = "build_pkgs" ]
+  then
+    set `/bin/sed -e '/^#/d' build_pkgs`
+  fi
+
+set -a
+
+SRCROOT=${SRCROOT=/n/groucho/rr4.52}
+CROSSROOT=${CROSSROOT=$SRCROOT/crossenv}
+ETCDIR=${ETCDIR=$CROSSROOT/etc}
+PATH=$CROSSROOT/usr/bin:/bin:/usr/bin:/usr/ucb:/usr/new
+SHELL=/bin/sh
+COMP_HOST_ROOT=${COMP_HOST_ROOT=$CROSSROOT}
+DESTROOT=${DESTROOT=$SRCROOT}
+COMP_TARGET_ROOT=${COMP_TARGET_ROOT=$DESTROOT}
+LANG=${LANG=cc}
+LANGLIB=${LANGLIB=cclib}
+BSDTARGET="${TARGET}_bsd"
+# Avoid confusing nroff:
+unset TYPESETTER ; export TYPESETTER
+TMACDIR=/usr/lib/tmac
+TMACFILE="${TMACDIR}/tmac.an"
+DESTTMACFILE="${DESTROOT}${TMACFILE}"
+NROFF="cat ${DESTTMACFILE} - | tbl | nroff | col"
+TROFF="cat ${DESTTMACFILE} - | tbl | troff -Ti10 | lpr -n"
+# This is so we don't have to build all the SA stuff when building umips
+SPPTARGET="${TARGET}_umips"
+
+#
+# for the kernel
+#
+BUILD_TYPE=source
+
+echo "\
+
+`/bin/date`
+
+target:           $TARGET
+dirs:             $@
+
+SRCROOT           = $SRCROOT
+DESTROOT          = $DESTROOT
+CROSSROOT         = $CROSSROOT
+COMP_HOST_ROOT    = $COMP_HOST_ROOT
+COMP_TARGET_ROOT  = $COMP_TARGET_ROOT
+
+PATH =
+$PATH
+
+-------------------------------------------------------------------------------
+"
+
+if [ "$1" = "NONE" ]
+  then
+    exit
+  fi
+
+for DIR in "$@"
+  do
+    if [ -d $DIR ]
+      then        
+	#
+	# Figure out which release id .o to use base on what dir we're
+	# building in...
+	#
+        case $DIR in
+          cmplrs/cc2.11.2) if [ -f $SRCROOT/lib/rls_id.cmplrs.o ]
+		     then
+		       RLS_ID_OBJECT=$SRCROOT/lib/rls_id.cmplrs.o
+		     else
+		       if [ -f $CROSSROOT/lib/rls_id.cmplrs.o ]
+		   	 then
+		           RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.cmplrs.o
+		       fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR $BSDTARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET
+	      	     ;;
+          cmplrs/pc2.11) if [ -f $SRCROOT/lib/rls_id.pascal.o ]
+		     then
+		       RLS_ID_OBJECT=$SRCROOT/lib/rls_id.pascal.o
+		     else
+		       if [ -f $CROSSROOT/lib/rls_id.pascal.o ]
+		   	 then
+		           RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.pascal.o
+		       fi
+		    fi
+	        LANG=pc; LANGLIB=pclib
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET
+	      	     ;;
+          cmplrs/pc2.11/libp) if [ -f $SRCROOT/lib/rls_id.pascal.o ]
+		     then
+		       RLS_ID_OBJECT=$SRCROOT/lib/rls_id.pascal.o
+		     else
+		       if [ -f $CROSSROOT/lib/rls_id.pascal.o ]
+		   	 then
+		           RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.pascal.o
+		       fi
+		    fi
+	        LANG=pclib; LANGLIB=pclib
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=cmplrs/pc2.11 ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT LANG=$LANG $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=cmplrs/pc2.11 ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT LANG=pclib $TARGET
+		( [ ! -d $DESTROOT/usr/lib/cmplrs/pclib2.11 ] || rm -rf $DESTROOT/usr/lib/cmplrs/pclib2.11 ) || true
+	      	     ;;
+          cmplrs/pl12.11) if [ -f $SRCROOT/lib/rls_id.pl1.o ]
+		     then
+		       RLS_ID_OBJECT=$SRCROOT/lib/rls_id.pl1.o
+		     else
+		       if [ -f $CROSSROOT/lib/rls_id.pl1.o ]
+		   	 then
+		           RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.pl1.o
+		       fi
+		    fi
+	        LANG=pl1; LANGLIB=pl1lib
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET
+	      	     ;;
+          cmplrs/cobol2.11) if [ -f $SRCROOT/lib/rls_id.cobol.o ]
+		     then
+		       RLS_ID_OBJECT=$SRCROOT/lib/rls_id.cobol.o
+		     else
+		       if [ -f $CROSSROOT/lib/rls_id.cobol.o ]
+		   	 then
+		           RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.cobol.o
+		       fi
+		    fi
+	        LANG=cobol; LANGLIB=cobollib
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $BSDTARGET
+	      	     ;;
+	      SA) if [ -f $SRCROOT/lib/rls_id.spp.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.spp.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.spp.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.spp.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $SPPTARGET"
+		make -i DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $SPPTARGET
+		  ;;
+#bsd_cmd and bsd_lib are special in that they actually live on usr, but
+# to avoid having to mung ~200 makefiles, we use a symlink that points
+# bsd43/bin to usr/bsd43/bin.  This symlink must be created before starting
+# the bsd_cmd and bsd_lib build (if the headers are installed it is)
+# 
+	       bsd_cmd)
+		    if [ -f $SRCROOT/lib/rls_id.umips.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.umips.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.umips.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.umips.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make -i DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		  ;;
+	       bsd_lib)
+		    if [ -f $SRCROOT/lib/rls_id.umips.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.umips.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.umips.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.umips.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		  ;;
+	       RISCwindows) if [ -f $SRCROOT/lib/rls_id.RISCwindows.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.RISCwindows.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.RISCwindows.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.RISCwindows.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make -i DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		  ;;
+	       man/manpages/compilers/cmplrs) 
+		if [ -f $SRCROOT/lib/rls_id.umips.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.umips.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.umips.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.umips.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET NROFF='${NROFF}'"
+		make -i DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET NROFF="${NROFF}"
+		  ;;
+	       uts) if [ -f $SRCROOT/lib/rls_id.umips.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.umips.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.umips.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.umips.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make SRCROOT=$SRCROOT DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT LC_EXTRA=-Das2.10 $TARGET"
+		make -i SRCROOT=$SRCROOT DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT LC_EXTRA="-Das2.10" $TARGET
+		  ;;
+	       *) if [ -f $SRCROOT/lib/rls_id.umips.o ]
+		    then
+		      RLS_ID_OBJECT=$SRCROOT/lib/rls_id.umips.o
+		    else
+		      if [ -f $CROSSROOT/lib/rls_id.umips.o ]
+			then
+		          RLS_ID_OBJECT=$CROSSROOT/lib/rls_id.umips.o
+			fi
+		    fi
+		echo "+++ $0:"
+		echo "+++ directory \"$DIR\""
+		echo "+++ RLS_ID_OBJECT = $RLS_ID_OBJECT"
+		echo "+++ make SRCROOT=$SRCROOT DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET"
+		make -i SRCROOT=$SRCROOT DESTROOT=$DESTROOT TOPDIRS=$DIR ETCDIR=$ETCDIR CROSSROOT=$CROSSROOT $TARGET
+		  ;;
+        esac
+      else
+        echo "--- $0: directory \"$DIR\" not found"
+      fi
+  done
+
+echo "+++ $0: done `date`"

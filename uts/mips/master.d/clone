@@ -1,0 +1,8 @@
+*#ident	"@(#)kern-port:master.d/clone	10.2"
+*#ident "$Header: clone,v 1.1.5.1 89/11/28 11:38:29 wje Exp $"
+*
+* CLONE - streams clone device interface
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ofs	cln	10	1
+

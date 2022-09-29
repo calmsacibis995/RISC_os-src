@@ -1,0 +1,90 @@
+--
+--
+-- amd.script: program a set of amd proms
+--
+-- NOTE: change the string "prom.horz.N.XXX" to be the name of your files
+--
+-- disable timeout
+=
+--
+-- exit if fail
+--
+-E
+--
+-- set family
+--
+DDA4@
+--
+-- set format
+--
+087A
+--
+-- set setsize
+--
+E1]1
+--
+-- set wordsize
+--
+E2]32
+--
+0<
+8000;
+--
+-- Test
+T
+--
+-- PROGRAM first half of ram
+--
+-- load file to ram
+--
+-- CHANGE THIS STRING TO REFLECT YOUR FILE
+-Iprom.horz.0.XXX
+--
+-- set setsize
+--
+E1]1
+--
+-- set wordsize
+--
+E2]32
+--
+-- divide number of words based on wordsize
+--
+-D4
+--
+--
+-- set base address for device
+--
+0:
+--
+-- program devices with first half of data
+--
+P
+--
+-- PROGRAM second half of ram
+--
+-- load file to ram
+--
+-- CHANGE THIS STRING TO REFLECT YOUR FILE
+-Iprom.horz.1.XXX
+--
+-- set setsize
+--
+E1]1
+--
+-- set wordsize
+--
+E2]32
+--
+-- divide number of words based on wordsize
+--
+-D4
+--
+--
+-- set base address for device
+--
+8000:
+--
+-- program devices for second half of data
+--
+P

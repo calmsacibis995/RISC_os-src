@@ -1,0 +1,18 @@
+*
+* PTC:	streams drivers for pseudo terminal controller
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+fs	ptc	14,43,44,45	4,1	pts,clone
+						
+
+$$$
+
+/* maximum psuedo-ttys */
+#ifndef MAXPTY
+#define MAXPTY 1024
+#endif MAXPTY
+
+int maxpty = MAXPTY;
+
+int ptc_nummajor = ##N;	/* number of major numbers */
+int ptc_majors[##N] = ##X; /* array of external numbers */

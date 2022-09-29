@@ -1,0 +1,63 @@
+#! /bin/sh
+
+# $Header: umountall,v 1.10.2.2 89/12/02 14:28:55 wje Exp $
+#	Unmounts all but the root, "/", file system.
+#	Note: written to depend on as few commands as possible.
+
+USAGE="usage:  $0 [ -k ]
+-k	kill processes with files open in each file system before unmounting."
+
+KILL=false
+
+#
+# Parse options.
+#
+while [ $# -gt 0 ]
+do
+	case "$1" in
+	-k )	KILL=true; shift ;;
+	-*)	echo >&2 "$USAGE"; exit 1;;
+	* )	break;
+	esac
+done
+
+if $KILL && [ ! -x /etc/fuser ] 
+then
+	echo >&2 "$0: -k option not available.  No /etc/fuser found."
+	exit 1
+fi
+
+#
+# Args
+#
+if [ $# != 0 ]
+then
+	echo >&2 "$USAGE"; 
+	exit 1;
+fi
+
+#
+# Unmount everything.  
+#
+# First try "umount -a".  
+# If "-k", then use fuser on whatever remains.
+#
+
+/etc/umount -a
+
+if $KILL
+then
+	/etc/mount |	
+	# ... |
+		while read DEV DUMMY1 FS DUMMY2 TYPE DUMMY3 MODE 
+		do
+			case "$FS" in
+			/)	continue 
+				;;
+			* )	/etc/fuser -k $DEV
+				sleep 10
+				/etc/umount $DEV
+				;;
+			esac
+		done 
+fi

@@ -1,0 +1,28 @@
+#
+# These are the devices specific to M2000 SCSI disk based systems.
+#
+
+class(extra_devices) {
+        link(dsk/ijc0d0s0, root)
+        link(dsk/ijc0d0s1, swap)
+        link(dsk/ijc0d0s6, usr)
+        link(dsk/ijc0d0vh, vh)
+        link(rdsk/ijc0d0s0, rroot)
+        link(rdsk/ijc0d0s6, rusr)
+        link(rdsk/ijc0d0vh, rvh)
+}
+
+#
+# For M2000 SCSI disk based systems, the 1/2" tape drive is on
+# the second controller.
+#
+
+class(htape) {
+	htape1
+        link(rscsi/ijc1d5s0, mt/h0)
+        link(rscsi/ijc1d5s1, mt/h4)
+        link(rscsi/ijc1d5s0, rmt/h0)
+        link(rscsi/ijc1d5s1, rmt/h4)
+}
+
+

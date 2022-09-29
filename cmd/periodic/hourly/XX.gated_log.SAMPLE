@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Roll over the gated log file.
+# Assumes that the logfile is /usr/adm/gated.log
+#
+
+PATH=/bin:/usr/bin
+
+		main()
+		{
+		
+			echo "\nRotating gated log messages:"
+		
+			cd /usr/adm
+		
+			roll gated.log.3  gated.log.4
+			roll gated.log.2  gated.log.3
+			roll gated.log.1  gated.log.2
+			roll gated.log    gated.log.1
+			cp /dev/null gated.log
+			chmod 644 gated.log
+		
+		}
+		
+		roll()
+		{
+			if [ -f "$1" ]
+			then
+				mv "$1" "$2"
+			fi
+		}
+
+if [ -r /usr/adm/gated.log ];
+then
+	filesize=`/bin/ls -s /usr/adm/gated.log |awk '{ print $1 }'`
+	if [ $filesize -gt 1000 ]
+	then
+		kill -1 `cat /etc/gated.pid`
+		sleep 5
+
+		main ${1+"$@"}
+
+		kill -1 `cat /etc/gated.pid`
+	
+	fi
+fi
+exit 0

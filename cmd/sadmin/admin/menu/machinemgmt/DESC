@@ -1,0 +1,6 @@
+#menu# machine management menu
+
+#help# 
+#help#	Machine Management functions are tools used to operate the
+#help#	machine, e.g., reboot, go to the PROM monitor.
+#head# 			MACHINE MANAGEMENT

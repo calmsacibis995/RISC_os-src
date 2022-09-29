@@ -1,0 +1,8 @@
+* $Header
+*
+* floppy driver for 82072
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sbc	fl	35	1	
+
+$$$

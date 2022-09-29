@@ -1,0 +1,31 @@
+#! /bin/sh
+#
+# Initialize/Shutdown BSD 4.3 lpd
+#
+# $Header: bsd43_lpd,v 1.2.1.1 90/02/15 14:38:19 wje Exp $
+
+PATH=/net:/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+case "$1" in
+'start')
+    if [ -f /bsd43/bin/lpd ] 
+    then
+	    rm -f /usr/spool/lpd.lock
+	    rm -f /dev/printer
+	    /bsd43/bin/lpd
+	    echo "Starting lpd"	>/dev/console
+    else
+	    echo Attempted to start /bsd43/bin/lpd, but the file is missing.
+    fi
+    ;;
+
+'stop')
+    echo "Stopping lpd" > /dev/console
+    kill `cat /usr/spool/lpd.lock`
+    ;;
+
+*)
+    echo "usage: /etc/init.d/bsd43_lpd {start|stop}"
+    ;;
+esac
+exit 0

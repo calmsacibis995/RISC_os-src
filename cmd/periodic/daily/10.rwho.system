@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Clean up the rwho spool directory, removing all files older than
+# 2 days.
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nRemoving old rwho information:"
+
+	find /usr/spool/rwho -name "whod.*" -mtime +2 -exec rm -f '{}' \;
+
+}
+
+main ${1+"$@"}
+exit 0

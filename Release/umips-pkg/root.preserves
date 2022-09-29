@@ -1,0 +1,88 @@
+#
+#  root.preserves - RISC/os 4.52
+#
+#  This preserve list is fed to preserve following the list generated
+#  by findmods.
+#
+
+#
+#  local files which should be saved "as-is":
+#
+.cshrc		-k
+.login		-k
+.profile	-k
+.rhosts		-k
+etc/TIMEZONE	-k
+etc/TZ		-k
+etc/bupsched	-k
+etc/cshrc	-k
+etc/coredirs	-k
+etc/disktab	-k
+etc/dumpdates	-k
+etc/exports	-k
+etc/fstab	-k
+etc/gettydefs	-k
+etc/group	-k
+etc/hosts	-k
+etc/hosts.equiv	-k
+etc/inetd.conf	-k
+etc/init.d/ANNOUNCE	-k
+etc/init.d/MOUNTFSYS	-k
+etc/init.d/README	-k
+etc/init.d/RMTMPFILES	-k
+etc/init.d/addswap	-k
+etc/init.d/autoconfig	-k
+etc/init.d/bfsd	-k
+etc/init.d/cron	-k
+etc/init.d/disks	-k
+etc/init.d/firstcheck	-k
+etc/init.d/lockfix	-k
+etc/init.d/netdaemons	-k
+etc/init.d/nfs	-k
+etc/init.d/perf	-k
+etc/init.d/savecore	-k
+etc/init.d/set_kopts	-k
+etc/init.d/smtp	-k
+etc/init.d/sysetup	-k
+etc/init.d/syslog	-k
+etc/init.d/tcp	-k
+etc/init.d/tzsetup	-k
+etc/init.d/uucp	-k
+etc/inittab	-k
+etc/local_hostname	-k
+etc/motd	-k
+etc/named.d/named.boot	-k
+etc/named.d/named.boot.master	-k
+etc/named.d/named.hosts	-k
+etc/named.d/named.local	-k
+etc/named.d/named.rev	-k
+etc/named.d/root.cache	-k
+etc/networks	-k
+etc/passwd	-k
+etc/profile	-k
+etc/protocols	-k
+etc/preserves	-k
+etc/remote	-k
+etc/services	-k
+etc/sysdirlist	-k
+etc/syslist	-k
+etc/syslog.conf	-k
+etc/termcap	-k
+etc/timed.conf	-k
+etc/ttytype	-k
+tftpboot	-k
+tmp		-k
+
+#
+#  force use of the following update files:
+#
+etc/magic	-u
+
+#
+#  remove these files:
+#
+etc/checklist	-d
+
+#
+#  end root.preserves
+#

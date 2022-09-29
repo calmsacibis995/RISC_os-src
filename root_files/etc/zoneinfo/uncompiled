@@ -1,0 +1,6 @@
+The presence of this file indicates that the timezone files have not
+been compiled since they were last installed.
+
+The compilation step is taken care of automatically the first time the
+system comes up multi-user (state 2) after the installation, and this
+file is removed.

@@ -1,0 +1,19 @@
+0a
+/* --------------------------------------------------- */
+/* | Copyright (c) 1986 MIPS Computer Systems, Inc.  | */
+/* | All Rights Reserved.                            | */
+/* --------------------------------------------------- */
+/* $Header: tokenscript,v 1.1.2.1 89/11/26 13:15:49 wje Exp $ */
+.
+1,.d
+E awk.h
+1,$s/# *define *//
+1,$s/^/"/
+1,$s/ /", /
+1,$s/$/,/
+w temp
+e token.c
+/= *{$/+1,/^};$/-1d
+-r temp
+w token.c
+q

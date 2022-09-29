@@ -1,0 +1,16 @@
+usr/src/man drwxr-xr-x bin bin 2
+usr/src/man/manpages drwxr-xr-x bin bin 2
+usr/src/man/manpages/admin_ref drwxr-xr-x bin bin 2
+usr/src/man/manpages/admin_ref/man1 drwxr-xr-x bin bin 2
+usr/src/man/manpages/admin_ref/man7 drwxr-xr-x bin bin 2
+#usr/src/man/manpages/compilers drwxr-xr-x bin bin 2
+#usr/src/man/manpages/compilers/man1 drwxr-xr-x bin bin 2
+#usr/src/man/manpages/compilers/man3 drwxr-xr-x bin bin 2
+#usr/src/man/manpages/compilers/man4 drwxr-xr-x bin bin 2
+usr/src/man/manpages/prog_ref drwxr-xr-x bin bin 2
+usr/src/man/manpages/prog_ref/man2 drwxr-xr-x bin bin 2
+usr/src/man/manpages/prog_ref/man3 drwxr-xr-x bin bin 2
+usr/src/man/manpages/prog_ref/man4 drwxr-xr-x bin bin 2
+usr/src/man/manpages/prog_ref/man5 drwxr-xr-x bin bin 2
+usr/src/man/manpages/user_ref drwxr-xr-x bin bin 2
+usr/src/man/manpages/user_ref/man1 drwxr-xr-x bin bin 2

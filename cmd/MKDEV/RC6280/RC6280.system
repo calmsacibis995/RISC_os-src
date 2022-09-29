@@ -1,0 +1,1279 @@
+#
+#  $Header: RC6280.system,v 1.1.1.1.1.2 90/08/07 16:04:04 hawkes Exp $
+#
+#  RC6280.system: MKDEV database entries common to all RC6280 systems.
+#
+#  Local changes should be made by adding local files, not by changing
+#  this one.  See MKDEV(1M) and DEV_DB(4) for more information.
+#
+
+class(default,all) {
+	com.default
+	tty
+	scsi
+	scsi_disks_0
+	disks
+	extra_devices
+	htape
+	hctape
+	qic-tape
+	lp
+}
+
+#
+# extra_devices is overridden in RC6280.ijc and RC6280.ipc to specify
+# configuration dependent devices.  These include devices like /dev/usr,
+# /dev/root, etc.
+#
+
+class(extra_devices) {
+
+}
+
+#
+# tty
+#
+
+class(tty,terminals) {
+	idevice(16, ttyh, 0, c, 16, 0, 622, root, bin)
+	idevice(16, ttyi, 0, c, 16, 16, 622, root, bin)
+	idevice(16, ttyj, 0, c, 16, 32, 622, root, bin)
+	idevice(16, ttyk, 0, c, 16, 48, 622, root, bin)
+}
+
+#
+# scsi
+#
+# The /dev/scsi and /dev/rscsi directories contain device entries in the form
+# ijc#d##s##. The "ijc" stands for "Interphase Jaguar scsi"; the first number
+# is the scsi host adapter number; the second number is the device number;
+# the third number has meaning specific to the given device, such as section
+# number (for disks) or device driver option flags (for tape drives).
+# The device files are to be considered the "master" files; other scsi
+# device files should be created as links to these.
+#
+
+class(scsi) {
+	b_scsi0
+	c_scsi0
+}
+
+class(scsi1) {
+	b_scsi1
+	c_scsi1
+}
+
+class(otherscsi) {
+	b_otherscsi
+	c_otherscsi
+}
+
+class(b_otherscsi) {
+	b_scsi1
+	b_scsi2
+	b_scsi3
+	b_scsi4
+	b_scsi5
+	b_scsi6
+	b_scsi7
+}
+
+class(c_otherscsi) {
+	c_scsi1
+	c_scsi2
+	c_scsi3
+	c_scsi4
+	c_scsi5
+	c_scsi6
+	c_scsi7
+}
+
+class(b_scsi0) {
+	idevice(16, scsi/ijc0d0s, 0, b, 22, 0, 640, root, sys)
+	idevice(16, scsi/ijc0d1s, 0, b, 22, 16, 640, root, sys)
+	idevice(16, scsi/ijc0d2s, 0, b, 22, 32, 640, root, sys)
+	idevice(16, scsi/ijc0d3s, 0, b, 22, 48, 640, root, sys)
+	idevice(16, scsi/ijc0d4s, 0, b, 22, 64, 640, root, sys)
+	idevice(16, scsi/ijc0d5s, 0, b, 22, 80, 640, root, sys)
+	idevice(16, scsi/ijc0d6s, 0, b, 22, 96, 640, root, sys)
+}
+
+class(c_scsi0) {
+	idevice(16, rscsi/ijc0d0s, 0, c, 22, 0, 640, root, sys)
+	idevice(16, rscsi/ijc0d1s, 0, c, 22, 16, 640, root, sys)
+	idevice(16, rscsi/ijc0d2s, 0, c, 22, 32, 640, root, sys)
+	idevice(16, rscsi/ijc0d3s, 0, c, 22, 48, 640, root, sys)
+#
+# ijc0d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc0d4s, 0, c, 22, 64, 666, root, sys)
+	idevice(16, rscsi/ijc0d5s, 0, c, 22, 80, 666, root, sys)
+	idevice(16, rscsi/ijc0d6s, 0, c, 22, 96, 666, root, sys)
+}
+
+class(b_scsi1) {
+	idevice(16, scsi/ijc1d0s, 0, b, 23, 0, 640, root, sys)
+	idevice(16, scsi/ijc1d1s, 0, b, 23, 16, 640, root, sys)
+	idevice(16, scsi/ijc1d2s, 0, b, 23, 32, 640, root, sys)
+	idevice(16, scsi/ijc1d3s, 0, b, 23, 48, 640, root, sys)
+	idevice(16, scsi/ijc1d4s, 0, b, 23, 64, 640, root, sys)
+	idevice(16, scsi/ijc1d5s, 0, b, 23, 80, 640, root, sys)
+	idevice(16, scsi/ijc1d6s, 0, b, 23, 96, 640, root, sys)
+}
+
+class(c_scsi1) {
+	idevice(16, rscsi/ijc1d0s, 0, c, 23, 0, 640, root, sys)
+	idevice(16, rscsi/ijc1d1s, 0, c, 23, 16, 640, root, sys)
+	idevice(16, rscsi/ijc1d2s, 0, c, 23, 32, 640, root, sys)
+	idevice(16, rscsi/ijc1d3s, 0, c, 23, 48, 640, root, sys)
+#
+# ijc1d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc1d4s, 0, c, 23, 64, 666, root, sys)
+	idevice(16, rscsi/ijc1d5s, 0, c, 23, 80, 666, root, sys)
+	idevice(16, rscsi/ijc1d6s, 0, c, 23, 96, 666, root, sys)
+}
+
+class(b_scsi2) {
+	idevice(16, scsi/ijc2d0s, 0, b, 24, 0, 640, root, sys)
+	idevice(16, scsi/ijc2d1s, 0, b, 24, 16, 640, root, sys)
+	idevice(16, scsi/ijc2d2s, 0, b, 24, 32, 640, root, sys)
+	idevice(16, scsi/ijc2d3s, 0, b, 24, 48, 640, root, sys)
+	idevice(16, scsi/ijc2d4s, 0, b, 24, 64, 640, root, sys)
+	idevice(16, scsi/ijc2d5s, 0, b, 24, 80, 640, root, sys)
+	idevice(16, scsi/ijc2d6s, 0, b, 24, 96, 640, root, sys)
+}
+
+class(c_scsi2) {
+	idevice(16, rscsi/ijc2d0s, 0, c, 24, 0, 640, root, sys)
+	idevice(16, rscsi/ijc2d1s, 0, c, 24, 16, 640, root, sys)
+	idevice(16, rscsi/ijc2d2s, 0, c, 24, 32, 640, root, sys)
+	idevice(16, rscsi/ijc2d3s, 0, c, 24, 48, 640, root, sys)
+#
+# ijc2d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc2d4s, 0, c, 24, 64, 666, root, sys)
+	idevice(16, rscsi/ijc2d5s, 0, c, 24, 80, 666, root, sys)
+	idevice(16, rscsi/ijc2d6s, 0, c, 24, 96, 666, root, sys)
+}
+
+class(b_scsi3) {
+	idevice(16, scsi/ijc3d0s, 0, b, 25, 0, 640, root, sys)
+	idevice(16, scsi/ijc3d1s, 0, b, 25, 16, 640, root, sys)
+	idevice(16, scsi/ijc3d2s, 0, b, 25, 32, 640, root, sys)
+	idevice(16, scsi/ijc3d3s, 0, b, 25, 48, 640, root, sys)
+	idevice(16, scsi/ijc3d4s, 0, b, 25, 64, 640, root, sys)
+	idevice(16, scsi/ijc3d5s, 0, b, 25, 80, 640, root, sys)
+	idevice(16, scsi/ijc3d6s, 0, b, 25, 96, 640, root, sys)
+}
+
+class(c_scsi3) {
+	idevice(16, rscsi/ijc3d0s, 0, c, 25, 0, 640, root, sys)
+	idevice(16, rscsi/ijc3d1s, 0, c, 25, 16, 640, root, sys)
+	idevice(16, rscsi/ijc3d2s, 0, c, 25, 32, 640, root, sys)
+	idevice(16, rscsi/ijc3d3s, 0, c, 25, 48, 640, root, sys)
+#
+# ijc3d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc3d4s, 0, c, 25, 64, 666, root, sys)
+	idevice(16, rscsi/ijc3d5s, 0, c, 25, 80, 666, root, sys)
+	idevice(16, rscsi/ijc3d6s, 0, c, 25, 96, 666, root, sys)
+}
+
+class(b_scsi4) {
+	idevice(16, scsi/ijc4d0s, 0, b, 26, 0, 640, root, sys)
+	idevice(16, scsi/ijc4d1s, 0, b, 26, 16, 640, root, sys)
+	idevice(16, scsi/ijc4d2s, 0, b, 26, 32, 640, root, sys)
+	idevice(16, scsi/ijc4d3s, 0, b, 26, 48, 640, root, sys)
+	idevice(16, scsi/ijc4d4s, 0, b, 26, 64, 640, root, sys)
+	idevice(16, scsi/ijc4d5s, 0, b, 26, 80, 640, root, sys)
+	idevice(16, scsi/ijc4d6s, 0, b, 26, 96, 640, root, sys)
+}
+
+class(c_scsi4) {
+	idevice(16, rscsi/ijc4d0s, 0, c, 26, 0, 640, root, sys)
+	idevice(16, rscsi/ijc4d1s, 0, c, 26, 16, 640, root, sys)
+	idevice(16, rscsi/ijc4d2s, 0, c, 26, 32, 640, root, sys)
+	idevice(16, rscsi/ijc4d3s, 0, c, 26, 48, 640, root, sys)
+#
+# ijc4d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc4d4s, 0, c, 26, 64, 666, root, sys)
+	idevice(16, rscsi/ijc4d5s, 0, c, 26, 80, 666, root, sys)
+	idevice(16, rscsi/ijc4d6s, 0, c, 26, 96, 666, root, sys)
+}
+
+class(b_scsi5) {
+	idevice(16, scsi/ijc5d0s, 0, b, 27, 0, 640, root, sys)
+	idevice(16, scsi/ijc5d1s, 0, b, 27, 16, 640, root, sys)
+	idevice(16, scsi/ijc5d2s, 0, b, 27, 32, 640, root, sys)
+	idevice(16, scsi/ijc5d3s, 0, b, 27, 48, 640, root, sys)
+	idevice(16, scsi/ijc5d4s, 0, b, 27, 64, 640, root, sys)
+	idevice(16, scsi/ijc5d5s, 0, b, 27, 80, 640, root, sys)
+	idevice(16, scsi/ijc5d6s, 0, b, 27, 96, 640, root, sys)
+}
+
+class(c_scsi5) {
+	idevice(16, rscsi/ijc5d0s, 0, c, 27, 0, 640, root, sys)
+	idevice(16, rscsi/ijc5d1s, 0, c, 27, 16, 640, root, sys)
+	idevice(16, rscsi/ijc5d2s, 0, c, 27, 32, 640, root, sys)
+	idevice(16, rscsi/ijc5d3s, 0, c, 27, 48, 640, root, sys)
+#
+# ijc5d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc5d4s, 0, c, 27, 64, 666, root, sys)
+	idevice(16, rscsi/ijc5d5s, 0, c, 27, 80, 666, root, sys)
+	idevice(16, rscsi/ijc5d6s, 0, c, 27, 96, 666, root, sys)
+}
+
+class(b_scsi6) {
+	idevice(16, scsi/ijc6d0s, 0, b, 28, 0, 640, root, sys)
+	idevice(16, scsi/ijc6d1s, 0, b, 28, 16, 640, root, sys)
+	idevice(16, scsi/ijc6d2s, 0, b, 28, 32, 640, root, sys)
+	idevice(16, scsi/ijc6d3s, 0, b, 28, 48, 640, root, sys)
+	idevice(16, scsi/ijc6d4s, 0, b, 28, 64, 640, root, sys)
+	idevice(16, scsi/ijc6d5s, 0, b, 28, 80, 640, root, sys)
+	idevice(16, scsi/ijc6d6s, 0, b, 28, 96, 640, root, sys)
+}
+
+class(c_scsi6) {
+	idevice(16, rscsi/ijc6d0s, 0, c, 28, 0, 640, root, sys)
+	idevice(16, rscsi/ijc6d1s, 0, c, 28, 16, 640, root, sys)
+	idevice(16, rscsi/ijc6d2s, 0, c, 28, 32, 640, root, sys)
+	idevice(16, rscsi/ijc6d3s, 0, c, 28, 48, 640, root, sys)
+#
+# ijc6d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc6d4s, 0, c, 28, 64, 666, root, sys)
+	idevice(16, rscsi/ijc6d5s, 0, c, 28, 80, 666, root, sys)
+	idevice(16, rscsi/ijc6d6s, 0, c, 28, 96, 666, root, sys)
+}
+
+class(b_scsi7) {
+	idevice(16, scsi/ijc7d0s, 0, b, 29, 0, 640, root, sys)
+	idevice(16, scsi/ijc7d1s, 0, b, 29, 16, 640, root, sys)
+	idevice(16, scsi/ijc7d2s, 0, b, 29, 32, 640, root, sys)
+	idevice(16, scsi/ijc7d3s, 0, b, 29, 48, 640, root, sys)
+	idevice(16, scsi/ijc7d4s, 0, b, 29, 64, 640, root, sys)
+	idevice(16, scsi/ijc7d5s, 0, b, 29, 80, 640, root, sys)
+	idevice(16, scsi/ijc7d6s, 0, b, 29, 96, 640, root, sys)
+}
+
+class(c_scsi7) {
+	idevice(16, rscsi/ijc7d0s, 0, c, 29, 0, 640, root, sys)
+	idevice(16, rscsi/ijc7d1s, 0, c, 29, 16, 640, root, sys)
+	idevice(16, rscsi/ijc7d2s, 0, c, 29, 32, 640, root, sys)
+	idevice(16, rscsi/ijc7d3s, 0, c, 29, 48, 640, root, sys)
+#
+# ijc7d[456]s* are mode 666 because these are tape devices
+# in default systems.
+#
+	idevice(16, rscsi/ijc7d4s, 0, c, 29, 64, 666, root, sys)
+	idevice(16, rscsi/ijc7d5s, 0, c, 29, 80, 666, root, sys)
+	idevice(16, rscsi/ijc7d6s, 0, c, 29, 96, 666, root, sys)
+}
+
+#
+# Disks
+#
+
+class(scsi_disks_0) {
+	ijc0d0; ijc0d1; ijc0d2; ijc0d3
+}
+
+class(ijc0d0) {
+# Block devices
+	ilink(16, scsi/ijc0d0s, 0, dsk/ijc0d0s, 0)
+	link(dsk/ijc0d0s8, dsk/ijc0d0vh)
+# Character devices
+	ilink(16, rscsi/ijc0d0s, 0, rdsk/ijc0d0s, 0)
+	link(rdsk/ijc0d0s8, rdsk/ijc0d0vh)
+}
+
+class(ijc0d1) {
+# Block devices
+	ilink(16, scsi/ijc0d1s, 0, dsk/ijc0d1s, 0)
+	link(dsk/ijc0d1s8, dsk/ijc0d1vh)
+# Character devices
+	ilink(16, rscsi/ijc0d1s, 0, rdsk/ijc0d1s, 0)
+	link(rdsk/ijc0d1s8, rdsk/ijc0d1vh)
+}
+
+class(ijc0d2) {
+# Block devices
+	ilink(16, scsi/ijc0d2s, 0, dsk/ijc0d2s, 0)
+	link(dsk/ijc0d2s8, dsk/ijc0d2vh)
+# Character devices
+	ilink(16, rscsi/ijc0d2s, 0, rdsk/ijc0d2s, 0)
+	link(rdsk/ijc0d2s8, rdsk/ijc0d2vh)
+}
+
+class(ijc0d3) {
+# Block devices
+	ilink(16, scsi/ijc0d3s, 0, dsk/ijc0d3s, 0)
+	link(dsk/ijc0d3s8, dsk/ijc0d3vh)
+# Character devices
+	ilink(16, rscsi/ijc0d3s, 0, rdsk/ijc0d3s, 0)
+	link(rdsk/ijc0d3s8, rdsk/ijc0d3vh)
+}
+
+#
+# Class to make scsi disk devices for second 4210 controller
+#
+
+class(scsi_disks_1) {
+	ijc1d0; ijc1d1; ijc1d2; ijc1d3
+}
+
+class(ijc1d0) {
+# Block devices
+	ilink(16, scsi/ijc1d0s, 0, dsk/ijc1d0s, 0)
+	link(dsk/ijc1d0s8, dsk/ijc1d0vh)
+# Character devices
+	ilink(16, rscsi/ijc1d0s, 0, rdsk/ijc1d0s, 0)
+	link(rdsk/ijc1d0s8, rdsk/ijc1d0vh)
+}
+
+class(ijc1d1) {
+# Block devices
+	ilink(16, scsi/ijc1d1s, 0, dsk/ijc1d1s, 0)
+	link(dsk/ijc1d1s8, dsk/ijc1d1vh)
+# Character devices
+	ilink(16, rscsi/ijc1d1s, 0, rdsk/ijc1d1s, 0)
+	link(rdsk/ijc1d1s8, rdsk/ijc1d1vh)
+}
+
+class(ijc1d2) {
+# Block devices
+	ilink(16, scsi/ijc1d2s, 0, dsk/ijc1d2s, 0)
+	link(dsk/ijc1d2s8, dsk/ijc1d2vh)
+# Character devices
+	ilink(16, rscsi/ijc1d2s, 0, rdsk/ijc1d2s, 0)
+	link(rdsk/ijc1d2s8, rdsk/ijc1d2vh)
+}
+
+class(ijc1d3) {
+# Block devices
+	ilink(16, scsi/ijc1d3s, 0, dsk/ijc1d3s, 0)
+	link(dsk/ijc1d3s8, dsk/ijc1d3vh)
+# Character devices
+	ilink(16, rscsi/ijc1d3s, 0, rdsk/ijc1d3s, 0)
+	link(rdsk/ijc1d3s8, rdsk/ijc1d3vh)
+}
+
+class(disks) {
+	ipc0d0; ipc0d1
+}
+
+class(otherdisks) {
+	ipc0d2; ipc0d3
+ 	ipc1d0; ipc1d1; ipc1d2; ipc1d3
+	ipc2d0; ipc2d1; ipc2d2; ipc2d3
+	ipc3d0; ipc3d1; ipc3d2; ipc3d3
+ 	ipc4d0; ipc4d1; ipc4d2; ipc4d3
+ 	ipc5d0; ipc5d1; ipc5d2; ipc5d3
+	ipc6d0; ipc6d1; ipc6d2; ipc6d3
+	ipc7d0; ipc7d1; ipc7d2; ipc7d3
+}
+
+class(firstdisks) {
+	ipc0d2; ipc0d3
+ 	ipc1d0; ipc1d1; ipc1d2; ipc1d3
+	ipc2d0; ipc2d1; ipc2d2; ipc2d3
+	ipc3d0; ipc3d1; ipc3d2; ipc3d3
+}
+
+class(seconddisks) {
+ 	ipc4d0; ipc4d1; ipc4d2; ipc4d3
+ 	ipc5d0; ipc5d1; ipc5d2; ipc5d3
+	ipc6d0; ipc6d1; ipc6d2; ipc6d3
+	ipc7d0; ipc7d1; ipc7d2; ipc7d3
+}
+#
+# Interphase controller 0, disk 0
+#
+
+class(ipc0d0) {
+	b_ipc0d0; c_ipc0d0
+}
+
+class(b_ipc0d0) {
+	idevice(16, dsk/ipc0d0s, 0, b, 4, 0, 640, root, bin)
+	link(dsk/ipc0d0s8, dsk/ipc0d0vh)
+}
+
+class(c_ipc0d0) {
+	idevice(16, rdsk/ipc0d0s, 0, c, 4, 0, 640, root, bin)
+	link(rdsk/ipc0d0s8, rdsk/ipc0d0vh)
+}
+
+#
+# Interphase controller 0, disk 1
+#
+
+class(ipc0d1) {
+	b_ipc0d1; c_ipc0d1
+}
+
+class(b_ipc0d1) {
+	idevice(16, dsk/ipc0d1s, 0, b, 4, 16, 640, root, bin)
+	link(dsk/ipc0d1s8, dsk/ipc0d1vh)
+}
+
+class(c_ipc0d1) {
+	idevice(16, rdsk/ipc0d1s, 0, c, 4, 16, 640, root, bin)
+	link(rdsk/ipc0d1s8, rdsk/ipc0d1vh)
+}
+
+#
+# Interphase controller 0, disk 2
+#
+
+class(ipc0d2) {
+	b_ipc0d2; c_ipc0d2
+}
+
+class(b_ipc0d2) {
+	idevice(16, dsk/ipc0d2s, 0, b, 4, 32, 640, root, bin)
+	link(dsk/ipc0d2s8, dsk/ipc0d2vh)
+}
+
+class(c_ipc0d2) {
+	idevice(16, rdsk/ipc0d2s, 0, c, 4, 32, 640, root, bin)
+	link(rdsk/ipc0d2s8, rdsk/ipc0d2vh)
+}
+
+#
+# Interphase controller 0, disk 3
+#
+
+class(ipc0d3) {
+	b_ipc0d3; c_ipc0d3
+}
+
+class(b_ipc0d3) {
+	idevice(16, dsk/ipc0d3s, 0, b, 4, 48, 640, root, bin)
+	link(dsk/ipc0d3s8, dsk/ipc0d3vh)
+}
+
+class(c_ipc0d3) {
+	idevice(16, rdsk/ipc0d3s, 0, c, 4, 48, 640, root, bin)
+	link(rdsk/ipc0d3s8, rdsk/ipc0d3vh)
+}
+
+#
+# Interphase controller 1, disk 0
+#
+
+class(ipc1d0) {
+	b_ipc1d0; c_ipc1d0
+}
+
+class(b_ipc1d0) {
+	idevice(16, dsk/ipc1d0s, 0, b, 4, 64, 640, root, bin)
+	link(dsk/ipc1d0s8, dsk/ipc1d0vh)
+}
+
+class(c_ipc1d0) {
+	idevice(16, rdsk/ipc1d0s, 0, c, 4, 64, 640, root, bin)
+	link(rdsk/ipc1d0s8, rdsk/ipc1d0vh)
+}
+
+#
+# Interphase controller 1, disk 1
+#
+
+class(ipc1d1) {
+	b_ipc1d1; c_ipc1d1
+}
+
+class(b_ipc1d1) {
+	idevice(16, dsk/ipc1d1s, 0, b, 4, 80, 640, root, bin)
+	link(dsk/ipc1d1s8, dsk/ipc1d1vh)
+}
+
+class(c_ipc1d1) {
+	idevice(16, rdsk/ipc1d1s, 0, c, 4, 80, 640, root, bin)
+	link(rdsk/ipc1d1s8, rdsk/ipc1d1vh)
+}
+
+#
+# Interphase controller 1, disk 2
+#
+
+class(ipc1d2) {
+	b_ipc1d2; c_ipc1d2
+}
+
+class(b_ipc1d2) {
+	idevice(16, dsk/ipc1d2s, 0, b, 4, 96, 640, root, bin)
+	link(dsk/ipc1d2s8, dsk/ipc1d2vh)
+}
+
+class(c_ipc1d2) {
+	idevice(16, rdsk/ipc1d2s, 0, c, 4, 96, 640, root, bin)
+	link(rdsk/ipc1d2s8, rdsk/ipc1d2vh)
+}
+
+#
+# Interphase controller 1, disk 3
+#
+
+class(ipc1d3) {
+	b_ipc1d3; c_ipc1d3
+}
+
+class(b_ipc1d3) {
+	idevice(16, dsk/ipc1d3s, 0, b, 4, 112, 640, root, bin)
+	link(dsk/ipc1d3s8, dsk/ipc1d3vh)
+}
+
+class(c_ipc1d3) {
+	idevice(16, rdsk/ipc1d3s, 0, c, 4, 112, 640, root, bin)
+	link(rdsk/ipc1d3s8, rdsk/ipc1d3vh)
+}
+
+#
+# Interphase controller 2, disk 0
+#
+
+class(ipc2d0) {
+	b_ipc2d0; c_ipc2d0
+}
+
+class(b_ipc2d0) {
+	idevice(16, dsk/ipc2d0s, 0, b, 4, 128, 640, root, bin)
+	link(dsk/ipc2d0s8, dsk/ipc2d0vh)
+}
+
+class(c_ipc2d0) {
+	idevice(16, rdsk/ipc2d0s, 0, c, 4, 128, 640, root, bin)
+	link(rdsk/ipc2d0s8, rdsk/ipc2d0vh)
+}
+
+#
+# Interphase controller 2, disk 1
+#
+
+class(ipc2d1) {
+	b_ipc2d1; c_ipc2d1
+}
+
+class(b_ipc2d1) {
+	idevice(16, dsk/ipc2d1s, 0, b, 4, 144, 640, root, bin)
+	link(dsk/ipc2d1s8, dsk/ipc2d1vh)
+}
+
+class(c_ipc2d1) {
+	idevice(16, rdsk/ipc2d1s, 0, c, 4, 144, 640, root, bin)
+	link(rdsk/ipc2d1s8, rdsk/ipc2d1vh)
+}
+
+#
+# Interphase controller 2, disk 2
+#
+
+class(ipc2d2) {
+	b_ipc2d2; c_ipc2d2
+}
+
+class(b_ipc2d2) {
+	idevice(16, dsk/ipc2d2s, 0, b, 4, 160, 640, root, bin)
+	link(dsk/ipc2d2s8, dsk/ipc2d2vh)
+}
+
+class(c_ipc2d2) {
+	idevice(16, rdsk/ipc2d2s, 0, c, 4, 160, 640, root, bin)
+	link(rdsk/ipc2d2s8, rdsk/ipc2d2vh)
+}
+
+#
+# Interphase controller 2, disk 3
+#
+
+class(ipc2d3) {
+	b_ipc2d3; c_ipc2d3
+}
+
+class(b_ipc2d3) {
+	idevice(16, dsk/ipc2d3s, 0, b, 4, 176, 640, root, bin)
+	link(dsk/ipc2d3s8, dsk/ipc2d3vh)
+}
+
+class(c_ipc2d3) {
+	idevice(16, rdsk/ipc2d3s, 0, c, 4, 176, 640, root, bin)
+	link(rdsk/ipc2d3s8, rdsk/ipc2d3vh)
+}
+
+#
+# Interphase controller 3, disk 0
+#
+
+class(ipc3d0) {
+	b_ipc3d0; c_ipc3d0
+}
+
+class(b_ipc3d0) {
+	idevice(16, dsk/ipc3d0s, 0, b, 4, 192, 640, root, bin)
+	link(dsk/ipc3d0s8, dsk/ipc3d0vh)
+}
+
+class(c_ipc3d0) {
+	idevice(16, rdsk/ipc3d0s, 0, c, 4, 192, 640, root, bin)
+	link(rdsk/ipc3d0s8, rdsk/ipc3d0vh)
+}
+
+#
+# Interphase controller 3, disk 1
+#
+
+class(ipc3d1) {
+	b_ipc3d1; c_ipc3d1
+}
+
+class(b_ipc3d1) {
+	idevice(16, dsk/ipc3d1s, 0, b, 4, 208, 640, root, bin)
+	link(dsk/ipc3d1s8, dsk/ipc3d1vh)
+}
+
+class(c_ipc3d1) {
+	idevice(16, rdsk/ipc3d1s, 0, c, 4, 208, 640, root, bin)
+	link(rdsk/ipc3d1s8, rdsk/ipc3d1vh)
+}
+
+#
+# Interphase controller 3, disk 2
+#
+
+class(ipc3d2) {
+	b_ipc3d2; c_ipc3d2
+}
+
+class(b_ipc3d2) {
+	idevice(16, dsk/ipc3d2s, 0, b, 4, 224, 640, root, bin)
+	link(dsk/ipc3d2s8, dsk/ipc3d2vh)
+}
+
+class(c_ipc3d2) {
+	idevice(16, rdsk/ipc3d2s, 0, c, 4, 224, 640, root, bin)
+	link(rdsk/ipc3d2s8, rdsk/ipc3d2vh)
+}
+
+#
+# Interphase controller 3, disk 3
+#
+
+class(ipc3d3) {
+	b_ipc3d3; c_ipc3d3
+}
+
+class(b_ipc3d3) {
+	idevice(16, dsk/ipc3d3s, 0, b, 4, 240, 640, root, bin)
+	link(dsk/ipc3d3s8, dsk/ipc3d3vh)
+}
+
+class(c_ipc3d3) {
+	idevice(16, rdsk/ipc3d3s, 0, c, 4, 240, 640, root, bin)
+	link(rdsk/ipc3d3s8, rdsk/ipc3d3vh)
+}
+#
+# Interphase controller 4, disk 0
+#
+
+class(ipc4d0) {
+	b_ipc4d0; c_ipc4d0
+}
+
+class(b_ipc4d0) {
+	idevice(16, dsk/ipc4d0s, 0, b, 9, 0, 640, root, bin)
+	link(dsk/ipc4d0s8, dsk/ipc4d0vh)
+	link(dsk/ipc4d0vh, vh)
+}
+
+class(c_ipc4d0) {
+	idevice(16, rdsk/ipc4d0s, 0, c, 9, 0, 640, root, bin)
+	link(rdsk/ipc4d0s8, rdsk/ipc4d0vh)
+	link(rdsk/ipc4d0vh, rvh)
+}
+
+#
+# Interphase controller 4, disk 1
+#
+
+class(ipc4d1) {
+	b_ipc4d1; c_ipc4d1
+}
+
+class(b_ipc4d1) {
+	idevice(16, dsk/ipc4d1s, 0, b, 9, 16, 640, root, bin)
+	link(dsk/ipc4d1s8, dsk/ipc4d1vh)
+}
+
+class(c_ipc4d1) {
+	idevice(16, rdsk/ipc4d1s, 0, c, 9, 16, 640, root, bin)
+	link(rdsk/ipc4d1s8, rdsk/ipc4d1vh)
+}
+
+#
+# Interphase controller 4, disk 2
+#
+
+class(ipc4d2) {
+	b_ipc4d2; c_ipc4d2
+}
+
+class(b_ipc4d2) {
+	idevice(16, dsk/ipc4d2s, 0, b, 9, 32, 640, root, bin)
+	link(dsk/ipc4d2s8, dsk/ipc4d2vh)
+}
+
+class(c_ipc4d2) {
+	idevice(16, rdsk/ipc4d2s, 0, c, 9, 32, 640, root, bin)
+	link(rdsk/ipc4d2s8, rdsk/ipc4d2vh)
+}
+
+#
+# Interphase controller 4, disk 3
+#
+
+class(ipc4d3) {
+	b_ipc4d3; c_ipc4d3
+}
+
+class(b_ipc4d3) {
+	idevice(16, dsk/ipc4d3s, 0, b, 9, 48, 640, root, bin)
+	link(dsk/ipc4d3s8, dsk/ipc4d3vh)
+}
+
+class(c_ipc4d3) {
+	idevice(16, rdsk/ipc4d3s, 0, c, 9, 48, 640, root, bin)
+	link(rdsk/ipc4d3s8, rdsk/ipc4d3vh)
+}
+
+#
+# Interphase controller 5, disk 0
+#
+
+class(ipc5d0) {
+	b_ipc5d0; c_ipc5d0
+}
+
+class(b_ipc5d0) {
+	idevice(16, dsk/ipc5d0s, 0, b, 9, 64, 640, root, bin)
+	link(dsk/ipc5d0s8, dsk/ipc5d0vh)
+}
+
+class(c_ipc5d0) {
+	idevice(16, rdsk/ipc5d0s, 0, c, 9, 64, 640, root, bin)
+	link(rdsk/ipc5d0s8, rdsk/ipc5d0vh)
+}
+
+#
+# Interphase controller 5, disk 1
+#
+
+class(ipc5d1) {
+	b_ipc5d1; c_ipc5d1
+}
+
+class(b_ipc5d1) {
+	idevice(16, dsk/ipc5d1s, 0, b, 9, 80, 640, root, bin)
+	link(dsk/ipc5d1s8, dsk/ipc5d1vh)
+}
+
+class(c_ipc5d1) {
+	idevice(16, rdsk/ipc5d1s, 0, c, 9, 80, 640, root, bin)
+	link(rdsk/ipc5d1s8, rdsk/ipc5d1vh)
+}
+
+#
+# Interphase controller 5, disk 2
+#
+
+class(ipc5d2) {
+	b_ipc5d2; c_ipc5d2
+}
+
+class(b_ipc5d2) {
+	idevice(16, dsk/ipc5d2s, 0, b, 9, 96, 640, root, bin)
+	link(dsk/ipc5d2s8, dsk/ipc5d2vh)
+}
+
+class(c_ipc5d2) {
+	idevice(16, rdsk/ipc5d2s, 0, c, 9, 96, 640, root, bin)
+	link(rdsk/ipc5d2s8, rdsk/ipc5d2vh)
+}
+
+#
+# Interphase controller 5, disk 3
+#
+
+class(ipc5d3) {
+	b_ipc5d3; c_ipc5d3
+}
+
+class(b_ipc5d3) {
+	idevice(16, dsk/ipc5d3s, 0, b, 9, 112, 640, root, bin)
+	link(dsk/ipc5d3s8, dsk/ipc5d3vh)
+}
+
+class(c_ipc5d3) {
+	idevice(16, rdsk/ipc5d3s, 0, c, 9, 112, 640, root, bin)
+	link(rdsk/ipc5d3s8, rdsk/ipc5d3vh)
+}
+
+#
+# Interphase controller 6, disk 0
+#
+
+class(ipc6d0) {
+	b_ipc6d0; c_ipc6d0
+}
+
+class(b_ipc6d0) {
+	idevice(16, dsk/ipc6d0s, 0, b, 9, 128, 640, root, bin)
+	link(dsk/ipc6d0s8, dsk/ipc6d0vh)
+}
+
+class(c_ipc6d0) {
+	idevice(16, rdsk/ipc6d0s, 0, c, 9, 128, 640, root, bin)
+	link(rdsk/ipc6d0s8, rdsk/ipc6d0vh)
+}
+
+#
+# Interphase controller 6, disk 1
+#
+
+class(ipc6d1) {
+	b_ipc6d1; c_ipc6d1
+}
+
+class(b_ipc6d1) {
+	idevice(16, dsk/ipc6d1s, 0, b, 9, 144, 640, root, bin)
+	link(dsk/ipc6d1s8, dsk/ipc6d1vh)
+}
+
+class(c_ipc6d1) {
+	idevice(16, rdsk/ipc6d1s, 0, c, 9, 144, 640, root, bin)
+	link(rdsk/ipc6d1s8, rdsk/ipc6d1vh)
+}
+
+#
+# Interphase controller 6, disk 2
+#
+
+class(ipc6d2) {
+	b_ipc6d2; c_ipc6d2
+}
+
+class(b_ipc6d2) {
+	idevice(16, dsk/ipc6d2s, 0, b, 9, 160, 640, root, bin)
+	link(dsk/ipc6d2s8, dsk/ipc6d2vh)
+}
+
+class(c_ipc6d2) {
+	idevice(16, rdsk/ipc6d2s, 0, c, 9, 160, 640, root, bin)
+	link(rdsk/ipc6d2s8, rdsk/ipc6d2vh)
+}
+
+#
+# Interphase controller 6, disk 3
+#
+
+class(ipc6d3) {
+	b_ipc6d3; c_ipc6d3
+}
+
+class(b_ipc6d3) {
+	idevice(16, dsk/ipc6d3s, 0, b, 9, 176, 640, root, bin)
+	link(dsk/ipc6d3s8, dsk/ipc6d3vh)
+}
+
+class(c_ipc6d3) {
+	idevice(16, rdsk/ipc6d3s, 0, c, 9, 176, 640, root, bin)
+	link(rdsk/ipc6d3s8, rdsk/ipc6d3vh)
+}
+
+#
+# Interphase controller 7, disk 0
+#
+
+class(ipc7d0) {
+	b_ipc7d0; c_ipc7d0
+}
+
+class(b_ipc7d0) {
+	idevice(16, dsk/ipc7d0s, 0, b, 9, 192, 640, root, bin)
+	link(dsk/ipc7d0s8, dsk/ipc7d0vh)
+}
+
+class(c_ipc7d0) {
+	idevice(16, rdsk/ipc7d0s, 0, c, 9, 192, 640, root, bin)
+	link(rdsk/ipc7d0s8, rdsk/ipc7d0vh)
+}
+
+#
+# Interphase controller 7, disk 1
+#
+
+class(ipc7d1) {
+	b_ipc7d1; c_ipc7d1
+}
+
+class(b_ipc7d1) {
+	idevice(16, dsk/ipc7d1s, 0, b, 9, 208, 640, root, bin)
+	link(dsk/ipc7d1s8, dsk/ipc7d1vh)
+}
+
+class(c_ipc7d1) {
+	idevice(16, rdsk/ipc7d1s, 0, c, 9, 208, 640, root, bin)
+	link(rdsk/ipc7d1s8, rdsk/ipc7d1vh)
+}
+
+#
+# Interphase controller 7, disk 2
+#
+
+class(ipc7d2) {
+	b_ipc7d2; c_ipc7d2
+}
+
+class(b_ipc7d2) {
+	idevice(16, dsk/ipc7d2s, 0, b, 9, 224, 640, root, bin)
+	link(dsk/ipc7d2s8, dsk/ipc7d2vh)
+}
+
+class(c_ipc7d2) {
+	idevice(16, rdsk/ipc7d2s, 0, c, 9, 224, 640, root, bin)
+	link(rdsk/ipc7d2s8, rdsk/ipc7d2vh)
+}
+
+#
+# Interphase controller 7, disk 3
+#
+
+class(ipc7d3) {
+	b_ipc7d3; c_ipc7d3
+}
+
+class(b_ipc7d3) {
+	idevice(16, dsk/ipc7d3s, 0, b, 9, 240, 640, root, bin)
+	link(dsk/ipc7d3s8, dsk/ipc7d3vh)
+}
+
+class(c_ipc7d3) {
+	idevice(16, rdsk/ipc7d3s, 0, c, 9, 240, 640, root, bin)
+	link(rdsk/ipc7d3s8, rdsk/ipc7d3vh)
+}
+
+
+#
+# Half-inch tape
+#
+# 1/2" tape 0 default for SMD systems.  Overridden in RC6280.ijc for
+# SCSI based systems
+#
+
+class(htape) {
+	htape0
+}
+
+class(htape0) {
+	idevice(2, rscsi/ijc0d5s, 0, c, 22, 80, 666, root, sys)
+	link(rscsi/ijc0d5s0, mt/h0)
+	link(rscsi/ijc0d5s1, mt/h4)
+	link(rscsi/ijc0d5s0, rmt/h0)
+	link(rscsi/ijc0d5s1, rmt/h4)
+	link(rscsi/ijc0d5s0, mt/h0d5)
+	link(rscsi/ijc0d5s1, mt/h0d5n)
+	link(rscsi/ijc0d5s0, rmt/h0d5)
+	link(rscsi/ijc0d5s1, rmt/h0d5n)
+}
+
+class(htape1) {
+	idevice(2, rscsi/ijc1d5s, 0, c, 23, 80, 666, root, sys)
+	link(rscsi/ijc1d5s0, mt/h1d5)
+	link(rscsi/ijc1d5s1, mt/h1d5n)
+	link(rscsi/ijc1d5s0, rmt/h1d5)
+	link(rscsi/ijc1d5s1, rmt/h1d5n)
+}
+
+class(htape2) {
+	idevice(2, rscsi/ijc2d5s, 0, c, 24, 80, 666, root, sys)
+	link(rscsi/ijc2d5s0, mt/h2d5)
+	link(rscsi/ijc2d5s1, mt/h2d5n)
+	link(rscsi/ijc2d5s0, rmt/h2d5)
+	link(rscsi/ijc2d5s1, rmt/h2d5n)
+}
+
+class(htape3) {
+	idevice(2, rscsi/ijc3d5s, 0, c, 25, 80, 666, root, sys)
+	link(rscsi/ijc3d5s0, mt/h3d5)
+	link(rscsi/ijc3d5s1, mt/h3d5n)
+	link(rscsi/ijc3d5s0, rmt/h3d5)
+	link(rscsi/ijc3d5s1, rmt/h3d5n)
+}
+
+class(htape4) {
+	idevice(2, rscsi/ijc4d5s, 0, c, 26, 80, 666, root, sys)
+	link(rscsi/ijc4d5s0, mt/h4d5)
+	link(rscsi/ijc4d5s1, mt/h4d5n)
+	link(rscsi/ijc4d5s0, rmt/h4d5)
+	link(rscsi/ijc4d5s1, rmt/h4d5n)
+}
+
+class(htape5) {
+	idevice(2, rscsi/ijc5d5s, 0, c, 27, 80, 666, root, sys)
+	link(rscsi/ijc5d5s0, mt/h5d5)
+	link(rscsi/ijc5d5s1, mt/h5d5n)
+	link(rscsi/ijc5d5s0, rmt/h5d5)
+	link(rscsi/ijc5d5s1, rmt/h5d5n)
+}
+
+class(htape6) {
+	idevice(2, rscsi/ijc6d5s, 0, c, 28, 80, 666, root, sys)
+	link(rscsi/ijc6d5s0, mt/h6d5)
+	link(rscsi/ijc6d5s1, mt/h6d5n)
+	link(rscsi/ijc6d5s0, rmt/h6d5)
+	link(rscsi/ijc6d5s1, rmt/h6d5n)
+}
+
+class(htape7) {
+	idevice(2, rscsi/ijc7d5s, 0, c, 29, 80, 666, root, sys)
+	link(rscsi/ijc7d5s0, mt/h7d5)
+	link(rscsi/ijc7d5s1, mt/h7d5n)
+	link(rscsi/ijc7d5s0, rmt/h7d5)
+	link(rscsi/ijc7d5s1, rmt/h7d5n)
+}
+
+#
+# High capacity tape
+#
+
+class(hctape,high-capacity) {
+	hctape0
+}
+
+class(hctape0) {
+	idevice(2, rscsi/ijc0d4s, 0, c, 22, 64, 666, root, sys)
+	link(rscsi/ijc0d4s0, mt/hc0)
+	link(rscsi/ijc0d4s1, mt/hc4)
+	link(rscsi/ijc0d4s0, rmt/hc0)
+	link(rscsi/ijc0d4s1, rmt/hc4)
+	link(rscsi/ijc0d4s0, mt/hc0d4)
+	link(rscsi/ijc0d4s1, mt/hc0d4n)
+	link(rscsi/ijc0d4s0, rmt/hc0d4)
+	link(rscsi/ijc0d4s1, rmt/hc0d4n)
+}
+
+class(hctape1) {
+	idevice(2, rscsi/ijc1d4s, 0, c, 23, 64, 666, root, sys)
+	link(rscsi/ijc1d4s0, mt/hc1d4)
+	link(rscsi/ijc1d4s1, mt/hc1d4n)
+	link(rscsi/ijc1d4s0, rmt/hc1d4)
+	link(rscsi/ijc1d4s1, rmt/hc1d4n)
+}
+
+class(hctape2) {
+	idevice(2, rscsi/ijc2d4s, 0, c, 24, 64, 666, root, sys)
+	link(rscsi/ijc2d4s0, mt/hc2d4)
+	link(rscsi/ijc2d4s1, mt/hc2d4n)
+	link(rscsi/ijc2d4s0, rmt/hc2d4)
+	link(rscsi/ijc2d4s1, rmt/hc2d4n)
+}
+
+class(hctape3) {
+	idevice(2, rscsi/ijc3d4s, 0, c, 25, 64, 666, root, sys)
+	link(rscsi/ijc3d4s0, mt/hc3d4)
+	link(rscsi/ijc3d4s1, mt/hc3d4n)
+	link(rscsi/ijc3d4s0, rmt/hc3d4)
+	link(rscsi/ijc3d4s1, rmt/hc3d4n)
+}
+
+class(hctape4) {
+	idevice(2, rscsi/ijc4d4s, 0, c, 26, 64, 666, root, sys)
+	link(rscsi/ijc4d4s0, mt/hc4d4)
+	link(rscsi/ijc4d4s1, mt/hc4d4n)
+	link(rscsi/ijc4d4s0, rmt/hc4d4)
+	link(rscsi/ijc4d4s1, rmt/hc4d4n)
+}
+
+class(hctape5) {
+	idevice(2, rscsi/ijc5d4s, 0, c, 27, 64, 666, root, sys)
+	link(rscsi/ijc5d4s0, mt/hc5d4)
+	link(rscsi/ijc5d4s1, mt/hc5d4n)
+	link(rscsi/ijc5d4s0, rmt/hc5d4)
+	link(rscsi/ijc5d4s1, rmt/hc5d4n)
+}
+
+class(hctape6) {
+	idevice(2, rscsi/ijc6d4s, 0, c, 28, 64, 666, root, sys)
+	link(rscsi/ijc6d4s0, mt/hc6d4)
+	link(rscsi/ijc6d4s1, mt/hc6d4n)
+	link(rscsi/ijc6d4s0, rmt/hc6d4)
+	link(rscsi/ijc6d4s1, rmt/hc6d4n)
+}
+
+class(hctape7) {
+	idevice(2, rscsi/ijc7d4s, 0, c, 29, 64, 666, root, sys)
+	link(rscsi/ijc7d4s0, mt/hc7d4)
+	link(rscsi/ijc7d4s1, mt/hc7d4n)
+	link(rscsi/ijc7d4s0, rmt/hc7d4)
+	link(rscsi/ijc7d4s1, rmt/hc7d4n)
+}
+
+#
+# QIC tape
+#
+# Note- Since either a QIC-120 or QIC-24 drive might be installed, the
+# default action for class "qic-tape" is to make read/write Q24 device
+# entries linked to the /dev/scsi entries, and no Q120 entries.  The
+# installation procedure for UMIPS 3.0 will determine whether a QIC-120
+# drive is present; if so, the class q120 will be built, which will
+# created seperate (not linked into /dev/scsi) read-only Q24 entries and
+# create a read/write Q120 entry linked to the /dev/scsi entries. The m0
+# and ctape names will always be links to the read/write /dev/scsi entries;
+# The SA names will always be links to the Q24 names.
+#
+
+class(qic-tape,cartridge) {
+	q120
+	qstd
+	qsa
+}	
+
+class(q24) {
+	idevice(2, rscsi/ijc0d6s, 0, c, 22, 96, 666, root, sys)
+	link(rscsi/ijc0d6s0, mt/Q24-0)
+	link(rscsi/ijc0d6s0, rmt/Q24-0)
+	link(rscsi/ijc0d6s1, mt/Q24n-0)
+	link(rscsi/ijc0d6s1, rmt/Q24n-0)
+}
+
+class(q120) {
+	idevice(2, rscsi/ijc0d6s, 0, c, 22, 96, 666, root, sys)
+	link(rscsi/ijc0d6s0, mt/Q120-0)
+	link(rscsi/ijc0d6s0, rmt/Q120-0)
+	link(rscsi/ijc0d6s1, mt/Q120n-0)
+	link(rscsi/ijc0d6s1, rmt/Q120n-0)
+	device(mt/Q24-0, c, 22, 96, 444, root, sys)
+	device(rmt/Q24-0, c, 22, 96, 444, root, sys)
+	device(mt/Q24n-0, c, 22, 97, 444, root, sys)
+	device(rmt/Q24n-0, c, 22, 97, 444, root, sys)
+}
+
+class(qstd) {
+	ctape0
+}
+
+class(ctape0) {
+	idevice(2, rscsi/ijc0d6s, 0, c, 22, 96, 666, root, sys)
+	link(rscsi/ijc0d6s0, mt/ctape0)
+	link(rscsi/ijc0d6s0, mt/m0)
+	link(rscsi/ijc0d6s1, mt/ctape4)
+	link(rscsi/ijc0d6s1, mt/m4)
+	link(rscsi/ijc0d6s0, rmt/ctape0)
+	link(rscsi/ijc0d6s0, rmt/m0)
+	link(rscsi/ijc0d6s1, rmt/ctape4)
+	link(rscsi/ijc0d6s1, rmt/m4)
+	link(rscsi/ijc0d6s0, mt/ct0d6)
+	link(rscsi/ijc0d6s0, rmt/ct0d6)
+	link(rscsi/ijc0d6s1, mt/ct0d6n)
+	link(rscsi/ijc0d6s1, rmt/ct0d6n)
+}
+
+class(ctape1) {
+	idevice(2, rscsi/ijc1d6s, 0, c, 23, 96, 666, root, sys)
+	link(rscsi/ijc1d6s0, mt/ct1d6)
+	link(rscsi/ijc1d6s0, rmt/ct1d6)
+	link(rscsi/ijc1d6s1, mt/ct1d6n)
+	link(rscsi/ijc1d6s1, rmt/ct1d6n)
+}
+
+class(ctape2) {
+	idevice(2, rscsi/ijc2d6s, 0, c, 24, 96, 666, root, sys)
+	link(rscsi/ijc2d6s0, mt/ct2d6)
+	link(rscsi/ijc2d6s0, rmt/ct2d6)
+	link(rscsi/ijc2d6s1, mt/ct2d6n)
+	link(rscsi/ijc2d6s1, rmt/ct2d6n)
+}
+
+class(ctape3) {
+	idevice(2, rscsi/ijc3d6s, 0, c, 25, 96, 666, root, sys)
+	link(rscsi/ijc3d6s0, mt/ct3d6)
+	link(rscsi/ijc3d6s0, rmt/ct3d6)
+	link(rscsi/ijc3d6s1, mt/ct3d6n)
+	link(rscsi/ijc3d6s1, rmt/ct3d6n)
+}
+
+class(ctape4) {
+	idevice(2, rscsi/ijc4d6s, 0, c, 26, 96, 666, root, sys)
+	link(rscsi/ijc4d6s0, mt/ct4d6)
+	link(rscsi/ijc4d6s0, rmt/ct4d6)
+	link(rscsi/ijc4d6s1, mt/ct4d6n)
+	link(rscsi/ijc4d6s1, rmt/ct4d6n)
+}
+
+class(ctape5) {
+	idevice(2, rscsi/ijc5d6s, 0, c, 27, 96, 666, root, sys)
+	link(rscsi/ijc5d6s0, mt/ct5d6)
+	link(rscsi/ijc5d6s0, rmt/ct5d6)
+	link(rscsi/ijc5d6s1, mt/ct5d6n)
+	link(rscsi/ijc5d6s1, rmt/ct5d6n)
+}
+
+class(ctape6) {
+	idevice(2, rscsi/ijc6d6s, 0, c, 28, 96, 666, root, sys)
+	link(rscsi/ijc6d6s0, mt/ct6d6)
+	link(rscsi/ijc6d6s0, rmt/ct6d6)
+	link(rscsi/ijc6d6s1, mt/ct6d6n)
+	link(rscsi/ijc6d6s1, rmt/ct6d6n)
+}
+
+class(ctape7) {
+	idevice(2, rscsi/ijc7d6s, 0, c, 29, 96, 666, root, sys)
+	link(rscsi/ijc7d6s0, mt/ct7d6)
+	link(rscsi/ijc7d6s0, rmt/ct7d6)
+	link(rscsi/ijc7d6s1, mt/ct7d6n)
+	link(rscsi/ijc7d6s1, rmt/ct7d6n)
+}
+
+#
+# SA
+#
+# Since, I gather, this was meant for stuff like loading install tapes,
+# the links will be created to the QIC-24 devices.
+#
+
+class(qsa) {
+	link(mt/Q24-0, SA/ctape0)
+	link(rmt/Q24-0, rSA/ctape0)
+}
+
+
+#
+# lp
+#
+
+class(lp) {
+	device(lp0, c, 16, 64, 666, root, sys)
+	device(lp0c, c, 16, 65, 666, root, sys)
+	device(rlp0, c, 16, 66, 666, root, sys)
+	device(lp1, c, 16, 80, 666, root, sys)
+	device(lp1c, c, 16, 81, 666, root, sys)
+	device(rlp1, c, 16, 82, 666, root, sys)
+	device(lp2, c, 16, 96, 666, root, sys)
+	device(lp2c, c, 16, 97, 666, root, sys)
+	device(rlp2, c, 16, 98, 666, root, sys)
+	device(lp3, c, 16, 112, 666, root, sys)
+	device(lp3c, c, 16, 113, 666, root, sys)
+	device(rlp3, c, 16, 114, 666, root, sys)
+}
+

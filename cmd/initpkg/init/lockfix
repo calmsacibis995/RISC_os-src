@@ -1,0 +1,27 @@
+#! /bin/sh
+
+#
+# Remove lock files left over from crash at inopportune time.
+#
+USAGE() {
+	echo "usage: $0 [start|stop]"
+	exit 1
+}
+
+if [ $# -lt 1 ]
+then
+	USAGE;
+fi
+
+case $1 in 
+start)
+	rm -f /usr/mail/*.lock
+# delete passwd/vipw lock file
+	rm -f /etc/ptmp
+	;;
+stop)
+	;;
+*)
+	USAGE;
+esac
+exit 0

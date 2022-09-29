@@ -1,0 +1,28 @@
+#! /bin/sh
+# $Header: install_acct,v 1.1.1.2.1.1.1.2 90/10/05 09:59:08 beacker Exp $
+
+etc=/etc
+crontab=/usr/spool/cron/crontabs/adm
+crontabacct=/usr/lib/acct/crontab.acct
+
+# have we already installed it?
+if [ -f ${etc}/init.d/account ] 
+then
+    echo System V Accounting appears to already have been installed
+    echo because ${etc}/init.d/account exists.
+    exit 1
+fi
+
+echo Installing startup/shutdown...
+(cd /etc/init.d; ln -s acct account )
+
+if ( grep -s runacct ${crontab} > /dev/null )
+then
+    echo $crontab already has runacct in it.
+    echo This file has not been altered.
+    exit 1
+else
+    echo adding accounting to $crontab.  You may wish to adjust the times.
+    cat $crontab $crontabacct > /tmp/acct$$
+    mv /tmp/acct$$ $crontab
+fi

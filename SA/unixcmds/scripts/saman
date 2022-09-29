@@ -1,0 +1,35 @@
+#! /bin/csh
+set SPPROOT=/usr/src/spp
+if ( $#argv < 1 || $#argv > 2 ) then
+	echo Usage: $0 [1-8] MANPAGE
+	exit(1)
+endif
+if ( $#argv == 2 ) then
+	switch ( $argv[1] )
+		case [0-9]:
+			set MANPAGE=$SPPROOT/man/man$argv[1]/$argv[2].$argv[1]
+			if ( ! -r $MANPAGE ) then
+				echo No manual page for $argv[2] in section $argv[1]
+				exit(1)
+			endif
+			echo Formatting $MANPAGE ...
+			nroff -man $MANPAGE | more
+			exit(0)
+		
+		default:
+			echo Usage: $0 [1-8] MANPAGE
+			exit(1)
+	endsw
+endif
+set found=0
+foreach i ( 1 2 3 4 5 8 )
+	set MANPAGE=$SPPROOT/man/man$i/$argv[1].$i
+	if ( -r $MANPAGE ) then
+		set found=1
+		echo Formatting $MANPAGE ...
+		nroff -man $MANPAGE | more
+	endif
+end
+if ( $found == 0 ) then
+	echo No manual page for $argv[1]
+endif

@@ -1,0 +1,16 @@
+usr/lib/uucp drwxrwxr-x uucp daemon 2
+usr/spool/locks drwxrwxr-x uucp daemon 2
+usr/spool/uucp drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Admin drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Corrupt drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Log drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Log/uucico drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Log/uucp drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Log/uux drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Log/uuxqt drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Old drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Sequence drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Status drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Workspace drwxrwxr-x uucp daemon 2
+usr/spool/uucp/.Xqtdir drwxrwxr-x uucp daemon 2
+usr/spool/uucppublic drwxrwxrwx uucp daemon 2

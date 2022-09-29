@@ -1,0 +1,32 @@
+#!/bin/sh
+# $Header: manimake,v 1.1.1.1 89/11/28 01:04:29 wje Exp $
+#
+# $Log:	manimake,v $
+# Revision 1.1.1.1  89/11/28  01:04:29  wje
+# Branch RISCOS_4_50_FIXES off of trunk.
+# 
+# Revision 1.1  89/05/26  20:55:56  kris
+# Initial revision
+# 
+# Revision 4.3  85/05/01  11:42:46  lwall
+# Baseline for release with 4.3bsd.
+# 
+
+: make MANIFEST and MANIFEST.new say the same thing
+if test -f MANIFEST.new; then
+    cat <<'EOH' > MANIFEST
+After all the rn kits are run you should have the following files:
+
+Filename	Kit Description
+--------	--- -----------
+EOH
+    sort MANIFEST.new >.mani
+    grep . kit*.list | sed 's/^kit\(.*\)\.list:\$*\(.*\)$/\2 |\1|/' | \
+	sort | \
+	join -a1 - .mani | \
+	awk -F'|' '{printf "%-16s%2s %s\n",$1,$2,$3}' | \
+	unexpand >> MANIFEST
+    rm .mani
+else
+    echo "You don't have a MANIFEST.new file.  Run manifake."
+fi

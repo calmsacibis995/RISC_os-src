@@ -1,0 +1,96 @@
+*#ident	"$Header: kernel.r2300_std,v 1.24.1.1 89/11/28 11:44:08 wje Exp $"
+*
+* KERNEL
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+k	-	 -	  -
+	
+$$$
+
+#include "values.h"
+#include "sys/param.h"
+
+#define UTSNAME_MACHINE_TYPE MT_M500
+
+/*
+ * machine_type is a global that is used to index into machine dependent
+ *	arrays.
+ */
+
+#define RISCOS_MACHINE_TYPE BRDTYPE_R2300
+
+/*
+ * Setup c0 vector table here instead of startup.c for new machines.
+ * This seems the cleanest way to specify new level 0 interrupt routine
+ * which is also lboot'able.
+ *
+ * DO NOT MESS WITH THIS: unless you really know what you are doing!
+ *
+ */
+
+extern timein(), netintr(), vme_intr(), clock(), stray();
+extern buserror_intr(), fp_intr();
+#ifdef SABLE
+extern cn_intr();
+#else
+extern du_poll();
+#endif
+
+#ifdef KGCLOCK
+extern prof_intr();
+#endif
+
+int  (*c0vec_tbl[8])() = {
+	/* softint 1 */		timein,
+	/* softint 2 */		netintr,
+	/* hardint 3 */		vme_intr,
+#ifdef SABLE
+	/* hardint 4 */		cn_intr, 
+#else
+	/* hardint 4 */		du_poll,
+#endif
+	/* hardint 5 */		clock,
+	/* hardint 6 */		fp_intr,
+#ifdef KGCLOCK
+	/* hardint 7 */		prof_intr,
+#else
+	/* hardint 7 */		stray,
+#endif
+	/* hardint 8 */		buserror_intr
+};
+
+/*
+ * The level 0 generic init routine.  This call is done in os/startup.c
+ */
+
+extern vme_init();
+int (*level0_init)() = vme_init;
+int (*interrupt_init)() = 0;		/* No additional interrupts needed */
+
+/*
+ * Buffer cache parameters.
+ *
+ *	    bio_pageshi	- Max number of pages allowed in the cache.
+ *	    bio_pageslo	- Min number pruned to during page stealing.
+ *
+ * The kernel executes the functions
+ * bio_pageshi_init() and bio_pageslo_init() at boot time to determine
+ * the values for bio_pageshi and bio_pageslo.
+ *
+ * The kernel executes bio_nbuf_init() at boot time to determine the number
+ * of buffer headers to be used.
+ */
+
+extern int physmem;
+
+bio_pageslo_init()	{ return max(physmem/10, 256*1024/NBPC); }
+bio_pageshi_init()	{ return physmem/2; }
+bio_nbuf_init()		{ return max(bio_pageshi_init()*NBPC/(8*1024), 64); }
+
+/*
+ * Add definitions here for modified kernel mode parameters
+ * (see kernel_common for common defaults)
+ */
+
+#include "kernel_common"
+

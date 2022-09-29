@@ -1,0 +1,75 @@
+--
+-- amd3230.script
+-- crc script for programming AMD 27C1024 EPROMs on a DATA I/O for 3230.
+--
+-- NOTE: change the strings "prom_Rx3230.horz.N.srecXXXX" to names of your files
+--
+-- disable timeout
+=
+--
+-- exit if fail
+--
+-E
+--
+-- set family
+--
+6EA8@
+--
+-- set format
+--
+087A
+--
+-- set setsize/wordsize
+--
+3222]
+--
+-- blank check
+--
+B
+--
+0<
+20000;
+--
+-- PROGRAM first second of ram
+--
+-- load file to ram 
+--
+-- CHANGE THIS STRING TO REFLECT YOUR FILE
+-Iprom_Rx3230.horz.1.srecXXXX
+--
+-- set setsize/wordsize
+--
+3222]
+--
+-- set base address for device
+--
+0<
+8000:
+--
+-- program devices with second half of data
+--
+P
+--
+-- PROGRAM first half of ram
+--
+-- set base address for download
+0<
+--
+-- load file to ram 
+--
+-- CHANGE THIS STRING TO REFLECT YOUR FILE
+-Iprom_Rx3230.horz.0.srecXXXX
+--
+-- set setsize/wordsize
+--
+3222]
+--
+-- set base address for device
+--
+0<
+0:
+20000;
+--
+-- program devices for first half of data
+--
+P

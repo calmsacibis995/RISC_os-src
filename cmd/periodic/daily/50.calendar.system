@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# output calendar information
+#
+
+PATH=/bin:/usr/bin
+
+main()
+{
+
+	echo "\nUser calendars:"
+	calendar -
+
+}
+
+main ${1+"$@"}
+exit 0

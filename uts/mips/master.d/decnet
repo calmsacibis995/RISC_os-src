@@ -1,0 +1,9 @@
+*#ident	"$Header: decnet,v 1.2.1.1 89/11/28 11:39:16 wje Exp $"
+*
+* decnet: TCI CommUnity-UNIX DECnet protocols.
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	-	-	-	
+				eth_io_main() {true}
+
+$$$

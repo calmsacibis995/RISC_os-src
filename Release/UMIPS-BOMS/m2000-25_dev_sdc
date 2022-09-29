@@ -1,0 +1,25 @@
+dev/dsk/sdc0d0s0 brw-r----- root sys 33 0 3 dev/scsi/sdc0d0s0
+dev/dsk/sdc0d0s1 brw-r----- root sys 33 1 3 dev/scsi/sdc0d0s1
+dev/dsk/sdc0d0s6 brw-r----- root sys 33 6 3 dev/scsi/sdc0d0s6
+dev/dsk/sdc0d0s8 brw-r----- root sys 33 8 4 dev/scsi/sdc0d0s8
+dev/dsk/sdc0d0vh brw-r----- root sys 33 8 4 dev/scsi/sdc0d0s8
+dev/rdsk/sdc0d0s0 crw-r----- root sys 33 0 3 dev/rscsi/sdc0d0s0
+dev/rdsk/sdc0d0s1 crw-r----- root sys 33 1 2 dev/rscsi/sdc0d0s1
+dev/rdsk/sdc0d0s6 crw-r----- root sys 33 6 3 dev/rscsi/sdc0d0s6
+dev/rdsk/sdc0d0s8 crw-r----- root sys 33 8 4 dev/rscsi/sdc0d0s8
+dev/rdsk/sdc0d0vh crw-r----- root sys 33 8 4 dev/rscsi/sdc0d0s8
+dev/root brw-r----- root sys 33 0 3 dev/scsi/sdc0d0s0
+dev/rroot crw-r----- root sys 33 0 3 dev/rscsi/sdc0d0s0
+dev/rscsi/sdc0d0s0 crw-r----- root sys 33 0 3
+dev/rscsi/sdc0d0s1 crw-r----- root sys 33 1 2
+dev/rscsi/sdc0d0s6 crw-r----- root sys 33 6 3
+dev/rscsi/sdc0d0s8 crw-r----- root sys 33 8 4
+dev/rusr crw-r----- root sys 33 6 3 dev/rscsi/sdc0d0s6
+dev/rvh crw-r----- root sys 33 8 4 dev/rscsi/sdc0d0s8
+dev/scsi/sdc0d0s0 brw-r----- root sys 33 0 3
+dev/scsi/sdc0d0s1 brw-r----- root sys 33 1 3
+dev/scsi/sdc0d0s6 brw-r----- root sys 33 6 3
+dev/scsi/sdc0d0s8 brw-r----- root sys 33 8 4
+dev/swap brw-r----- root sys 33 1 3 dev/scsi/sdc0d0s1
+dev/usr brw-r----- root sys 33 6 3 dev/scsi/sdc0d0s6
+dev/vh brw-r----- root sys 33 8 4 dev/scsi/sdc0d0s8

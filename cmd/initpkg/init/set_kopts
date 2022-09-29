@@ -1,0 +1,27 @@
+#! /bin/sh
+#
+# Set kopt values
+#
+# $Header: set_kopts,v 1.1.1.1 90/05/09 14:34:28 wje Exp $
+
+PATH=/bin:/etc:/usr/bin:/usr/etc:/usr/ucb:
+
+case "$1" in
+'start')
+# all of these are optional.  The ones marked BSD43 should be
+# enabled to get more BSD 4.3 -like behavior
+# man 8 kopt   to see more details on these, and for other settings
+#BSD43	/etc/kopt set _posix_chown_restricted 0
+#BSD43	/etc/kopt set _riscos_group_parent 0
+#BSD43	/etc/kopt set _riscos_kill_stopped_orphans 0
+#BSD43	/etc/kopt set _riscos_utime_owner 0
+    ;;
+
+'stop')
+    ;;
+
+*)
+    echo "usage: /etc/init.d/set_kopts {start|stop}"
+    ;;
+esac
+exit 0

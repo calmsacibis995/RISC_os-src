@@ -1,0 +1,6 @@
+* $Header
+* if_lacomm - common lance interface driver
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox
+$$$

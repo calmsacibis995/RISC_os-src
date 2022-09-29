@@ -1,0 +1,14 @@
+*#ident "$Header: rd,v 1.1.5.3 90/01/22 17:48:08 wje Exp $"
+*
+* RD - VMEBUS disk driver for ram disk device
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+sbc	rd	3	1
+				has_rd(){false}
+$$$
+
+#define MKDEV_RD
+#include "sys/dkio.h"
+int rdmajors[##N] = ##X;
+struct devtable Dev_rd[] = { ##N, ##P, 1, rdmajors};
+

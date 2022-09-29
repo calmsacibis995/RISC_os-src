@@ -1,0 +1,12 @@
+#
+#
+v50am|v50 with automatic margins,
+	am, xon,
+	cols#80, lines#24,
+	bel=^G, clear=\EH\EJ, cr=\r, cub1=\b, cud1=\n,
+	cuf1=\EC, cup=\EY%p1%'\s'%+%c%p2%'\s'%+%c, cuu1=\EA,
+	dl1=\EM, ed=\EJ, el=\EK, home=\EH, ht=\t,
+	if=/usr/lib/tabset/v50, il1=\EL, ind=\n, kcub1=\ED,
+	kcud1=\EB, kcuf1=\EC, kcuu1=\EA,
+	mgc=^A`^Ba^Cl^Dm^Es^Fe^Kp, ri=\EI, rmso=\E0@\ET,
+	smso=\E9P\EU,

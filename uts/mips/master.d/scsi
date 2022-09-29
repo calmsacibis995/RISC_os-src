@@ -1,0 +1,37 @@
+*#ident "$Header: scsi,v 1.6.1.3 90/01/09 18:24:47 wje Exp $"
+*
+* SCSI - On board SCSI on Intrepid
+*
+* XXX Bug in mboot causes devtable to use C instead of P
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+bc	scsi	16	7	io, common_scsi, spc, udc, spc_poll
+				has_scsi(){false}
+				spcintr(){noreach} 
+				udcintr(){noreach}
+
+$$$
+
+#include "sys/types.h"
+#include "sys/param.h"
+#include "sys/buf.h"
+#include "sys/iobuf.h"
+#include "sys/dvh.h"
+#include "sys/elog.h"
+#include "sys/m120scsi.h"
+#include "sys/scsi.h"
+
+#define NLUN ##N
+int scsi_Ntarget = NTARGET;	/* Used by scsi to tell how big */
+int scsi_Nlun = NLUN;		/* these lboot'able structures are */
+
+struct scsi_unit scsi_un[NTARGET*NLUN];
+struct scsisge scsi_sge[NTARGET*NLUN][MAX_SGENTRY];
+struct iobuf  scsi_tab[NTARGET*NLUN]; /* for linking per unit activity */
+struct iotime scsiiotime[NTARGET];	/* io statistics */
+int nscsi = NLUN*NTARGET;		/* number of units for sar */
+int scsi_majors[##N] = ##X;		/* major numbers */
+int nscsi_majors = ##N;
+
+#include "sys/dkio.h"
+struct devtable Dev_scsi[] = {##N, ##C, NTARGET, scsi_majors};

@@ -1,0 +1,12 @@
+*
+* CDSIO:	streams drivers for central serial i/o board
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+f	cdsio	8	-	stty_ld
+
+
+$$$
+#include "sys/cdsioreg.h"
+struct	cdport cdport[##C * CDUPC];
+int	cdnumports = ##C * CDUPC;
+int	cdnumboards = ##C;

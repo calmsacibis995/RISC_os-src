@@ -1,0 +1,33 @@
+*#ident "$Header: socket,v 1.5.1.1 89/11/28 11:50:12 wje Exp $"
+*
+* SOCKET
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+oxj	soc_	-	-	bsd
+				accept(){nopkg}
+				bind(){nopkg}
+				connect(){nopkg}
+				gethostid(){nopkg}
+				getpagesize(){nopkg}
+				getpeername(){nopkg}
+				getsockname(){nopkg}
+				getsockopt(){nopkg}
+				listen(){nopkg}
+				recv(){nopkg}
+				recvfrom(){nopkg}
+				recvmsg(){nopkg}
+				select(){nopkg}
+				send(){nopkg}
+				sendmsg(){nopkg}
+				sendto(){nopkg}
+				sethostid(){nopkg}
+				setsockopt(){nopkg}
+				shutdown(){nopkg}
+				socket(){nopkg}
+				netintr(){noreach}
+
+$$$
+
+#define soc_FLAGS	FS_NOICACHE
+#define soc_NAME	FSID_SOCKET
+#define soc_NOTFY	NO_SEEK

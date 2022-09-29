@@ -1,0 +1,10 @@
+* $Header
+*
+* Monochrome Graphics
+*
+*FLAG	PREFIX	SOFT	#DEV	DEPENDENCIES
+ox	mono	-	-	
+				is_mono(){false}
+				mono_base(){}
+				clean_console(){}
+$$$

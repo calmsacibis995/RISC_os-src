@@ -1,0 +1,15 @@
+In other words, the stuff in /user/mips43/current can't build with
+the broken compilers.
+
+Have you guys run a complete build on UMIPS-V with the 1.21 compilers?
+I'll bet there are problems there as well.
+
+			David
+--------------------------------------------------------------------------------
+It's not at all important for you to fix your stuff now.  I had just
+been under the mis-impression that mips43/current was supposed to be
+a buildable tree.
+No, 
+I remember your complaining, I just didn't realize that you'd left
+the problem unresolved.
+
